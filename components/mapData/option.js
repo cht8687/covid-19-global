@@ -1,5 +1,4 @@
 export const options = cityname => ({
-  backgroundColor: '#404a59',
   title: [
     {
       textStyle: {
@@ -38,7 +37,7 @@ export const options = cityname => ({
     realtime: false,
     calculable: true,
     inRange: {
-      color: ['lightskyblue', 'yellow', 'orangered'],
+      color: ['white', 'orange', '#35100d'],
     },
   },
   legend: [
@@ -51,7 +50,6 @@ export const options = cityname => ({
       show: true,
     },
   ],
-  backgroundColor: '#fff',
   series: [
     {
       mapType: cityname,

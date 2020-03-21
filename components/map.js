@@ -4,10 +4,10 @@
 import React, {useEffect} from 'react';
 import styled from 'styled-components';
 import ReactEcharts from 'echarts-for-react';
-//require('echarts/map/js/Australia.js');
+require('echarts/map/js/China.js');
 require('echarts-countries-js/echarts-countries-js/world');
 //import {options} from './mapData/china';
-import {options} from './mapData/commonOption';
+import {options} from './mapData/option';
 
 const MapContainer = styled.div`
   display: flex;
@@ -19,7 +19,6 @@ const MapContainer = styled.div`
 `;
 
 const ReactEchartsContainer = styled(ReactEcharts)`
-  background-color: green;
   height: 100%;
   width: 100%;
 `;
@@ -27,7 +26,10 @@ const ReactEchartsContainer = styled(ReactEcharts)`
 export default function Map() {
   return (
     <MapContainer>
-      <ReactEchartsContainer option={options('world') || {}} />
+      <ReactEchartsContainer
+        option={options('world') || {}}
+        style={{height: '100%', width: '100%'}}
+      />
     </MapContainer>
   );
 }
