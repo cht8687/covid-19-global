@@ -1,10 +1,8 @@
-# Covid-19 in Australia
+# Covid-19 in Global
 
 [![Build Status](https://travis-ci.org/cthroo/covid-19-australia.svg?branch=master)](https://travis-ci.org/cthroo/covid-19-australia)
 
 When this pandemic 🦠 came, doctors 👨‍⚕️ 👩‍⚕️ will pick up their scalpels, as a programmer, it's time to build something meaningful for this society using Code!!!
-
-![COVID-19](screenshot.gif)
 
 ## Contributing
 
