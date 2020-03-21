@@ -3,7 +3,7 @@
  */
 import React, {useState} from 'react';
 import styled from 'styled-components';
-import Australia from '../components/australia';
+import Map from '../components/map';
 import InfoBoard from '../components/infoBoard';
 import Grid from '@material-ui/core/Grid';
 import {useRouter} from 'next/router';
@@ -31,7 +31,7 @@ export default function Index() {
     <>
       <Grid container spacing={2}>
         <Grid item xs={12} lg={6}>
-          <Australia />
+          <Map />
         </Grid>
         <Grid item xs={12} lg={6}>
           <InfoBoard location={location} />
