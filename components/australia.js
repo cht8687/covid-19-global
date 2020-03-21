@@ -27,7 +27,7 @@ const ButtonControl = styled.div`
   color: white;
 `;
 
-export default function Australia({onLocationClick}) {
+export default function Australia() {
   const visEl = useRef(null);
 
   const [count, setCount] = useState(0);
@@ -148,12 +148,9 @@ export default function Australia({onLocationClick}) {
 
       function drawstate(d) {
         if (active.node() === this) {
-          onLocationClick('AUSTRALIA');
           return reset();
         }
         active = d3.select(this).classed('active', true);
-
-        onLocationClick(d.properties.STATE_NAME);
 
         const bounds = path.bounds(d),
           dx = bounds[1][0] - bounds[0][0],

@@ -23,80 +23,22 @@ const Footer = styled.div`
   }
 `;
 
-const Reference = styled.div`
-  font-size: 12px;
-`;
-
-const Coffeebanner = styled.div`
-  display: flex;
-  justify-content: center;
-`;
-
-const CoffeeLogo = styled.img`
-  width: 127px;
-  height: 27px;
-  cursor: pointer;
-`;
-
 export default function Index() {
   const router = useRouter();
   const [location, setLocation] = useState('AUSTRALIA');
-
-  const onLocationClick = stateName => {
-    setLocation(stateName);
-  };
-  const handleClick = e => {
-    e.preventDefault();
-    router.push('/buyUsCoffee');
-  };
-
-  const handleBuyCoffeeClick = () => {
-    window.open('https://ko-fi.com/F1F61IM4R', '_blank');
-  };
 
   return (
     <>
       <Grid container spacing={2}>
         <Grid item xs={12} lg={6}>
-          <Australia onLocationClick={onLocationClick} />
+          <Australia />
         </Grid>
         <Grid item xs={12} lg={6}>
           <InfoBoard location={location} />
         </Grid>
       </Grid>
       <Grid item xs={12}>
-        <Footer>
-          {' '}
-          Join 💬 discussions about Australian companies 👉{' '}
-          <a href="https://www.cthroo.com/discussions">Discussions</a> <br />
-          <Reference>
-            Data:{' '}
-            <a href="https://www.health.nsw.gov.au/" target="_black">
-              health.nsw.gov.au
-            </a>{' '}
-            |{' '}
-            <a href="https://www.health.qld.gov.au/" target="_black">
-              health.qld.gov.au
-            </a>{' '}
-            |{' '}
-            <a href="http://www.dhhs.vic.gov.au" target="_black">
-              dhhs.vic.gov.au
-            </a>{' '}
-            |{' '}
-            <a href="http://covid-19.wileam.com/" target="_black">
-              covid-19.wileam.com
-            </a>{' '}
-          </Reference>
-          <br />
-          <Coffeebanner>
-            If you ❤️ this project 👉{' '}
-            <CoffeeLogo
-              src="/buyMeACoffee.png"
-              alt="buy me coffee"
-              onClick={handleBuyCoffeeClick}
-            />
-          </Coffeebanner>
-        </Footer>
+        <Footer>COVID-19</Footer>
       </Grid>
     </>
   );
