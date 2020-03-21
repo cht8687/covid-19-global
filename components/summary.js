@@ -4,9 +4,7 @@
 import React from 'react';
 import styled, {css} from 'styled-components';
 import Grid from '@material-ui/core/Grid';
-import Paper from '@material-ui/core/Paper';
 import {only, down} from 'styled-breakpoints';
-import InfoTable from './infoTable';
 import colours from '../styles/colours';
 
 const Numbers = css`
@@ -21,12 +19,9 @@ const Numbers = css`
 
 const Container = styled.div`
   display: flex;
-  padding-top: 20px;
   flex-wrap: wrap;
-  padding: 30px 10px;
   background-color: #445175;
-  padding-left: 10px !import;
-  padding-right: 10px !import;
+  padding: 15px 10px;
   border-radius: 15px;
   margin: 5px;
   color: ${colours.dimWhite};

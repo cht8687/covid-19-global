@@ -1,7 +1,7 @@
 /*
  * Created by Robert Chang 15 March 2020
  */
-import React, {useState} from 'react';
+import React, {useState, useEffect} from 'react';
 import styled from 'styled-components';
 import Map from '../components/map';
 import InfoBoard from '../components/infoBoard';
@@ -14,6 +14,7 @@ import Toolbar from '@material-ui/core/Toolbar';
 import Typography from '@material-ui/core/Typography';
 import IconButton from '@material-ui/core/IconButton';
 import MenuIcon from '@material-ui/icons/Menu';
+import {getGlobalToday} from '../services/api';
 import 'whatwg-fetch';
 
 const AppBarContainer = styled(AppBar)`
@@ -44,6 +45,10 @@ const Footer = styled.div`
 export default function Index() {
   const router = useRouter();
   const [location, setLocation] = useState('AUSTRALIA');
+  useEffect(() => {
+    const data = getGlobalToday();
+    console.log(data);
+  }, []);
 
   return (
     <>
