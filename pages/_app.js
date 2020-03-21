@@ -7,7 +7,6 @@ import {ApolloProvider} from '@apollo/react-hooks';
 import withApolloClient from '../lib/withApollo';
 import resets from '../styles/resets';
 import theme from '../theme/theme';
-import './styles.css';
 
 const GlobalStyle = createGlobalStyle`
   ${resets}; 
