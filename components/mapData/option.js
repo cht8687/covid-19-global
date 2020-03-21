@@ -39,7 +39,7 @@ export const options = cityname => ({
     realtime: false,
     calculable: true,
     inRange: {
-      color: ['orangered', 'yellow', 'lightskyblue'],
+      color: ['white', 'yellow', 'orangered'],
     },
   },
   legend: [

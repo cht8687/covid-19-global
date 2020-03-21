@@ -192,12 +192,6 @@ export default function ReactVirtualizedTable({data, isLoading}) {
             },
             {
               width: 120,
-              label: 'Critical',
-              dataKey: 'serious_critical',
-              numeric: true,
-            },
-            {
-              width: 120,
               label: 'Recovered',
               dataKey: 'total_recovered',
               numeric: true,
