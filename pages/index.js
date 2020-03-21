@@ -5,6 +5,7 @@ import React, {useState} from 'react';
 import styled from 'styled-components';
 import Map from '../components/map';
 import InfoBoard from '../components/infoBoard';
+import Summary from '../components/summary';
 import Grid from '@material-ui/core/Grid';
 import {useRouter} from 'next/router';
 import {down} from 'styled-breakpoints';
@@ -55,8 +56,13 @@ export default function Index() {
         </Toolbar>
       </AppBarContainer>
       <Grid container spacing={2}>
-        <Grid item xs={12} lg={8}>
-          <Map />
+        <Grid container item xs={12} lg={8}>
+          <Grid item xs={12} lg={12}>
+            <Summary />
+          </Grid>
+          <Grid item xs={12} lg={12}>
+            <Map />
+          </Grid>
         </Grid>
         <Grid item xs={12} lg={4}>
           <InfoBoard location={location} />
