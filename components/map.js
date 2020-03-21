@@ -14,18 +14,20 @@ const MapContainer = styled.div`
   color: white;
   justify-content: center;
   align-items: center;
-  height: 100vh;
-  width: 800px;
+  height: 100%;
+  width: 100%;
+`;
+
+const ReactEchartsContainer = styled(ReactEcharts)`
+  background-color: green;
+  height: 100%;
+  width: 100%;
 `;
 
 export default function Map() {
   return (
     <MapContainer>
-      <ReactEcharts
-        option={options('澳大利亚') || {}}
-        style={{height: '100vh', width: '100%'}}
-        className="react_for_echarts"
-      />
+      <ReactEchartsContainer option={options('澳大利亚') || {}} />
     </MapContainer>
   );
 }

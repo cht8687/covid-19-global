@@ -1,4 +1,5 @@
 export const options = cityname => ({
+  backgroundColor: '#404a59',
   title: [
     {
       textStyle: {
