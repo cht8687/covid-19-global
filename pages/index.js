@@ -7,7 +7,6 @@ import Map from '../components/map';
 import InfoBoard from '../components/infoBoard';
 import Summary from '../components/summary';
 import Grid from '@material-ui/core/Grid';
-import {useRouter} from 'next/router';
 import {down} from 'styled-breakpoints';
 import AppBar from '@material-ui/core/AppBar';
 import Toolbar from '@material-ui/core/Toolbar';
@@ -45,7 +44,7 @@ const Footer = styled.div`
 `;
 
 const SiteContent = styled(Grid)`
-  padding-top: 56px;
+  padding-top: 66px;
 `;
 
 export default function Index() {

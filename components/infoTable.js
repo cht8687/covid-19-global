@@ -3,6 +3,8 @@ import PropTypes from 'prop-types';
 import clsx from 'clsx';
 import {withStyles} from '@material-ui/core/styles';
 import TableCell from '@material-ui/core/TableCell';
+import styled from 'styled-components';
+import colours from '../styles/colours';
 import Paper from '@material-ui/core/Paper';
 import {AutoSizer, Column, Table} from 'react-virtualized';
 
@@ -30,11 +32,15 @@ const styles = theme => ({
   },
   tableCell: {
     flex: 1,
+    color: `${colours.dimWhite}`,
+    fontWeight: 'bold',
   },
   noClick: {
     cursor: 'initial',
   },
 });
+
+const Container = styled.div``;
 
 class MuiVirtualizedTable extends React.PureComponent {
   static defaultProps = {
@@ -155,14 +161,14 @@ const VirtualizedTable = withStyles(styles)(MuiVirtualizedTable);
 export default function ReactVirtualizedTable({data, isLoading}) {
   if (isLoading) return null;
   return (
-    <Paper style={{height: 600, width: '100%'}}>
+    <Container style={{height: 600, width: '100%'}}>
       {data && data.length ? (
         <VirtualizedTable
           rowCount={data.length}
           rowGetter={({index}) => data[index]}
           columns={[
             {
-              width: 200,
+              width: 120,
               label: 'Country',
               dataKey: 'country',
             },
@@ -180,6 +186,12 @@ export default function ReactVirtualizedTable({data, isLoading}) {
             },
             {
               width: 120,
+              label: 'Deceased',
+              dataKey: 'total_deaths',
+              numeric: true,
+            },
+            {
+              width: 120,
               label: 'Critical',
               dataKey: 'serious_critical',
               numeric: true,
@@ -193,6 +205,6 @@ export default function ReactVirtualizedTable({data, isLoading}) {
           ]}
         />
       ) : null}
-    </Paper>
+    </Container>
   );
 }

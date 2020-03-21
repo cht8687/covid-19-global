@@ -8,6 +8,10 @@ import withApolloClient from '../lib/withApollo';
 import resets from '../styles/resets';
 import theme from '../theme/theme';
 
+function tooltip_click_event(e) {
+  debugger;
+}
+
 const GlobalStyle = createGlobalStyle`
   ${resets}; 
  `;

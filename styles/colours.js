@@ -8,4 +8,5 @@ export default {
   yellow: '#f4d05a',
   dimWhite: '#dfdfef',
   pink: '#e4b9b9',
+  darkBlue: '#445175',
 };

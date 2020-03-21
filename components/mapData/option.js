@@ -1,7 +1,3 @@
-function tooltip_click_event(e) {
-  debugger;
-}
-
 export const options = cityname => ({
   title: [
     {

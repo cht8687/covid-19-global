@@ -22,7 +22,7 @@ const Numbers = css`
 const Container = styled.div`
   display: flex;
   flex-wrap: wrap;
-  background-color: #445175;
+  background-color: ${colours.darkBlue};
   padding: 15px 10px;
   border-radius: 15px;
   margin: 5px;
@@ -83,14 +83,14 @@ export default function Summary({total}) {
                 <Confirmed>{formatNumber(total_cases)}</Confirmed> confirmed
               </NumBlock>
               <NumBlock item xs={3} lg={3}>
-                <Deceased>{formatNumber(total_deaths)}</Deceased> Death
+                <Deceased>{formatNumber(total_deaths)}</Deceased> Deceased
               </NumBlock>
               <NumBlock item xs={3} lg={3}>
-                <Serious>{formatNumber(serious_critical)}</Serious> serious
+                <Serious>{formatNumber(serious_critical)}</Serious> Critical
               </NumBlock>
               <NumBlock item xs={3} lg={3}>
                 <Recovered>{formatNumber(total_recovered)}</Recovered>
-                recovered
+                Recovered
               </NumBlock>
             </Grid>
           </Grid>
