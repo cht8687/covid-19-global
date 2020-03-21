@@ -22,7 +22,7 @@ body {
   font-size: 18px;
   font-family: -apple-system, BlinkMacSystemFont, Avenir Next, Avenir, Helvetica,
     sans-serif;
-  color: ${colours.dark};
+  background-color: ${colours.dark};
   -webkit-text-size-adjust: 100%;
   -webkit-font-smoothing: antialiased;
 }
