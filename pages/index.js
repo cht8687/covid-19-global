@@ -15,6 +15,8 @@ import Typography from '@material-ui/core/Typography';
 import IconButton from '@material-ui/core/IconButton';
 import MenuIcon from '@material-ui/icons/Menu';
 import {getGlobalToday} from '../services/api';
+import {find, propEq} from 'ramda';
+import {useAsync} from 'react-async';
 import 'whatwg-fetch';
 
 const AppBarContainer = styled(AppBar)`
@@ -43,12 +45,16 @@ const Footer = styled.div`
 `;
 
 export default function Index() {
-  const router = useRouter();
+  const {data, error, isLoading} = useAsync({promiseFn: getGlobalToday});
   const [location, setLocation] = useState('AUSTRALIA');
+  const [total, setTotal] = useState('');
+
   useEffect(() => {
-    const data = getGlobalToday();
-    console.log(data);
-  }, []);
+    if (data) {
+      const total = find(propEq('country', 'Total'))(data);
+      setTotal(total);
+    }
+  }, [data]);
 
   return (
     <>
@@ -63,7 +69,7 @@ export default function Index() {
       <Grid container spacing={2}>
         <Grid container item xs={12} lg={8}>
           <Grid item xs={12} lg={12}>
-            <Summary />
+            <Summary total={total} />
           </Grid>
           <Grid item xs={12} lg={12}>
             <Map />

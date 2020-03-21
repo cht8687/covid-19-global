@@ -6,6 +6,8 @@ import styled, {css} from 'styled-components';
 import Grid from '@material-ui/core/Grid';
 import {only, down} from 'styled-breakpoints';
 import colours from '../styles/colours';
+import CircularProgress from '@material-ui/core/CircularProgress';
+import formatNumber from '../utilities/formatNumber';
 
 const Numbers = css`
   font-size: 50px;
@@ -26,6 +28,7 @@ const Container = styled.div`
   margin: 5px;
   color: ${colours.dimWhite};
   font-weight: bold;
+  justify-content: center;
 `;
 
 const Confirmed = styled.div`
@@ -60,28 +63,39 @@ const NumBlock = styled(Grid)`
   }
 `;
 
-export default function Summary() {
+export default function Summary({total}) {
+  const {
+    total_cases,
+    total_deaths,
+    active_cases,
+    serious_critical,
+    total_recovered,
+  } = total;
   return (
     <Container>
-      <Grid container spacing={2}>
-        <Grid item xs={12} lg={12}>
-          <Grid container spacing={2}>
-            <NumBlock item xs={3} lg={3}>
-              <Confirmed>281,119</Confirmed> confirmed
-            </NumBlock>
-            <NumBlock item xs={3} lg={3}>
-              <Deceased>11,540</Deceased> Death
-            </NumBlock>
-            <NumBlock item xs={3} lg={3}>
-              <Serious>7,734</Serious> serious
-            </NumBlock>
-            <NumBlock item xs={3} lg={3}>
-              <Recovered>91,133</Recovered>
-              recovered
-            </NumBlock>
+      {!total ? (
+        <CircularProgress color="secondary" />
+      ) : (
+        <Grid container spacing={2}>
+          <Grid item xs={12} lg={12}>
+            <Grid container spacing={2}>
+              <NumBlock item xs={3} lg={3}>
+                <Confirmed>{formatNumber(total_cases)}</Confirmed> confirmed
+              </NumBlock>
+              <NumBlock item xs={3} lg={3}>
+                <Deceased>{formatNumber(total_deaths)}</Deceased> Death
+              </NumBlock>
+              <NumBlock item xs={3} lg={3}>
+                <Serious>{formatNumber(serious_critical)}</Serious> serious
+              </NumBlock>
+              <NumBlock item xs={3} lg={3}>
+                <Recovered>{formatNumber(total_recovered)}</Recovered>
+                recovered
+              </NumBlock>
+            </Grid>
           </Grid>
         </Grid>
-      </Grid>
+      )}
     </Container>
   );
 }
