@@ -46,7 +46,7 @@ const Footer = styled.div`
 
 export default function Index() {
   const {data, error, isLoading} = useAsync({promiseFn: getGlobalToday});
-  const [location, setLocation] = useState('AUSTRALIA');
+  const [location, setLocation] = useState('global');
   const [total, setTotal] = useState('');
 
   useEffect(() => {
@@ -76,7 +76,7 @@ export default function Index() {
           </Grid>
         </Grid>
         <Grid item xs={12} lg={4}>
-          <InfoBoard location={location} />
+          <InfoBoard location={location} data={data} isLoading={isLoading} />
         </Grid>
       </Grid>
       <Grid item xs={12}>
