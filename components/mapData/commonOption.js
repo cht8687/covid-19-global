@@ -15,6 +15,31 @@ export const options = cityname => ({
       left: 'auto',
     },
   ],
+  tooltip: {
+    trigger: 'item',
+    formatter: '{b}<br/>2384',
+  },
+  toolbox: {
+    show: false,
+    orient: 'vertical',
+    left: 'right',
+    top: 'center',
+    feature: {
+      dataView: {readOnly: false},
+      restore: {},
+      saveAsImage: {},
+    },
+  },
+  visualMap: {
+    min: 800, // this should from dataset
+    max: 50000, // this should from dataset
+    text: ['High', 'Low'],
+    realtime: false,
+    calculable: true,
+    inRange: {
+      color: ['lightskyblue', 'yellow', 'orangered'],
+    },
+  },
   legend: [
     {
       selectedMode: 'multiple',

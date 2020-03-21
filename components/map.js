@@ -4,7 +4,8 @@
 import React, {useEffect} from 'react';
 import styled from 'styled-components';
 import ReactEcharts from 'echarts-for-react';
-require('echarts/map/js/world.js');
+//require('echarts/map/js/Australia.js');
+require('echarts-countries-js/echarts-countries-js/Australia');
 //import {options} from './mapData/china';
 import {options} from './mapData/commonOption';
 
@@ -21,7 +22,7 @@ export default function Map() {
   return (
     <MapContainer>
       <ReactEcharts
-        option={options('world') || {}}
+        option={options('澳大利亚') || {}}
         style={{height: '100vh', width: '100%'}}
         className="react_for_echarts"
       />
