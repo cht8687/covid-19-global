@@ -4,8 +4,9 @@
 import React, {useEffect} from 'react';
 import styled from 'styled-components';
 import ReactEcharts from 'echarts-for-react';
-require('echarts/map/js/china.js');
-import {options} from './mapData/china';
+require('echarts/map/js/world.js');
+//import {options} from './mapData/china';
+import {options} from './mapData/commonOption';
 
 const MapContainer = styled.div`
   display: flex;
@@ -16,13 +17,11 @@ const MapContainer = styled.div`
   width: 800px;
 `;
 
-const getOption = () => {};
-
 export default function Map() {
   return (
     <MapContainer>
       <ReactEcharts
-        option={options() || {}}
+        option={options('world') || {}}
         style={{height: '100vh', width: '100%'}}
         className="react_for_echarts"
       />
