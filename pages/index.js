@@ -44,6 +44,10 @@ const Footer = styled.div`
   }
 `;
 
+const SiteContent = styled(Grid)`
+  padding-top: 56px;
+`;
+
 export default function Index() {
   const {data, error, isLoading} = useAsync({promiseFn: getGlobalToday});
   const [location, setLocation] = useState('global');
@@ -58,7 +62,7 @@ export default function Index() {
 
   return (
     <>
-      <AppBarContainer position="static">
+      <AppBarContainer position="fixed">
         <Toolbar>
           <IconButtonContainer edge="start" color="inherit" aria-label="menu">
             <MenuIcon />
@@ -66,7 +70,7 @@ export default function Index() {
           <Title variant="h6">COVID-19 Live Tracker</Title>
         </Toolbar>
       </AppBarContainer>
-      <Grid container spacing={2}>
+      <SiteContent container spacing={2}>
         <Grid container item xs={12} lg={8}>
           <Grid item xs={12} lg={12}>
             <Summary total={total} />
@@ -78,7 +82,7 @@ export default function Index() {
         <Grid item xs={12} lg={4}>
           <InfoBoard location={location} data={data} isLoading={isLoading} />
         </Grid>
-      </Grid>
+      </SiteContent>
       <Grid item xs={12}>
         <Footer>COVID-19</Footer>
       </Grid>

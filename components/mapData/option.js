@@ -1,3 +1,7 @@
+function tooltip_click_event(e) {
+  debugger;
+}
+
 export const options = cityname => ({
   title: [
     {
@@ -17,7 +21,9 @@ export const options = cityname => ({
   ],
   tooltip: {
     trigger: 'item',
-    formatter: '{b}<br/>2384',
+    formatter: function() {
+      return `<div onclick='tooltip_click_event'>...</div>`;
+    },
   },
   toolbox: {
     show: false,
