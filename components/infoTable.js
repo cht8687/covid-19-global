@@ -131,6 +131,8 @@ class MuiVirtualizedTable extends React.PureComponent {
                   style={{
                     fontSize: '1.5em',
                     lineHeight: '1.5em',
+                    marginRight: '5px',
+                    marginTop: '5px',
                   }}
                 />
               )}

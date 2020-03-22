@@ -78,7 +78,7 @@ export default function Index() {
             COVID-19 Live Tracker <NotificationsActiveIcon />
           </Title>
         </Toolbar>
-        <KoFi color="#e02828" id="X8X31J5HH" label="Buy Me a Coffee" />
+        <KoFi color="#26bbe0" id="X8X31J5HH" label="Buy Me a Coffee" />
       </AppBarContainer>
       <SiteContent container spacing={1}>
         <Grid container item xs={12} lg={8}>
