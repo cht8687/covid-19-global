@@ -5,6 +5,7 @@ import {withStyles} from '@material-ui/core/styles';
 import TableCell from '@material-ui/core/TableCell';
 import styled from 'styled-components';
 import colours from '../styles/colours';
+import formatNumber from '../utilities/formatNumber';
 import {AutoSizer, Column, Table} from 'react-virtualized';
 
 const styles = theme => ({
@@ -70,7 +71,7 @@ class MuiVirtualizedTable extends React.PureComponent {
             ? 'right'
             : 'left'
         }>
-        {cellData}
+        {formatNumber(cellData)}
       </TableCell>
     );
   };
