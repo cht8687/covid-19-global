@@ -78,7 +78,7 @@ export default function Summary({total}) {
           <Grid item xs={12} lg={12}>
             <Grid container spacing={2}>
               <NumBlock item xs={3} lg={3}>
-                <Confirmed>{formatNumber(total_cases)}</Confirmed> confirmed
+                <Confirmed>{formatNumber(total_cases)}</Confirmed> Confirmed
               </NumBlock>
               <NumBlock item xs={3} lg={3}>
                 <Deceased>{formatNumber(total_deaths)}</Deceased> Deceased

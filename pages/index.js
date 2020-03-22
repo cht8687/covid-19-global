@@ -82,7 +82,12 @@ export default function Index() {
           </Grid>
         </Grid>
         <Grid item xs={12} lg={4}>
-          <InfoBoard location={location} data={data} isLoading={isLoading} />
+          <InfoBoard
+            location={location}
+            total={total}
+            data={data}
+            isLoading={isLoading}
+          />
         </Grid>
       </SiteContent>
       <Grid item xs={12}>
