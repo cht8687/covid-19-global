@@ -5,6 +5,7 @@ import React from 'react';
 import styled from 'styled-components';
 import Grid from '@material-ui/core/Grid';
 import colours from '../styles/colours';
+import {upperCase} from 'upper-case';
 
 const Container = styled.div`
   display: flex;
@@ -21,7 +22,7 @@ export default function InfoBanner({location, data}) {
     <Container>
       <Grid container spacing={2}>
         <Grid item xs={12} lg={12}>
-          {location}
+          {upperCase(location)}
         </Grid>
       </Grid>
     </Container>
