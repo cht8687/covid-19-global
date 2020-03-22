@@ -46,16 +46,6 @@ export const options = (name, data, total, timestamp) => ({
       color: ['#d2e3fc', '#4e85f4', '#2f4fa5'],
     },
   },
-  legend: [
-    {
-      selectedMode: 'multiple',
-      top: 'top',
-      orient: 'horizontal',
-      data: [''],
-      left: 'center',
-      show: true,
-    },
-  ],
   series: [
     {
       mapType: name,
