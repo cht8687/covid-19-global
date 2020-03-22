@@ -9,4 +9,5 @@ export default {
   dimWhite: '#dfdfef',
   pink: '#e4b9b9',
   darkBlue: '#445175',
+  deepBlue: '#3f3f65',
 };

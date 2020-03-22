@@ -22,7 +22,7 @@ const Numbers = css`
 const Container = styled.div`
   display: flex;
   flex-wrap: wrap;
-  background-color: #3f3f65;
+  background-color: ${colours.deepBlue};
   padding: 15px 0;
   color: ${colours.dimWhite};
   font-weight: bold;

@@ -5,8 +5,6 @@ import React from 'react';
 import styled from 'styled-components';
 import Grid from '@material-ui/core/Grid';
 import colours from '../styles/colours';
-import InfoTable from './infoTable';
-import InfoBanner from './InfoBanner';
 
 const Container = styled.div`
   display: flex;
@@ -18,15 +16,12 @@ const Container = styled.div`
   margin: 5px;
 `;
 
-export default function InfoBoard({location, data}) {
+export default function InfoBanner({location, data}) {
   return (
     <Container>
       <Grid container spacing={2}>
         <Grid item xs={12} lg={12}>
-          <InfoBanner location={location} data={data} />
-        </Grid>
-        <Grid item xs={12} lg={12}>
-          <InfoTable data={data} />
+          {location}
         </Grid>
       </Grid>
     </Container>

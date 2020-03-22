@@ -1,4 +1,5 @@
 import colours from '../../styles/colours';
+import {upperCase} from 'upper-case';
 import getNameMappings from '../../services/getEchartsNameMappings';
 
 export const options = (name, data, total, timestamp) => ({
@@ -8,8 +9,8 @@ export const options = (name, data, total, timestamp) => ({
         color: colours.dimWhite,
         fontSize: 18,
       },
-      subtext: 'updated ' + timestamp,
-      text: name + ' COVID-19 map ',
+      subtext: 'Updated ' + timestamp,
+      text: upperCase(name) + ' COVID-19 MAP ',
       top: 'auto',
       subtextStyle: {
         color: '#fff',

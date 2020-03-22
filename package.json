@@ -33,6 +33,7 @@
     "react-virtualized": "^9.21.2",
     "styled-breakpoints": "^8.1.0",
     "styled-components": "^5.0.1",
+    "upper-case": "^2.0.1",
     "whatwg-fetch": "2.0.4"
   }
 }
