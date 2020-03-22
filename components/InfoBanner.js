@@ -39,6 +39,8 @@ const Location = styled(Grid)`
 const Statistics = styled(Grid)`
   color: ${colours.dimWhite};
   font-weight: bold;
+  display: flex;
+  align-items: center;
 `;
 
 const DeathRate = styled(Grid)`
