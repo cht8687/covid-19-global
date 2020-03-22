@@ -17,9 +17,6 @@ export const options = cityname => ({
   ],
   tooltip: {
     trigger: 'item',
-    formatter: function() {
-      return `<div onclick='tooltip_click_event'>...</div>`;
-    },
   },
   toolbox: {
     show: false,
@@ -39,7 +36,7 @@ export const options = cityname => ({
     realtime: false,
     calculable: true,
     inRange: {
-      color: ['white', 'yellow', 'orangered'],
+      color: ['#d2e3fc', '#4e85f4', '#2f4fa5'],
     },
   },
   legend: [

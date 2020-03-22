@@ -15,11 +15,12 @@ import IconButton from '@material-ui/core/IconButton';
 import MenuIcon from '@material-ui/icons/Menu';
 import {getGlobalToday} from '../services/api';
 import {find, propEq} from 'ramda';
+import colours from '../styles/colours';
 import {useAsync} from 'react-async';
 import 'whatwg-fetch';
 
 const AppBarContainer = styled(AppBar)`
-  background-color: green !important;
+  background-color: ${colours.darkBlue} !important;
 `;
 
 const IconButtonContainer = styled(IconButton)`
@@ -69,7 +70,7 @@ export default function Index() {
           <Title variant="h6">COVID-19 Live Tracker</Title>
         </Toolbar>
       </AppBarContainer>
-      <SiteContent container spacing={2}>
+      <SiteContent container spacing={1}>
         <Grid container item xs={12} lg={8}>
           <Grid item xs={12} lg={12}>
             <Summary total={total} />

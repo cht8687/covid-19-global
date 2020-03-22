@@ -22,10 +22,8 @@ const Numbers = css`
 const Container = styled.div`
   display: flex;
   flex-wrap: wrap;
-  background-color: ${colours.darkBlue};
-  padding: 15px 10px;
-  border-radius: 15px;
-  margin: 5px;
+  background-color: #3f3f65;
+  padding: 15px 0;
   color: ${colours.dimWhite};
   font-weight: bold;
   justify-content: center;
