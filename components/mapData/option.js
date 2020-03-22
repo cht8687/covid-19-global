@@ -13,8 +13,9 @@ export const options = (name, data, total, timestamp) => ({
       text: upperCase(name) + ' COVID-19 MAP ',
       top: 'auto',
       subtextStyle: {
-        color: '#fff',
+        color: colours.dimWhite,
         fontSize: 12,
+        fontWeight: 'bold',
       },
       left: 'auto',
     },

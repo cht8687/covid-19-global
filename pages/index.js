@@ -13,8 +13,8 @@ import Toolbar from '@material-ui/core/Toolbar';
 import Typography from '@material-ui/core/Typography';
 import IconButton from '@material-ui/core/IconButton';
 import MenuIcon from '@material-ui/icons/Menu';
+import NotificationsActiveIcon from '@material-ui/icons/NotificationsActive';
 import {getGlobalToday} from '../services/api';
-import {find, propEq} from 'ramda';
 import colours from '../styles/colours';
 import {useAsync} from 'react-async';
 import 'whatwg-fetch';
@@ -69,7 +69,9 @@ export default function Index() {
           <IconButtonContainer edge="start" color="inherit" aria-label="menu">
             <MenuIcon />
           </IconButtonContainer>
-          <Title variant="h6">COVID-19 Live Tracker</Title>
+          <Title variant="h6">
+            COVID-19 Live Tracker <NotificationsActiveIcon />
+          </Title>
         </Toolbar>
       </AppBarContainer>
       <SiteContent container spacing={1}>
