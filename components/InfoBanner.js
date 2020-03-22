@@ -80,13 +80,13 @@ export default function InfoBanner({location, data, total}) {
             <Statistics item xs={6} lg={6}>
               Death Rate:
             </Statistics>
-            <DeathRate item xs={4} lg={4}>
+            <DeathRate item xs={4} lg={6}>
               {deathRate} %
             </DeathRate>
             <Statistics item xs={6} lg={6}>
               Recovered Rate:
             </Statistics>
-            <RecoveredRate item xs={4} lg={4}>
+            <RecoveredRate item xs={4} lg={6}>
               {recoverRate} %
             </RecoveredRate>
           </Grid>
