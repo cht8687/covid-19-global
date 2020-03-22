@@ -90,20 +90,16 @@ class MuiVirtualizedTable extends React.PureComponent {
   renderCellData = (dataKey, cellData) => {
     switch (dataKey) {
       case 'total_cases':
-        return <TotalCase>{cellData}</TotalCase>;
-        break;
+        return <TotalCase>{formatNumber(cellData)}</TotalCase>;
 
       case 'active_cases':
-        return <ActiveCases>{cellData}</ActiveCases>;
-        break;
+        return <ActiveCases>{formatNumber(cellData)}</ActiveCases>;
 
       case 'total_deaths':
-        return <TotalDeceased>{cellData}</TotalDeceased>;
-        break;
+        return <TotalDeceased>{formatNumber(cellData)}</TotalDeceased>;
 
       case 'total_recovered':
-        return <TotalRecovered>{cellData}</TotalRecovered>;
-        break;
+        return <TotalRecovered>{formatNumber(cellData)}</TotalRecovered>;
       default:
     }
   };
@@ -128,13 +124,17 @@ class MuiVirtualizedTable extends React.PureComponent {
             'Total'
           ) : (
             <CountryCell>
-              <ReactCountryFlag
-                countryCode={cellData}
-                style={{
-                  fontSize: '1.5em',
-                  lineHeight: '1.5em',
-                }}
-              />
+              {cellData === 'DP' ? (
+                <span>🚢</span>
+              ) : (
+                <ReactCountryFlag
+                  countryCode={cellData === 'UK' ? 'GB' : cellData}
+                  style={{
+                    fontSize: '1.5em',
+                    lineHeight: '1.5em',
+                  }}
+                />
+              )}
               {getCountryName(cellData)}
             </CountryCell>
           )
@@ -231,7 +231,6 @@ export default function ReactVirtualizedTable({data}) {
   if (!data) return null;
   const {total, list} = data;
   const displayList = [total, ...list];
-  console.log(list);
   return (
     <Container style={{height: 600, width: '100%'}}>
       {displayList && displayList.length ? (
@@ -240,7 +239,7 @@ export default function ReactVirtualizedTable({data}) {
           rowGetter={({index}) => displayList[index]}
           columns={[
             {
-              width: 220,
+              width: 200,
               label: 'Country',
               dataKey: 'country_code',
             },

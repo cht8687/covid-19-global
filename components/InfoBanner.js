@@ -27,7 +27,6 @@ const Container = styled.div`
   flex-wrap: wrap;
   padding: 10px 10px;
   background-color: ${colours.deepBlue};
-  border-radius: 15px;
   margin: 5px;
 `;
 

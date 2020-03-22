@@ -14,9 +14,8 @@ const Container = styled.div`
   flex-wrap: wrap;
   padding: 10px 10px;
   background-color: ${colours.deepBlue};
-  border-radius: 15px;
-  margin: 5px;
   justify-content: center;
+  border-bottom-left-radius: 15px;
 `;
 
 export default function InfoBoard({location, data, total}) {

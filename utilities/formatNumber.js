@@ -1,1 +1,1 @@
-export default num => (num ? num.toLocaleString() : '');
+export default num => (num ? num.toLocaleString() : 0);
