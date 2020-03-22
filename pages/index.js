@@ -17,10 +17,14 @@ import NotificationsActiveIcon from '@material-ui/icons/NotificationsActive';
 import {getGlobalToday} from '../services/api';
 import colours from '../styles/colours';
 import {useAsync} from 'react-async';
+import KoFi from '../components/kofi/kofi';
 import 'whatwg-fetch';
 
 const AppBarContainer = styled(AppBar)`
   background-color: ${colours.darkBlue} !important;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
 `;
 
 const IconButtonContainer = styled(IconButton)`
@@ -73,6 +77,7 @@ export default function Index() {
             COVID-19 Live Tracker <NotificationsActiveIcon />
           </Title>
         </Toolbar>
+        <KoFi color="#29abe0" id="X8X31J5HH" label="Buy Me a Coffee" />
       </AppBarContainer>
       <SiteContent container spacing={1}>
         <Grid container item xs={12} lg={8}>
