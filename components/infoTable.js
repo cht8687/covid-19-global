@@ -158,14 +158,16 @@ MuiVirtualizedTable.propTypes = {
 
 const VirtualizedTable = withStyles(styles)(MuiVirtualizedTable);
 
-export default function ReactVirtualizedTable({data, isLoading}) {
-  if (isLoading) return null;
+export default function ReactVirtualizedTable({data}) {
+  if (!data) return null;
+  const {total, list} = data;
+  const displayList = [total, ...list];
   return (
     <Container style={{height: 600, width: '100%'}}>
-      {data && data.length ? (
+      {displayList && displayList.length ? (
         <VirtualizedTable
-          rowCount={data.length}
-          rowGetter={({index}) => data[index]}
+          rowCount={displayList.length}
+          rowGetter={({index}) => displayList[index]}
           columns={[
             {
               width: 120,

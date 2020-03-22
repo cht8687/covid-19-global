@@ -50,12 +50,12 @@ const SiteContent = styled(Grid)`
 
 export default function Index() {
   const {data, error, isLoading} = useAsync({promiseFn: getGlobalToday});
-  const [location, setLocation] = useState('global');
+  const [location, setLocation] = useState('world');
   const [total, setTotal] = useState('');
 
   useEffect(() => {
     if (data) {
-      const total = find(propEq('country', 'Total'))(data);
+      const {total} = data;
       setTotal(total);
     }
   }, [data]);
@@ -76,7 +76,7 @@ export default function Index() {
             <Summary total={total} />
           </Grid>
           <Grid item xs={12} lg={12}>
-            <Map />
+            <Map data={data} location={location} />
           </Grid>
         </Grid>
         <Grid item xs={12} lg={4}>

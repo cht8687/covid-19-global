@@ -1,15 +1,15 @@
-export const options = cityname => ({
+export const options = (name, data, total) => ({
   title: [
     {
       textStyle: {
-        color: '#000',
+        color: '#fff',
         fontSize: 18,
       },
       subtext: '',
-      text: cityname,
+      text: name,
       top: 'auto',
       subtextStyle: {
-        color: '#aaa',
+        color: '#fff',
         fontSize: 12,
       },
       left: 'auto',
@@ -17,6 +17,11 @@ export const options = cityname => ({
   ],
   tooltip: {
     trigger: 'item',
+    formatter: function(params) {
+      var value = (params.value + '').split('.');
+      value = value[0].replace(/(\d{1,3})(?=(?:\d{3})+(?!\d))/g, '$1,');
+      return params.name + '<br/>' + ' Total Confirmed: ' + value;
+    },
   },
   toolbox: {
     show: false,
@@ -30,8 +35,8 @@ export const options = cityname => ({
     },
   },
   visualMap: {
-    min: 800, // this should from dataset
-    max: 50000, // this should from dataset
+    min: 0, // this should from dataset
+    max: total && total.total_cases, // this should from dataset
     text: ['High', 'Low'],
     realtime: false,
     calculable: true,
@@ -51,8 +56,8 @@ export const options = cityname => ({
   ],
   series: [
     {
-      mapType: cityname,
-      data: [],
+      mapType: name,
+      data,
       name: '',
       symbol: 'circle',
       type: 'map',
