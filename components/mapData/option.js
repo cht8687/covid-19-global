@@ -1,10 +1,11 @@
+import colours from '../../styles/colours';
 import getNameMappings from '../../services/getEchartsNameMappings';
 
 export const options = (name, data, total, timestamp) => ({
   title: [
     {
       textStyle: {
-        color: '#fff',
+        color: colours.dimWhite,
         fontSize: 18,
       },
       subtext: 'updated ' + timestamp,
@@ -38,12 +39,15 @@ export const options = (name, data, total, timestamp) => ({
   },
   visualMap: {
     min: 0, // this should from dataset
-    max: total && total.total_cases, // this should from dataset
+    max: data[0].value,
     text: ['High', 'Low'],
     realtime: false,
     calculable: true,
     inRange: {
-      color: ['#d2e3fc', '#4e85f4', '#2f4fa5'],
+      color: ['#d2e3fc', '#4e85f4', '#3f4065'],
+    },
+    textStyle: {
+      color: colours.dimWhite,
     },
   },
   series: [
@@ -54,6 +58,9 @@ export const options = (name, data, total, timestamp) => ({
         emphasis: {
           show: true,
         },
+      },
+      itemStyle: {
+        emphasis: {label: {show: true}},
       },
       name: '',
       type: 'map',
