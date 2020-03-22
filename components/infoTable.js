@@ -174,39 +174,43 @@ class MuiVirtualizedTable extends React.PureComponent {
       ...tableProps
     } = this.props;
     return (
-      <AutoSizer>
-        {({height, width}) => (
-          <Table
-            height={height}
-            width={width}
-            rowHeight={rowHeight}
-            gridStyle={{
-              direction: 'inherit',
-            }}
-            headerHeight={headerHeight}
-            className={classes.table}
-            {...tableProps}
-            rowClassName={this.getRowClassName}>
-            {columns.map(({dataKey, ...other}, index) => {
-              return (
-                <Column
-                  key={dataKey}
-                  headerRenderer={headerProps =>
-                    this.headerRenderer({
-                      ...headerProps,
-                      columnIndex: index,
-                    })
-                  }
-                  className={classes.flexContainer}
-                  cellRenderer={this.cellRenderer}
-                  dataKey={dataKey}
-                  {...other}
-                />
-              );
-            })}
-          </Table>
-        )}
-      </AutoSizer>
+      <div style={{overflowX: 'auto'}}>
+        <div style={{height: 600, minWidth: 600}}>
+          <AutoSizer>
+            {({height, width}) => (
+              <Table
+                height={height}
+                width={width}
+                rowHeight={rowHeight}
+                gridStyle={{
+                  direction: 'inherit',
+                }}
+                headerHeight={headerHeight}
+                className={classes.table}
+                {...tableProps}
+                rowClassName={this.getRowClassName}>
+                {columns.map(({dataKey, ...other}, index) => {
+                  return (
+                    <Column
+                      key={dataKey}
+                      headerRenderer={headerProps =>
+                        this.headerRenderer({
+                          ...headerProps,
+                          columnIndex: index,
+                        })
+                      }
+                      className={classes.flexContainer}
+                      cellRenderer={this.cellRenderer}
+                      dataKey={dataKey}
+                      {...other}
+                    />
+                  );
+                })}
+              </Table>
+            )}
+          </AutoSizer>
+        </div>
+      </div>
     );
   }
 }
@@ -240,7 +244,7 @@ export default function ReactVirtualizedTable({data}) {
           rowGetter={({index}) => displayList[index]}
           columns={[
             {
-              width: 200,
+              width: 180,
               label: 'Country',
               dataKey: 'country_code',
             },
