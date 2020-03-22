@@ -27,6 +27,7 @@ const Container = styled.div`
   color: ${colours.dimWhite};
   font-weight: bold;
   justify-content: center;
+  position: sticky;
 `;
 
 const Confirmed = styled.div`

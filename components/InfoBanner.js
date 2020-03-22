@@ -4,6 +4,7 @@
 import React, {useState, useEffect} from 'react';
 import styled, {css} from 'styled-components';
 import Grid from '@material-ui/core/Grid';
+import {only, down} from 'styled-breakpoints';
 import getPercentage from '../utilities/getPercentage';
 import colours from '../styles/colours';
 import {upperCase} from 'upper-case';
@@ -11,6 +12,12 @@ import {upperCase} from 'upper-case';
 const Numbers = css`
   font-size: 25px;
   font-weight: bold;
+  ${down('tablet')} {
+    font-size: 18px;
+  }
+  ${only('tablet')} {
+    font-size: 24px;
+  }
 `;
 
 const Container = styled.div`
@@ -70,16 +77,16 @@ export default function InfoBanner({location, data, total}) {
         </Location>
         <Grid item xs={12} lg={8}>
           <Grid container spacing={1}>
-            <Statistics item xs={10} lg={6}>
+            <Statistics item xs={6} lg={6}>
               Death Rate:
             </Statistics>
-            <DeathRate item xs={2} lg={4}>
+            <DeathRate item xs={4} lg={4}>
               {deathRate} %
             </DeathRate>
-            <Statistics item xs={10} lg={6}>
+            <Statistics item xs={6} lg={6}>
               Recovered Rate:
             </Statistics>
-            <RecoveredRate item xs={2} lg={4}>
+            <RecoveredRate item xs={4} lg={4}>
               {recoverRate} %
             </RecoveredRate>
           </Grid>
