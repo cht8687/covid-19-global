@@ -34,6 +34,9 @@ const IconButtonContainer = styled(IconButton)`
 
 const Title = styled(Typography)`
   flexgrow: 1;
+  ${down('tablet')} {
+    font-size: 13px !important;
+  }
 `;
 
 const Footer = styled.div`
