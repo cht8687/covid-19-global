@@ -52,11 +52,13 @@ export default function Index() {
   const {data, error, isLoading} = useAsync({promiseFn: getGlobalToday});
   const [location, setLocation] = useState('world');
   const [total, setTotal] = useState('');
+  const [timestamp, setTimestamp] = useState('');
 
   useEffect(() => {
     if (data) {
-      const {total} = data;
+      const {total, timestamp} = data;
       setTotal(total);
+      setTimestamp(timestamp);
     }
   }, [data]);
 
@@ -76,7 +78,7 @@ export default function Index() {
             <Summary total={total} />
           </Grid>
           <Grid item xs={12} lg={12}>
-            <Map data={data} location={location} />
+            <Map data={data} location={location} timestamp={timestamp} />
           </Grid>
         </Grid>
         <Grid item xs={12} lg={4}>

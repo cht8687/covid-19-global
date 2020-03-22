@@ -33,7 +33,7 @@ const ReactEchartsContainer = styled(ReactEcharts)`
   width: 100%;
 `;
 
-export default function Map({data, location}) {
+export default function Map({data, location, timestamp}) {
   let total, list, dataToRender;
   if (data) {
     total = data.total;
@@ -53,7 +53,7 @@ export default function Map({data, location}) {
         <CircularProgress color="secondary" />
       ) : (
         <ReactEchartsContainer
-          option={options('world', dataToRender, total) || {}}
+          option={options('world', dataToRender, total, timestamp) || {}}
           style={{height: '80vh', width: '100%'}}
         />
       )}

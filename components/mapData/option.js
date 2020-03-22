@@ -1,12 +1,14 @@
-export const options = (name, data, total) => ({
+import getNameMappings from '../../services/getEchartsNameMappings';
+
+export const options = (name, data, total, timestamp) => ({
   title: [
     {
       textStyle: {
         color: '#fff',
         fontSize: 18,
       },
-      subtext: '',
-      text: name,
+      subtext: 'updated ' + timestamp,
+      text: name + ' COVID-19 map ',
       top: 'auto',
       subtextStyle: {
         color: '#fff',
@@ -58,10 +60,15 @@ export const options = (name, data, total) => ({
     {
       mapType: name,
       data,
+      label: {
+        emphasis: {
+          show: true,
+        },
+      },
       name: '',
-      symbol: 'circle',
       type: 'map',
       roam: true,
+      nameMap: getNameMappings(name),
     },
   ],
 });
