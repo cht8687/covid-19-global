@@ -78,7 +78,7 @@ export default function Index() {
             <MenuIcon />
           </IconButtonContainer>
           <Title variant="h6">
-            COVID-19 Live Tracker <NotificationsActiveIcon />
+            COVID19 Live Tracker <NotificationsActiveIcon />
           </Title>
         </Toolbar>
         <KoFi color="#26bbe0" id="X8X31J5HH" label="Buy Me a Coffee" />
