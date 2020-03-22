@@ -23,8 +23,9 @@ import 'whatwg-fetch';
 const AppBarContainer = styled(AppBar)`
   background-color: ${colours.darkBlue} !important;
   display: flex;
-  flex-direction: row;
-  justify-content: space-between;
+  flex-direction: row !important;
+  justify-content: space-between !important;
+  align-items: center !important;
 `;
 
 const IconButtonContainer = styled(IconButton)`
