@@ -3,7 +3,7 @@ import PropTypes from 'prop-types';
 import clsx from 'clsx';
 import {withStyles} from '@material-ui/core/styles';
 import TableCell from '@material-ui/core/TableCell';
-import styled, {css} from 'styled-components';
+import styled from 'styled-components';
 import ReactCountryFlag from 'react-country-flag';
 import getCountryName from '../const/isoToName';
 import colours from '../styles/colours';
@@ -14,7 +14,6 @@ import {
   ActiveColor,
   DeceasedColor,
   RecoveredColor,
-  SeriousColor,
 } from '../styles/sharedStyle';
 
 const styles = theme => ({

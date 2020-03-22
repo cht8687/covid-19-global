@@ -8,9 +8,7 @@ import withApolloClient from '../lib/withApollo';
 import resets from '../styles/resets';
 import theme from '../theme/theme';
 
-function tooltip_click_event(e) {
-  debugger;
-}
+function tooltip_click_event(e) {}
 
 const GlobalStyle = createGlobalStyle`
   ${resets}; 
