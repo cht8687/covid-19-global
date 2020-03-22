@@ -3,10 +3,19 @@ import PropTypes from 'prop-types';
 import clsx from 'clsx';
 import {withStyles} from '@material-ui/core/styles';
 import TableCell from '@material-ui/core/TableCell';
-import styled from 'styled-components';
+import styled, {css} from 'styled-components';
+import ReactCountryFlag from 'react-country-flag';
+import getCountryName from '../const/isoToName';
 import colours from '../styles/colours';
 import formatNumber from '../utilities/formatNumber';
 import {AutoSizer, Column, Table} from 'react-virtualized';
+import {
+  ConfirmedColor,
+  ActiveColor,
+  DeceasedColor,
+  RecoveredColor,
+  SeriousColor,
+} from '../styles/sharedStyle';
 
 const styles = theme => ({
   flexContainer: {
@@ -42,6 +51,28 @@ const styles = theme => ({
 
 const Container = styled.div``;
 
+const TotalCase = styled.div`
+  ${ConfirmedColor}
+`;
+
+const ActiveCases = styled.div`
+  ${ActiveColor}
+`;
+
+const TotalDeceased = styled.div`
+  ${DeceasedColor}
+`;
+
+const TotalRecovered = styled.div`
+  ${RecoveredColor}
+`;
+const CountryCell = styled.div`
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+}
+`;
+
 class MuiVirtualizedTable extends React.PureComponent {
   static defaultProps = {
     headerHeight: 48,
@@ -56,8 +87,30 @@ class MuiVirtualizedTable extends React.PureComponent {
     });
   };
 
+  renderCellData = (dataKey, cellData) => {
+    switch (dataKey) {
+      case 'total_cases':
+        return <TotalCase>{cellData}</TotalCase>;
+        break;
+
+      case 'active_cases':
+        return <ActiveCases>{cellData}</ActiveCases>;
+        break;
+
+      case 'total_deaths':
+        return <TotalDeceased>{cellData}</TotalDeceased>;
+        break;
+
+      case 'total_recovered':
+        return <TotalRecovered>{cellData}</TotalRecovered>;
+        break;
+      default:
+    }
+  };
+
   cellRenderer = ({cellData, columnIndex}) => {
     const {columns, classes, rowHeight, onRowClick} = this.props;
+    const element = columns[columnIndex];
     return (
       <TableCell
         component="div"
@@ -67,11 +120,27 @@ class MuiVirtualizedTable extends React.PureComponent {
         variant="body"
         style={{height: rowHeight}}
         align={
-          (columnIndex != null && columns[columnIndex].numeric) || false
-            ? 'right'
-            : 'left'
-        }>
-        {formatNumber(cellData)}
+          (columnIndex != null && element.numeric) || false ? 'right' : 'left'
+        }
+        cellData>
+        {element.dataKey === 'country_code' ? (
+          cellData === 'TOT' ? (
+            'Total'
+          ) : (
+            <CountryCell>
+              <ReactCountryFlag
+                countryCode={cellData}
+                style={{
+                  fontSize: '1.5em',
+                  lineHeight: '1.5em',
+                }}
+              />
+              {getCountryName(cellData)}
+            </CountryCell>
+          )
+        ) : (
+          this.renderCellData(element.dataKey, cellData)
+        )}
       </TableCell>
     );
   };
@@ -162,6 +231,7 @@ export default function ReactVirtualizedTable({data}) {
   if (!data) return null;
   const {total, list} = data;
   const displayList = [total, ...list];
+  console.log(list);
   return (
     <Container style={{height: 600, width: '100%'}}>
       {displayList && displayList.length ? (
@@ -170,9 +240,9 @@ export default function ReactVirtualizedTable({data}) {
           rowGetter={({index}) => displayList[index]}
           columns={[
             {
-              width: 120,
+              width: 220,
               label: 'Country',
-              dataKey: 'country',
+              dataKey: 'country_code',
             },
             {
               width: 120,

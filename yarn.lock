@@ -5200,6 +5200,11 @@ react-async@^10.0.0:
   resolved "https://registry.yarnpkg.com/react-async/-/react-async-10.0.0.tgz#3a123017692e130b35b82e5e426699ac3f4d609b"
   integrity sha512-Uk7yG49ftaJ1ShMfgTqsZUcEIRxdWHV2ABojw+dzFifCSMeqydCFhzj9x7okACClCzMDgkGqC5/bOtY95yQG1A==
 
+react-country-flag@^2.0.1:
+  version "2.0.1"
+  resolved "https://registry.yarnpkg.com/react-country-flag/-/react-country-flag-2.0.1.tgz#1028e71cd456b9685adc0447e148b79770c04b4e"
+  integrity sha512-cZQp+MTQUfSkI++ypDJU6PNgNU2K6Z/9htO4ct4HzvWAs19DoMbnvhzyK31lkBnW1vfx9OkMwskxuaYbEcFjLw==
+
 react-dom@16.12.0:
   version "16.12.0"
   resolved "https://registry.yarnpkg.com/react-dom/-/react-dom-16.12.0.tgz#0da4b714b8d13c2038c9396b54a92baea633fe11"

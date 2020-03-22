@@ -8,6 +8,12 @@ import {only, down} from 'styled-breakpoints';
 import colours from '../styles/colours';
 import CircularProgress from '@material-ui/core/CircularProgress';
 import formatNumber from '../utilities/formatNumber';
+import {
+  ConfirmedColor,
+  DeceasedColor,
+  RecoveredColor,
+  SeriousColor,
+} from '../styles/sharedStyle';
 
 const Numbers = css`
   font-size: 50px;
@@ -31,23 +37,23 @@ const Container = styled.div`
 `;
 
 const Confirmed = styled.div`
+  ${ConfirmedColor}
   ${Numbers}
-  color: ${colours.red};
 `;
 
 const Deceased = styled.div`
+  ${DeceasedColor}
   ${Numbers}
-  color: ${colours.pink};
 `;
 
 const Recovered = styled.div`
+  ${RecoveredColor}
   ${Numbers}
-  color: ${colours.green};
 `;
 
 const Serious = styled.div`
+  ${SeriousColor}
   ${Numbers}
-  color: ${colours.blue};
 `;
 
 const NumBlock = styled(Grid)`

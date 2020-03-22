@@ -8,6 +8,7 @@ import {only, down} from 'styled-breakpoints';
 import getPercentage from '../utilities/getPercentage';
 import colours from '../styles/colours';
 import {upperCase} from 'upper-case';
+import {DeceasedColor, RecoveredColor} from '../styles/sharedStyle';
 
 const Numbers = css`
   font-size: 25px;
@@ -43,12 +44,12 @@ const Statistics = styled(Grid)`
 
 const DeathRate = styled(Grid)`
   ${Numbers}
-  color: ${colours.pink};
+  ${DeceasedColor}
 `;
 
 const RecoveredRate = styled(Grid)`
   ${Numbers}
-  color: ${colours.green};
+  ${RecoveredColor}
 `;
 
 export default function InfoBanner({location, data, total}) {
@@ -62,8 +63,6 @@ export default function InfoBanner({location, data, total}) {
         total.total_recovered,
         total.total_cases,
       );
-      console.log(deathRate);
-      console.log(recoverRate);
       setDeathRate(deathRate);
       setRecoverRate(recoverRate);
     }

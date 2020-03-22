@@ -35,8 +35,8 @@ const Footer = styled.div`
   text-align: center;
   position: absolute;
   width: 100%;
-  color: #fffccc;
-  font-size: 18px;
+  color: ${colours.dimWhite};
+  font-size: 12px;
   padding-bottom: 50px;
   ${down('tablet')} {
     margin-top: 25px;
