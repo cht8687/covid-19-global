@@ -1,7 +1,18 @@
 import React, {useState, useCallback} from 'react';
 import {Grid, ScrollSync, AutoSizer} from 'react-virtualized';
+import colours from '../styles/colours';
 import clsx from 'clsx';
 import {makeStyles} from '@material-ui/core/styles';
+import ReactCountryFlag from 'react-country-flag';
+import {GRID_HEADER} from '../const/GridHeader';
+import styled from 'styled-components';
+import getCountryName from '../const/isoToName';
+import {
+  ConfirmedColor,
+  ActiveColor,
+  DeceasedColor,
+  RecoveredColor,
+} from '../styles/sharedStyle';
 
 const useStyles = makeStyles({
   GridRow: {
@@ -29,10 +40,11 @@ const useStyles = makeStyles({
   BodyGrid: {
     width: '100%',
   },
-
-  evenRow: {},
+  evenRow: {
+    backgroundColor: `${colours.deepBlue}`,
+  },
   oddRow: {
-    backgroundColor: 'rgba(0, 0, 0, 0.1)',
+    backgroundColor: `${colours.deepBlue}`,
   },
   cell: {
     width: '100%',
@@ -44,14 +56,53 @@ const useStyles = makeStyles({
     textAlign: 'center',
     padding: '0 0.5em',
   },
-
   headerCell: {
     fontWeight: 'bold',
+    width: '100%',
+    height: '100%',
+    display: 'flex',
+    flexDirection: 'column',
+    justifyContent: 'center',
+    alignItems: 'center',
+    textAlign: 'center',
+    padding: '0 0.5em',
   },
   leftCell: {
     fontWeight: 'bold',
+    width: '100%',
+    height: '100%',
+    display: 'flex',
+    flexDirection: 'row',
+    justifyContent: 'flex-start',
+    alignItems: 'center',
+    textAlign: 'center',
+    padding: '0 0.5em',
   },
 });
+
+const Container = styled.div``;
+
+const TotalCase = styled.div`
+  ${ConfirmedColor}
+`;
+
+const ActiveCases = styled.div`
+  ${ActiveColor}
+`;
+
+const TotalDeceased = styled.div`
+  ${DeceasedColor}
+`;
+
+const TotalRecovered = styled.div`
+  ${RecoveredColor}
+`;
+const CountryCell = styled.div`
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+}
+`;
 
 function hexToRgb(hex) {
   const result = /^#?([a-f\d]{2})([a-f\d]{2})([a-f\d]{2})$/i.exec(hex);
@@ -63,10 +114,10 @@ function hexToRgb(hex) {
       }
     : null;
 }
-const LEFT_COLOR_FROM = hexToRgb('#471061');
-const LEFT_COLOR_TO = hexToRgb('#BC3959');
-const TOP_COLOR_FROM = hexToRgb('#000000');
-const TOP_COLOR_TO = hexToRgb('#333333');
+const LEFT_COLOR_FROM = hexToRgb(`${colours.orange}`);
+const LEFT_COLOR_TO = hexToRgb(`${colours.orange}`);
+const TOP_COLOR_FROM = hexToRgb(`${colours.orange}`);
+const TOP_COLOR_TO = hexToRgb(`${colours.darkBlue}`);
 
 function mixColors(color1, color2, amount) {
   const weight1 = amount;
@@ -79,19 +130,25 @@ function mixColors(color1, color2, amount) {
   return {r, g, b};
 }
 
-export default function App() {
+export default function InfoGrid({data}) {
+  if (!data) return null;
+  const {total, list} = data;
+  const displayList = [total, ...list];
+
   const styles = useStyles();
   const [state, setState] = useState({
-    columnWidth: 75,
-    columnCount: 50,
-    height: 300,
+    leftColumnWidth: 180,
+    columnWidth: 125,
+    columnCount: 5,
+    height: 600,
     overscanColumnCount: 0,
     overscanRowCount: 5,
     rowHeight: 40,
-    rowCount: 100,
+    rowCount: displayList.length,
   });
 
   const {
+    leftColumnWidth,
     columnCount,
     columnWidth,
     height,
@@ -120,7 +177,7 @@ export default function App() {
   const _renderLeftHeaderCell = ({columnIndex, key, style}) => {
     return (
       <div className={styles.headerCell} key={key} style={style}>
-        {`C${columnIndex}`}
+        {GRID_HEADER[columnIndex]}
       </div>
     );
   };
@@ -134,11 +191,30 @@ export default function App() {
         : columnIndex % 2 !== 0
         ? styles.evenRow
         : styles.oddRow;
-    const classNames = clsx(rowClass, styles.cell);
-
+    const classNames = clsx(rowClass, styles.leftCell);
+    const countryCode = displayList[rowIndex].country_code;
     return (
       <div className={classNames} key={key} style={style}>
-        {`R${rowIndex}, C${columnIndex}`}
+        {countryCode === 'TOT' ? (
+          'Total'
+        ) : (
+          <CountryCell>
+            {countryCode === 'DP' ? (
+              <span>🚢</span>
+            ) : (
+              <ReactCountryFlag
+                countryCode={countryCode === 'UK' ? 'GB' : countryCode}
+                style={{
+                  fontSize: '1.5em',
+                  lineHeight: '1.5em',
+                  marginRight: '5px',
+                  marginTop: '5px',
+                }}
+              />
+            )}
+          </CountryCell>
+        )}
+        {getCountryName(countryCode)}
       </div>
     );
   };
@@ -164,10 +240,6 @@ export default function App() {
           scrollLeft,
           scrollTop,
           scrollWidth,
-        });
-
-        console.log({
-          y,
         });
 
         const leftBackgroundColor = mixColors(
@@ -204,7 +276,7 @@ export default function App() {
                 rowHeight={rowHeight}
                 columnWidth={columnWidth}
                 rowCount={1}
-                columnCount={1}
+                columnCount={GRID_HEADER.length}
               />
             </div>
             <div
@@ -220,14 +292,14 @@ export default function App() {
                 overscanColumnCount={overscanColumnCount}
                 overscanRowCount={overscanRowCount}
                 cellRenderer={_renderLeftSideCell}
-                columnWidth={columnWidth}
+                columnWidth={leftColumnWidth}
                 columnCount={1}
                 className={styles.LeftSideGrid}
                 height={height}
                 rowHeight={rowHeight}
-                rowCount={rowCount}
+                rowCount={displayList.length}
                 scrollTop={scrollTop}
-                width={columnWidth}
+                width={leftColumnWidth}
               />
             </div>
             <div className={styles.GridColumn}>

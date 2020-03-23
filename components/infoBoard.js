@@ -12,7 +12,6 @@ import InfoBanner from './InfoBanner';
 const Container = styled.div`
   display: flex;
   flex-wrap: wrap;
-  padding: 10px 10px;
   background-color: ${colours.deepBlue};
   justify-content: center;
   border-bottom-left-radius: 15px;

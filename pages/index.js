@@ -13,7 +13,6 @@ import Toolbar from '@material-ui/core/Toolbar';
 import Typography from '@material-ui/core/Typography';
 import IconButton from '@material-ui/core/IconButton';
 import MenuIcon from '@material-ui/icons/Menu';
-import NotificationsActiveIcon from '@material-ui/icons/NotificationsActive';
 import {getGlobalToday} from '../services/api';
 import colours from '../styles/colours';
 import {useAsync} from 'react-async';
@@ -77,9 +76,7 @@ export default function Index() {
           <IconButtonContainer edge="start" color="inherit" aria-label="menu">
             <MenuIcon />
           </IconButtonContainer>
-          <Title variant="h6">
-            COVID19 Live Tracker <NotificationsActiveIcon />
-          </Title>
+          <Title variant="h6">COVID19 Live Tracker</Title>
         </Toolbar>
         <KoFi color="#26bbe0" id="X8X31J5HH" label="Buy Me a Coffee" />
       </AppBarContainer>

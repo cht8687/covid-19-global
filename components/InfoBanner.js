@@ -41,6 +41,7 @@ const Statistics = styled(Grid)`
   font-weight: bold;
   display: flex;
   align-items: center;
+  flex-direction: column;
 `;
 
 const DeathRate = styled(Grid)`
@@ -78,17 +79,12 @@ export default function InfoBanner({location, data, total}) {
         <Grid item xs={12} lg={8}>
           <Grid container spacing={1}>
             <Statistics item xs={6} lg={6}>
-              Death Rate:
+              Death <DeathRate>{deathRate} %</DeathRate>
             </Statistics>
-            <DeathRate item xs={4} lg={6}>
-              {deathRate} %
-            </DeathRate>
+
             <Statistics item xs={6} lg={6}>
-              Recovered Rate:
+              Recovered <RecoveredRate>{recoverRate} %</RecoveredRate>
             </Statistics>
-            <RecoveredRate item xs={4} lg={6}>
-              {recoverRate} %
-            </RecoveredRate>
           </Grid>
         </Grid>
       </Grid>
