@@ -11,4 +11,5 @@ export default {
   pink: '#e4b9b9',
   darkBlue: '#445175',
   deepBlue: '#3f3f65',
+  deepPurple: '#7c69b3',
 };

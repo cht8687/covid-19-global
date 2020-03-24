@@ -69,6 +69,7 @@ const useStyles = makeStyles({
     alignItems: 'flex-start',
     textAlign: 'left',
     padding: '0 0.5em',
+    background: colours.deepPurple,
   },
   leftCell: {
     fontSize: '0.875em',
@@ -82,6 +83,7 @@ const useStyles = makeStyles({
     textAlign: 'center',
     padding: '0 0.5em',
     whiteSpace: 'nowrap',
+    backgroundColor: colours.darkBlue,
   },
 });
 

@@ -85,6 +85,8 @@ button {
   text-transform: uppercase;
 }
 
+div:focus {outline:0;}
+
 strong,
 b {
 }
