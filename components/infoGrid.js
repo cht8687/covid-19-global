@@ -201,7 +201,7 @@ export default function InfoGrid({data}) {
         : styles.oddRow;
     const classNames = clsx(rowClass, styles.leftCell);
     const country = displayList[rowIndex][0].country;
-    const countryCode = displayList[rowIndex][9].country_code;
+    const countryCode = displayList[rowIndex][10].country_code;
     if (columnIndex < 1) {
       return (
         <div className={classNames} key={key} style={style}>
