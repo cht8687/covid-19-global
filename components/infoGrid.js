@@ -149,8 +149,8 @@ export default function InfoGrid({data}) {
     columnWidth: 150,
     columnCount: 9,
     height: 600,
-    overscanColumnCount: 0,
-    overscanRowCount: 8,
+    overscanColumnCount: 5,
+    overscanRowCount: 5,
     rowHeight: 40,
     rowCount: displayList.length,
   });
@@ -200,12 +200,13 @@ export default function InfoGrid({data}) {
         ? styles.evenRow
         : styles.oddRow;
     const classNames = clsx(rowClass, styles.leftCell);
+    const country = displayList[rowIndex][0].country;
     const countryCode = displayList[rowIndex][9].country_code;
     if (columnIndex < 1) {
       return (
         <div className={classNames} key={key} style={style}>
           {countryCode === 'TOT' ? (
-            <span>🌏 {'  '}</span>
+            `🌏  `
           ) : (
             <CountryCell>
               {countryCode === 'DP' ? (
@@ -223,7 +224,11 @@ export default function InfoGrid({data}) {
               )}
             </CountryCell>
           )}
-          {getCountryName(countryCode)}
+          {!getCountryName(countryCode)
+            ? country === 'Syria'
+              ? `🇸🇾 Syria`
+              : country
+            : getCountryName(countryCode)}
         </div>
       );
     } else {
