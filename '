@@ -81,7 +81,6 @@ const useStyles = makeStyles({
     alignItems: 'center',
     textAlign: 'center',
     padding: '0 0.5em',
-    whiteSpace: 'nowrap',
   },
 });
 
@@ -119,9 +118,9 @@ function hexToRgb(hex) {
       }
     : null;
 }
-const LEFT_COLOR_FROM = hexToRgb(`${colours.darkBlue}`);
-const LEFT_COLOR_TO = hexToRgb(`${colours.darkBlue}`);
-const TOP_COLOR_FROM = hexToRgb(`${colours.darkBlue}`);
+const LEFT_COLOR_FROM = hexToRgb(`${colours.orange}`);
+const LEFT_COLOR_TO = hexToRgb(`${colours.orange}`);
+const TOP_COLOR_FROM = hexToRgb(`${colours.orange}`);
 const TOP_COLOR_TO = hexToRgb(`${colours.darkBlue}`);
 
 function mixColors(color1, color2, amount) {
@@ -205,7 +204,7 @@ export default function InfoGrid({data}) {
       return (
         <div className={classNames} key={key} style={style}>
           {countryCode === 'TOT' ? (
-            <span>🌏 {'  '}</span>
+            ''
           ) : (
             <CountryCell>
               {countryCode === 'DP' ? (
@@ -248,12 +247,20 @@ export default function InfoGrid({data}) {
       }) => {
         const x = scrollLeft / (scrollWidth - clientWidth);
         const y = scrollTop / (scrollHeight - clientHeight);
-        const leftBackgroundColor = colours.darkBlue;
-        const leftColor = colours.white;
-        const topBackgroundColor = colours.darkBlue;
-        const topColor = colours.white;
-        const middleBackgroundColor = colours.darkBlue;
-        const middleColor = colours.white;
+        const leftBackgroundColor = mixColors(
+          LEFT_COLOR_FROM,
+          LEFT_COLOR_TO,
+          y,
+        );
+        const leftColor = '#ffffff';
+        const topBackgroundColor = mixColors(TOP_COLOR_FROM, TOP_COLOR_TO, x);
+        const topColor = '#ffffff';
+        const middleBackgroundColor = mixColors(
+          leftBackgroundColor,
+          topBackgroundColor,
+          0.5,
+        );
+        const middleColor = '#ffffff';
 
         return (
           <div className={styles.GridRow}>

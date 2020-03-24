@@ -69,6 +69,8 @@ const CountryCell = styled.div`
   display: flex;
   flex-direction: row;
   align-items: center;
+  text-align: left;
+  white-space: nowrap;
 }
 `;
 
@@ -120,7 +122,7 @@ class MuiVirtualizedTable extends React.PureComponent {
         cellData>
         {element.dataKey === 'country_code' ? (
           cellData === 'TOT' ? (
-            'Total'
+            <span>🚢 Total</span>
           ) : (
             <CountryCell>
               {cellData === 'DP' ? (
