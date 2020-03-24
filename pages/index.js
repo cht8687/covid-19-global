@@ -99,7 +99,7 @@ export default function Index() {
         </Grid>
       </SiteContent>
       <Grid item xs={12}>
-        <Footer>COVID-19</Footer>
+        <Footer></Footer>
       </Grid>
     </>
   );

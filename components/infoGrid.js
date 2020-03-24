@@ -13,6 +13,7 @@ import {
   DeceasedColor,
   RecoveredColor,
 } from '../styles/sharedStyle';
+import {pipe, toPairs, map, of, fromPairs, values} from 'ramda';
 
 const useStyles = makeStyles({
   GridRow: {
@@ -133,16 +134,19 @@ function mixColors(color1, color2, amount) {
 export default function InfoGrid({data}) {
   if (!data) return null;
   const {total, list} = data;
-  const displayList = [total, ...list];
+  const toIndividualKeys = pipe(toPairs, map(pipe(of, fromPairs)));
 
+  const totalArray = toIndividualKeys(total);
+  const countryArray = map(toIndividualKeys)(list);
+  const displayList = [totalArray, ...countryArray];
   const styles = useStyles();
   const [state, setState] = useState({
-    leftColumnWidth: 180,
-    columnWidth: 125,
-    columnCount: 5,
+    leftColumnWidth: 150,
+    columnWidth: 150,
+    columnCount: 9,
     height: 600,
     overscanColumnCount: 0,
-    overscanRowCount: 5,
+    overscanRowCount: 8,
     rowHeight: 40,
     rowCount: displayList.length,
   });
@@ -192,31 +196,39 @@ export default function InfoGrid({data}) {
         ? styles.evenRow
         : styles.oddRow;
     const classNames = clsx(rowClass, styles.leftCell);
-    const countryCode = displayList[rowIndex].country_code;
-    return (
-      <div className={classNames} key={key} style={style}>
-        {countryCode === 'TOT' ? (
-          'Total'
-        ) : (
-          <CountryCell>
-            {countryCode === 'DP' ? (
-              <span>🚢</span>
-            ) : (
-              <ReactCountryFlag
-                countryCode={countryCode === 'UK' ? 'GB' : countryCode}
-                style={{
-                  fontSize: '1.5em',
-                  lineHeight: '1.5em',
-                  marginRight: '5px',
-                  marginTop: '5px',
-                }}
-              />
-            )}
-          </CountryCell>
-        )}
-        {getCountryName(countryCode)}
-      </div>
-    );
+    const countryCode = displayList[rowIndex][9].country_code;
+    if (columnIndex < 1) {
+      return (
+        <div className={classNames} key={key} style={style}>
+          {countryCode === 'TOT' ? (
+            'Total'
+          ) : (
+            <CountryCell>
+              {countryCode === 'DP' ? (
+                <span>🚢</span>
+              ) : (
+                <ReactCountryFlag
+                  countryCode={countryCode === 'UK' ? 'GB' : countryCode}
+                  style={{
+                    fontSize: '1.5em',
+                    lineHeight: '1.5em',
+                    marginRight: '5px',
+                    marginTop: '5px',
+                  }}
+                />
+              )}
+            </CountryCell>
+          )}
+          {getCountryName(countryCode)}
+        </div>
+      );
+    } else {
+      return (
+        <div className={classNames} key={key} style={style}>
+          {values(displayList[rowIndex][columnIndex])[0]}
+        </div>
+      );
+    }
   };
 
   return (
@@ -232,16 +244,6 @@ export default function InfoGrid({data}) {
       }) => {
         const x = scrollLeft / (scrollWidth - clientWidth);
         const y = scrollTop / (scrollHeight - clientHeight);
-        console.log({
-          clientHeight,
-          clientWidth,
-          onScroll,
-          scrollHeight,
-          scrollLeft,
-          scrollTop,
-          scrollWidth,
-        });
-
         const leftBackgroundColor = mixColors(
           LEFT_COLOR_FROM,
           LEFT_COLOR_TO,
@@ -343,7 +345,7 @@ export default function InfoGrid({data}) {
                         overscanRowCount={overscanRowCount}
                         cellRenderer={_renderBodyCell}
                         rowHeight={rowHeight}
-                        rowCount={rowCount}
+                        rowCount={displayList.length}
                         width={width}
                       />
                     </div>

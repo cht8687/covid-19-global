@@ -1,7 +1,11 @@
 export const GRID_HEADER = [
   'Country',
   'Confirmed',
-  'Active',
+  'New Cases',
   'Deceased',
+  'New Deceased',
   'Recovered',
+  'Active',
+  'Critical',
+  'Per 1m Population',
 ];
