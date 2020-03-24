@@ -300,7 +300,7 @@ export default function InfoGrid({data}) {
                 columnWidth={leftColumnWidth}
                 columnCount={1}
                 className={styles.LeftSideGrid}
-                height={height}
+                height={height - 15}
                 rowHeight={rowHeight}
                 rowCount={displayList.length}
                 scrollTop={scrollTop}
