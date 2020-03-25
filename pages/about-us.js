@@ -35,6 +35,12 @@ const ButtonControl = styled.div`
   margin-bottom: 100px;
 `;
 
+const Disclaimer = styled.div`
+  color: #ffffb3;
+  font-size: 12px;
+  width: 80%;
+`;
+
 export default function SpacingGrid() {
   const [spacing, setSpacing] = React.useState(2);
   const router = useRouter();
@@ -73,11 +79,41 @@ export default function SpacingGrid() {
           </Title>
         </Grid>
 
+        <Grid container justify="center" spacing={spacing}>
+          <Title>
+            If you have feedbacks or suggestions, please send us an email:
+            <br />
+            <a href="mailto:covid19boards@gmail.com" target="_top">
+              covid19boards@gmail.com
+            </a>
+          </Title>
+        </Grid>
+
         <ButtonControl>
           <Button variant="contained" color="primary" onClick={handleOnClick}>
             Back to Dashboard
           </Button>
         </ButtonControl>
+
+        <Grid container justify="center" spacing={spacing}>
+          <Disclaimer>
+            **The views and options expressed in this blog are those of the
+            authors and do not necessarily reflect the official policy or
+            position of any other agency, organization, employer or company
+            Authors are not responsible for any errors or omissions, or for the
+            results obtained from the use of this information. All information
+            in this site is provided "as is", with no guarantee of completeness,
+            accuracy, timeliness or of the results obtained from the use of this
+            information We do not make any warranties about the completeness,
+            reliability and accuracy of these information. None of the authors,
+            contributors, adminstrators or anyone else connected with this
+            website, in anyway whatsoever, can be responsible for your use of
+            the information contained in or linked from these web pages. Any
+            action you take upon the information on this website is strictly at
+            your own risk. and we will not be liable for any losses and damages
+            in connection with the use of our website.{' '}
+          </Disclaimer>{' '}
+        </Grid>
       </Control>
     </Layout>
   );
