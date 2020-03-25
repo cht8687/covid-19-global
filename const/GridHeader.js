@@ -7,5 +7,6 @@ export const GRID_HEADER = [
   'Recovered',
   'Active',
   'Critical',
-  'Per 1m Population',
+  'Total Per/1m Population',
+  'Total Deceased Per/1m Population',
 ];

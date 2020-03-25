@@ -7,13 +7,19 @@ import ReactCountryFlag from 'react-country-flag';
 import {GRID_HEADER} from '../const/GridHeader';
 import styled from 'styled-components';
 import getCountryName from '../const/isoToName';
+import formatNumber from '../utilities/formatNumber';
+import getValueFromArray from '../utilities/getValueFromArray';
 import {
   ConfirmedColor,
-  ActiveColor,
+  NewCasesColor,
   DeceasedColor,
+  NewDeceasedColor,
+  ActiveColor,
   RecoveredColor,
+  SeriousColor,
+  Per1mPopulation,
 } from '../styles/sharedStyle';
-import {pipe, toPairs, map, of, fromPairs, values} from 'ramda';
+import {pipe, toPairs, map, of, fromPairs, keys, values} from 'ramda';
 
 const useStyles = makeStyles({
   GridRow: {
@@ -93,17 +99,38 @@ const TotalCase = styled.div`
   ${ConfirmedColor}
 `;
 
-const ActiveCases = styled.div`
-  ${ActiveColor}
+const NewCase = styled.div`
+  ${NewCasesColor}
 `;
 
 const TotalDeceased = styled.div`
   ${DeceasedColor}
 `;
 
+const NewDeceased = styled.div`
+  ${NewDeceasedColor}
+`;
+
+const ActiveCases = styled.div`
+  ${ActiveColor}
+`;
+
+const SeriousCases = styled.div`
+  ${SeriousColor}
+`;
+
 const TotalRecovered = styled.div`
   ${RecoveredColor}
 `;
+
+const TotalCasesPer1mPopul = styled.div`
+  ${Per1mPopulation}
+`;
+
+const TotalDeathPer1mPopul = styled.div`
+  ${DeceasedColor}
+`;
+
 const CountryCell = styled.div`
   display: flex;
   flex-direction: row;
@@ -149,7 +176,7 @@ export default function InfoGrid({data}) {
   const [state, setState] = useState({
     leftColumnWidth: 150,
     columnWidth: 150,
-    columnCount: 9,
+    columnCount: 10,
     height: 600,
     overscanColumnCount: 5,
     overscanRowCount: 5,
@@ -192,6 +219,46 @@ export default function InfoGrid({data}) {
     );
   };
 
+  const renderCellContent = (cellValue, key) => {
+    const type = keys(cellValue)[0];
+    const value = values(cellValue)[0];
+    switch (type) {
+      case 'total_cases':
+        return <TotalCase>{formatNumber(value)}</TotalCase>;
+        break;
+      case 'new_cases':
+        return <NewCase>{formatNumber(value)}</NewCase>;
+        break;
+      case 'total_deaths':
+        return <TotalDeceased>{formatNumber(value)}</TotalDeceased>;
+        break;
+      case 'new_deaths':
+        return <NewDeceased>{formatNumber(value)}</NewDeceased>;
+        break;
+      case 'total_recovered':
+        return <TotalRecovered>{formatNumber(value)}</TotalRecovered>;
+        break;
+      case 'active_cases':
+        return <ActiveCases>{formatNumber(value)}</ActiveCases>;
+        break;
+      case 'serious_critical':
+        return <SeriousCases>{formatNumber(value)}</SeriousCases>;
+        break;
+      case 'tot_cases_per_1m_pop':
+        return (
+          <TotalCasesPer1mPopul>{formatNumber(value)}</TotalCasesPer1mPopul>
+        );
+        break;
+      case 'tot_deaths_per_1m_pop':
+        return (
+          <TotalDeathPer1mPopul>{formatNumber(value)}</TotalDeathPer1mPopul>
+        );
+        break;
+      default:
+      // code block
+    }
+  };
+
   const _renderLeftSideCell = ({columnIndex, key, rowIndex, style}) => {
     const rowClass =
       rowIndex % 2 === 0
@@ -202,8 +269,12 @@ export default function InfoGrid({data}) {
         ? styles.evenRow
         : styles.oddRow;
     const classNames = clsx(rowClass, styles.leftCell);
-    const country = displayList[rowIndex][0].country;
-    const countryCode = displayList[rowIndex][10].country_code;
+
+    const country = getValueFromArray('country')(displayList[rowIndex]);
+    const countryCode = getValueFromArray('country_code')(
+      displayList[rowIndex],
+    );
+
     if (columnIndex < 1) {
       return (
         <div className={classNames} key={key} style={style}>
@@ -234,9 +305,10 @@ export default function InfoGrid({data}) {
         </div>
       );
     } else {
+      debugger;
       return (
         <div className={classNames} key={key} style={style}>
-          {values(displayList[rowIndex][columnIndex])[0]}
+          {renderCellContent(displayList[rowIndex][columnIndex], key)}
         </div>
       );
     }

@@ -9,6 +9,7 @@ export default {
   yellow: '#f4d05a',
   dimWhite: '#dfdfef',
   pink: '#e4b9b9',
+  pinkDark: '#e40009',
   darkBlue: '#445175',
   deepBlue: '#3f3f65',
   deepPurple: '#7c69b3',
