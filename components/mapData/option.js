@@ -1,6 +1,6 @@
 import colours from '../../styles/colours';
 import {upperCase} from 'upper-case';
-import getNameMappings from '../../services/getEchartsNameMappings';
+import getNameMappings from '../../const/nameMappingWorld';
 
 export const options = (name, data, total, timestamp) => ({
   title: [
@@ -46,7 +46,7 @@ export const options = (name, data, total, timestamp) => ({
     realtime: false,
     calculable: true,
     inRange: {
-      color: ['#d2e3fc', '#4e85f4', '#3f4065'],
+      color: ['#d2e3fc', '#f4d05a', '#dd0330'],
     },
     textStyle: {
       color: colours.dimWhite,
@@ -67,7 +67,7 @@ export const options = (name, data, total, timestamp) => ({
       name: '',
       type: 'map',
       roam: true,
-      nameMap: getNameMappings(name),
+      nameMap: getNameMappings,
     },
   ],
 });
