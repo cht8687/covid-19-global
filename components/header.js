@@ -66,6 +66,14 @@ const Title = styled(Typography)`
   }
 `;
 
+const AppBarContainer = styled(AppBar)`
+  background-color: ${colours.darkBlue} !important;
+  display: flex;
+  flex-direction: row !important;
+  justify-content: space-between !important;
+  align-items: center !important;
+`;
+
 export default () => {
   const classes = useStyles();
 
@@ -73,14 +81,7 @@ export default () => {
     <DrawerConsumer>
       {({open, setOpen}) => (
         <AppContainer>
-          <AppBar
-            style={{
-              backgroundColor: `${colours.darkBlue} !important`,
-              display: 'flex !important',
-              flexDirection: 'row !important',
-              justifyContent: 'space-between !important',
-              alignItems: 'center !important',
-            }}
+          <AppBarContainer
             position="fixed"
             className={clsx(classes.appBar, {
               [classes.appBarShift]: open,
@@ -99,7 +100,7 @@ export default () => {
               <Title variant="h6">COVID19 Live Tracker</Title>
             </Toolbar>
             <KoFi color="#26bbe0" id="X8X31J5HH" label="Buy Me a Coffee" />
-          </AppBar>
+          </AppBarContainer>
           <Drawer
             variant="persistent"
             anchor="left"

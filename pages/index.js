@@ -11,6 +11,7 @@ import {getGlobalToday} from '../services/api';
 import {useAsync} from 'react-async';
 import 'whatwg-fetch';
 import Layout from '../components/MyLayout';
+import InfoBanner from '../components/InfoBanner';
 
 const SiteContent = styled(Grid)`
   padding-top: 66px;
@@ -32,15 +33,16 @@ export default function Index() {
   return (
     <Layout>
       <SiteContent container spacing={1}>
-        <Grid container item xs={12} lg={8}>
+        <Grid container item xs={12} lg={4}>
           <Grid item xs={12} lg={12}>
-            <Summary total={total} />
+            <InfoBanner location={location} data={data} total={total} />
           </Grid>
           <Grid item xs={12} lg={12}>
             <Map data={data} location={location} timestamp={timestamp} />
           </Grid>
         </Grid>
-        <Grid item xs={12} lg={4}>
+        <Grid item xs={12} lg={8}>
+          <Summary total={total} />
           <InfoBoard
             location={location}
             total={total}
