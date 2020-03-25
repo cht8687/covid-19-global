@@ -45,8 +45,6 @@ export default function Map({data, location, timestamp}) {
     )(list);
   }
 
-  console.log(dataToRender);
-
   return (
     <MapContainer>
       {!total ? (
