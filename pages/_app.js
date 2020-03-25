@@ -7,6 +7,7 @@ import {ApolloProvider} from '@apollo/react-hooks';
 import withApolloClient from '../lib/withApollo';
 import resets from '../styles/resets';
 import theme from '../theme/theme';
+import DrawerProvider from '../context/DrawerProvider';
 
 function tooltip_click_event(e) {}
 
@@ -34,7 +35,9 @@ class MyApp extends App {
             <title>Covid-19</title>
           </Head>
           <ThemeProvider theme={theme}>
-            <Component {...pageProps} />
+            <DrawerProvider>
+              <Component {...pageProps} />
+            </DrawerProvider>
           </ThemeProvider>
         </React.Fragment>
       </ApolloProvider>
