@@ -1,4 +1,5 @@
 import React from 'react';
+import KoFi from '../components/kofi/kofi';
 import Grid from '@material-ui/core/Grid';
 import styled from 'styled-components';
 import PaperImp from '@material-ui/core/Paper';
@@ -64,8 +65,10 @@ export default function SpacingGrid() {
           family always healthy! 🤗
         </Title>
         <Title>
-          If you 💖 this project you can buy us a coffee ☕ to surport our work,
-          we are trying hard to update the site with more functionality.
+          If you 💖 this project you can buy us a coffee ☕
+          <KoFi color="#26bbe0" id="X8X31J5HH" label="Buy Me a Coffee" /> <br />
+          to surport our work, we are trying hard to update the site with more
+          functionality.
         </Title>
         <Title>😊 Thank you!</Title>
 
