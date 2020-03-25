@@ -58,11 +58,20 @@ export default function SpacingGrid() {
           family always healthy! 🤗
         </Title>
         <Title>
-          If you 💖 this project you can buy us a coffee ☕ to surport our work
+          If you 💖 this project you can buy us a coffee ☕ to surport our work,
+          we are trying hard to update the site with more functionality.
         </Title>
         <Title>😊 Thank you!</Title>
 
-        <Grid container justify="center" spacing={spacing}></Grid>
+        <Grid container justify="center" spacing={spacing}>
+          <Title>
+            Data source:
+            <br />
+            <a target="_black" href="https://www.who.int/">
+              WHO
+            </a>
+          </Title>
+        </Grid>
 
         <ButtonControl>
           <Button variant="contained" color="primary" onClick={handleOnClick}>

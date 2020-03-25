@@ -1,8 +1,6 @@
 import Header from './Header';
 
-const layoutStyle = {
-  display: 'flex',
-};
+const layoutStyle = {};
 
 const Layout = props => (
   <div style={layoutStyle}>
