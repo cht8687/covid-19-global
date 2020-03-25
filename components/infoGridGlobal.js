@@ -227,13 +227,13 @@ export default function InfoGrid({data}) {
         return <TotalCase>{formatNumber(value)}</TotalCase>;
         break;
       case 'new_cases':
-        return <NewCase>{formatNumber(value)}</NewCase>;
+        return <NewCase>+{formatNumber(value)}</NewCase>;
         break;
       case 'total_deaths':
         return <TotalDeceased>{formatNumber(value)}</TotalDeceased>;
         break;
       case 'new_deaths':
-        return <NewDeceased>{formatNumber(value)}</NewDeceased>;
+        return <NewDeceased>+{formatNumber(value)}</NewDeceased>;
         break;
       case 'total_recovered':
         return <TotalRecovered>{formatNumber(value)}</TotalRecovered>;
