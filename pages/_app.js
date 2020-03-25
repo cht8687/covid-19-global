@@ -32,7 +32,7 @@ class MyApp extends App {
         <GlobalStyle />
         <React.Fragment>
           <Head>
-            <title>Covid-19</title>
+            <title>COVID-19 Boards</title>
           </Head>
           <ThemeProvider theme={theme}>
             <DrawerProvider>
