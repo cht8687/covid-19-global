@@ -1,4 +1,5 @@
 import React, {useState, useEffect} from 'react';
+import ClickAwayListener from '@material-ui/core/ClickAwayListener';
 import CssBaseline from '@material-ui/core/CssBaseline';
 import styled from 'styled-components';
 import List from '@material-ui/core/List';
@@ -101,7 +102,11 @@ export default () => {
             </Toolbar>
             <KoFi color="#26bbe0" id="X8X31J5HH" label="Buy Me a Coffee" />
           </AppBarContainer>
+
           <Drawer
+            ModalProps={{
+              keepMounted: true, // Better open performance on mobile.
+            }}
             variant="persistent"
             anchor="left"
             classes={{

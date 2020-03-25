@@ -122,8 +122,7 @@ export default function KoFi(props) {
         target="_blank"
         rel="noopener noreferrer">
         <KofiText>
-          <Img src="https://ko-fi.com/img/cup-border.png" alt="Ko-Fi button" />{' '}
-          {label}{' '}
+          <Img src="/cup-border.png" alt="Ko-Fi button" /> {label}{' '}
         </KofiText>{' '}
       </KofiButton>{' '}
     </BtnContainer>
