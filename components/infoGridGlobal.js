@@ -305,7 +305,6 @@ export default function InfoGrid({data}) {
         </div>
       );
     } else {
-      debugger;
       return (
         <div className={classNames} key={key} style={style}>
           {renderCellContent(displayList[rowIndex][columnIndex], key)}
