@@ -46,6 +46,8 @@ class MyApp extends App {
               content="covid-19 coronavirus dashboard"
             />
             <DefaultSeo {...SEO} />
+
+            <script src="https://echarts-maps.github.io/echarts-countries-js/echarts-countries-js/USA.js"></script>
           </Head>
           <ThemeProvider theme={theme}>
             <DrawerProvider>

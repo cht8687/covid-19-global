@@ -91,10 +91,15 @@ export default function Summary({total}) {
                 <Deceased>{formatNumber(total_deaths)}</Deceased> Deceased
               </NumBlock>
               <NumBlock item xs={3} lg={3}>
-                <Serious>{formatNumber(serious_critical)}</Serious> Critical
+                <Serious>
+                  {!serious_critical ? 'N/A' : formatNumber(serious_critical)}
+                </Serious>{' '}
+                Critical
               </NumBlock>
               <NumBlock item xs={3} lg={3}>
-                <Recovered>{formatNumber(total_recovered)}</Recovered>
+                <Recovered>
+                  {!total_recovered ? 'N/A' : formatNumber(total_recovered)}
+                </Recovered>
                 Recovered
               </NumBlock>
             </Grid>

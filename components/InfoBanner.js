@@ -59,7 +59,7 @@ export default function InfoBanner({location, data, total}) {
   const [recoverRate, setRecoverRate] = useState('');
 
   useEffect(() => {
-    if (location === 'world' && total) {
+    if (total) {
       const deathRate = getPercentage(total.total_deaths, total.total_cases);
       const recoverRate = getPercentage(
         total.total_recovered,
@@ -83,7 +83,12 @@ export default function InfoBanner({location, data, total}) {
             </Statistics>
 
             <Statistics item xs={6} lg={6}>
-              Recovered <RecoveredRate>{recoverRate} %</RecoveredRate>
+              Recovered{' '}
+              <RecoveredRate>
+                {!recoverRate || isNaN(recoverRate)
+                  ? 'N/A'
+                  : `${recoverRate} %`}{' '}
+              </RecoveredRate>
             </Statistics>
           </Grid>
         </Grid>

@@ -9,10 +9,7 @@ export const options = (name, data, total, timestamp) => ({
         color: colours.dimWhite,
         fontSize: 18,
       },
-      subtext:
-        'Updated ' +
-        timestamp +
-        ' (go to about us page to see *map disclaimer)',
+      subtext: 'Updated ' + timestamp + ' (*map disclaimer in about me page)',
       text: upperCase(name) + ' COVID-19 MAP ',
       top: 'auto',
       subtextStyle: {
@@ -31,23 +28,13 @@ export const options = (name, data, total, timestamp) => ({
       return params.name + '<br/>' + ' Total Confirmed: ' + value;
     },
   },
-  toolbox: {
-    show: false,
-    orient: 'vertical',
-    left: 'right',
-    top: 'center',
-    feature: {
-      dataView: {readOnly: false},
-      restore: {},
-      saveAsImage: {},
-    },
-  },
   visualMap: {
-    min: 0, // this should from dataset
+    left: 'right',
+    min: 0,
     max: data[0].value,
-    text: ['High', 'Low'],
-    realtime: false,
-    calculable: true,
+    textstyle: {
+      color: colours.dimwhite,
+    },
     inRange: {
       color: [
         '#ffebcd',
@@ -63,14 +50,25 @@ export const options = (name, data, total, timestamp) => ({
         '#a50026',
       ],
     },
-    textstyle: {
-      color: colours.dimwhite,
+
+    text: ['High', 'Low'], // 文本，默认为数值文本
+    calculable: true,
+  },
+  toolbox: {
+    show: true,
+    //orient: 'vertical',
+    left: 'left',
+    top: 'top',
+    feature: {
+      dataView: {readOnly: false},
+      restore: {},
+      saveAsImage: {},
     },
   },
   series: [
     {
-      mapType: name,
-      data,
+      mapType: '美国',
+      type: 'map',
       label: {
         emphasis: {
           show: true,
@@ -79,10 +77,9 @@ export const options = (name, data, total, timestamp) => ({
       itemStyle: {
         emphasis: {label: {show: true}},
       },
-      name: '',
-      type: 'map',
       roam: true,
       nameMap: getNameMappings,
+      data,
     },
   ],
 });

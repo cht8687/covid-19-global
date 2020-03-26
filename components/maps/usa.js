@@ -4,10 +4,8 @@
 import React, {useEffect} from 'react';
 import styled from 'styled-components';
 import ReactEcharts from 'echarts-for-react';
-require('echarts/map/js/China.js');
-require('echarts-countries-js/echarts-countries-js/world');
-//import {options} from './mapData/china';
-import {options} from './mapData/option';
+require('echarts-countries-js/echarts-countries-js/USA.js');
+import {options} from '../mapData/usaOption';
 import CircularProgress from '@material-ui/core/CircularProgress';
 import {curry, reduce, assoc, keys, compose, map, pick} from 'ramda';
 
@@ -33,15 +31,15 @@ const ReactEchartsContainer = styled(ReactEcharts)`
   width: 100%;
 `;
 
-export default function Map({data, location, timestamp}) {
+export default function USA({data, location, timestamp}) {
   let total, list, dataToRender;
   if (data) {
     total = data.total;
     list = data.list;
     dataToRender = compose(
-      map(renameKeys({country: 'name'})),
+      map(renameKeys({state: 'name'})),
       map(renameKeys({total_cases: 'value'})),
-      map(pick(['country', 'total_cases'])),
+      map(pick(['state', 'total_cases'])),
     )(list);
   }
 
@@ -51,7 +49,7 @@ export default function Map({data, location, timestamp}) {
         <CircularProgress color="secondary" />
       ) : (
         <ReactEchartsContainer
-          option={options('world', dataToRender, total, timestamp) || {}}
+          option={options('USA', dataToRender, total, timestamp) || {}}
           style={{height: '80vh', width: '100%'}}
         />
       )}

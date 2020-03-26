@@ -7,6 +7,17 @@ import Grid from '@material-ui/core/Grid';
 import CircularProgress from '@material-ui/core/CircularProgress';
 import colours from '../styles/colours';
 import InfoGrid from './InfoGridGlobal';
+import InfoGridUSA from './InfoGridUSA';
+
+const getInfoGrid = (country, data) => {
+  switch (country) {
+    case 'world':
+      return <InfoGrid data={data} />;
+    case 'USA':
+      return <InfoGridUSA data={data} />;
+    default:
+  }
+};
 
 const Container = styled.div`
   display: flex;
@@ -16,7 +27,7 @@ const Container = styled.div`
   border-bottom-left-radius: 15px;
 `;
 
-export default function InfoBoard({location, data, total}) {
+export default function InfoBoard({country, data}) {
   return (
     <Container>
       {!data ? (
@@ -25,7 +36,7 @@ export default function InfoBoard({location, data, total}) {
         <Grid container spacing={2}>
           <Grid item xs={12} lg={12}></Grid>
           <Grid item xs={12} lg={12}>
-            <InfoGrid data={data} />
+            {getInfoGrid(country, data)}
           </Grid>
         </Grid>
       )}
