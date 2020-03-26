@@ -43,6 +43,8 @@ export const options = (name, data, total, timestamp) => ({
     },
   },
   visualMap: {
+    left: 'left',
+    bottom: '50',
     min: 0, // this should from dataset
     max: data[0].value,
     text: ['High', 'Low'],
@@ -63,8 +65,8 @@ export const options = (name, data, total, timestamp) => ({
         '#a50026',
       ],
     },
-    textstyle: {
-      color: colours.dimwhite,
+    textStyle: {
+      color: '#fff',
     },
   },
   series: [

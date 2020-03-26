@@ -7,6 +7,7 @@ import ListItemIcon from '@material-ui/core/ListItemIcon';
 import ListItemText from '@material-ui/core/ListItemText';
 import InfoIcon from '@material-ui/icons/Info';
 import DashboardIcon from '@material-ui/icons/Dashboard';
+import EqualizerIcon from '@material-ui/icons/Equalizer';
 import {useRouter} from 'next/router';
 
 const useStyles = makeStyles(theme => ({
@@ -14,7 +15,9 @@ const useStyles = makeStyles(theme => ({
   active: {
     color: 'blue',
   },
-  listIcon: {},
+  listIcon: {
+    minWidth: '29px'
+  },
 }));
 
 export default function MenuItems() {
@@ -28,7 +31,7 @@ export default function MenuItems() {
           className={clsx(classes.listItem, {
             [classes.active]: router.pathname === '/',
           })}>
-          <ListItemIcon>
+          <ListItemIcon className={classes.listIcon}>
             <DashboardIcon />
           </ListItemIcon>
           <ListItemText primary="Dashboard" />
@@ -40,10 +43,19 @@ export default function MenuItems() {
           className={clsx(classes.listItem, {
             [classes.active]: router.pathname === '/about-us',
           })}>
-          <ListItemIcon>
+          <ListItemIcon className={classes.listIcon}>
             <InfoIcon />
           </ListItemIcon>
           <ListItemText primary="About us" />
+        </ListItem>
+      </Link>
+      <Link href="/about-us">
+        <ListItem
+          button>
+         <ListItemIcon className={classes.listIcon}>
+            <EqualizerIcon />
+          </ListItemIcon>
+          <ListItemText primary="Charts(comming)" />
         </ListItem>
       </Link>
     </React.Fragment>

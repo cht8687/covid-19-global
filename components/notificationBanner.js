@@ -4,6 +4,7 @@
 import React, {useState, useEffect} from 'react';
 import styled, {css} from 'styled-components';
 import Grid from '@material-ui/core/Grid';
+import Button from '@material-ui/core/Button';
 import {only, down} from 'styled-breakpoints';
 import getPercentage from '../utilities/getPercentage';
 import colours from '../styles/colours';
@@ -18,6 +19,12 @@ const Container = styled.div`
   margin: 5px;
   color: ${colours.dimWhite};
 `;
+
+const ButtonTxt = styled(Button)`
+  a {
+    color: ${colours.dimWhite}
+  }
+`
 
 const Noti = styled(NotificationsActiveIcon)`
   color: ${colours.dimWhite};
@@ -43,10 +50,14 @@ export default function NotificationBanner({location, data, total}) {
     <Container>
       <Grid container spacing={2}>
         <Grid item xs={12} lg={12}>
-          <Noti /> We added USA board! 🇺🇸
+          <Noti /> We added USA board under world map 🇺🇸
+          <br />👉👉👉{' '}
+          <ButtonTxt variant="contained" color="primary">
+            <a href="#USA">USA Board</a>
+          </ButtonTxt>
           <br />
-          Thanks all for your support, we are working on new features! 😊 <br />
-          if you like this site, please share to your networks.
+          Thanks for coming, we are working on new features! 😊 <br />
+          If you like this site, please share to your friends.
           <br />
           Join our Telegram group:{' '}
           <a href="https://t.me/covid19boards" target="_blank">
@@ -58,3 +69,4 @@ export default function NotificationBanner({location, data, total}) {
     </Container>
   );
 }
+

@@ -3,9 +3,8 @@ import {Grid, ScrollSync, AutoSizer} from 'react-virtualized';
 import colours from '../styles/colours';
 import clsx from 'clsx';
 import {makeStyles} from '@material-ui/core/styles';
-import ReactCountryFlag from 'react-country-flag';
 import styled from 'styled-components';
-import getCountryName from '../const/isoToName';
+import {SNAKE_TO_NORMAL} from '../const/GridHeader';
 import formatNumber from '../utilities/formatNumber';
 import getValueFromArray from '../utilities/getValueFromArray';
 import {
@@ -233,7 +232,7 @@ export default function InfoGrid({data}) {
   const _renderLeftHeaderCell = ({columnIndex, key, style}) => {
     return (
       <div className={styles.headerCell} key={key} style={style}>
-        {GRID_HEADER[columnIndex]}
+        {SNAKE_TO_NORMAL[GRID_HEADER[columnIndex]] ?SNAKE_TO_NORMAL[GRID_HEADER[columnIndex]]: GRID_HEADER[columnIndex]}
       </div>
     );
   };

@@ -32,8 +32,8 @@ export const options = (name, data, total, timestamp) => ({
     left: 'right',
     min: 0,
     max: data[0].value,
-    textstyle: {
-      color: colours.dimwhite,
+   textStyle: {
+      color: '#fff',
     },
     inRange: {
       color: [

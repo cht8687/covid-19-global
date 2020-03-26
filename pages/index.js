@@ -26,7 +26,6 @@ export default function Index() {
   const {data: dataUSA, error: errorUSA, isLoading: isLoadingUSA} = useAsync({
     promiseFn: getUSAToday,
   });
-  const [location, setLocation] = useState('world');
   const [total, setTotal] = useState('');
   const [totalUSA, setTotalUSA] = useState('');
   const [timestamp, setTimestamp] = useState('');
@@ -66,7 +65,7 @@ export default function Index() {
           <InfoBoard country="world" data={data} />
         </Grid>
 
-        <Grid container item xs={12} lg={6}>
+        <Grid id="USA" container item xs={12} lg={6}>
           <Grid item xs={12} lg={12}>
             <InfoBanner location="USA" data={dataUSA} total={totalUSA} />
           </Grid>

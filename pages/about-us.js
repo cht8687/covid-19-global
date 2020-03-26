@@ -101,7 +101,7 @@ export default function SpacingGrid() {
         </Grid>
 
         <ButtonControl>
-          <Button variant="contained" color="secondary" onClick={handleOnClick}>
+          <Button variant="contained" color="primary" onClick={handleOnClick}>
             Back to Dashboard
           </Button>
         </ButtonControl>
