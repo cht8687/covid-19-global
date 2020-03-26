@@ -4,6 +4,7 @@
 import React, {useState, useEffect} from 'react';
 import styled, {css} from 'styled-components';
 import Grid from '@material-ui/core/Grid';
+import Button from '@material-ui/core/Button';
 import {only, down} from 'styled-breakpoints';
 import getPercentage from '../utilities/getPercentage';
 import colours from '../styles/colours';
@@ -43,7 +44,10 @@ export default function NotificationBanner({location, data, total}) {
     <Container>
       <Grid container spacing={2}>
         <Grid item xs={12} lg={12}>
-          <Noti /> We added USA board! 🇺🇸
+          <Noti /> We added USA board!🇺🇸 👉👉👉{' '}
+          <Button variant="contained" color="primary">
+            USA Board
+          </Button>
           <br />
           Thanks all for your support, we are working on new features! 😊 <br />
           if you like this site, please share to your networks.
