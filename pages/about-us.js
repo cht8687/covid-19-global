@@ -40,6 +40,14 @@ const Disclaimer = styled.div`
   color: #ffffb3;
   font-size: 12px;
   width: 80%;
+  padding: 30px 0;
+`;
+
+const MapDisclaimer = styled.div`
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+  align-items: center;
 `;
 
 export default function SpacingGrid() {
@@ -93,10 +101,26 @@ export default function SpacingGrid() {
         </Grid>
 
         <ButtonControl>
-          <Button variant="contained" color="primary" onClick={handleOnClick}>
+          <Button variant="contained" color="secondary" onClick={handleOnClick}>
             Back to Dashboard
           </Button>
         </ButtonControl>
+
+        <MapDisclaimer container justify="center" spacing={spacing}>
+          <Title> Map disclaimer </Title>
+          <Disclaimer>
+            The designations employed and the presentation of the material on
+            this map do not imply the expression of any opinion whatsoever on
+            the part of the Secretariat of the United Nations concerning the
+            legal status of any country, territory, city or area or of its
+            authorities, or concerning the delimitation of its frontiers or
+            boundaries. Every effort is made to ensure this map is free of
+            errors but there is no warrant the map or its features are either
+            spatially or temporally accurate or fit for a particular use. This
+            map is provided without any warranty of any kind whatsoever, either
+            express or implied.{' '}
+          </Disclaimer>{' '}
+        </MapDisclaimer>
 
         <Grid container justify="center" spacing={spacing}>
           <Disclaimer>
