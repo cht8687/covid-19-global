@@ -13,4 +13,6 @@ export default {
   darkBlue: '#445175',
   deepBlue: '#3f3f65',
   deepPurple: '#7c69b3',
+  wheat: '#ccbfb9',
+  lightWheat: '#ffebcd',
 };

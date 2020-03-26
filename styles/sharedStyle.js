@@ -10,11 +10,11 @@ export const NewCasesColor = css`
 `;
 
 export const DeceasedColor = css`
-  color: ${colours.pink};
+  color: ${colours.wheat};
 `;
 
 export const NewDeceasedColor = css`
-  color: ${colours.pinkDark};
+  color: ${colours.lightWheat};
 `;
 
 export const ActiveColor = css`
@@ -26,7 +26,7 @@ export const RecoveredColor = css`
 `;
 
 export const SeriousColor = css`
-  color: ${colours.blue};
+  color: ${colours.pinkDark};
 `;
 
 export const Per1mPopulation = css`
