@@ -65,7 +65,7 @@ const useStyles = makeStyles({
     padding: '0 0.5em',
   },
   headerCell: {
-    fontSize: '0.875em',
+    fontSize: '0.775em',
     fontWeight: 'bold',
     width: '100%',
     height: '100%',
@@ -137,32 +137,6 @@ const CountryCell = styled.div`
   align-items: center;
 }
 `;
-
-function hexToRgb(hex) {
-  const result = /^#?([a-f\d]{2})([a-f\d]{2})([a-f\d]{2})$/i.exec(hex);
-  return result
-    ? {
-        r: parseInt(result[1], 16),
-        g: parseInt(result[2], 16),
-        b: parseInt(result[3], 16),
-      }
-    : null;
-}
-const LEFT_COLOR_FROM = hexToRgb(`${colours.darkBlue}`);
-const LEFT_COLOR_TO = hexToRgb(`${colours.darkBlue}`);
-const TOP_COLOR_FROM = hexToRgb(`${colours.darkBlue}`);
-const TOP_COLOR_TO = hexToRgb(`${colours.darkBlue}`);
-
-function mixColors(color1, color2, amount) {
-  const weight1 = amount;
-  const weight2 = 1 - amount;
-
-  const r = Math.round(weight1 * color1.r + weight2 * color2.r);
-  const g = Math.round(weight1 * color1.g + weight2 * color2.g);
-  const b = Math.round(weight1 * color1.b + weight2 * color2.b);
-
-  return {r, g, b};
-}
 
 export default function InfoGrid({data}) {
   if (!data) return null;

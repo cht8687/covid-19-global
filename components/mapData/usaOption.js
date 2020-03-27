@@ -9,7 +9,7 @@ export const options = (name, data, total, timestamp) => ({
         color: colours.dimWhite,
         fontSize: 18,
       },
-      subtext: 'Updated ' + timestamp + ' (*map disclaimer in about me page)',
+      subtext: 'Updated ' + timestamp + ' (*map disclaimer)',
       text: upperCase(name) + ' COVID-19 MAP ',
       top: 'auto',
       subtextStyle: {
@@ -32,7 +32,7 @@ export const options = (name, data, total, timestamp) => ({
     left: 'right',
     min: 0,
     max: data[0].value,
-   textStyle: {
+    textStyle: {
       color: '#fff',
     },
     inRange: {

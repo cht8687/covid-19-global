@@ -74,7 +74,7 @@ const useStyles = makeStyles({
     padding: '0 0.5em',
   },
   headerCell: {
-    fontSize: '0.875em',
+    fontSize: '0.775em',
     fontWeight: 'bold',
     width: '100%',
     height: '100%',
@@ -232,7 +232,9 @@ export default function InfoGrid({data}) {
   const _renderLeftHeaderCell = ({columnIndex, key, style}) => {
     return (
       <div className={styles.headerCell} key={key} style={style}>
-        {SNAKE_TO_NORMAL[GRID_HEADER[columnIndex]] ?SNAKE_TO_NORMAL[GRID_HEADER[columnIndex]]: GRID_HEADER[columnIndex]}
+        {SNAKE_TO_NORMAL[GRID_HEADER[columnIndex]]
+          ? SNAKE_TO_NORMAL[GRID_HEADER[columnIndex]]
+          : GRID_HEADER[columnIndex]}
       </div>
     );
   };

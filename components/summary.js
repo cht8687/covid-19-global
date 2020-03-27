@@ -16,7 +16,7 @@ import {
 } from '../styles/sharedStyle';
 
 const Numbers = css`
-  font-size: 50px;
+  font-size: 45px;
   ${down('tablet')} {
     font-size: 18px;
   }
