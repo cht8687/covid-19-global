@@ -1,144 +1,36 @@
 import React, {useState, useCallback} from 'react';
 import {Grid, ScrollSync, AutoSizer} from 'react-virtualized';
-import colours from '../styles/colours';
 import clsx from 'clsx';
-import {makeStyles} from '@material-ui/core/styles';
-import ReactCountryFlag from 'react-country-flag';
-import {GRID_HEADER} from '../const/GridHeader';
-import styled from 'styled-components';
-import getCountryName from '../const/isoToName';
-import formatNumber from '../utilities/formatNumber';
-import getValueFromArray from '../utilities/getValueFromArray';
+import {SNAKE_TO_NORMAL} from '../../const/GridHeader';
+import formatNumber from '../../utilities/formatNumber';
+import getValueFromArray from '../../utilities/getValueFromArray';
+import colours from '../../styles/colours';
 import {
-  ConfirmedColor,
-  NewCasesColor,
-  DeceasedColor,
-  NewDeceasedColor,
-  ActiveColor,
-  RecoveredColor,
-  SeriousColor,
-  Per1mPopulation,
-} from '../styles/sharedStyle';
-import {pipe, toPairs, map, of, fromPairs, keys, values} from 'ramda';
+  pipe,
+  toPairs,
+  map,
+  of,
+  fromPairs,
+  flatten,
+  keys,
+  values,
+  head,
+  compose,
+} from 'ramda';
+import {
+  useStyles,
+  TotalCase,
+  NewCase,
+  TotalDeceased,
+  NewDeceased,
+  ActiveCases,
+  SeriousCases,
+  TotalRecovered,
+  TotalCasesPer1mPopul,
+  TotalDeathPer1mPopul,
+} from './sharedStyles';
 
-const useStyles = makeStyles({
-  GridRow: {
-    position: 'relative',
-    display: 'flex',
-    flexDirection: 'row',
-  },
-  GridColumn: {
-    display: 'flex',
-    flexDirection: 'column',
-    flex: '1 1 auto',
-  },
-  LeftSideGridContainer: {
-    flex: '0 0 75px',
-    zIndex: '10',
-  },
-
-  LeftSideGrid: {
-    overflow: 'hidden !important',
-  },
-  HeaderGrid: {
-    width: '100%',
-    overflow: 'hidden !important',
-  },
-  BodyGrid: {
-    width: '100%',
-  },
-  evenRow: {
-    backgroundColor: `${colours.deepBlue}`,
-  },
-  oddRow: {
-    backgroundColor: `${colours.deepBlue}`,
-  },
-  cell: {
-    fontSize: '0.875em',
-    width: '100%',
-    height: '100%',
-    display: 'flex',
-    flexDirection: 'column',
-    justifyContent: 'center',
-    alignItems: 'flex-start',
-    textAlign: 'center',
-    padding: '0 0.5em',
-  },
-  headerCell: {
-    fontSize: '0.775em',
-    fontWeight: 'bold',
-    width: '100%',
-    height: '100%',
-    display: 'flex',
-    flexDirection: 'column',
-    justifyContent: 'center',
-    alignItems: 'flex-start',
-    textAlign: 'left',
-    padding: '0 0.5em',
-    background: colours.deepPurple,
-  },
-  leftCell: {
-    fontSize: '0.875em',
-    fontWeight: 'bold',
-    width: '100%',
-    height: '100%',
-    display: 'flex',
-    flexDirection: 'row',
-    justifyContent: 'flex-start',
-    alignItems: 'center',
-    textAlign: 'center',
-    padding: '0 0.5em',
-    whiteSpace: 'nowrap',
-    backgroundColor: colours.darkBlue,
-  },
-});
-
-const Container = styled.div``;
-
-const TotalCase = styled.div`
-  ${ConfirmedColor}
-`;
-
-const NewCase = styled.div`
-  ${NewCasesColor}
-`;
-
-const TotalDeceased = styled.div`
-  ${DeceasedColor}
-`;
-
-const NewDeceased = styled.div`
-  ${NewDeceasedColor}
-`;
-
-const ActiveCases = styled.div`
-  ${ActiveColor}
-`;
-
-const SeriousCases = styled.div`
-  ${SeriousColor}
-`;
-
-const TotalRecovered = styled.div`
-  ${RecoveredColor}
-`;
-
-const TotalCasesPer1mPopul = styled.div`
-  ${Per1mPopulation}
-`;
-
-const TotalDeathPer1mPopul = styled.div`
-  ${DeceasedColor}
-`;
-
-const CountryCell = styled.div`
-  display: flex;
-  flex-direction: row;
-  align-items: center;
-}
-`;
-
-export default function InfoGrid({data}) {
+export default function CountryGrid({data}) {
   if (!data) return null;
   const {total, list} = data;
   const toIndividualKeys = pipe(toPairs, map(pipe(of, fromPairs)));
@@ -146,11 +38,20 @@ export default function InfoGrid({data}) {
   const totalArray = toIndividualKeys(total);
   const countryArray = map(toIndividualKeys)(list);
   const displayList = [totalArray, ...countryArray];
+  const GRID_HEADER = compose(
+    flatten,
+    map(
+      map(keys),
+
+      head,
+    ),
+  )(displayList);
+
   const styles = useStyles();
   const [state, setState] = useState({
     leftColumnWidth: 150,
     columnWidth: 150,
-    columnCount: 10,
+    columnCount: 6,
     height: 600,
     overscanColumnCount: 5,
     overscanRowCount: 5,
@@ -188,7 +89,9 @@ export default function InfoGrid({data}) {
   const _renderLeftHeaderCell = ({columnIndex, key, style}) => {
     return (
       <div className={styles.headerCell} key={key} style={style}>
-        {GRID_HEADER[columnIndex]}
+        {SNAKE_TO_NORMAL[GRID_HEADER[columnIndex]]
+          ? SNAKE_TO_NORMAL[GRID_HEADER[columnIndex]]
+          : GRID_HEADER[columnIndex]}
       </div>
     );
   };
@@ -244,38 +147,12 @@ export default function InfoGrid({data}) {
         : styles.oddRow;
     const classNames = clsx(rowClass, styles.leftCell);
 
-    const country = getValueFromArray('country')(displayList[rowIndex]);
-    const countryCode = getValueFromArray('country_code')(
-      displayList[rowIndex],
-    );
+    const state = getValueFromArray('state')(displayList[rowIndex]);
 
     if (columnIndex < 1) {
       return (
         <div className={classNames} key={key} style={style}>
-          {countryCode === 'TOT' ? (
-            `🌏  `
-          ) : (
-            <CountryCell>
-              {countryCode === 'DP' ? (
-                <span>🚢</span>
-              ) : (
-                <ReactCountryFlag
-                  countryCode={countryCode === 'UK' ? 'GB' : countryCode}
-                  style={{
-                    fontSize: '1.5em',
-                    lineHeight: '1.5em',
-                    marginRight: '5px',
-                    marginTop: '5px',
-                  }}
-                />
-              )}
-            </CountryCell>
-          )}
-          {!getCountryName(countryCode)
-            ? country === 'Syria'
-              ? `🇸🇾 Syria`
-              : country
-            : getCountryName(countryCode)}
+          {state}
         </div>
       );
     } else {
@@ -289,17 +166,7 @@ export default function InfoGrid({data}) {
 
   return (
     <ScrollSync>
-      {({
-        clientHeight,
-        clientWidth,
-        onScroll,
-        scrollHeight,
-        scrollLeft,
-        scrollTop,
-        scrollWidth,
-      }) => {
-        const x = scrollLeft / (scrollWidth - clientWidth);
-        const y = scrollTop / (scrollHeight - clientHeight);
+      {({onScroll, scrollLeft, scrollTop}) => {
         const leftBackgroundColor = colours.darkBlue;
         const leftColor = colours.white;
         const topBackgroundColor = colours.darkBlue;

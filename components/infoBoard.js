@@ -6,16 +6,15 @@ import styled from 'styled-components';
 import Grid from '@material-ui/core/Grid';
 import CircularProgress from '@material-ui/core/CircularProgress';
 import colours from '../styles/colours';
-import InfoGrid from './InfoGridGlobal';
-import InfoGridUSA from './InfoGridUSA';
+import CountryGrid from './infoGrid/countryGrid';
+import WorldGrid from './infoGrid/worldGrid';
 
 const getInfoGrid = (country, data) => {
   switch (country) {
     case 'world':
-      return <InfoGrid data={data} />;
-    case 'USA':
-      return <InfoGridUSA data={data} />;
+      return <WorldGrid data={data} />;
     default:
+      return <CountryGrid data={data} />;
   }
 };
 

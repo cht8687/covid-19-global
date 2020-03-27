@@ -1,22 +1,13 @@
 import React, {useState, useCallback} from 'react';
 import {Grid, ScrollSync, AutoSizer} from 'react-virtualized';
-import colours from '../styles/colours';
+import colours from '../../styles/colours';
 import clsx from 'clsx';
-import {makeStyles} from '@material-ui/core/styles';
+import ReactCountryFlag from 'react-country-flag';
+import {GRID_HEADER} from '../../const/GridHeader';
+import formatNumber from '../../utilities/formatNumber';
 import styled from 'styled-components';
-import {SNAKE_TO_NORMAL} from '../const/GridHeader';
-import formatNumber from '../utilities/formatNumber';
-import getValueFromArray from '../utilities/getValueFromArray';
-import {
-  ConfirmedColor,
-  NewCasesColor,
-  DeceasedColor,
-  NewDeceasedColor,
-  ActiveColor,
-  RecoveredColor,
-  SeriousColor,
-  Per1mPopulation,
-} from '../styles/sharedStyle';
+import getCountryName from '../../const/isoToName';
+import getValueFromArray from '../../utilities/getValueFromArray';
 import {
   pipe,
   toPairs,
@@ -29,116 +20,18 @@ import {
   head,
   compose,
 } from 'ramda';
-
-const useStyles = makeStyles({
-  GridRow: {
-    position: 'relative',
-    display: 'flex',
-    flexDirection: 'row',
-  },
-  GridColumn: {
-    display: 'flex',
-    flexDirection: 'column',
-    flex: '1 1 auto',
-  },
-  LeftSideGridContainer: {
-    flex: '0 0 75px',
-    zIndex: '10',
-  },
-
-  LeftSideGrid: {
-    overflow: 'hidden !important',
-  },
-  HeaderGrid: {
-    width: '100%',
-    overflow: 'hidden !important',
-  },
-  BodyGrid: {
-    width: '100%',
-  },
-  evenRow: {
-    backgroundColor: `${colours.deepBlue}`,
-  },
-  oddRow: {
-    backgroundColor: `${colours.deepBlue}`,
-  },
-  cell: {
-    fontSize: '0.875em',
-    width: '100%',
-    height: '100%',
-    display: 'flex',
-    flexDirection: 'column',
-    justifyContent: 'center',
-    alignItems: 'flex-start',
-    textAlign: 'center',
-    padding: '0 0.5em',
-  },
-  headerCell: {
-    fontSize: '0.775em',
-    fontWeight: 'bold',
-    width: '100%',
-    height: '100%',
-    display: 'flex',
-    flexDirection: 'column',
-    justifyContent: 'center',
-    alignItems: 'flex-start',
-    textAlign: 'left',
-    padding: '0 0.5em',
-    background: colours.deepPurple,
-  },
-  leftCell: {
-    fontSize: '0.875em',
-    fontWeight: 'bold',
-    width: '100%',
-    height: '100%',
-    display: 'flex',
-    flexDirection: 'row',
-    justifyContent: 'flex-start',
-    alignItems: 'center',
-    textAlign: 'center',
-    padding: '0 0.5em',
-    whiteSpace: 'nowrap',
-    backgroundColor: colours.darkBlue,
-  },
-});
-
-const Container = styled.div``;
-
-const TotalCase = styled.div`
-  ${ConfirmedColor}
-`;
-
-const NewCase = styled.div`
-  ${NewCasesColor}
-`;
-
-const TotalDeceased = styled.div`
-  ${DeceasedColor}
-`;
-
-const NewDeceased = styled.div`
-  ${NewDeceasedColor}
-`;
-
-const ActiveCases = styled.div`
-  ${ActiveColor}
-`;
-
-const SeriousCases = styled.div`
-  ${SeriousColor}
-`;
-
-const TotalRecovered = styled.div`
-  ${RecoveredColor}
-`;
-
-const TotalCasesPer1mPopul = styled.div`
-  ${Per1mPopulation}
-`;
-
-const TotalDeathPer1mPopul = styled.div`
-  ${DeceasedColor}
-`;
+import {
+  useStyles,
+  TotalCase,
+  NewCase,
+  TotalDeceased,
+  NewDeceased,
+  ActiveCases,
+  SeriousCases,
+  TotalRecovered,
+  TotalCasesPer1mPopul,
+  TotalDeathPer1mPopul,
+} from './sharedStyles';
 
 const CountryCell = styled.div`
   display: flex;
@@ -147,33 +40,7 @@ const CountryCell = styled.div`
 }
 `;
 
-function hexToRgb(hex) {
-  const result = /^#?([a-f\d]{2})([a-f\d]{2})([a-f\d]{2})$/i.exec(hex);
-  return result
-    ? {
-        r: parseInt(result[1], 16),
-        g: parseInt(result[2], 16),
-        b: parseInt(result[3], 16),
-      }
-    : null;
-}
-const LEFT_COLOR_FROM = hexToRgb(`${colours.darkBlue}`);
-const LEFT_COLOR_TO = hexToRgb(`${colours.darkBlue}`);
-const TOP_COLOR_FROM = hexToRgb(`${colours.darkBlue}`);
-const TOP_COLOR_TO = hexToRgb(`${colours.darkBlue}`);
-
-function mixColors(color1, color2, amount) {
-  const weight1 = amount;
-  const weight2 = 1 - amount;
-
-  const r = Math.round(weight1 * color1.r + weight2 * color2.r);
-  const g = Math.round(weight1 * color1.g + weight2 * color2.g);
-  const b = Math.round(weight1 * color1.b + weight2 * color2.b);
-
-  return {r, g, b};
-}
-
-export default function InfoGrid({data}) {
+export default function WorldGrid({data}) {
   if (!data) return null;
   const {total, list} = data;
   const toIndividualKeys = pipe(toPairs, map(pipe(of, fromPairs)));
@@ -181,20 +48,11 @@ export default function InfoGrid({data}) {
   const totalArray = toIndividualKeys(total);
   const countryArray = map(toIndividualKeys)(list);
   const displayList = [totalArray, ...countryArray];
-  const GRID_HEADER = compose(
-    flatten,
-    map(
-      map(keys),
-
-      head,
-    ),
-  )(displayList);
-
   const styles = useStyles();
   const [state, setState] = useState({
     leftColumnWidth: 150,
     columnWidth: 150,
-    columnCount: 6,
+    columnCount: 10,
     height: 600,
     overscanColumnCount: 5,
     overscanRowCount: 5,
@@ -232,9 +90,7 @@ export default function InfoGrid({data}) {
   const _renderLeftHeaderCell = ({columnIndex, key, style}) => {
     return (
       <div className={styles.headerCell} key={key} style={style}>
-        {SNAKE_TO_NORMAL[GRID_HEADER[columnIndex]]
-          ? SNAKE_TO_NORMAL[GRID_HEADER[columnIndex]]
-          : GRID_HEADER[columnIndex]}
+        {GRID_HEADER[columnIndex]}
       </div>
     );
   };
@@ -290,12 +146,38 @@ export default function InfoGrid({data}) {
         : styles.oddRow;
     const classNames = clsx(rowClass, styles.leftCell);
 
-    const state = getValueFromArray('state')(displayList[rowIndex]);
+    const country = getValueFromArray('country')(displayList[rowIndex]);
+    const countryCode = getValueFromArray('country_code')(
+      displayList[rowIndex],
+    );
 
     if (columnIndex < 1) {
       return (
         <div className={classNames} key={key} style={style}>
-          {state}
+          {countryCode === 'TOT' ? (
+            `🌏  `
+          ) : (
+            <CountryCell>
+              {countryCode === 'DP' ? (
+                <span>🚢</span>
+              ) : (
+                <ReactCountryFlag
+                  countryCode={countryCode === 'UK' ? 'GB' : countryCode}
+                  style={{
+                    fontSize: '1.5em',
+                    lineHeight: '1.5em',
+                    marginRight: '5px',
+                    marginTop: '5px',
+                  }}
+                />
+              )}
+            </CountryCell>
+          )}
+          {!getCountryName(countryCode)
+            ? country === 'Syria'
+              ? `🇸🇾 Syria`
+              : country
+            : getCountryName(countryCode)}
         </div>
       );
     } else {
@@ -309,17 +191,7 @@ export default function InfoGrid({data}) {
 
   return (
     <ScrollSync>
-      {({
-        clientHeight,
-        clientWidth,
-        onScroll,
-        scrollHeight,
-        scrollLeft,
-        scrollTop,
-        scrollWidth,
-      }) => {
-        const x = scrollLeft / (scrollWidth - clientWidth);
-        const y = scrollTop / (scrollHeight - clientHeight);
+      {({onScroll, scrollLeft, scrollTop}) => {
         const leftBackgroundColor = colours.darkBlue;
         const leftColor = colours.white;
         const topBackgroundColor = colours.darkBlue;
