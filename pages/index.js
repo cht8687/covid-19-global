@@ -4,7 +4,7 @@
 import React, {useState, useEffect} from 'react';
 import styled from 'styled-components';
 import World from '../components/maps/world';
-import USA from '../components/maps/usa';
+import Country from '../components/maps/country';
 import InfoBoard from '../components/infoBoard';
 import Summary from '../components/summary';
 import Grid from '@material-ui/core/Grid';
@@ -70,7 +70,7 @@ export default function Index() {
             <InfoBanner location="USA" data={dataUSA} total={totalUSA} />
           </Grid>
           <Grid item xs={12} lg={12}>
-            <USA data={dataUSA} location="USA" timestamp={timestampUSA} />
+            <Country data={dataUSA} location="USA" timestamp={timestampUSA} />
           </Grid>
         </Grid>
         <Grid item xs={12} lg={6}>

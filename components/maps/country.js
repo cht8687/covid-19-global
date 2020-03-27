@@ -1,11 +1,8 @@
-/*
- * Created by Robert Chang 15 March 2020
- */
 import React, {useEffect} from 'react';
 import styled from 'styled-components';
 import ReactEcharts from 'echarts-for-react';
 require('echarts-countries-js/echarts-countries-js/USA.js');
-import {options} from '../mapData/usaOption';
+import {options} from '../mapData/country';
 import CircularProgress from '@material-ui/core/CircularProgress';
 import {curry, reduce, assoc, keys, compose, map, pick} from 'ramda';
 
@@ -49,7 +46,7 @@ export default function USA({data, location, timestamp}) {
         <CircularProgress color="secondary" />
       ) : (
         <ReactEchartsContainer
-          option={options('USA', dataToRender, total, timestamp) || {}}
+          option={options(location, dataToRender, total, timestamp) || {}}
           style={{height: '80vh', width: '100%'}}
         />
       )}

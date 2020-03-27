@@ -1,6 +1,6 @@
 import colours from '../../styles/colours';
 import {upperCase} from 'upper-case';
-import getNameMappings from '../../const/nameMappingWorld';
+import {nameMappingWord} from './mapNameMapping';
 
 export const options = (name, data, total, timestamp) => ({
   title: [
@@ -81,7 +81,7 @@ export const options = (name, data, total, timestamp) => ({
       name: '',
       type: 'map',
       roam: true,
-      nameMap: getNameMappings,
+      nameMap: nameMappingWord(),
     },
   ],
 });

@@ -1,6 +1,6 @@
 import colours from '../../styles/colours';
 import {upperCase} from 'upper-case';
-import getNameMappings from '../../const/nameMappingWorld';
+import {mapOptionNameMapping} from './mapNameMapping';
 
 export const options = (name, data, total, timestamp) => ({
   title: [
@@ -67,7 +67,7 @@ export const options = (name, data, total, timestamp) => ({
   },
   series: [
     {
-      mapType: '美国',
+      mapType: mapOptionNameMapping()[name],
       type: 'map',
       label: {
         emphasis: {
@@ -78,7 +78,6 @@ export const options = (name, data, total, timestamp) => ({
         emphasis: {label: {show: true}},
       },
       roam: true,
-      nameMap: getNameMappings,
       data,
     },
   ],
