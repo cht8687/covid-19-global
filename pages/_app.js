@@ -35,7 +35,7 @@ class MyApp extends App {
         <React.Fragment>
           <Head>
             <title>
-              COVID-19 Dashboard | Coronavirous Dashboard, COVID19 Charts,
+              COVID-19 Dashboard | Coronavirus Dashboard, COVID19 Charts,
               COVID19 Numbers
             </title>
             <meta name="robots" content="index, follow" />
