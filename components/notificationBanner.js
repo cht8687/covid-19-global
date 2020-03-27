@@ -49,7 +49,7 @@ export default function NotificationBanner({location, data, total}) {
           <br />
           👉👉👉{' '}
           <ButtonTxt variant="contained" color="primary">
-            <a href="#USA">USA Board</a>
+            <a href="#map-usa">USA Board</a>
           </ButtonTxt>
           <br />
           Thanks for visiting 😊 <br />

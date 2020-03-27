@@ -65,7 +65,7 @@ export default function Index() {
           <InfoBoard country="world" data={data} />
         </Grid>
 
-        <Grid id="USA" container item xs={12} lg={6}>
+        <Grid id="map-usa" container item xs={12} lg={6}>
           <Grid item xs={12} lg={12}>
             <InfoBanner location="USA" data={dataUSA} total={totalUSA} />
           </Grid>
@@ -76,6 +76,23 @@ export default function Index() {
         <Grid item xs={12} lg={6}>
           <Summary country="USA" total={totalUSA} />
           <InfoBoard country="USA" data={dataUSA} />
+        </Grid>
+
+        <Grid id="map-au" container item xs={12} lg={6}>
+          <Grid item xs={12} lg={12}>
+            <InfoBanner location="AUSTRALIA" data={dataUSA} total={totalUSA} />
+          </Grid>
+          <Grid item xs={12} lg={12}>
+            <Country
+              data={dataUSA}
+              location="AUSTRALIA"
+              timestamp={timestampUSA}
+            />
+          </Grid>
+        </Grid>
+        <Grid item xs={12} lg={6}>
+          <Summary country="AUSTRALIA" total={totalUSA} />
+          <InfoBoard country="AUSTRALIA" data={dataUSA} />
         </Grid>
       </SiteContent>
     </Layout>

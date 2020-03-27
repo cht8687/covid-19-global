@@ -1,7 +1,8 @@
-import React, {useEffect} from 'react';
+import React from 'react';
 import styled from 'styled-components';
 import ReactEcharts from 'echarts-for-react';
 require('echarts-countries-js/echarts-countries-js/USA.js');
+require('echarts-countries-js/echarts-countries-js/Australia.js');
 import {options} from '../mapData/country';
 import CircularProgress from '@material-ui/core/CircularProgress';
 import {curry, reduce, assoc, keys, compose, map, pick} from 'ramda';

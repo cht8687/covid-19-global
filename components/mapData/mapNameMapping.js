@@ -1,5 +1,6 @@
 export const mapOptionNameMapping = () => ({
   USA: '美国',
+  AUSTRALIA: '澳大利亚',
 });
 
 export const nameMappingWord = () => ({
