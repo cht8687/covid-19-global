@@ -8,7 +8,6 @@ import Button from '@material-ui/core/Button';
 import {only, down} from 'styled-breakpoints';
 import getPercentage from '../utilities/getPercentage';
 import colours from '../styles/colours';
-import NotificationsActiveIcon from '@material-ui/icons/NotificationsActive';
 
 const Container = styled.div`
   display: flex;
@@ -22,12 +21,8 @@ const Container = styled.div`
 
 const ButtonTxt = styled(Button)`
   a {
-    color: ${colours.dimWhite}
+    color: ${colours.dimWhite};
   }
-`
-
-const Noti = styled(NotificationsActiveIcon)`
-  color: ${colours.dimWhite};
 `;
 
 export default function NotificationBanner({location, data, total}) {
@@ -50,16 +45,17 @@ export default function NotificationBanner({location, data, total}) {
     <Container>
       <Grid container spacing={2}>
         <Grid item xs={12} lg={12}>
-          <Noti /> We added USA board under world map 🇺🇸
-          <br />👉👉👉{' '}
+          Update: We added USA board under world map 🇺🇸
+          <br />
+          👉👉👉{' '}
           <ButtonTxt variant="contained" color="primary">
             <a href="#USA">USA Board</a>
           </ButtonTxt>
           <br />
-          Thanks for coming, we are working on new features! 😊 <br />
-          If you like this site, please share to your friends.
+          Thanks for visiting 😊 <br />
+          If you like this site, please share to your family and friends.
           <br />
-          Join our Telegram group:{' '}
+          You can join our Telegram group:{' '}
           <a href="https://t.me/covid19boards" target="_blank">
             {' '}
             Telegram{' '}
@@ -69,4 +65,3 @@ export default function NotificationBanner({location, data, total}) {
     </Container>
   );
 }
-

@@ -34,20 +34,20 @@ class MyApp extends App {
         <GlobalStyle />
         <React.Fragment>
           <Head>
-            <title>COVID-19 Boards</title>
+            <title>
+              COVID-19 Dashboard | Coronavirous Dashboard, COVID19 Charts,
+              COVID19 Numbers
+            </title>
             <meta name="robots" content="index, follow" />
-            <meta name="covid-19" content="covid-19 coronavirus dashboard" />
-            <meta name="covid19" content="covid-19 coronavirus dashboard" />
-            <meta name="coronavirus" content="covid-19 coronavirus dashboard" />
-            <meta name="US covid-19" content="covid-19 coronavirus dashboard" />
-            <meta name="UK covid-19" content="covid-19 coronavirus dashboard" />
             <meta
-              name="Italy covid-19"
-              content="covid-19 coronavirus dashboard"
+              name="description"
+              content="covid-19 dashboard, tracking daily increases, historical charts"
+            />
+            <meta
+              name="keywords"
+              content="covid-19 dashboard, tracker, world, covid-19 USA, covid-19 UK, covid-19 Italy, covid-19 Europe, covid-19 charts, covid-19 trends, statistics, data"
             />
             <DefaultSeo {...SEO} />
-
-            <script src="https://echarts-maps.github.io/echarts-countries-js/echarts-countries-js/USA.js"></script>
           </Head>
           <ThemeProvider theme={theme}>
             <DrawerProvider>
