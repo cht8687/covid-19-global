@@ -1,10 +1,10 @@
 import React, {useState, useCallback} from 'react';
+import formatNumber from '../../utilities/formatNumber';
 import {Grid, ScrollSync, AutoSizer} from 'react-virtualized';
 import colours from '../../styles/colours';
 import clsx from 'clsx';
 import ReactCountryFlag from 'react-country-flag';
 import {GRID_HEADER} from '../../const/GridHeader';
-import formatNumber from '../../utilities/formatNumber';
 import styled from 'styled-components';
 import getCountryName from '../../const/isoToName';
 import getValueFromArray from '../../utilities/getValueFromArray';
@@ -154,25 +154,25 @@ export default function WorldGrid({data}) {
     if (columnIndex < 1) {
       return (
         <div className={classNames} key={key} style={style}>
-          {countryCode === 'TOT' ? (
-            `🌏  `
-          ) : (
-            <CountryCell>
-              {countryCode === 'DP' ? (
-                <span>🚢</span>
-              ) : (
-                <ReactCountryFlag
-                  countryCode={countryCode === 'UK' ? 'GB' : countryCode}
-                  style={{
-                    fontSize: '1.5em',
-                    lineHeight: '1.5em',
-                    marginRight: '5px',
-                    marginTop: '5px',
-                  }}
-                />
+          {countryCode === 'TOT'
+            ? `🌏  `
+            : countryCode && (
+                <CountryCell>
+                  {countryCode === 'DP' ? (
+                    <span>🚢</span>
+                  ) : (
+                    <ReactCountryFlag
+                      countryCode={countryCode === 'UK' ? 'GB' : countryCode}
+                      style={{
+                        fontSize: '1.5em',
+                        lineHeight: '1.5em',
+                        marginRight: '5px',
+                        marginTop: '5px',
+                      }}
+                    />
+                  )}
+                </CountryCell>
               )}
-            </CountryCell>
-          )}
           {!getCountryName(countryCode)
             ? country === 'Syria'
               ? `🇸🇾 Syria`

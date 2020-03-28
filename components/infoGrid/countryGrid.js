@@ -1,4 +1,4 @@
-import React, {useState, useCallback} from 'react';
+import React, {useState, useCallback, useEffect} from 'react';
 import {Grid, ScrollSync, AutoSizer} from 'react-virtualized';
 import clsx from 'clsx';
 import {SNAKE_TO_NORMAL} from '../../const/GridHeader';
@@ -38,6 +38,7 @@ export default function CountryGrid({data}) {
   const totalArray = toIndividualKeys(total);
   const countryArray = map(toIndividualKeys)(list);
   const displayList = [totalArray, ...countryArray];
+
   const GRID_HEADER = compose(
     flatten,
     map(
@@ -46,6 +47,9 @@ export default function CountryGrid({data}) {
       head,
     ),
   )(displayList);
+  console.log('changed to: ', displayList.length);
+
+  useEffect(() => {}, []);
 
   const styles = useStyles();
   const [state, setState] = useState({

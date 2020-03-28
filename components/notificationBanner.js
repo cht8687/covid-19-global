@@ -26,9 +26,6 @@ const ButtonTxt = styled(Button)`
 `;
 
 export default function NotificationBanner({location, data, total}) {
-  const [deathRate, setDeathRate] = useState('');
-  const [recoverRate, setRecoverRate] = useState('');
-
   useEffect(() => {
     if (total) {
       const deathRate = getPercentage(total.total_deaths, total.total_cases);
@@ -45,12 +42,15 @@ export default function NotificationBanner({location, data, total}) {
     <Container>
       <Grid container spacing={2}>
         <Grid item xs={12} lg={12}>
-          Update: Added AUS 🇦🇺 USA 🇺🇸
-          <br />
+          Update:
+          <ul>
+            <li>🇺🇸Added USA map </li>
+            <li>🇦🇺Australia map is comming soon</li>
+          </ul>
           Thanks for visiting 😊 <br />
-          If you like this site, please share to your family and friends.
+          Wish you and your family are safe and healthy.
           <br />
-          You can join our Telegram group:{' '}
+          Any suggestions/feedbacks, can send to our Telegram group:{' '}
           <a href="https://t.me/covid19boards" target="_blank">
             {' '}
             Telegram{' '}

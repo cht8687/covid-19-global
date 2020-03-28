@@ -41,7 +41,6 @@ export default function USA({data, location, timestamp}) {
       map(pick(['state', 'total_cases'])),
     )(list);
   }
-
   return (
     <MapContainer>
       {!total ? (

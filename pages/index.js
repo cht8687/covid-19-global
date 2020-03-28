@@ -20,59 +20,87 @@ const SiteContent = styled(Grid)`
 `;
 
 export default function Index() {
-  const {data, error, isLoading} = useAsync({
+  const {data: dataWorldRaw, error, isLoading} = useAsync({
     promiseFn: getGlobalToday,
   });
-  const {data: dataUSA, error: errorUSA, isLoading: isLoadingUSA} = useAsync({
-    promiseFn: getUSAToday,
-  });
-  const [total, setTotal] = useState('');
-  const [totalUSA, setTotalUSA] = useState('');
-  const [timestamp, setTimestamp] = useState('');
-  const [timestampUSA, setTimestampUSA] = useState('');
-  const [location, setLocation] = useState('WORLD');
-  useEffect(() => {
-    if (data) {
-      const {total, timestamp} = data;
-      setTotal(total);
-      setTimestamp(timestamp);
-    }
-  }, [data]);
+  const {data: dataUSARaw, error: errorUSA, isLoading: isLoadingUSA} = useAsync(
+    {
+      promiseFn: getUSAToday,
+    },
+  );
+
+  const [toDisplayData, setToDisplayData] = useState('');
+  const [toDisplayDataWorld, setToDisplayDataWorld] = useState('');
+  const [toDisplayDataUSA, setToDisplayDataUSA] = useState('');
+  const [toDisplayTotal, setToDisplayTotal] = useState('');
+  const [toDisplayTimestamp, setToDisplayTimestamp] = useState('');
+  const [location, setLocation] = useState('world');
 
   useEffect(() => {
-    if (dataUSA) {
-      const {total: totalUSA, timestamp} = dataUSA;
-      setTotalUSA(totalUSA);
-      setTimestampUSA(timestamp);
+    if (dataWorldRaw && location === 'world') {
+      const {total, timestamp} = dataWorldRaw;
+      setToDisplayData(dataWorldRaw);
+      setToDisplayDataWorld(dataWorldRaw);
+      setToDisplayTotal(total);
+      setToDisplayTimestamp(timestamp);
     }
-  }, [dataUSA]);
+    if (dataUSARaw && location === 'usa') {
+      const {total, timestamp} = dataUSARaw;
+      setToDisplayData(dataUSARaw);
+      setToDisplayDataUSA(dataUSARaw);
+      setToDisplayTotal(total);
+      setToDisplayTimestamp(timestamp);
+    }
+  }, [dataWorldRaw, dataUSARaw, location]);
 
   const handleCountryChange = e => {
-    setLocation(e.target.value);
+    if (e.target.value !== 'australia') {
+      setLocation(e.target.value);
+    }
   };
 
   return (
     <Layout>
       <SiteContent container spacing={1}>
-        <Grid container item xs={12} lg={4}>
+        <Grid container item xs={12} lg={location === 'world' ? 4 : 6}>
           <Grid item xs={12} lg={12}>
             <NotificationBanner />
           </Grid>
           <Grid item xs={12} lg={12}>
             <InfoBanner
               location={location}
-              data={data}
-              total={total}
+              data={toDisplayData}
+              total={toDisplayTotal}
               handleCountryChange={handleCountryChange}
             />
           </Grid>
           <Grid item xs={12} lg={12}>
-            <World data={data} location={location} timestamp={timestamp} />
+            {location === 'world' ? (
+              <World
+                data={toDisplayData}
+                location={location}
+                timestamp={toDisplayTimestamp}
+              />
+            ) : (
+              <Country
+                data={toDisplayData}
+                location={location}
+                timestamp={toDisplayTimestamp}
+              />
+            )}
           </Grid>
         </Grid>
-        <Grid item xs={12} lg={8}>
-          <Summary country={location} total={total} />
-          <InfoBoard country={location} data={data} />
+        <Grid item xs={12} lg={location === 'world' ? 8 : 6}>
+          <Summary country={location} total={toDisplayTotal} />
+          {location === 'world' && (
+            <InfoBoard country={location} data={toDisplayDataWorld} />
+          )}
+          {location === 'usa' && (
+            <InfoBoard country={location} data={toDisplayDataUSA} />
+          )}
+          {location === 'australia' && (
+            <InfoBoard country={location} data={toDisplayDataUSA} />
+          )}
         </Grid>
       </SiteContent>
     </Layout>

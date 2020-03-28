@@ -10,7 +10,6 @@ import colours from '../styles/colours';
 import {upperCase} from 'upper-case';
 import {DeceasedColor, RecoveredColor} from '../styles/sharedStyle';
 import NativeSelect from '@material-ui/core/NativeSelect';
-import InputLabel from '@material-ui/core/InputLabel';
 import MenuItem from '@material-ui/core/MenuItem';
 import FormHelperText from '@material-ui/core/FormHelperText';
 import FormControl from '@material-ui/core/FormControl';
@@ -43,7 +42,7 @@ const CountrySelection = styled.div`
 `;
 
 const MNativeSelect = styled(NativeSelect)`
-  min-Width: 120px;
+  min-width: 120px;
   icon: {
     color: ${colours.dimWhite};
   }
@@ -114,7 +113,7 @@ export default function InfoBanner({
                 },
               }}>
               {COUNTRY_SELECTIONS.map((country, index) => (
-                <option key={index} value={country}>
+                <option key={index} value={country} disabled={index === 2}>
                   {upperCase(country)}
                 </option>
               ))}
