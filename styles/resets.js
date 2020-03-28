@@ -132,6 +132,18 @@ button {
   border: none;
 }
 
+select {
+  /* for Firefox */
+  -moz-appearance: none;
+  /* for Chrome */
+  -webkit-appearance: none;
+}
+
+/* For IE10 */
+select::-ms-expand {
+  display: none;
+}
+
 article,
 aside,
 footer,

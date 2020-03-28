@@ -23,9 +23,6 @@ const theme = createMuiTheme({
         fontSize: 18,
         padding: '5px 10px',
         width: 'calc(100% - 24px)',
-        '& svg': {
-          display: 'none',
-        },
       },
     },
     menuItem: {
