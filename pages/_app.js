@@ -38,6 +38,7 @@ class MyApp extends App {
               COVID-19 Dashboard | Coronavirus Dashboard, COVID19 Charts,
               COVID19 Numbers
             </title>
+            <meta name="viewport" content="initial-scale=1, maximum-scale=1" />
             <meta name="robots" content="index, follow" />
             <meta
               name="description"
