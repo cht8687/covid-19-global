@@ -9,6 +9,13 @@ import getPercentage from '../utilities/getPercentage';
 import colours from '../styles/colours';
 import {upperCase} from 'upper-case';
 import {DeceasedColor, RecoveredColor} from '../styles/sharedStyle';
+import NativeSelect from '@material-ui/core/NativeSelect';
+import InputLabel from '@material-ui/core/InputLabel';
+import MenuItem from '@material-ui/core/MenuItem';
+import FormHelperText from '@material-ui/core/FormHelperText';
+import FormControl from '@material-ui/core/FormControl';
+import {COUNTRY_SELECTIONS} from '../const/countrySelections';
+import MyTheme from '../theme/theme';
 
 const Numbers = css`
   font-size: 25px;
@@ -28,6 +35,18 @@ const Container = styled.div`
   padding: 10px 10px;
   background-color: ${colours.deepBlue};
   margin: 5px;
+`;
+
+const CountrySelection = styled.div`
+  display: flex;
+  justify-content: center;
+`;
+
+const MNativeSelect = styled(NativeSelect)`
+  min-Width: 120px;
+  icon: {
+    color: ${colours.dimWhite};
+  }
 `;
 
 const Location = styled(Grid)`
@@ -54,7 +73,18 @@ const RecoveredRate = styled(Grid)`
   ${RecoveredColor}
 `;
 
-export default function InfoBanner({location, data, total}) {
+const styles = theme => ({
+  icon: {
+    display: none,
+  },
+});
+
+export default function InfoBanner({
+  location,
+  data,
+  total,
+  handleCountryChange,
+}) {
   const [deathRate, setDeathRate] = useState('');
   const [recoverRate, setRecoverRate] = useState('');
 
@@ -74,14 +104,28 @@ export default function InfoBanner({location, data, total}) {
     <Container>
       <Grid container spacing={2}>
         <Location item xs={12} lg={4}>
-          {upperCase(location)}
+          <CountrySelection>
+            <MNativeSelect
+              value={location}
+              onChange={handleCountryChange}
+              inputProps={{
+                classes: {
+                  icon: styles.icon,
+                },
+              }}>
+              {COUNTRY_SELECTIONS.map((country, index) => (
+                <option key={index} value={country}>
+                  {upperCase(country)}
+                </option>
+              ))}
+            </MNativeSelect>
+          </CountrySelection>
         </Location>
         <Grid item xs={12} lg={8}>
           <Grid container spacing={1}>
             <Statistics item xs={6} lg={6}>
               Death <DeathRate>{deathRate} %</DeathRate>
             </Statistics>
-
             <Statistics item xs={6} lg={6}>
               Recovered{' '}
               <RecoveredRate>

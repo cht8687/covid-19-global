@@ -30,6 +30,7 @@ export default function Index() {
   const [totalUSA, setTotalUSA] = useState('');
   const [timestamp, setTimestamp] = useState('');
   const [timestampUSA, setTimestampUSA] = useState('');
+  const [location, setLocation] = useState('WORLD');
   useEffect(() => {
     if (data) {
       const {total, timestamp} = data;
@@ -46,6 +47,10 @@ export default function Index() {
     }
   }, [dataUSA]);
 
+  const handleCountryChange = e => {
+    setLocation(e.target.value);
+  };
+
   return (
     <Layout>
       <SiteContent container spacing={1}>
@@ -54,45 +59,20 @@ export default function Index() {
             <NotificationBanner />
           </Grid>
           <Grid item xs={12} lg={12}>
-            <InfoBanner location="world" data={data} total={total} />
+            <InfoBanner
+              location={location}
+              data={data}
+              total={total}
+              handleCountryChange={handleCountryChange}
+            />
           </Grid>
           <Grid item xs={12} lg={12}>
-            <World data={data} location="world" timestamp={timestamp} />
+            <World data={data} location={location} timestamp={timestamp} />
           </Grid>
         </Grid>
         <Grid item xs={12} lg={8}>
-          <Summary country="world" total={total} />
-          <InfoBoard country="world" data={data} />
-        </Grid>
-
-        <Grid id="map-usa" container item xs={12} lg={6}>
-          <Grid item xs={12} lg={12}>
-            <InfoBanner location="USA" data={dataUSA} total={totalUSA} />
-          </Grid>
-          <Grid item xs={12} lg={12}>
-            <Country data={dataUSA} location="USA" timestamp={timestampUSA} />
-          </Grid>
-        </Grid>
-        <Grid item xs={12} lg={6}>
-          <Summary country="USA" total={totalUSA} />
-          <InfoBoard country="USA" data={dataUSA} />
-        </Grid>
-
-        <Grid id="map-au" container item xs={12} lg={6}>
-          <Grid item xs={12} lg={12}>
-            <InfoBanner location="AUSTRALIA" data={dataUSA} total={totalUSA} />
-          </Grid>
-          <Grid item xs={12} lg={12}>
-            <Country
-              data={dataUSA}
-              location="AUSTRALIA"
-              timestamp={timestampUSA}
-            />
-          </Grid>
-        </Grid>
-        <Grid item xs={12} lg={6}>
-          <Summary country="AUSTRALIA" total={totalUSA} />
-          <InfoBoard country="AUSTRALIA" data={dataUSA} />
+          <Summary country={location} total={total} />
+          <InfoBoard country={location} data={data} />
         </Grid>
       </SiteContent>
     </Layout>

@@ -45,12 +45,7 @@ export default function NotificationBanner({location, data, total}) {
     <Container>
       <Grid container spacing={2}>
         <Grid item xs={12} lg={12}>
-          Update: Added USA board under world map 🇺🇸
-          <br />
-          👉👉👉{' '}
-          <ButtonTxt variant="contained" color="primary">
-            <a href="#map-usa">USA Board</a>
-          </ButtonTxt>
+          Update: Added AUS 🇦🇺 USA 🇺🇸
           <br />
           Thanks for visiting 😊 <br />
           If you like this site, please share to your family and friends.
