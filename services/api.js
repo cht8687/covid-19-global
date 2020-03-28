@@ -1,7 +1,8 @@
-export const API_BASE = 'https://covid-19.slj.me/api';
+export const API_BASE_V1 = 'https://covid-19.slj.me/api';
+export const API_BASE_V2 = 'https://covid-19.slj.me/api/v2';
 
 export const getGlobalToday = async () =>
-  await fetch(`${API_BASE}/global/today`, {
+  await fetch(`${API_BASE_V1}/global/today`, {
     method: 'GET',
     headers: {},
   })
@@ -9,7 +10,15 @@ export const getGlobalToday = async () =>
     .then(res => res.json());
 
 export const getUSAToday = async () =>
-  await fetch(`${API_BASE}/us/today`, {
+  await fetch(`${API_BASE_V2}/latest/us`, {
+    method: 'GET',
+    headers: {},
+  })
+    .then(res => (res.ok ? res : Promise.reject(res)))
+    .then(res => res.json());
+
+export const getAustraliaToday = async () =>
+  await fetch(`${API_BASE_V2}/latest/Australia`, {
     method: 'GET',
     headers: {},
   })

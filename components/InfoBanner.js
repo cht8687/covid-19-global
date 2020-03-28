@@ -113,7 +113,7 @@ export default function InfoBanner({
                 },
               }}>
               {COUNTRY_SELECTIONS.map((country, index) => (
-                <option key={index} value={country} disabled={index === 2}>
+                <option key={index} value={country}>
                   {upperCase(country)}
                 </option>
               ))}

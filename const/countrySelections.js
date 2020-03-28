@@ -1,1 +1,1 @@
-export const COUNTRY_SELECTIONS = ['world', 'usa', 'australia(comming)'];
+export const COUNTRY_SELECTIONS = ['world', 'usa', 'australia'];

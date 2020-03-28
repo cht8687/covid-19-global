@@ -5,7 +5,18 @@ require('echarts-countries-js/echarts-countries-js/USA.js');
 require('echarts-countries-js/echarts-countries-js/Australia.js');
 import {options} from '../mapData/country';
 import CircularProgress from '@material-ui/core/CircularProgress';
-import {curry, reduce, assoc, keys, compose, map, pick} from 'ramda';
+import {
+  curry,
+  reduce,
+  assoc,
+  keys,
+  compose,
+  map,
+  pick,
+  sort,
+  descend,
+  prop,
+} from 'ramda';
 import {mapOptionNameMapping} from '../mapData/mapNameMapping';
 
 const renameKeys = curry((keysMap, obj) =>
@@ -30,15 +41,15 @@ const ReactEchartsContainer = styled(ReactEcharts)`
   width: 100%;
 `;
 
-export default function USA({data, location, timestamp}) {
+export default function country({data, location, timestamp}) {
   let total, list, dataToRender;
-  if (data) {
+  if (data && data.type && data.type === 'country') {
     total = data.total;
     list = data.list;
     dataToRender = compose(
-      map(renameKeys({state: 'name'})),
+      map(renameKeys({province_state: 'name'})),
       map(renameKeys({total_cases: 'value'})),
-      map(pick(['state', 'total_cases'])),
+      map(pick(['province_state', 'total_cases'])),
     )(list);
   }
   return (

@@ -30,8 +30,11 @@ export const options = (name, data, total, timestamp) => ({
   },
   visualMap: {
     left: 'right',
+    bottom: '50',
     min: 0,
     max: data[0].value,
+    realtime: false,
+    calculable: true,
     textStyle: {
       color: '#fff',
     },
@@ -55,7 +58,7 @@ export const options = (name, data, total, timestamp) => ({
     calculable: true,
   },
   toolbox: {
-    show: true,
+    show: false,
     //orient: 'vertical',
     left: 'left',
     top: 'top',

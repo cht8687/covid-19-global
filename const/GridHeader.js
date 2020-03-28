@@ -12,10 +12,14 @@ export const GRID_HEADER = [
 ];
 
 export const SNAKE_TO_NORMAL = {
-  state: 'State',
+  country_region: 'State',
+  province_state: 'State',
   total_cases: 'Confirmed',
-  new_cases: 'New Cases',
   total_deaths: 'Total Deceased',
-  new_deaths: 'New Deceased',
   active_cases: 'Active Cases',
+  recovered: 'Recovered',
+  new_cases: 'New Cases',
+  new_deaths: 'New Deceased',
+  new_active_cases: 'New Active',
+  new_recovered: 'New Recovered',
 };

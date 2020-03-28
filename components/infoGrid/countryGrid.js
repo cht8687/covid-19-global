@@ -3,6 +3,7 @@ import {Grid, ScrollSync, AutoSizer} from 'react-virtualized';
 import clsx from 'clsx';
 import {SNAKE_TO_NORMAL} from '../../const/GridHeader';
 import formatNumber from '../../utilities/formatNumber';
+import formatCell from '../../utilities/formatCellValue';
 import getValueFromArray from '../../utilities/getValueFromArray';
 import colours from '../../styles/colours';
 import {
@@ -32,33 +33,23 @@ import {
 
 export default function CountryGrid({data}) {
   if (!data) return null;
-  const {total, list} = data;
+  let {total, list} = data;
   const toIndividualKeys = pipe(toPairs, map(pipe(of, fromPairs)));
 
   const totalArray = toIndividualKeys(total);
   const countryArray = map(toIndividualKeys)(list);
   const displayList = [totalArray, ...countryArray];
 
-  const GRID_HEADER = compose(
-    flatten,
-    map(
-      map(keys),
-
-      head,
-    ),
-  )(displayList);
-  console.log('changed to: ', displayList.length);
-
-  useEffect(() => {}, []);
+  const GRID_HEADER = compose(flatten, map(map(keys), head))(displayList);
 
   const styles = useStyles();
   const [state, setState] = useState({
     leftColumnWidth: 150,
     columnWidth: 150,
-    columnCount: 6,
+    columnCount: GRID_HEADER.length,
     height: 600,
-    overscanColumnCount: 5,
-    overscanRowCount: 5,
+    overscanColumnCount: GRID_HEADER.length,
+    overscanRowCount: GRID_HEADER.length,
     rowHeight: 40,
     rowCount: displayList.length,
   });
@@ -105,35 +96,37 @@ export default function CountryGrid({data}) {
     const value = values(cellValue)[0];
     switch (type) {
       case 'total_cases':
-        return <TotalCase>{formatNumber(value)}</TotalCase>;
+        return <TotalCase>{formatCell(value)}</TotalCase>;
         break;
       case 'new_cases':
-        return <NewCase>+{formatNumber(value)}</NewCase>;
+        return <NewCase>{formatCell(value)}</NewCase>;
         break;
       case 'total_deaths':
-        return <TotalDeceased>{formatNumber(value)}</TotalDeceased>;
+        return <TotalDeceased>{formatCell(value)}</TotalDeceased>;
         break;
       case 'new_deaths':
-        return <NewDeceased>+{formatNumber(value)}</NewDeceased>;
+        return <NewDeceased>{formatCell(value, true)}</NewDeceased>;
         break;
-      case 'total_recovered':
-        return <TotalRecovered>{formatNumber(value)}</TotalRecovered>;
+      case 'recovered':
+        return <TotalRecovered>{formatCell(value)}</TotalRecovered>;
+        break;
+      case 'new_recovered':
+        return <TotalRecovered>{formatCell(value, true)}</TotalRecovered>;
         break;
       case 'active_cases':
-        return <ActiveCases>{formatNumber(value)}</ActiveCases>;
+        return <ActiveCases>{formatCell(value)}</ActiveCases>;
+        break;
+      case 'new_active_cases':
+        return <ActiveCases>{formatCell(value, true)}</ActiveCases>;
         break;
       case 'serious_critical':
-        return <SeriousCases>{formatNumber(value)}</SeriousCases>;
+        return <SeriousCases>{formatCell(value)}</SeriousCases>;
         break;
       case 'tot_cases_per_1m_pop':
-        return (
-          <TotalCasesPer1mPopul>{formatNumber(value)}</TotalCasesPer1mPopul>
-        );
+        return <TotalCasesPer1mPopul>{formatCell(value)}</TotalCasesPer1mPopul>;
         break;
       case 'tot_deaths_per_1m_pop':
-        return (
-          <TotalDeathPer1mPopul>{formatNumber(value)}</TotalDeathPer1mPopul>
-        );
+        return <TotalDeathPer1mPopul>{formatCell(value)}</TotalDeathPer1mPopul>;
         break;
       default:
       // code block
@@ -151,7 +144,9 @@ export default function CountryGrid({data}) {
         : styles.oddRow;
     const classNames = clsx(rowClass, styles.leftCell);
 
-    const state = getValueFromArray('state')(displayList[rowIndex]);
+    const state =
+      getValueFromArray('province_state')(displayList[rowIndex]) ||
+      getValueFromArray('country_region')(displayList[rowIndex]);
 
     if (columnIndex < 1) {
       return (

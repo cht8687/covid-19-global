@@ -8,12 +8,24 @@ import Country from '../components/maps/country';
 import InfoBoard from '../components/infoBoard';
 import Summary from '../components/summary';
 import Grid from '@material-ui/core/Grid';
-import {getGlobalToday, getUSAToday} from '../services/api';
+import {getGlobalToday, getUSAToday, getAustraliaToday} from '../services/api';
 import {useAsync} from 'react-async';
 import 'whatwg-fetch';
 import Layout from '../components/MyLayout';
 import InfoBanner from '../components/InfoBanner';
 import NotificationBanner from '../components/notificationBanner';
+import {
+  curry,
+  reduce,
+  assoc,
+  keys,
+  compose,
+  map,
+  pick,
+  sort,
+  descend,
+  prop,
+} from 'ramda';
 
 const SiteContent = styled(Grid)`
   padding-top: 66px;
@@ -28,13 +40,23 @@ export default function Index() {
       promiseFn: getUSAToday,
     },
   );
+  const {
+    data: dataAustraliaRaw,
+    error: errorAustralia,
+    isLoading: isLoadingAustralia,
+  } = useAsync({
+    promiseFn: getAustraliaToday,
+  });
 
   const [toDisplayData, setToDisplayData] = useState('');
   const [toDisplayDataWorld, setToDisplayDataWorld] = useState('');
   const [toDisplayDataUSA, setToDisplayDataUSA] = useState('');
+  const [toDisplayDataAustralia, setToDisplayDataAustralia] = useState('');
   const [toDisplayTotal, setToDisplayTotal] = useState('');
   const [toDisplayTimestamp, setToDisplayTimestamp] = useState('');
   const [location, setLocation] = useState('world');
+
+  const sortList = compose(sort(descend(prop('total_cases'))));
 
   useEffect(() => {
     if (dataWorldRaw && location === 'world') {
@@ -44,17 +66,40 @@ export default function Index() {
       setToDisplayTotal(total);
       setToDisplayTimestamp(timestamp);
     }
+    /* Ok, time is real tight to release, I can't figure out
+     * a re-render issue, so let's repeat some code */
     if (dataUSARaw && location === 'usa') {
-      const {total, timestamp} = dataUSARaw;
-      setToDisplayData(dataUSARaw);
-      setToDisplayDataUSA(dataUSARaw);
-      setToDisplayTotal(total);
+      const {country, states: list, timestamp} = dataUSARaw;
+      let sortedList = sortList(list);
+      const toDisplay = {
+        total: country[0],
+        list: sortedList,
+        type: 'country',
+      };
+      setToDisplayData(toDisplay);
+      setToDisplayDataUSA(toDisplay);
+      setToDisplayTotal(country[0]);
       setToDisplayTimestamp(timestamp);
     }
-  }, [dataWorldRaw, dataUSARaw, location]);
+    /* Ok, time is real tight to release, I can't figure out
+     * a re-render issue, so let's repeat some code */
+    if (dataAustraliaRaw && location === 'australia') {
+      const {country, states: list, timestamp} = dataAustraliaRaw;
+      let sortedList = sortList(list);
+      const toDisplay = {
+        total: country[0],
+        list: sortedList,
+        type: 'country',
+      };
+      setToDisplayData(toDisplay);
+      setToDisplayDataAustralia(toDisplay);
+      setToDisplayTotal(country[0]);
+      setToDisplayTimestamp(timestamp);
+    }
+  }, [dataWorldRaw, dataUSARaw, dataAustraliaRaw, location]);
 
   const handleCountryChange = e => {
-    if (e.target.value !== 'australia') {
+    if (e.target.value) {
       setLocation(e.target.value);
     }
   };
@@ -99,7 +144,7 @@ export default function Index() {
             <InfoBoard country={location} data={toDisplayDataUSA} />
           )}
           {location === 'australia' && (
-            <InfoBoard country={location} data={toDisplayDataUSA} />
+            <InfoBoard country={location} data={toDisplayDataAustralia} />
           )}
         </Grid>
       </SiteContent>
