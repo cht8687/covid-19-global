@@ -8,6 +8,8 @@ import {GRID_HEADER} from '../../const/GridHeader';
 import styled from 'styled-components';
 import getCountryName from '../../const/isoToName';
 import getValueFromArray from '../../utilities/getValueFromArray';
+import formatCell from '../../utilities/formatCellValue';
+
 import {
   pipe,
   toPairs,
@@ -100,38 +102,39 @@ export default function WorldGrid({data}) {
     const value = values(cellValue)[0];
     switch (type) {
       case 'total_cases':
-        return <TotalCase>{formatNumber(value)}</TotalCase>;
+        return <TotalCase>{formatCell(value)}</TotalCase>;
         break;
       case 'new_cases':
-        return <NewCase>+{formatNumber(value)}</NewCase>;
+        return <NewCase>{formatCell(value)}</NewCase>;
         break;
       case 'total_deaths':
-        return <TotalDeceased>{formatNumber(value)}</TotalDeceased>;
+        return <TotalDeceased>{formatCell(value)}</TotalDeceased>;
         break;
       case 'new_deaths':
-        return <NewDeceased>+{formatNumber(value)}</NewDeceased>;
+        return <NewDeceased>{formatCell(value, true)}</NewDeceased>;
         break;
-      case 'total_recovered':
-        return <TotalRecovered>{formatNumber(value)}</TotalRecovered>;
+      case 'recovered':
+        return <TotalRecovered>{formatCell(value)}</TotalRecovered>;
+        break;
+      case 'new_recovered':
+        return <TotalRecovered>{formatCell(value, true)}</TotalRecovered>;
         break;
       case 'active_cases':
-        return <ActiveCases>{formatNumber(value)}</ActiveCases>;
+        return <ActiveCases>{formatCell(value)}</ActiveCases>;
+        break;
+      case 'new_active_cases':
+        return <ActiveCases>{formatCell(value, true)}</ActiveCases>;
         break;
       case 'serious_critical':
-        return <SeriousCases>{formatNumber(value)}</SeriousCases>;
+        return <SeriousCases>{formatCell(value)}</SeriousCases>;
         break;
       case 'tot_cases_per_1m_pop':
-        return (
-          <TotalCasesPer1mPopul>{formatNumber(value)}</TotalCasesPer1mPopul>
-        );
+        return <TotalCasesPer1mPopul>{formatCell(value)}</TotalCasesPer1mPopul>;
         break;
       case 'tot_deaths_per_1m_pop':
-        return (
-          <TotalDeathPer1mPopul>{formatNumber(value)}</TotalDeathPer1mPopul>
-        );
+        return <TotalDeathPer1mPopul>{formatCell(value)}</TotalDeathPer1mPopul>;
         break;
       default:
-      // code block
     }
   };
 

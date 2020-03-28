@@ -20,7 +20,7 @@ const theme = createMuiTheme({
         color: colours.dimWhite,
         backgroundColor: colours.primaryBlue,
         borderRadius: 0,
-        fontSize: 18,
+        fontSize: 16,
         padding: '5px 10px',
         width: 'calc(100% - 24px)',
       },
