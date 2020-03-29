@@ -26,7 +26,7 @@ const Title = styled.div`
   color: #ffffb3;
   font-size: 25px;
   text-align: center;
-  padding: 20px 0 20px 0;
+  padding: 30px 0 20px 0;
 `;
 
 const ButtonControl = styled.div`

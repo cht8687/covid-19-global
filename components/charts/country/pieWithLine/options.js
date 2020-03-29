@@ -86,7 +86,7 @@ export const options = ({source}) => ({
       type: 'pie',
       id: 'pie',
       radius: '35%',
-      center: ['50%', '30%'],
+      center: ['50%', '35%'],
       label: {
         formatter: '{b}:({d}%)',
         textStyle: {},
