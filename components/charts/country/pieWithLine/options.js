@@ -6,13 +6,11 @@ export const options = ({source}) => ({
       color: colours.dimWhite,
     },
     inactiveColor: 'grey',
-    borderRadius: 5,
   },
   tooltip: {
     trigger: 'axis',
     showContent: false,
   },
-  toolbox: {},
   dataset: {
     source,
   },
@@ -87,7 +85,7 @@ export const options = ({source}) => ({
       type: 'pie',
       id: 'pie',
       radius: '35%',
-      center: ['50%', '25%'],
+      center: ['50%', '30%'],
       label: {
         formatter: '{b}:({d}%)',
         textStyle: {},
