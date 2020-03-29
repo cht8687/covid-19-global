@@ -24,3 +24,11 @@ export const getAustraliaToday = async () =>
   })
     .then(res => (res.ok ? res : Promise.reject(res)))
     .then(res => res.json());
+
+export const getCountryStateDaily = async state =>
+  await fetch(`${API_BASE_V2}/daily/${state}`, {
+    method: 'GET',
+    headers: {},
+  })
+    .then(res => (res.ok ? res : Promise.reject(res)))
+    .then(res => res.json());

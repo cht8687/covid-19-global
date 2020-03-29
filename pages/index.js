@@ -26,6 +26,7 @@ import {
   descend,
   prop,
 } from 'ramda';
+import CountryPieWithLineCharts from '../components/charts/country/pieWithLine/pieWithLine';
 
 const SiteContent = styled(Grid)`
   padding-top: 66px;
@@ -145,6 +146,12 @@ export default function Index() {
           )}
           {location === 'australia' && (
             <InfoBoard country={location} data={toDisplayDataAustralia} />
+          )}
+        </Grid>
+
+        <Grid item xs={12} lg={location === 'world' ? 8 : 6}>
+          {location === 'australia' && (
+            <CountryPieWithLineCharts country={location} />
           )}
         </Grid>
       </SiteContent>
