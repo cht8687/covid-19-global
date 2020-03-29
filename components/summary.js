@@ -69,13 +69,6 @@ const NumBlock = styled(Grid)`
 `;
 
 export default function Summary({total}) {
-  const {
-    total_cases,
-    total_deaths,
-    active_cases,
-    serious_critical,
-    total_recovered,
-  } = total;
   return (
     <Container>
       {!total ? (
@@ -85,20 +78,25 @@ export default function Summary({total}) {
           <Grid item xs={12} lg={12}>
             <Grid container spacing={2}>
               <NumBlock item xs={3} lg={3}>
-                <Confirmed>{formatNumber(total_cases)}</Confirmed> Confirmed
+                <Confirmed>{formatNumber(total.total_cases)}</Confirmed>{' '}
+                Confirmed
               </NumBlock>
               <NumBlock item xs={3} lg={3}>
-                <Deceased>{formatNumber(total_deaths)}</Deceased> Deceased
+                <Deceased>{formatNumber(total.total_deaths)}</Deceased> Deceased
               </NumBlock>
               <NumBlock item xs={3} lg={3}>
                 <Serious>
-                  {!serious_critical ? 'N/A' : formatNumber(serious_critical)}
+                  {!total.serious_critical
+                    ? 'N/A'
+                    : formatNumber(total.serious_critical)}
                 </Serious>{' '}
                 Critical
               </NumBlock>
               <NumBlock item xs={3} lg={3}>
                 <Recovered>
-                  {!total_recovered ? 'N/A' : formatNumber(total_recovered)}
+                  {!total.total_recovered
+                    ? 'N/A'
+                    : formatNumber(total.total_recovered)}
                 </Recovered>
                 Recovered
               </NumBlock>
