@@ -1,4 +1,5 @@
 import colours from '../../../../styles/colours';
+import {last} from 'ramda';
 
 export const options = ({source}) => ({
   legend: {
@@ -92,8 +93,8 @@ export const options = ({source}) => ({
       },
       encode: {
         itemName: 'state',
-        value: source[0][2],
-        tooltip: source[0][2],
+        value: last(source[0]),
+        tooltip: last(source[0]),
       },
     },
   ],
