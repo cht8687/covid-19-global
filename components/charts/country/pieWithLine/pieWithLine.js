@@ -38,20 +38,38 @@ export default function CountryPieWithLineCharts({location}) {
       promises.push(getCountryStateDaily(location, state));
     });
     Promise.all(promises).then(function(values) {
-      console.log(JSON.stringify(values));
-      firstDateRow = R.compose(
-        R.reverse(),
-        R.take(14),
-        R.map(R.prop('data_date')),
-        R.flatten,
+      const datesArray = R.compose(
+        R.map(R.map(R.path(['data_date']))),
         R.map(R.prop('suburbs')),
       )(values);
 
+      let longestChildren = 0;
+      let longestChildrenIndex = 0;
+      datesArray.forEach((array, index) => {
+        if (array.length > longestChildren) {
+          longestChildren = array.length;
+          longestChildrenIndex = index;
+        }
+      });
+
+      firstDateRow = R.prepend(
+        'state',
+        R.reverse(datesArray[longestChildrenIndex]),
+      );
+
       source = R.compose(
         R.prepend(firstDateRow),
-        R.map(R.compose(R.reverse, R.take(14), R.map(R.path(['confirmed'])))),
+        R.map(R.compose(R.map(R.path(['confirmed'])))),
         R.map(R.path(['suburbs'])),
       )(values);
+
+      source = source.map((array, index) => {
+        if (index !== longestChildrenIndex) {
+          const tails = R.repeat(0, longestChildren - array.length);
+          return [...array, ...tails].reverse();
+        }
+        return array;
+      });
 
       statesInfo = R.compose(
         R.prepend('state'),
@@ -63,6 +81,7 @@ export default function CountryPieWithLineCharts({location}) {
       source = statesInfo.map((state, index) =>
         R.prepend(state)(source[index]),
       );
+      source[0].shift();
       setSource(source);
       setOptionData(options({source}));
     });

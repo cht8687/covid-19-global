@@ -115,12 +115,12 @@ export default function Index() {
   return (
     <Layout>
       <SiteContent container spacing={1}>
-        <Grid item xs={12} lg={12}>
+        <Grid item xs={12} lg={12} style={{paddingBottom: '15px'}}>
           {(location === 'australia' || location === 'world') && (
             <>
               <NewFeature item xs={12} lg={12}>
-                New Feature 👉 Australia daily trend chart <br />
-                Click on the legends to make your own comparision.
+                New Feature 👉 Australia daily confirmed cases chart <br />
+                Click/Tap on the legends or Lines to make your own comparision.
               </NewFeature>
               <CountryPieWithLineCharts location={location} />
             </>
