@@ -36,6 +36,7 @@ const SiteContent = styled(Grid)`
 const NewFeature = styled(Grid)`
   color: #ffffb3;
   text-align: center;
+  font-size: 16px;
 `;
 
 export default function Index() {
@@ -118,8 +119,8 @@ export default function Index() {
           {(location === 'australia' || location === 'world') && (
             <>
               <NewFeature item xs={12} lg={12}>
-                New Feature 👉 Australia states daily chart <br />
-                Click on the legends to make your own comparision
+                New Feature 👉 Australia daily trend chart <br />
+                Click on the legends to make your own comparision.
               </NewFeature>
               <CountryPieWithLineCharts location={location} />
             </>
