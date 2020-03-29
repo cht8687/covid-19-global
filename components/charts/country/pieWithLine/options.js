@@ -1,38 +1,85 @@
-export const options = () => ({
-  legend: {},
+import colours from '../../../../styles/colours';
+
+export const options = ({source}) => ({
+  legend: {
+    textStyle: {
+      color: colours.dimWhite,
+    },
+    inactiveColor: 'grey',
+  },
   tooltip: {
     trigger: 'axis',
     showContent: false,
   },
   dataset: {
-    source: [
-      ['product', '2012', '2013', '2014', '2015', '2016', '2017'],
-      ['Matcha Latte', 41.1, 30.4, 65.1, 53.3, 83.8, 98.7],
-      ['Milk Tea', 86.5, 92.1, 85.7, 83.1, 73.4, 55.1],
-      ['Cheese Cocoa', 24.1, 67.2, 79.5, 86.4, 65.2, 82.5],
-      ['Walnut Brownie', 55.2, 67.1, 69.2, 72.4, 53.9, 39.1],
-    ],
+    source,
   },
-  xAxis: {type: 'category'},
-  yAxis: {gridIndex: 0},
-  grid: {top: '55%'},
+  xAxis: {
+    type: 'category',
+    axisLabel: {
+      textStyle: {
+        color: colours.dimWhite,
+      },
+    },
+  },
+  yAxis: {
+    gridIndex: 0,
+    axisLabel: {
+      textStyle: {
+        color: colours.dimWhite,
+      },
+    },
+  },
+  grid: {top: '55%', y: 50, y2: 90},
   series: [
-    {type: 'line', smooth: true, seriesLayoutBy: 'row'},
-    {type: 'line', smooth: true, seriesLayoutBy: 'row'},
-    {type: 'line', smooth: true, seriesLayoutBy: 'row'},
-    {type: 'line', smooth: true, seriesLayoutBy: 'row'},
+    {
+      type: 'line',
+      smooth: true,
+      seriesLayoutBy: 'row',
+    },
+    {
+      type: 'line',
+      smooth: true,
+      seriesLayoutBy: 'row',
+    },
+    {
+      type: 'line',
+      smooth: true,
+      seriesLayoutBy: 'row',
+    },
+    {
+      type: 'line',
+      smooth: true,
+      seriesLayoutBy: 'row',
+    },
+    {
+      type: 'line',
+      smooth: true,
+      seriesLayoutBy: 'row',
+    },
+    {
+      type: 'line',
+      smooth: true,
+      seriesLayoutBy: 'row',
+    },
+    {
+      type: 'line',
+      smooth: true,
+      seriesLayoutBy: 'row',
+    },
     {
       type: 'pie',
       id: 'pie',
-      radius: '30%',
+      radius: '35%',
       center: ['50%', '25%'],
       label: {
-        formatter: '{b}: {@2012} ({d}%)',
+        formatter: '{b}:({d}%)',
+        textStyle: {},
       },
       encode: {
-        itemName: 'product',
-        value: '2012',
-        tooltip: '2012',
+        itemName: 'state',
+        value: source[0][2],
+        tooltip: source[0][2],
       },
     },
   ],

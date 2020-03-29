@@ -14,6 +14,7 @@ import 'whatwg-fetch';
 import Layout from '../components/MyLayout';
 import InfoBanner from '../components/InfoBanner';
 import NotificationBanner from '../components/notificationBanner';
+import colours from '../styles/colours';
 import {
   curry,
   reduce,
@@ -30,6 +31,11 @@ import CountryPieWithLineCharts from '../components/charts/country/pieWithLine/p
 
 const SiteContent = styled(Grid)`
   padding-top: 66px;
+`;
+
+const NewFeature = styled(Grid)`
+  color: #ffffb3;
+  text-align: center;
 `;
 
 export default function Index() {
@@ -108,6 +114,17 @@ export default function Index() {
   return (
     <Layout>
       <SiteContent container spacing={1}>
+        <Grid item xs={12} lg={12}>
+          {(location === 'australia' || location === 'world') && (
+            <>
+              <NewFeature item xs={12} lg={12}>
+                New Feature 👉 Australia states daily chart <br />
+                Click on the legends to make your own comparision
+              </NewFeature>
+              <CountryPieWithLineCharts location={location} />
+            </>
+          )}
+        </Grid>
         <Grid container item xs={12} lg={location === 'world' ? 4 : 6}>
           <Grid item xs={12} lg={12}>
             <NotificationBanner />
@@ -146,12 +163,6 @@ export default function Index() {
           )}
           {location === 'australia' && (
             <InfoBoard country={location} data={toDisplayDataAustralia} />
-          )}
-        </Grid>
-
-        <Grid item xs={12} lg={location === 'world' ? 8 : 6}>
-          {location === 'australia' && (
-            <CountryPieWithLineCharts country={location} />
           )}
         </Grid>
       </SiteContent>
