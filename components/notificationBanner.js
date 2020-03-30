@@ -42,15 +42,11 @@ export default function NotificationBanner({location, data, total}) {
     <Container>
       <Grid container spacing={2}>
         <Grid item xs={12} lg={12}>
-          Update:
           <ul>
             <li>
               🇦🇺Australia daily confirmed cases chart is added! 🎉🎉🎉 🦘🦘
             </li>
           </ul>
-          Thanks for visiting 😊 <br />
-          Wish you and your family are safe and healthy.
-          <br />
           Any suggestions/feedbacks, can send to our Telegram group:{' '}
           <a href="https://t.me/covid19boards" target="_blank">
             {' '}

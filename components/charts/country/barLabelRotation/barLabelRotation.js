@@ -156,7 +156,7 @@ export default function CountryBarLabelRotation({location}) {
           ref={chartRef}
           option={optionData}
           notMerge={true}
-          style={{height: '60vh', width: '100%'}}
+          style={{height: '50vh', width: '100%'}}
           onEvents={onEvents}
         />
       )}

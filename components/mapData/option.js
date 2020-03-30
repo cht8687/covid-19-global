@@ -29,21 +29,43 @@ export const options = (name, data, total, timestamp) => ({
     },
   },
   toolbox: {
-    show: false,
-    orient: 'vertical',
-    left: 'right',
-    top: 'center',
+    show: true,
+    orient: 'horizontal',
+    bottom: 'center',
+    left: 'center',
+    bottom: '20%',
     feature: {
-      dataView: {readOnly: false},
-      restore: {},
-      saveAsImage: {},
+      restore: {
+        show: true,
+        title: 'restore map',
+      },
+    },
+    iconStyle: {
+      color: {
+        type: 'linear',
+        x: 0,
+        y: 0,
+        x2: 0,
+        y2: 1,
+        colorStops: [
+          {
+            offset: 0,
+            color: 'white', // color at 0% position
+          },
+          {
+            offset: 1,
+            color: 'yellow', // color at 100% position
+          },
+        ],
+        global: false, // false by default
+      },
     },
   },
   visualMap: {
     left: 'left',
     top: '50%',
     min: 0,
-    max: 10000,
+    max: 15000,
     text: ['High', 'Low'],
     realtime: false,
     calculable: true,

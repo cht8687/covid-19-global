@@ -118,6 +118,26 @@ export default function Index() {
   return (
     <Layout>
       <SiteContent container spacing={1}>
+        <Grid item xs={12} lg={6}>
+          <NotificationBanner />
+        </Grid>
+        <Grid item xs={12} lg={6}>
+          <InfoBanner
+            location={location}
+            data={toDisplayData}
+            total={toDisplayTotal}
+            handleCountryChange={handleCountryChange}
+          />
+        </Grid>
+        <Grid item xs={12} lg={12} style={{paddingBottom: '15px'}}>
+          {(location === 'australia' || location === 'world') && (
+            <>
+              <NewFeature item xs={12} lg={12}>
+                Featured Charts
+              </NewFeature>
+            </>
+          )}
+        </Grid>
         <Grid item xs={12} lg={6} style={{paddingBottom: '15px'}}>
           {(location === 'australia' || location === 'world') && (
             <>
@@ -138,17 +158,9 @@ export default function Index() {
             </>
           )}
         </Grid>
-        <Grid container item xs={12} lg={location === 'world' ? 4 : 6}>
+        <Grid container item xs={12} lg={12}>
           <Grid item xs={12} lg={12}>
-            <NotificationBanner />
-          </Grid>
-          <Grid item xs={12} lg={12}>
-            <InfoBanner
-              location={location}
-              data={toDisplayData}
-              total={toDisplayTotal}
-              handleCountryChange={handleCountryChange}
-            />
+            <Summary country={location} total={toDisplayTotal} />
           </Grid>
           <Grid item xs={12} lg={12}>
             {location === 'world' ? (
@@ -166,8 +178,7 @@ export default function Index() {
             )}
           </Grid>
         </Grid>
-        <Grid item xs={12} lg={location === 'world' ? 8 : 6}>
-          <Summary country={location} total={toDisplayTotal} />
+        <Grid item xs={12} lg={12}>
           {location === 'world' && (
             <InfoBoard country={location} data={toDisplayDataWorld} />
           )}

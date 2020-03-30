@@ -32,39 +32,30 @@ export const options = (name, data, total, timestamp) => ({
     left: 'right',
     bottom: '50',
     min: 0,
-    max: data[0].value,
+    max: 10000,
     realtime: false,
     calculable: true,
     textStyle: {
       color: '#fff',
     },
     inRange: {
-      color: [
-        '#ffebcd',
-        '#4575b4',
-        '#74add1',
-        '#abd9e9',
-        '#e0f3f8',
-        '#ffffbf',
-        '#fee090',
-        '#fdae61',
-        '#f46d43',
-        '#d73027',
-        '#a50026',
-      ],
+      color: ['#ffd8c9', '#eeb39d', '#db8e73', '#c66a4c', '#af4527', '#961700'],
     },
 
-    text: ['High', 'Low'], // 文本，默认为数值文本
+    text: ['High', 'Low'],
     calculable: true,
   },
   toolbox: {
-    show: false,
+    show: true,
     //orient: 'vertical',
     left: 'left',
     top: 'top',
     feature: {
       dataView: {readOnly: false},
-      restore: {},
+      restore: {
+        show: true,
+        title: 'restore',
+      },
       saveAsImage: {},
     },
   },
