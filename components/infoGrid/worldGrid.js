@@ -55,7 +55,7 @@ export default function WorldGrid({data}) {
     leftColumnWidth: 150,
     columnWidth: 150,
     columnCount: 10,
-    height: 600,
+    height: 800,
     overscanColumnCount: 5,
     overscanRowCount: 5,
     rowHeight: 40,

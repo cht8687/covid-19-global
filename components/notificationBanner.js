@@ -44,7 +44,9 @@ export default function NotificationBanner({location, data, total}) {
         <Grid item xs={12} lg={12}>
           Update:
           <ul>
-            <li>🇦🇺Australia map is added! 🎉🎉🎉 🦘🦘🦘🦘🦘</li>
+            <li>
+              🇦🇺Australia daily confirmed cases chart is added! 🎉🎉🎉 🦘🦘
+            </li>
           </ul>
           Thanks for visiting 😊 <br />
           Wish you and your family are safe and healthy.

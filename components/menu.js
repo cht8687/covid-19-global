@@ -16,7 +16,7 @@ const useStyles = makeStyles(theme => ({
     color: 'blue',
   },
   listIcon: {
-    minWidth: '29px'
+    minWidth: '29px',
   },
 }));
 
@@ -47,15 +47,6 @@ export default function MenuItems() {
             <InfoIcon />
           </ListItemIcon>
           <ListItemText primary="About us" />
-        </ListItem>
-      </Link>
-      <Link href="/about-us">
-        <ListItem
-          button>
-         <ListItemIcon className={classes.listIcon}>
-            <EqualizerIcon />
-          </ListItemIcon>
-          <ListItemText primary="Charts(comming)" />
         </ListItem>
       </Link>
     </React.Fragment>

@@ -14,6 +14,7 @@ import 'whatwg-fetch';
 import Layout from '../components/MyLayout';
 import InfoBanner from '../components/InfoBanner';
 import NotificationBanner from '../components/notificationBanner';
+import colours from '../styles/colours';
 import {
   curry,
   reduce,
@@ -26,9 +27,18 @@ import {
   descend,
   prop,
 } from 'ramda';
+import CountryPieWithLineCharts from '../components/charts/country/pieWithLine/pieWithLine';
+import CountryBarLabelRotation from '../components/charts/country/barLabelRotation/barLabelRotation';
 
 const SiteContent = styled(Grid)`
   padding-top: 66px;
+`;
+
+const NewFeature = styled(Grid)`
+  color: ${colours.dimWhite};
+  text-align: center;
+  font-size: 16px;
+  font-weight: bold;
 `;
 
 export default function Index() {
@@ -107,6 +117,26 @@ export default function Index() {
   return (
     <Layout>
       <SiteContent container spacing={1}>
+        <Grid item xs={12} lg={6} style={{paddingBottom: '15px'}}>
+          {(location === 'australia' || location === 'world') && (
+            <>
+              <NewFeature item xs={12} lg={12}>
+                Australia Daily Confirmed Cases
+              </NewFeature>
+              <CountryBarLabelRotation location={location} />
+            </>
+          )}
+        </Grid>
+        <Grid item xs={12} lg={6} style={{paddingBottom: '15px'}}>
+          {(location === 'australia' || location === 'world') && (
+            <>
+              <NewFeature item xs={12} lg={12}>
+                Australia Total Confirmed Cases
+              </NewFeature>
+              <CountryPieWithLineCharts location={location} />
+            </>
+          )}
+        </Grid>
         <Grid container item xs={12} lg={location === 'world' ? 4 : 6}>
           <Grid item xs={12} lg={12}>
             <NotificationBanner />
