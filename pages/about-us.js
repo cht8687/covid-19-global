@@ -2,18 +2,10 @@ import React from 'react';
 import KoFi from '../components/kofi/kofi';
 import Grid from '@material-ui/core/Grid';
 import styled from 'styled-components';
-import PaperImp from '@material-ui/core/Paper';
 import Button from '@material-ui/core/Button';
 import {useRouter} from 'next/router';
 import Layout from '../components/MyLayout';
-
-const Paper = styled(PaperImp)`
-  height: 140;
-  width: 100;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-`;
+import colours from '../styles/colours';
 
 const Control = styled.div`
   display: flex;
@@ -23,23 +15,23 @@ const Control = styled.div`
 `;
 
 const Title = styled.div`
-  color: #ffffb3;
-  font-size: 25px;
+  text-align: left;
+  padding-top: 25px;
+  color: ${colours.dimWhite};
   text-align: center;
-  padding: 30px 0 20px 0;
+  font-size: 16px;
+  font-weight: bold;
 `;
 
 const ButtonControl = styled.div`
-  margin-top: 50px;
   text-align: center;
-  color: white;
-  margin-bottom: 100px;
+  color: ${colours.dimWhite};
 `;
 
 const Disclaimer = styled.div`
-  color: #ffffb3;
+  color: ${colours.dimWhite};
   font-size: 12px;
-  width: 80%;
+  width: 300px;
   padding: 30px 0;
 `;
 
@@ -48,6 +40,11 @@ const MapDisclaimer = styled.div`
   justify-content: center;
   flex-direction: column;
   align-items: center;
+`;
+
+const DataSource = styled(Title)`
+  text-align: left;
+  padding: 25px 25px;
 `;
 
 export default function SpacingGrid() {
@@ -61,7 +58,7 @@ export default function SpacingGrid() {
   return (
     <Layout>
       <Control>
-        <Title>
+        <Title style={{marginTop: '30px'}}>
           Share this site to your family 👨‍👩‍👧‍👧 and friends to keep updated <br />{' '}
           with lastest statistics of covid-19 🦠 virus report
         </Title>
@@ -72,32 +69,35 @@ export default function SpacingGrid() {
           your <br />
           family always healthy! 🤗
         </Title>
-        <Title>
-          If you 💖 this project you can buy us a coffee ☕
-          <KoFi color="#26bbe0" id="X8X31J5HH" label="Buy Me a Coffee" /> <br />
-          to surport our work, we are trying hard to update the site with more
-          functionality.
-        </Title>
-        <Title>😊 Thank you!</Title>
+        <Title>If you 💖 this project you can buy me a coffee ☕</Title>
 
         <Grid container justify="center" spacing={spacing}>
-          <Title>
+          <DataSource>
             Data source:
             <br />
-            <a target="_black" href="https://www.who.int/">
-              WHO
-            </a>
-          </Title>
+            <li>
+              <a target="_black" href="https://www.who.int/">
+                WHO
+              </a>
+            </li>
+            <li>
+              <a
+                target="_black"
+                href="https://github.com/CSSEGISandData/COVID-19">
+                Johns Hopkins CSSE
+              </a>
+            </li>
+          </DataSource>
         </Grid>
 
         <Grid container justify="center" spacing={spacing}>
-          <Title>
+          <DataSource>
             If you have feedbacks or suggestions, please send us an email:
             <br />
             <a href="mailto:covid19boards@gmail.com" target="_top">
               covid19boards@gmail.com
             </a>
-          </Title>
+          </DataSource>
         </Grid>
 
         <ButtonControl>
