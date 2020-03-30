@@ -7,5 +7,6 @@ export const statesInfo = {
     'Western%20Australia',
     'South%20Australia',
     'Northern%20Territory',
+    'Australian%20Capital%20Territory',
   ],
 };

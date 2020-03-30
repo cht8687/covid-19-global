@@ -15,6 +15,23 @@ export const options = ({source}) => ({
   dataset: {
     source,
   },
+  toolbox: {
+    show: true,
+    orient: 'horizontal',
+    left: 'right',
+    top: 'center',
+    feature: {
+      restore: {
+        show: true,
+        title: 'restore',
+      },
+      saveAsImage: {
+        show: true,
+
+        title: 'save',
+      },
+    },
+  },
   xAxis: {
     type: 'category',
     axisLabel: {
@@ -83,11 +100,17 @@ export const options = ({source}) => ({
       seriesLayoutBy: 'row',
     },
     {
+      type: 'line',
+      smooth: true,
+      seriesLayoutBy: 'row',
+    },
+    {
       type: 'pie',
       id: 'pie',
       radius: '35%',
       center: ['50%', '35%'],
       label: {
+        show: false,
         formatter: '{b}:({d}%)',
         textStyle: {},
       },

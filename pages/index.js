@@ -28,15 +28,17 @@ import {
   prop,
 } from 'ramda';
 import CountryPieWithLineCharts from '../components/charts/country/pieWithLine/pieWithLine';
+import CountryBarLabelRotation from '../components/charts/country/barLabelRotation/barLabelRotation';
 
 const SiteContent = styled(Grid)`
   padding-top: 66px;
 `;
 
 const NewFeature = styled(Grid)`
-  color: #ffffb3;
+  color: ${colours.dimWhite};
   text-align: center;
   font-size: 16px;
+  font-weight: bold;
 `;
 
 export default function Index() {
@@ -115,12 +117,21 @@ export default function Index() {
   return (
     <Layout>
       <SiteContent container spacing={1}>
-        <Grid item xs={12} lg={12} style={{paddingBottom: '15px'}}>
+        <Grid item xs={12} lg={6} style={{paddingBottom: '15px'}}>
           {(location === 'australia' || location === 'world') && (
             <>
               <NewFeature item xs={12} lg={12}>
-                New Feature 👉 Australia daily confirmed cases chart <br />
-                Click/Tap on the legends or Lines to make your own comparision.
+                Australia Daily Confirmed Cases
+              </NewFeature>
+              <CountryBarLabelRotation location={location} />
+            </>
+          )}
+        </Grid>
+        <Grid item xs={12} lg={6} style={{paddingBottom: '15px'}}>
+          {(location === 'australia' || location === 'world') && (
+            <>
+              <NewFeature item xs={12} lg={12}>
+                Australia Total Confirmed Cases
               </NewFeature>
               <CountryPieWithLineCharts location={location} />
             </>

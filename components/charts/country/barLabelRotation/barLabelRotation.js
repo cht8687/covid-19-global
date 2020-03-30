@@ -23,7 +23,7 @@ const ReactEchartsContainer = styled(ReactEcharts)`
   width: 100%;
 `;
 
-export default function CountryPieWithLineCharts({location}) {
+export default function CountryBarLabelRotation({location}) {
   location = 'australia';
   const [optionData, setOptionData] = useState();
   const [source, setSource] = useState();
@@ -64,11 +64,24 @@ export default function CountryPieWithLineCharts({location}) {
       )(values);
 
       source = source.map((array, index) => {
+        let result;
         if (index !== longestChildrenIndex) {
           const tails = R.repeat(0, longestChildren - array.length);
-          return [...array, ...tails].reverse();
+          result = [...array, ...tails].reverse();
+        } else {
+          result = array;
         }
-        return array;
+        if (index > 0) {
+          result = result.map((item, index) => {
+            if (index > 0) {
+              return result[index] - result[index - 1];
+            } else {
+              return item;
+            }
+          });
+        }
+
+        return result;
       });
 
       statesInfo = R.compose(
@@ -81,34 +94,57 @@ export default function CountryPieWithLineCharts({location}) {
       source = statesInfo.map((state, index) =>
         R.prepend(state)(source[index]),
       );
-      source[0].shift();
       setSource(source);
-      setOptionData(options({source}));
+      setOptionData(options({source, states: R.drop(1, source[0])}));
     });
   }, []);
 
-  function onUpdateAxisPointer(event) {
-    var xAxisInfo = event.axesInfo[0];
-    if (xAxisInfo) {
-      var dimension = xAxisInfo.value + 1;
-      chartRef.current.getEchartsInstance().setOption({
-        series: {
-          id: 'pie',
-          label: {
-            show: false,
-            formatter: '{b}:({d}%)',
-          },
-          encode: {
-            value: dimension,
-            tooltip: dimension,
-          },
+  function onChange(event) {
+    const labelOption = {
+      normal: {
+        rotate: 90,
+        align: 'left',
+        verticalAlign: 'middle',
+        position: 'insideBottom',
+        distance: 15,
+      },
+    };
+    chartRef.current.getEchartsInstance().setOption({
+      series: [
+        {
+          type: 'bar',
+          label: labelOption,
         },
-      });
-    }
+        {
+          type: 'bar',
+          label: labelOption,
+        },
+        {
+          type: 'bar',
+          label: labelOption,
+        },
+        {
+          type: 'bar',
+          label: labelOption,
+        },
+        {
+          type: 'bar',
+          label: labelOption,
+        },
+        {
+          type: 'bar',
+          label: labelOption,
+        },
+        {
+          type: 'bar',
+          label: labelOption,
+        },
+      ],
+    });
   }
 
   let onEvents = {
-    updateAxisPointer: onUpdateAxisPointer,
+    onChange: onChange,
   };
 
   return (
