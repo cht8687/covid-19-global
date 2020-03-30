@@ -59,7 +59,7 @@ export default function country({data, location, timestamp}) {
       ) : (
         <ReactEchartsContainer
           option={options(location, dataToRender, total, timestamp) || {}}
-          style={{height: '80vh', width: '100%'}}
+          style={{height: '60vh', width: '100%'}}
         />
       )}
     </MapContainer>
