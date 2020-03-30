@@ -105,7 +105,7 @@ export default function WorldGrid({data}) {
         return <TotalCase>{formatCell(value)}</TotalCase>;
         break;
       case 'new_cases':
-        return <NewCase>{formatCell(value)}</NewCase>;
+        return <NewCase>{formatCell(value, true)}</NewCase>;
         break;
       case 'total_deaths':
         return <TotalDeceased>{formatCell(value)}</TotalDeceased>;
@@ -113,7 +113,7 @@ export default function WorldGrid({data}) {
       case 'new_deaths':
         return <NewDeceased>{formatCell(value, true)}</NewDeceased>;
         break;
-      case 'recovered':
+      case 'total_recovered':
         return <TotalRecovered>{formatCell(value)}</TotalRecovered>;
         break;
       case 'new_recovered':
@@ -128,11 +128,17 @@ export default function WorldGrid({data}) {
       case 'serious_critical':
         return <SeriousCases>{formatCell(value)}</SeriousCases>;
         break;
-      case 'tot_cases_per_1m_pop':
+      case 'deaths_per_1m_pop':
         return <TotalCasesPer1mPopul>{formatCell(value)}</TotalCasesPer1mPopul>;
         break;
-      case 'tot_deaths_per_1m_pop':
-        return <TotalDeathPer1mPopul>{formatCell(value)}</TotalDeathPer1mPopul>;
+      case 'total_deaths':
+        return <TotalDeceased>{formatCell(value)}</TotalDeceased>;
+        break;
+      case 'total_cases':
+        return <TotalCase>{formatCell(value)}</TotalCase>;
+        break;
+      case 'tot_cases_per_1m_pop':
+        return <TotalCasesPer1mPopul>{formatCell(value)}</TotalCasesPer1mPopul>;
         break;
       default:
     }
