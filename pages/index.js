@@ -29,6 +29,14 @@ import {
 } from 'ramda';
 import CountryPieWithLineCharts from '../components/charts/country/pieWithLine/pieWithLine';
 import CountryBarLabelRotation from '../components/charts/country/barLabelRotation/barLabelRotation';
+import Disqus from 'disqus-react';
+
+const disqusShortname = 'covid19-boards';
+const disqusConfig = {
+  url: 'https://covid19boards.com',
+  identifier: 'covid19-boards',
+  title: 'COVID19 Boards',
+};
 
 const SiteContent = styled(Grid)`
   padding-top: 66px;
@@ -188,6 +196,12 @@ export default function Index() {
           {location === 'australia' && (
             <InfoBoard country={location} data={toDisplayDataAustralia} />
           )}
+        </Grid>
+        <Grid item xs={12} lg={12}>
+          <Disqus.DiscussionEmbed
+            shortname={disqusShortname}
+            config={disqusConfig}
+          />{' '}
         </Grid>
       </SiteContent>
     </Layout>

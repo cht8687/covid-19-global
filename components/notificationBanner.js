@@ -50,7 +50,7 @@ export default function NotificationBanner({location, data, total}) {
           Any suggestions/feedbacks, can send to our Telegram group:{' '}
           <a href="https://t.me/covid19boards" target="_blank">
             {' '}
-            Telegram{' '}
+            COVID19Board{' '}
           </a>
         </Grid>
       </Grid>

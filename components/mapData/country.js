@@ -32,7 +32,7 @@ export const options = (name, data, total, timestamp) => ({
     left: 'right',
     bottom: '50',
     min: 0,
-    max: 10000,
+    max: data[0].value,
     realtime: false,
     calculable: true,
     textStyle: {
@@ -47,16 +47,35 @@ export const options = (name, data, total, timestamp) => ({
   },
   toolbox: {
     show: true,
-    //orient: 'vertical',
-    left: 'left',
-    top: 'top',
+    orient: 'horizontal',
+    bottom: 'center',
+    left: 'center',
+    bottom: '10%',
     feature: {
-      dataView: {readOnly: false},
       restore: {
         show: true,
-        title: 'restore',
+        title: 'restore map',
       },
-      saveAsImage: {},
+    },
+    iconStyle: {
+      color: {
+        type: 'linear',
+        x: 0,
+        y: 0,
+        x2: 0,
+        y2: 1,
+        colorStops: [
+          {
+            offset: 0,
+            color: 'white', // color at 0% position
+          },
+          {
+            offset: 1,
+            color: 'yellow', // color at 100% position
+          },
+        ],
+        global: false, // false by default
+      },
     },
   },
   series: [

@@ -32,10 +32,8 @@ export default function InfoBoard({country, data}) {
       {!data ? (
         <CircularProgress color="secondary" />
       ) : (
-        <Grid alignItems="center" container spacing={2}>
-          <Grid item xs={12} lg={3}>
-            news
-          </Grid>
+        <Grid container spacing={2}>
+          <Grid item xs={12} lg={3}></Grid>
           <Grid item xs={12} lg={9}>
             {getInfoGrid(country, data)}
           </Grid>

@@ -19,6 +19,7 @@
     "d3": "^5.15.0",
     "d3-geo": "^1.11.9",
     "d3-geo-projection": "^2.8.1",
+    "disqus-react": "^1.0.8",
     "echarts": "^4.7.0",
     "echarts-countries-js": "^1.0.4",
     "echarts-for-react": "^2.0.15-beta.1",

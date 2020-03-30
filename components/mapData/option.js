@@ -33,7 +33,7 @@ export const options = (name, data, total, timestamp) => ({
     orient: 'horizontal',
     bottom: 'center',
     left: 'center',
-    bottom: '20%',
+    bottom: '10%',
     feature: {
       restore: {
         show: true,
