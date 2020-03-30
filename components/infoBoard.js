@@ -8,6 +8,7 @@ import CircularProgress from '@material-ui/core/CircularProgress';
 import colours from '../styles/colours';
 import CountryGrid from './infoGrid/countryGrid';
 import WorldGrid from './infoGrid/worldGrid';
+import {only, down} from 'styled-breakpoints';
 
 const getInfoGrid = (country, data) => {
   switch (country) {
@@ -26,6 +27,16 @@ const Container = styled.div`
   border-bottom-left-radius: 15px;
 `;
 
+const NewFeature = styled(Grid)`
+  padding-top: 15px;
+  color: ${colours.dimWhite};
+  text-align: left;
+  font-size: 16px;
+  ${down('tablet')} {
+    display: none;
+  }
+`;
+
 export default function InfoBoard({country, data}) {
   return (
     <Container>
@@ -33,7 +44,19 @@ export default function InfoBoard({country, data}) {
         <CircularProgress color="secondary" />
       ) : (
         <Grid container spacing={2}>
-          <Grid item xs={12} lg={3}></Grid>
+          <Grid item xs={12} lg={3}>
+            <>
+              <NewFeature item xs={12} lg={12}>
+                This section is intented to be blank. If you have any ideas what
+                you need, I can build for you, leave your comments below or send
+                me an email:
+                <a href="mailto:covid19boards@gmail.com" target="_top">
+                  covid19boards@gmail.com
+                </a>
+                cheers.
+              </NewFeature>
+            </>
+          </Grid>
           <Grid item xs={12} lg={9}>
             {getInfoGrid(country, data)}
           </Grid>
