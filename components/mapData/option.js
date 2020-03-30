@@ -41,26 +41,14 @@ export const options = (name, data, total, timestamp) => ({
   },
   visualMap: {
     left: 'left',
-    bottom: '50',
-    min: 0, // this should from dataset
-    max: data[0].value,
+    top: '50%',
+    min: 0,
+    max: 10000,
     text: ['High', 'Low'],
     realtime: false,
     calculable: true,
     inRange: {
-      color: [
-        '#ffebcd',
-        '#4575b4',
-        '#74add1',
-        '#abd9e9',
-        '#e0f3f8',
-        '#ffffbf',
-        '#fee090',
-        '#fdae61',
-        '#f46d43',
-        '#d73027',
-        '#a50026',
-      ],
+      color: ['#ffd8c9', '#eeb39d', '#db8e73', '#c66a4c', '#af4527', '#961700'],
     },
     textStyle: {
       color: '#fff',
