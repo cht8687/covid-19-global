@@ -35,6 +35,7 @@ const SiteContent = styled(Grid)`
 `;
 
 const NewFeature = styled(Grid)`
+  padding-top: 15px;
   color: ${colours.dimWhite};
   text-align: center;
   font-size: 16px;

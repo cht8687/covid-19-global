@@ -120,7 +120,7 @@ export default function CountryPieWithLineCharts({location}) {
           ref={chartRef}
           option={optionData}
           notMerge={true}
-          style={{height: '80vh', width: '100%'}}
+          style={{height: '60vh', width: '100%'}}
           onEvents={onEvents}
         />
       )}
