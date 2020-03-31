@@ -126,6 +126,9 @@ export default function Index() {
   return (
     <Layout>
       <SiteContent container spacing={1}>
+        <Grid item xs={12} lg={12}>
+          <Summary country={location} total={toDisplayTotal} />
+        </Grid>
         <Grid item xs={12} lg={6}>
           <NotificationBanner />
         </Grid>
@@ -167,9 +170,6 @@ export default function Index() {
           )}
         </Grid>
         <Grid container item xs={12} lg={12}>
-          <Grid item xs={12} lg={12}>
-            <Summary country={location} total={toDisplayTotal} />
-          </Grid>
           <Grid item xs={12} lg={12}>
             {location === 'world' ? (
               <World
