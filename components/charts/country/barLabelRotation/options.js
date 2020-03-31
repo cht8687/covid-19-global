@@ -143,16 +143,16 @@ export const options = ({source, states}) => ({
   },
   toolbox: {
     show: true,
-    orient: 'horizontal',
+    orient: 'vertical',
     left: 'right',
     top: 'center',
     feature: {
       mark: {show: false},
       dataView: {show: false, readOnly: false},
       magicType: {
-        show: false,
+        show: true,
         title: 'switch view',
-        type: ['line', 'bar', 'stack', 'tiled'],
+        type: ['line', 'bar'],
       },
       restore: {
         show: true,

@@ -37,7 +37,7 @@ export const options = (name, data, total, timestamp) => ({
     feature: {
       restore: {
         show: true,
-        title: 'restore map',
+        title: 'Restore Map',
       },
     },
     iconStyle: {
