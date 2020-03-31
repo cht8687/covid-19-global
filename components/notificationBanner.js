@@ -43,9 +43,7 @@ export default function NotificationBanner({location, data, total}) {
       <Grid container spacing={2}>
         <Grid item xs={12} lg={12}>
           <ul>
-            <li>
-              🇦🇺Australia daily confirmed cases chart is added! 🎉🎉🎉 🦘🦘
-            </li>
+            <li>Update: Added NSW by suburbs map</li>
           </ul>
           Any suggestions/feedbacks, can send to our Telegram group:{' '}
           <a href="https://t.me/covid19boards" target="_blank">

@@ -30,6 +30,7 @@ import {
 import CountryPieWithLineCharts from '../components/charts/country/pieWithLine/pieWithLine';
 import CountryBarLabelRotation from '../components/charts/country/barLabelRotation/barLabelRotation';
 import Disqus from 'disqus-react';
+import {only, down} from 'styled-breakpoints';
 
 const disqusShortname = 'covid19-boards';
 const disqusConfig = {
@@ -48,6 +49,32 @@ const NewFeature = styled(Grid)`
   text-align: center;
   font-size: 16px;
   font-weight: bold;
+`;
+
+const IFrameHolder = styled(Grid)`
+  overflow: hidden;
+  // Calculated from the aspect ration of the content (in case of 16:9 it is 9/16= 0.5625)
+  padding-top: 56.25%;
+  position: relative;
+`;
+
+const IFrameContainer = styled.iframe`
+  border: 0;
+  height: 100%;
+  left: 0;
+  position: absolute;
+  top: 0;
+  width: 100%;
+`;
+
+const IFrameMiddle = styled.div`
+  height: 545px;
+  ${down('tablet')} {
+    height: 450px;
+  }
+  ${only('tablet')} {
+    height: 450px;
+  }
 `;
 
 export default function Index() {
@@ -123,6 +150,8 @@ export default function Index() {
     }
   };
 
+  let suburbIframeStyle = {paddingBottom: '15px'};
+
   return (
     <Layout>
       <SiteContent container spacing={1}>
@@ -140,35 +169,49 @@ export default function Index() {
             handleCountryChange={handleCountryChange}
           />
         </Grid>
-        <Grid item xs={12} lg={12} style={{paddingBottom: '15px'}}>
-          {(location === 'australia' || location === 'world') && (
+
+        {(location === 'australia' || location === 'world') && (
+          <Grid item xs={12} lg={12} style={{paddingBottom: '15px'}}>
             <>
               <NewFeature item xs={12} lg={12}>
                 Featured Charts
               </NewFeature>
             </>
-          )}
-        </Grid>
-        <Grid item xs={12} lg={6} style={{paddingBottom: '15px'}}>
-          {(location === 'australia' || location === 'world') && (
+          </Grid>
+        )}
+        {(location === 'australia' || location === 'world') && (
+          <Grid item xs={12} lg={6} style={{paddingBottom: '15px'}}>
             <>
               <NewFeature item xs={12} lg={12}>
                 Australia Daily Confirmed Cases
               </NewFeature>
               <CountryBarLabelRotation location={location} />
             </>
-          )}
-        </Grid>
-        <Grid item xs={12} lg={6} style={{paddingBottom: '15px'}}>
-          {(location === 'australia' || location === 'world') && (
+          </Grid>
+        )}
+
+        {location === 'australia' && (
+          <Grid item xs={12} lg={6} styles={{paddingBottom: '15px'}}>
             <>
               <NewFeature item xs={12} lg={12}>
                 Australia Total Confirmed Cases
               </NewFeature>
               <CountryPieWithLineCharts location={location} />
             </>
-          )}
-        </Grid>
+          </Grid>
+        )}
+
+        {(location === 'australia' || location === 'world') && (
+          <IFrameHolder item xs={12} lg={6} style={{paddingBottom: '15px'}}>
+            <IFrameMiddle>
+              <IFrameContainer
+                src="https://e.infogr.am/nsw-covid-19-spread-map-1h7k23g3v0pe4xr?parent_url=https%3A%2F%2Fwww.smh.com.au%2Fnational%2Fnsw%2Fnew-data-reveals-devastating-march-of-covid-19-across-nsw-20200331-p54fkl.html&amp;src=embed#async_embed"
+                scrolling="no"
+                frameborder="0"
+                allowfullscreen=""></IFrameContainer>{' '}
+            </IFrameMiddle>
+          </IFrameHolder>
+        )}
         <Grid container item xs={12} lg={12}>
           <Grid item xs={12} lg={12}>
             {location === 'world' ? (
