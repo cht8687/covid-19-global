@@ -113,16 +113,6 @@ var labelOption = {
 };
 
 export const options = ({source, states}) => ({
-  color: [
-    '#86ceeb',
-    '#800000',
-    '#060080',
-    '#006a4d',
-    '#fed700',
-    '#ff0000',
-    '#e65900',
-    '#fed700',
-  ],
   tooltip: {
     trigger: 'axis',
     axisPointer: {
