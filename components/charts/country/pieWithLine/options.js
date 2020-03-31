@@ -2,6 +2,16 @@ import colours from '../../../../styles/colours';
 import {last} from 'ramda';
 
 export const options = ({source}) => ({
+  color: [
+    '#86ceeb',
+    '#800000',
+    '#060080',
+    '#006a4d',
+    '#fed700',
+    '#ff0000',
+    '#e65900',
+    '#fed700',
+  ],
   legend: {
     textStyle: {
       color: colours.dimWhite,
@@ -112,7 +122,8 @@ export const options = ({source}) => ({
       label: {
         show: false,
         formatter: '{b}:({d}%)',
-        textStyle: {},
+        fontWeight: 'normal',
+        fontStyle: 'normal',
       },
       encode: {
         itemName: 'state',

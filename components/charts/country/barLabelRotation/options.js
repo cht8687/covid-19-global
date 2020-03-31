@@ -59,7 +59,7 @@ app.configParameters = {
 };
 
 app.config = {
-  rotate: 90,
+  rotate: 0,
   align: 'left',
   verticalAlign: 'middle',
   position: 'insideBottom',
@@ -102,15 +102,27 @@ var labelOption = {
   rotate: app.config.rotate,
   formatter: '{c}  {name|{a}}',
   fontSize: 16,
+  fontWeight: 'normal',
+  fontStyle: 'normal',
   rich: {
     name: {
-      textBorderColor: '#fff',
+      color: colours.dimWhite,
+      fontSize: 14,
     },
   },
 };
 
 export const options = ({source, states}) => ({
-  //color: ['red', 'orange', 'yellow', 'green', 'blue', 'pink', 'purple'],
+  color: [
+    '#86ceeb',
+    '#800000',
+    '#060080',
+    '#006a4d',
+    '#fed700',
+    '#ff0000',
+    '#e65900',
+    '#fed700',
+  ],
   tooltip: {
     trigger: 'axis',
     axisPointer: {
@@ -120,18 +132,18 @@ export const options = ({source, states}) => ({
   dataZoom: [
     {
       show: true,
-      xAxisIndex: [0],
+      yAxisIndex: [0],
       start: 98,
       end: 100,
-      maxSpan: 3,
+      maxSpan: 2,
       minSpan: 2,
     },
     {
       type: 'inside',
-      xAxisIndex: [0],
+      yAxisIndex: [0],
       start: 98,
       end: 100,
-      maxSpan: 3,
+      maxSpan: 2,
       minSpan: 2,
     },
   ],
@@ -144,7 +156,7 @@ export const options = ({source, states}) => ({
   toolbox: {
     show: true,
     orient: 'vertical',
-    left: 'right',
+    left: 'left',
     top: 'center',
     feature: {
       mark: {show: false},
@@ -164,7 +176,7 @@ export const options = ({source, states}) => ({
       },
     },
   },
-  xAxis: [
+  yAxis: [
     {
       type: 'category',
       axisTick: {show: false},
@@ -176,7 +188,7 @@ export const options = ({source, states}) => ({
       },
     },
   ],
-  yAxis: [
+  xAxis: [
     {
       type: 'value',
       axisLabel: {
