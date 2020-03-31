@@ -8,6 +8,8 @@ import {only, down} from 'styled-breakpoints';
 import colours from '../styles/colours';
 import CircularProgress from '@material-ui/core/CircularProgress';
 import formatNumber from '../utilities/formatNumber';
+import FlipNumbers from 'react-flip-numbers';
+import getFlipnumberSize from '../utilities/getFlipnumberSize';
 import {
   ConfirmedColor,
   DeceasedColor,
@@ -36,22 +38,22 @@ const Container = styled.div`
   position: sticky;
 `;
 
-const Confirmed = styled.div`
+const Confirmed = styled(FlipNumbers)`
   ${ConfirmedColor}
   ${Numbers}
 `;
 
-const Deceased = styled.div`
+const Deceased = styled(FlipNumbers)`
   ${DeceasedColor}
   ${Numbers}
 `;
 
-const Recovered = styled.div`
+const Recovered = styled(FlipNumbers)`
   ${RecoveredColor}
   ${Numbers}
 `;
 
-const Serious = styled.div`
+const Serious = styled(FlipNumbers)`=
   ${SeriousColor}
   ${Numbers}
 `;
@@ -69,6 +71,15 @@ const NumBlock = styled(Grid)`
 `;
 
 export default function Summary({total}) {
+  const totalCases = formatNumber(total.total_cases);
+  const deceased = formatNumber(total.total_deaths);
+  const serious = !total.serious_critical
+    ? 'N/A'
+    : formatNumber(total.serious_critical);
+  const recovered = !total.total_recovered
+    ? 'N/A'
+    : formatNumber(total.total_recovered);
+  const {height: fH, width: fW} = getFlipnumberSize();
   return (
     <Container>
       {!total ? (
@@ -78,26 +89,67 @@ export default function Summary({total}) {
           <Grid item xs={12} lg={12}>
             <Grid container spacing={2}>
               <NumBlock item xs={3} lg={3}>
-                <Confirmed>{formatNumber(total.total_cases)}</Confirmed>{' '}
+                <Confirmed
+                  height={fH}
+                  width={fW}
+                  play
+                  color={colours.red}
+                  nonNumberStyle={{
+                    color: colours.red,
+                    fontSize: `${fH}px`,
+                  }}
+                  perspective={130}
+                  duration={5}
+                  numbers={totalCases}
+                />
                 Confirmed
               </NumBlock>
               <NumBlock item xs={3} lg={3}>
-                <Deceased>{formatNumber(total.total_deaths)}</Deceased> Deceased
+                <Deceased
+                  height={fH}
+                  width={fW}
+                  play
+                  color={colours.wheat}
+                  nonNumberStyle={{
+                    color: colours.wheat,
+                    fontSize: `${fH}px`,
+                  }}
+                  perspective={140}
+                  duration={3}
+                  numbers={deceased}
+                />
+                Deceased
               </NumBlock>
               <NumBlock item xs={3} lg={3}>
-                <Serious>
-                  {!total.serious_critical
-                    ? 'N/A'
-                    : formatNumber(total.serious_critical)}
-                </Serious>{' '}
+                <Serious
+                  height={fH}
+                  width={fW}
+                  play
+                  color={colours.pinkDark}
+                  nonNumberStyle={{
+                    color: colours.pinkDark,
+                    fontSize: `${fH}px`,
+                  }}
+                  perspective={140}
+                  duration={3}
+                  numbers={serious}
+                />
                 Critical
               </NumBlock>
               <NumBlock item xs={3} lg={3}>
-                <Recovered>
-                  {!total.total_recovered
-                    ? 'N/A'
-                    : formatNumber(total.total_recovered)}
-                </Recovered>
+                <Recovered
+                  height={fH}
+                  width={fW}
+                  play
+                  color={colours.green}
+                  nonNumberStyle={{
+                    color: colours.green,
+                    fontSize: `${fH}px`,
+                  }}
+                  perspective={140}
+                  duration={3}
+                  numbers={recovered}
+                />
                 Recovered
               </NumBlock>
             </Grid>
