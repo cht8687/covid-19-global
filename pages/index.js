@@ -212,6 +212,17 @@ export default function Index() {
             </IFrameMiddle>
           </IFrameHolder>
         )}
+        {location === 'australia' && (
+          <IFrameHolder item xs={12} lg={6} style={{paddingBottom: '15px'}}>
+            <IFrameMiddle>
+              <IFrameContainer
+                src="https://e.infogr.am/1p067pqwzp39d9iegq6gg9ygewanelm1ep9?live?parent_url=https%3A%2F%2Fwww.smh.com.au%2Fnational%2Fnsw%2Fnew-data-reveals-devastating-march-of-covid-19-across-nsw-20200331-p54fkl.html&src=embed#async_embed"
+                scrolling="no"
+                frameborder="0"
+                allowfullscreen=""></IFrameContainer>{' '}
+            </IFrameMiddle>
+          </IFrameHolder>
+        )}
         <Grid container item xs={12} lg={12}>
           <Grid item xs={12} lg={12}>
             {location === 'world' ? (
