@@ -71,6 +71,9 @@ const NumBlock = styled(Grid)`
 `;
 
 export default function Summary({total}) {
+  if (!total) {
+    return <CircularProgress color="secondary" />;
+  }
   const totalCases = formatNumber(total.total_cases);
   const deceased = formatNumber(total.total_deaths);
   const serious = !total.serious_critical
