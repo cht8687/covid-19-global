@@ -9,9 +9,10 @@ import getPercentage from '../utilities/getPercentage';
 import colours from '../styles/colours';
 import {upperCase} from 'upper-case';
 import {DeceasedColor, RecoveredColor} from '../styles/sharedStyle';
-import NativeSelect from '@material-ui/core/NativeSelect';
+import Select from '@material-ui/core/Select';
 import MenuItem from '@material-ui/core/MenuItem';
 import FormHelperText from '@material-ui/core/FormHelperText';
+import InputLabel from '@material-ui/core/InputLabel';
 import FormControl from '@material-ui/core/FormControl';
 import {COUNTRY_SELECTIONS} from '../const/countrySelections';
 import MyTheme from '../theme/theme';
@@ -37,15 +38,7 @@ const Container = styled.div`
 `;
 
 const CountrySelection = styled.div`
-  display: flex;
-  justify-content: center;
-`;
-
-const MNativeSelect = styled(NativeSelect)`
   min-width: 120px;
-  icon: {
-    color: ${colours.dimWhite};
-  }
 `;
 
 const Location = styled(Grid)`
@@ -104,20 +97,13 @@ export default function InfoBanner({
       <Grid container spacing={2}>
         <Location item xs={12} lg={4}>
           <CountrySelection>
-            <MNativeSelect
-              value={location}
-              onChange={handleCountryChange}
-              inputProps={{
-                classes: {
-                  icon: styles.icon,
-                },
-              }}>
+            <Select value={location} onChange={handleCountryChange}>
               {COUNTRY_SELECTIONS.map((country, index) => (
-                <option key={index} value={country}>
+                <MenuItem key={index} value={country}>
                   {upperCase(country)}
-                </option>
+                </MenuItem>
               ))}
-            </MNativeSelect>
+            </Select>
           </CountrySelection>
         </Location>
         <Grid item xs={12} lg={8}>

@@ -21,12 +21,17 @@ const theme = createMuiTheme({
         backgroundColor: colours.primaryBlue,
         borderRadius: 0,
         fontSize: 16,
-        padding: '5px 10px',
         width: 'calc(100% - 24px)',
+        textAlign: 'center',
       },
     },
     menuItem: {
       selectedTextColor: colours.dimWhite,
+    },
+    MuiSelect: {
+      icon: {
+        color: colours.dimWhite,
+      },
     },
   },
 });
