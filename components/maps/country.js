@@ -5,19 +5,7 @@ require('echarts-countries-js/echarts-countries-js/USA.js');
 require('echarts-countries-js/echarts-countries-js/Australia.js');
 import {options} from '../mapData/country';
 import CircularProgress from '@material-ui/core/CircularProgress';
-import {
-  curry,
-  reduce,
-  assoc,
-  keys,
-  compose,
-  map,
-  pick,
-  sort,
-  descend,
-  prop,
-} from 'ramda';
-import {mapOptionNameMapping} from '../mapData/mapNameMapping';
+import {curry, reduce, assoc, keys, compose, map, pick} from 'ramda';
 
 const renameKeys = curry((keysMap, obj) =>
   reduce(

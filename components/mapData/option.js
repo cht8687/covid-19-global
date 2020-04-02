@@ -1,6 +1,7 @@
 import colours from '../../styles/colours';
 import {upperCase} from 'upper-case';
 import {nameMappingWord} from './mapNameMapping';
+import {mapOptionZoomlevelMapping} from './mapNameMapping';
 
 export const options = (name, data, total, timestamp) => ({
   title: [
@@ -79,6 +80,7 @@ export const options = (name, data, total, timestamp) => ({
   series: [
     {
       mapType: name,
+      zoom: mapOptionZoomlevelMapping()[name],
       data,
       label: {
         emphasis: {

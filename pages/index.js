@@ -150,8 +150,6 @@ export default function Index() {
     }
   };
 
-  let suburbIframeStyle = {paddingBottom: '15px'};
-
   return (
     <Layout>
       <SiteContent container spacing={1}>
@@ -170,7 +168,25 @@ export default function Index() {
           />
         </Grid>
 
-        {(location === 'australia' || location === 'world') && (
+        <Grid container item xs={12} lg={12}>
+          <Grid item xs={12} lg={12}>
+            {location === 'world' ? (
+              <World
+                data={toDisplayData}
+                location={location}
+                timestamp={toDisplayTimestamp}
+              />
+            ) : (
+              <Country
+                data={toDisplayData}
+                location={location}
+                timestamp={toDisplayTimestamp}
+              />
+            )}
+          </Grid>
+        </Grid>
+
+        {location === 'world' && (
           <Grid item xs={12} lg={12} style={{paddingBottom: '15px'}}>
             <>
               <NewFeature item xs={12} lg={12}>
@@ -179,7 +195,7 @@ export default function Index() {
             </>
           </Grid>
         )}
-        {(location === 'australia' || location === 'world') && (
+        {location === 'australia' && (
           <Grid item xs={12} lg={6} style={{paddingBottom: '15px'}}>
             <>
               <NewFeature item xs={12} lg={12}>
@@ -201,11 +217,11 @@ export default function Index() {
           </Grid>
         )}
 
-        {(location === 'australia' || location === 'world') && (
+        {location === 'australia' && (
           <IFrameHolder item xs={12} lg={6} style={{paddingBottom: '15px'}}>
             <IFrameMiddle>
               <IFrameContainer
-                src="https://e.infogr.am/nsw-covid-19-spread-map-1h7k23g3v0pe4xr?parent_url=https%3A%2F%2Fwww.smh.com.au%2Fnational%2Fnsw%2Fnew-data-reveals-devastating-march-of-covid-19-across-nsw-20200331-p54fkl.html&amp;src=embed#async_embed"
+                src="https://e.infogr.am/nsw-covid-19-spread-map-1h7k23g3v0pe4xr?src=embed#async_embed"
                 scrolling="no"
                 frameborder="0"
                 allowfullscreen=""></IFrameContainer>{' '}
@@ -216,30 +232,13 @@ export default function Index() {
           <IFrameHolder item xs={12} lg={6} style={{paddingBottom: '15px'}}>
             <IFrameMiddle>
               <IFrameContainer
-                src="https://e.infogr.am/1p067pqwzp39d9iegq6gg9ygewanelm1ep9?live?parent_url=https%3A%2F%2Fwww.smh.com.au%2Fnational%2Fnsw%2Fnew-data-reveals-devastating-march-of-covid-19-across-nsw-20200331-p54fkl.html&src=embed#async_embed"
+                src="https://e.infogr.am/1p067pqwzp39d9iegq6gg9ygewanelm1ep9?src=embed#async_embed"
                 scrolling="no"
                 frameborder="0"
                 allowfullscreen=""></IFrameContainer>{' '}
             </IFrameMiddle>
           </IFrameHolder>
         )}
-        <Grid container item xs={12} lg={12}>
-          <Grid item xs={12} lg={12}>
-            {location === 'world' ? (
-              <World
-                data={toDisplayData}
-                location={location}
-                timestamp={toDisplayTimestamp}
-              />
-            ) : (
-              <Country
-                data={toDisplayData}
-                location={location}
-                timestamp={toDisplayTimestamp}
-              />
-            )}
-          </Grid>
-        </Grid>
         <Grid item xs={12} lg={12}>
           {location === 'world' && (
             <InfoBoard country={location} data={toDisplayDataWorld} />
