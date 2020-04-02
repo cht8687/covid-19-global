@@ -32,8 +32,8 @@ export const options = data => ({
     },
   },
   grid: {
-    left: '3%',
-    right: '4%',
+    left: '1%',
+    right: '1%',
     bottom: '3%',
     containLabel: true,
   },
