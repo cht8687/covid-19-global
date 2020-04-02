@@ -27,7 +27,6 @@ export const options = ({source}) => ({
       },
       saveAsImage: {
         show: true,
-
         title: 'save',
       },
     },

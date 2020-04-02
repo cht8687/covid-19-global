@@ -8,7 +8,12 @@ import Country from '../components/maps/country';
 import InfoBoard from '../components/infoBoard';
 import Summary from '../components/summary';
 import Grid from '@material-ui/core/Grid';
-import {getGlobalToday, getUSAToday, getAustraliaToday} from '../services/api';
+import {
+  getGlobalToday,
+  getGlobalYesterday,
+  getUSAToday,
+  getAustraliaToday,
+} from '../services/api';
 import {useAsync} from 'react-async';
 import 'whatwg-fetch';
 import Layout from '../components/MyLayout';
@@ -29,6 +34,8 @@ import {
 } from 'ramda';
 import CountryPieWithLineCharts from '../components/charts/country/pieWithLine/pieWithLine';
 import CountryBarLabelRotation from '../components/charts/country/barLabelRotation/barLabelRotation';
+import GlobalLineTrendChart from '../components/charts/global/lineTrendChart/lineTrendChart';
+import GlobalTopNewCasesBarChart from '../components/charts/global/topNewCasesBarChart/topNewCasesBarChart';
 import Disqus from 'disqus-react';
 import {only, down} from 'styled-breakpoints';
 
@@ -81,6 +88,13 @@ export default function Index() {
   const {data: dataWorldRaw, error, isLoading} = useAsync({
     promiseFn: getGlobalToday,
   });
+  const {
+    data: dataWorldYesterdayRaw,
+    errorYesterday,
+    isLoadingYesterday,
+  } = useAsync({
+    promiseFn: getGlobalYesterday,
+  });
   const {data: dataUSARaw, error: errorUSA, isLoading: isLoadingUSA} = useAsync(
     {
       promiseFn: getUSAToday,
@@ -100,6 +114,10 @@ export default function Index() {
   const [toDisplayDataAustralia, setToDisplayDataAustralia] = useState('');
   const [toDisplayTotal, setToDisplayTotal] = useState('');
   const [toDisplayTimestamp, setToDisplayTimestamp] = useState('');
+  const [
+    toDisplayDataWorldYesterday,
+    setToDisplayDataWorldYesterday,
+  ] = useState('');
   const [location, setLocation] = useState('world');
 
   const sortList = compose(sort(descend(prop('total_cases'))));
@@ -112,6 +130,11 @@ export default function Index() {
       setToDisplayTotal(total);
       setToDisplayTimestamp(timestamp);
     }
+
+    if (dataWorldYesterdayRaw && location === 'world') {
+      setToDisplayDataWorldYesterday(dataWorldYesterdayRaw);
+    }
+
     /* Ok, time is real tight to release, I can't figure out
      * a re-render issue, so let's repeat some code */
     if (dataUSARaw && location === 'usa') {
@@ -142,7 +165,13 @@ export default function Index() {
       setToDisplayTotal(country[0]);
       setToDisplayTimestamp(timestamp);
     }
-  }, [dataWorldRaw, dataUSARaw, dataAustraliaRaw, location]);
+  }, [
+    dataWorldRaw,
+    dataWorldYesterdayRaw,
+    dataUSARaw,
+    dataAustraliaRaw,
+    location,
+  ]);
 
   const handleCountryChange = e => {
     if (e.target.value) {
@@ -185,6 +214,26 @@ export default function Index() {
             )}
           </Grid>
         </Grid>
+        {location === 'world' && (
+          <Grid item xs={12} lg={6} style={{paddingBottom: '15px'}}>
+            <>
+              <NewFeature item xs={12} lg={12}>
+                Total Cases (worldwide)
+              </NewFeature>
+              <GlobalLineTrendChart />
+            </>
+          </Grid>
+        )}
+        {location === 'world' && (
+          <Grid item xs={12} lg={6} style={{paddingBottom: '15px'}}>
+            <>
+              <NewFeature item xs={12} lg={12}>
+                Daily Increases (worldwide)
+              </NewFeature>
+              <GlobalTopNewCasesBarChart data={dataWorldYesterdayRaw} />
+            </>
+          </Grid>
+        )}
         {location === 'australia' && (
           <Grid item xs={12} lg={6} style={{paddingBottom: '15px'}}>
             <>
@@ -195,7 +244,6 @@ export default function Index() {
             </>
           </Grid>
         )}
-
         {location === 'australia' && (
           <Grid item xs={12} lg={6} styles={{paddingBottom: '15px'}}>
             <>
@@ -218,6 +266,7 @@ export default function Index() {
             </IFrameMiddle>
           </IFrameHolder>
         )}
+
         {location === 'australia' && (
           <IFrameHolder item xs={12} lg={6} style={{paddingBottom: '15px'}}>
             <IFrameMiddle>
