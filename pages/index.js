@@ -196,8 +196,15 @@ export default function Index() {
             handleCountryChange={handleCountryChange}
           />
         </Grid>
-
-        <Grid container item xs={12} lg={12}>
+        <Grid
+          container
+          item
+          xs={12}
+          lg={12}
+          style={{
+            paddingBottom: '15px',
+            border: '1px white dotted',
+          }}>
           <Grid item xs={12} lg={12}>
             {location === 'world' ? (
               <World
@@ -215,7 +222,14 @@ export default function Index() {
           </Grid>
         </Grid>
         {location === 'world' && (
-          <Grid item xs={12} lg={6} style={{paddingBottom: '15px'}}>
+          <Grid
+            item
+            xs={12}
+            lg={6}
+            style={{
+              paddingBottom: '15px',
+              border: '1px white dotted',
+            }}>
             <>
               <NewFeature item xs={12} lg={12}>
                 Total Cases (worldwide)
@@ -225,7 +239,11 @@ export default function Index() {
           </Grid>
         )}
         {location === 'world' && (
-          <Grid item xs={12} lg={6} style={{paddingBottom: '15px'}}>
+          <Grid
+            item
+            xs={12}
+            lg={6}
+            style={{paddingBottom: '15px', border: '1px white dotted'}}>
             <>
               <NewFeature item xs={12} lg={12}>
                 Daily Increases (worldwide)
@@ -235,7 +253,11 @@ export default function Index() {
           </Grid>
         )}
         {location === 'australia' && (
-          <Grid item xs={12} lg={6} style={{paddingBottom: '15px'}}>
+          <Grid
+            item
+            xs={12}
+            lg={6}
+            style={{paddingBottom: '15px', border: '1px white dotted'}}>
             <>
               <NewFeature item xs={12} lg={12}>
                 Australia Daily Confirmed Cases
@@ -245,7 +267,14 @@ export default function Index() {
           </Grid>
         )}
         {location === 'australia' && (
-          <Grid item xs={12} lg={6} styles={{paddingBottom: '15px'}}>
+          <Grid
+            item
+            xs={12}
+            lg={6}
+            style={{
+              paddingBottom: '15px',
+              border: '1px white dotted',
+            }}>
             <>
               <NewFeature item xs={12} lg={12}>
                 Australia Total Confirmed Cases
@@ -256,7 +285,14 @@ export default function Index() {
         )}
 
         {location === 'australia' && (
-          <IFrameHolder item xs={12} lg={6} style={{paddingBottom: '15px'}}>
+          <IFrameHolder
+            item
+            xs={12}
+            lg={6}
+            style={{
+              paddingBottom: '15px',
+              border: '1px white dotted',
+            }}>
             <IFrameMiddle>
               <IFrameContainer
                 src="https://e.infogr.am/nsw-covid-19-spread-map-1h7k23g3v0pe4xr?src=embed#async_embed"
@@ -268,7 +304,14 @@ export default function Index() {
         )}
 
         {location === 'australia' && (
-          <IFrameHolder item xs={12} lg={6} style={{paddingBottom: '15px'}}>
+          <IFrameHolder
+            item
+            xs={12}
+            lg={6}
+            style={{
+              paddingBottom: '15px',
+              border: '1px white dotted',
+            }}>
             <IFrameMiddle>
               <IFrameContainer
                 src="https://e.infogr.am/1p067pqwzp39d9iegq6gg9ygewanelm1ep9?src=embed#async_embed"
