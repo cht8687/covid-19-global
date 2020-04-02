@@ -72,7 +72,11 @@ const NumBlock = styled(Grid)`
 
 export default function Summary({total}) {
   if (!total) {
-    return <CircularProgress color="secondary" />;
+    return (
+      <Container>
+        <CircularProgress color="secondary" />
+      </Container>
+    );
   }
   const totalCases = formatNumber(total.total_cases);
   const deceased = formatNumber(total.total_deaths);
