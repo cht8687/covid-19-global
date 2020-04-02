@@ -185,16 +185,6 @@ export default function Index() {
             )}
           </Grid>
         </Grid>
-
-        {location === 'world' && (
-          <Grid item xs={12} lg={12} style={{paddingBottom: '15px'}}>
-            <>
-              <NewFeature item xs={12} lg={12}>
-                Featured Charts
-              </NewFeature>
-            </>
-          </Grid>
-        )}
         {location === 'australia' && (
           <Grid item xs={12} lg={6} style={{paddingBottom: '15px'}}>
             <>
