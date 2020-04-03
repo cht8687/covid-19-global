@@ -46,7 +46,6 @@ export default function GlobalTopNewCasesBarChart({data}) {
       const top10Death = R.compose(R.map(getValueFromArray('new_deaths')))(
         countryArray,
       );
-      debugger;
       setDataToDisplay({top10Names, top10Increase, top10Death});
     }
   }, [data]);
