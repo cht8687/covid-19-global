@@ -30,6 +30,7 @@ import {
 } from 'ramda';
 import CountryPieWithLineCharts from '../components/charts/country/pieWithLine/pieWithLine';
 import CountryBarLabelRotation from '../components/charts/country/barLabelRotation/barLabelRotation';
+import CountryDailyTotalIncreaseBar from '../components/charts/country/dailyTotalIncreaseBar/dailyTotalIncreaseBar';
 
 const SiteContent = styled(Grid)`
   padding-top: 66px;
@@ -138,7 +139,7 @@ export default function Index() {
           container
           item
           xs={12}
-          lg={12}
+          lg={6}
           style={{
             padding: 20,
           }}>
@@ -149,6 +150,14 @@ export default function Index() {
               timestamp={toDisplayTimestamp}
             />
           </Grid>
+        </Grid>
+        <Grid item xs={12} lg={6} style={{padding: 20}}>
+          <>
+            <NewFeature item xs={12} lg={12}>
+              Australia Total Daily Increases Cases
+            </NewFeature>
+            <CountryDailyTotalIncreaseBar location={location} />
+          </>
         </Grid>
         <Grid item xs={12} lg={6} style={{padding: 20}}>
           <>
@@ -167,7 +176,7 @@ export default function Index() {
           }}>
           <>
             <NewFeature item xs={12} lg={12}>
-              Australia Total Confirmed Cases
+              Australia Daily Increase Cases (States)
             </NewFeature>
             <CountryPieWithLineCharts location={location} />
           </>
