@@ -80,6 +80,7 @@ export const options = (name, data, total, timestamp) => ({
   series: [
     {
       mapType: name,
+      roam: 'scale',
       zoom: mapOptionZoomlevelMapping()[name],
       data,
       label: {
@@ -92,7 +93,6 @@ export const options = (name, data, total, timestamp) => ({
       },
       name: '',
       type: 'map',
-      roam: true,
       nameMap: nameMappingWord(),
     },
   ],

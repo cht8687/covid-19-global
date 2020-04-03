@@ -94,7 +94,7 @@ export const options = (name, data, total, timestamp) => ({
       itemStyle: {
         emphasis: {label: {show: true}},
       },
-      roam: true,
+      roam: 'scale',
       data,
     },
   ],

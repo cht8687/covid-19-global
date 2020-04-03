@@ -92,7 +92,13 @@ export default function Summary({total}) {
       {!total ? (
         <CircularProgress color="secondary" />
       ) : (
-        <Grid container spacing={2}>
+        <Grid
+          container
+          spacing={2}
+          style={{
+            paddingLeft: 20,
+            paddingRight: 20,
+          }}>
           <Grid item xs={12} lg={12}>
             <Grid container spacing={2}>
               <NumBlock item xs={3} lg={3}>
