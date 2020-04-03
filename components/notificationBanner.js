@@ -58,10 +58,7 @@ export default function NotificationBanner({location, data, total}) {
           {location === 'australia' && (
             <>
               <ul>
-                <li>
-                  Gday! Update: Added Australia NSW suburbs map(Select Australia
-                  page)
-                </li>
+                <li>Gday! Update: Added Australia NSW suburbs map </li>
                 <li>Have a nice day! Stay home and stay safe!</li>
               </ul>
               Any suggestions/feedbacks, can send to our Telegram group:{' '}
