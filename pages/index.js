@@ -202,7 +202,7 @@ export default function Index() {
           xs={12}
           lg={12}
           style={{
-            paddingBottom: '15px',
+            padding: 20,
             border: '1px white dotted',
           }}>
           <Grid item xs={12} lg={12}>
@@ -227,7 +227,7 @@ export default function Index() {
             xs={12}
             lg={6}
             style={{
-              paddingBottom: '15px',
+              padding: 20,
               border: '1px white dotted',
             }}>
             <>
@@ -243,7 +243,10 @@ export default function Index() {
             item
             xs={12}
             lg={6}
-            style={{paddingBottom: '15px', border: '1px white dotted'}}>
+            style={{
+              padding: 20,
+              border: '1px white dotted',
+            }}>
             <>
               <NewFeature item xs={12} lg={12}>
                 Daily Increases (worldwide)
@@ -257,7 +260,7 @@ export default function Index() {
             item
             xs={12}
             lg={6}
-            style={{paddingBottom: '15px', border: '1px white dotted'}}>
+            style={{padding: 20, border: '1px white dotted'}}>
             <>
               <NewFeature item xs={12} lg={12}>
                 Australia Daily Confirmed Cases
@@ -272,7 +275,7 @@ export default function Index() {
             xs={12}
             lg={6}
             style={{
-              paddingBottom: '15px',
+              padding: 20,
               border: '1px white dotted',
             }}>
             <>
@@ -290,7 +293,7 @@ export default function Index() {
             xs={12}
             lg={6}
             style={{
-              paddingBottom: '15px',
+              padding: 20,
               border: '1px white dotted',
             }}>
             <IFrameMiddle>
@@ -309,7 +312,7 @@ export default function Index() {
             xs={12}
             lg={6}
             style={{
-              paddingBottom: '15px',
+              padding: 20,
               border: '1px white dotted',
             }}>
             <IFrameMiddle>
