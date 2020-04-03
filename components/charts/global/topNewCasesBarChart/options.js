@@ -2,7 +2,7 @@ import * as R from 'ramda';
 import colours from '../../../../styles/colours';
 
 export const options = data => ({
-  color: ['red', 'white'],
+  color: [colours.red, colours.wheat],
   yAxis: {
     type: 'category',
     data: data.top10Names,

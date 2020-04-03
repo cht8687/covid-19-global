@@ -2,7 +2,7 @@ import * as R from 'ramda';
 import colours from '../../../../styles/colours';
 
 export const options = data => ({
-  color: ['red', 'white', 'green'],
+  color: [colours.red, colours.wheat, colours.green],
   xAxis: {
     type: 'category',
     data: R.keys(R.prop('cases')(data)),
