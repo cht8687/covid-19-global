@@ -203,7 +203,6 @@ export default function Index() {
           lg={12}
           style={{
             padding: 20,
-            border: '1px white dotted',
           }}>
           <Grid item xs={12} lg={12}>
             {location === 'world' ? (
@@ -228,7 +227,6 @@ export default function Index() {
             lg={6}
             style={{
               padding: 20,
-              border: '1px white dotted',
             }}>
             <>
               <NewFeature item xs={12} lg={12}>
@@ -245,7 +243,6 @@ export default function Index() {
             lg={6}
             style={{
               padding: 20,
-              border: '1px white dotted',
             }}>
             <>
               <NewFeature item xs={12} lg={12}>
@@ -276,7 +273,6 @@ export default function Index() {
             lg={6}
             style={{
               padding: 20,
-              border: '1px white dotted',
             }}>
             <>
               <NewFeature item xs={12} lg={12}>
@@ -294,7 +290,6 @@ export default function Index() {
             lg={6}
             style={{
               padding: 20,
-              border: '1px white dotted',
             }}>
             <IFrameMiddle>
               <IFrameContainer
@@ -313,7 +308,6 @@ export default function Index() {
             lg={6}
             style={{
               padding: 20,
-              border: '1px white dotted',
             }}>
             <IFrameMiddle>
               <IFrameContainer
