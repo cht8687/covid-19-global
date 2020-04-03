@@ -63,6 +63,8 @@ const IFrameHolder = styled(Grid)`
   // Calculated from the aspect ration of the content (in case of 16:9 it is 9/16= 0.5625)
   padding-top: 56.25%;
   position: relative;
+  padding-left: 20px;
+  padding-right: 20px;
 `;
 
 const IFrameContainer = styled.iframe`
@@ -253,11 +255,7 @@ export default function Index() {
           </Grid>
         )}
         {location === 'australia' && (
-          <Grid
-            item
-            xs={12}
-            lg={6}
-            style={{padding: 20, border: '1px white dotted'}}>
+          <Grid item xs={12} lg={6} style={{padding: 20}}>
             <>
               <NewFeature item xs={12} lg={12}>
                 Australia Daily Confirmed Cases

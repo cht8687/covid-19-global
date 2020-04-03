@@ -10,7 +10,7 @@ export const options = (name, data, total, timestamp) => ({
         color: colours.dimWhite,
         fontSize: 18,
       },
-      subtext: 'Updated ' + timestamp + ' (*map disclaimer)',
+      subtext: 'Updated ' + timestamp,
       text: upperCase(name) + ' COVID-19 MAP ',
       top: 'auto',
       subtextStyle: {
@@ -42,24 +42,7 @@ export const options = (name, data, total, timestamp) => ({
       },
     },
     iconStyle: {
-      color: {
-        type: 'linear',
-        x: 0,
-        y: 0,
-        x2: 0,
-        y2: 1,
-        colorStops: [
-          {
-            offset: 0,
-            color: 'white', // color at 0% position
-          },
-          {
-            offset: 1,
-            color: 'yellow', // color at 100% position
-          },
-        ],
-        global: false, // false by default
-      },
+      color: colours.dimWhite,
     },
   },
   visualMap: {
