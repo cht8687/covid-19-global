@@ -134,6 +134,22 @@ export default function Index() {
             handleCountryChange={handleCountryChange}
           />
         </Grid>
+        <Grid
+          container
+          item
+          xs={12}
+          lg={12}
+          style={{
+            padding: 20,
+          }}>
+          <Grid item xs={12} lg={12}>
+            <Country
+              data={toDisplayData}
+              location={location}
+              timestamp={toDisplayTimestamp}
+            />
+          </Grid>
+        </Grid>
         <Grid item xs={12} lg={6} style={{padding: 20}}>
           <>
             <NewFeature item xs={12} lg={12}>
