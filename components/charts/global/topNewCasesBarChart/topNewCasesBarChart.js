@@ -31,7 +31,11 @@ export default function GlobalTopNewCasesBarChart({data}) {
         R.toPairs,
         R.map(R.pipe(R.of, R.fromPairs)),
       );
-      const countryArray = R.take(10, R.map(toIndividualKeys)(list));
+      const sortByNewCases = R.sortBy(R.prop('new_cases'));
+
+      const sortedList = R.sort(R.descend(R.prop('new_cases')), list);
+
+      const countryArray = R.take(10, R.map(toIndividualKeys)(sortedList));
 
       const top10Names = R.compose(R.map(getValueFromArray('country')))(
         countryArray,
@@ -42,6 +46,7 @@ export default function GlobalTopNewCasesBarChart({data}) {
       const top10Death = R.compose(R.map(getValueFromArray('new_deaths')))(
         countryArray,
       );
+      debugger;
       setDataToDisplay({top10Names, top10Increase, top10Death});
     }
   }, [data]);

@@ -4,6 +4,7 @@ import colours from '../../../../styles/colours';
 export const options = data => ({
   color: [colours.red, colours.wheat],
   yAxis: {
+    inverse: true,
     type: 'category',
     data: data.top10Names,
     axisLabel: {
