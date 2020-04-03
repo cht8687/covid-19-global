@@ -8,43 +8,19 @@ import Country from '../components/maps/country';
 import InfoBoard from '../components/infoBoard';
 import Summary from '../components/summary';
 import Grid from '@material-ui/core/Grid';
-import {
-  getGlobalToday,
-  getGlobalYesterday,
-  getUSAToday,
-  getAustraliaToday,
-} from '../services/api';
+import {getGlobalToday, getGlobalYesterday} from '../services/api';
 import {useAsync} from 'react-async';
 import 'whatwg-fetch';
 import Layout from '../components/MyLayout';
 import InfoBanner from '../components/InfoBanner';
 import NotificationBanner from '../components/notificationBanner';
 import colours from '../styles/colours';
-import {
-  curry,
-  reduce,
-  assoc,
-  keys,
-  compose,
-  map,
-  pick,
-  sort,
-  descend,
-  prop,
-} from 'ramda';
-import CountryPieWithLineCharts from '../components/charts/country/pieWithLine/pieWithLine';
-import CountryBarLabelRotation from '../components/charts/country/barLabelRotation/barLabelRotation';
+import Router from 'next/router';
+import {compose, sort, descend, prop} from 'ramda';
 import GlobalLineTrendChart from '../components/charts/global/lineTrendChart/lineTrendChart';
 import GlobalTopNewCasesBarChart from '../components/charts/global/topNewCasesBarChart/topNewCasesBarChart';
-import Disqus from 'disqus-react';
 import {only, down} from 'styled-breakpoints';
-
-const disqusShortname = 'covid19-boards';
-const disqusConfig = {
-  url: 'https://covid19boards.com',
-  identifier: 'covid19-boards',
-  title: 'COVID19 Boards',
-};
+import DisqusComp from '../components/disqus/disqus';
 
 const SiteContent = styled(Grid)`
   padding-top: 66px;
@@ -58,34 +34,6 @@ const NewFeature = styled(Grid)`
   font-weight: bold;
 `;
 
-const IFrameHolder = styled(Grid)`
-  overflow: hidden;
-  // Calculated from the aspect ration of the content (in case of 16:9 it is 9/16= 0.5625)
-  padding-top: 56.25%;
-  position: relative;
-  padding-left: 20px;
-  padding-right: 20px;
-`;
-
-const IFrameContainer = styled.iframe`
-  border: 0;
-  height: 100%;
-  left: 0;
-  position: absolute;
-  top: 0;
-  width: 100%;
-`;
-
-const IFrameMiddle = styled.div`
-  height: 545px;
-  ${down('tablet')} {
-    height: 450px;
-  }
-  ${only('tablet')} {
-    height: 450px;
-  }
-`;
-
 export default function Index() {
   const {data: dataWorldRaw, error, isLoading} = useAsync({
     promiseFn: getGlobalToday,
@@ -97,23 +45,9 @@ export default function Index() {
   } = useAsync({
     promiseFn: getGlobalYesterday,
   });
-  const {data: dataUSARaw, error: errorUSA, isLoading: isLoadingUSA} = useAsync(
-    {
-      promiseFn: getUSAToday,
-    },
-  );
-  const {
-    data: dataAustraliaRaw,
-    error: errorAustralia,
-    isLoading: isLoadingAustralia,
-  } = useAsync({
-    promiseFn: getAustraliaToday,
-  });
 
   const [toDisplayData, setToDisplayData] = useState('');
   const [toDisplayDataWorld, setToDisplayDataWorld] = useState('');
-  const [toDisplayDataUSA, setToDisplayDataUSA] = useState('');
-  const [toDisplayDataAustralia, setToDisplayDataAustralia] = useState('');
   const [toDisplayTotal, setToDisplayTotal] = useState('');
   const [toDisplayTimestamp, setToDisplayTimestamp] = useState('');
   const [
@@ -125,7 +59,7 @@ export default function Index() {
   const sortList = compose(sort(descend(prop('total_cases'))));
 
   useEffect(() => {
-    if (dataWorldRaw && location === 'world') {
+    if (dataWorldRaw) {
       const {total, timestamp} = dataWorldRaw;
       setToDisplayData(dataWorldRaw);
       setToDisplayDataWorld(dataWorldRaw);
@@ -136,48 +70,15 @@ export default function Index() {
     if (dataWorldYesterdayRaw && location === 'world') {
       setToDisplayDataWorldYesterday(dataWorldYesterdayRaw);
     }
-
-    /* Ok, time is real tight to release, I can't figure out
-     * a re-render issue, so let's repeat some code */
-    if (dataUSARaw && location === 'usa') {
-      const {country, states: list, timestamp} = dataUSARaw;
-      let sortedList = sortList(list);
-      const toDisplay = {
-        total: country[0],
-        list: sortedList,
-        type: 'country',
-      };
-      setToDisplayData(toDisplay);
-      setToDisplayDataUSA(toDisplay);
-      setToDisplayTotal(country[0]);
-      setToDisplayTimestamp(timestamp);
-    }
-    /* Ok, time is real tight to release, I can't figure out
-     * a re-render issue, so let's repeat some code */
-    if (dataAustraliaRaw && location === 'australia') {
-      const {country, states: list, timestamp} = dataAustraliaRaw;
-      let sortedList = sortList(list);
-      const toDisplay = {
-        total: country[0],
-        list: sortedList,
-        type: 'country',
-      };
-      setToDisplayData(toDisplay);
-      setToDisplayDataAustralia(toDisplay);
-      setToDisplayTotal(country[0]);
-      setToDisplayTimestamp(timestamp);
-    }
-  }, [
-    dataWorldRaw,
-    dataWorldYesterdayRaw,
-    dataUSARaw,
-    dataAustraliaRaw,
-    location,
-  ]);
+  }, [dataWorldRaw, dataWorldYesterdayRaw]);
 
   const handleCountryChange = e => {
     if (e.target.value) {
-      setLocation(e.target.value);
+      if (e.target.value === 'world') {
+        Router.push('/');
+      } else {
+        Router.push(`/${e.target.value}`);
+      }
     }
   };
 
@@ -188,7 +89,7 @@ export default function Index() {
           <Summary country={location} total={toDisplayTotal} />
         </Grid>
         <Grid item xs={12} lg={6}>
-          <NotificationBanner />
+          <NotificationBanner location={location} />
         </Grid>
         <Grid item xs={12} lg={6}>
           <InfoBanner
@@ -207,133 +108,46 @@ export default function Index() {
             padding: 20,
           }}>
           <Grid item xs={12} lg={12}>
-            {location === 'world' ? (
-              <World
-                data={toDisplayData}
-                location={location}
-                timestamp={toDisplayTimestamp}
-              />
-            ) : (
-              <Country
-                data={toDisplayData}
-                location={location}
-                timestamp={toDisplayTimestamp}
-              />
-            )}
+            <World
+              data={toDisplayData}
+              location={location}
+              timestamp={toDisplayTimestamp}
+            />
           </Grid>
         </Grid>
-        {location === 'world' && (
-          <Grid
-            item
-            xs={12}
-            lg={6}
-            style={{
-              padding: 20,
-            }}>
-            <>
-              <NewFeature item xs={12} lg={12}>
-                Total Cases (worldwide)
-              </NewFeature>
-              <GlobalLineTrendChart />
-            </>
-          </Grid>
-        )}
-        {location === 'world' && (
-          <Grid
-            item
-            xs={12}
-            lg={6}
-            style={{
-              padding: 20,
-            }}>
-            <>
-              <NewFeature item xs={12} lg={12}>
-                Daily Increases (worldwide)
-              </NewFeature>
-              <GlobalTopNewCasesBarChart data={dataWorldYesterdayRaw} />
-            </>
-          </Grid>
-        )}
-        {location === 'australia' && (
-          <Grid item xs={12} lg={6} style={{padding: 20}}>
-            <>
-              <NewFeature item xs={12} lg={12}>
-                Australia Daily Confirmed Cases
-              </NewFeature>
-              <CountryBarLabelRotation location={location} />
-            </>
-          </Grid>
-        )}
-        {location === 'australia' && (
-          <Grid
-            item
-            xs={12}
-            lg={6}
-            style={{
-              padding: 20,
-            }}>
-            <>
-              <NewFeature item xs={12} lg={12}>
-                Australia Total Confirmed Cases
-              </NewFeature>
-              <CountryPieWithLineCharts location={location} />
-            </>
-          </Grid>
-        )}
-
-        {location === 'australia' && (
-          <IFrameHolder
-            item
-            xs={12}
-            lg={6}
-            style={{
-              padding: 20,
-            }}>
-            <IFrameMiddle>
-              <IFrameContainer
-                src="https://e.infogr.am/nsw-covid-19-spread-map-1h7k23g3v0pe4xr?src=embed#async_embed"
-                scrolling="no"
-                frameborder="0"
-                allowfullscreen=""></IFrameContainer>{' '}
-            </IFrameMiddle>
-          </IFrameHolder>
-        )}
-
-        {location === 'australia' && (
-          <IFrameHolder
-            item
-            xs={12}
-            lg={6}
-            style={{
-              padding: 20,
-            }}>
-            <IFrameMiddle>
-              <IFrameContainer
-                src="https://e.infogr.am/1p067pqwzp39d9iegq6gg9ygewanelm1ep9?src=embed#async_embed"
-                scrolling="no"
-                frameborder="0"
-                allowfullscreen=""></IFrameContainer>{' '}
-            </IFrameMiddle>
-          </IFrameHolder>
-        )}
-        <Grid item xs={12} lg={12}>
-          {location === 'world' && (
-            <InfoBoard country={location} data={toDisplayDataWorld} />
-          )}
-          {location === 'usa' && (
-            <InfoBoard country={location} data={toDisplayDataUSA} />
-          )}
-          {location === 'australia' && (
-            <InfoBoard country={location} data={toDisplayDataAustralia} />
-          )}
+        <Grid
+          item
+          xs={12}
+          lg={6}
+          style={{
+            padding: 20,
+          }}>
+          <>
+            <NewFeature item xs={12} lg={12}>
+              Total Cases (worldwide)
+            </NewFeature>
+            <GlobalLineTrendChart />
+          </>
+        </Grid>
+        <Grid
+          item
+          xs={12}
+          lg={6}
+          style={{
+            padding: 20,
+          }}>
+          <>
+            <NewFeature item xs={12} lg={12}>
+              Daily Increases (worldwide)
+            </NewFeature>
+            <GlobalTopNewCasesBarChart data={dataWorldYesterdayRaw} />
+          </>
         </Grid>
         <Grid item xs={12} lg={12}>
-          <Disqus.DiscussionEmbed
-            shortname={disqusShortname}
-            config={disqusConfig}
-          />{' '}
+          <InfoBoard country={location} data={toDisplayDataWorld} />
         </Grid>
       </SiteContent>
+      <DisqusComp commentId="world" />
     </Layout>
   );
 }

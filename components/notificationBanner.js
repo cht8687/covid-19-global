@@ -42,17 +42,49 @@ export default function NotificationBanner({location, data, total}) {
     <Container>
       <Grid container spacing={2}>
         <Grid item xs={12} lg={12}>
-          <ul>
-            <li>
-              Update: Added Australia NSW suburbs map(Select Australia page)
-            </li>
-            <li>Have a nice day! Stay home and stay safe!</li>
-          </ul>
-          Any suggestions/feedbacks, can send to our Telegram group:{' '}
-          <a href="https://t.me/covid19boards" target="_blank">
-            {' '}
-            COVID19Board{' '}
-          </a>
+          {location === 'world' && (
+            <>
+              <ul>
+                <li>Update: Added Total Cases and Daily Increases charts</li>
+                <li>Have a nice day! Stay home and stay safe!</li>
+              </ul>
+              Any suggestions/feedbacks, can send to our Telegram group:{' '}
+              <a href="https://t.me/covid19boards" target="_blank">
+                {' '}
+                COVID19Board{' '}
+              </a>
+            </>
+          )}
+          {location === 'australia' && (
+            <>
+              <ul>
+                <li>
+                  Gday! Update: Added Australia NSW suburbs map(Select Australia
+                  page)
+                </li>
+                <li>Have a nice day! Stay home and stay safe!</li>
+              </ul>
+              Any suggestions/feedbacks, can send to our Telegram group:{' '}
+              <a href="https://t.me/covid19boards" target="_blank">
+                {' '}
+                COVID19Board{' '}
+              </a>
+            </>
+          )}
+
+          {location === 'usa' && (
+            <>
+              <ul>
+                <li>Update: USA charts are coming soon!</li>
+                <li>Have a nice day! Stay home and stay safe!</li>
+              </ul>
+              Any suggestions/feedbacks, can send to our Telegram group:{' '}
+              <a href="https://t.me/covid19boards" target="_blank">
+                {' '}
+                COVID19Board{' '}
+              </a>
+            </>
+          )}
         </Grid>
       </Grid>
     </Container>
