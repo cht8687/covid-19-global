@@ -154,7 +154,7 @@ export default function Index() {
         <Grid item xs={12} lg={6} style={{padding: 20}}>
           <>
             <NewFeature item xs={12} lg={12}>
-              Australia Daily Increases Cases
+              Daily confirmed cases in Australia
             </NewFeature>
             <CountryDailyTotalIncreaseBar location={location} />
           </>
@@ -162,7 +162,7 @@ export default function Index() {
         <Grid item xs={12} lg={6} style={{padding: 20}}>
           <>
             <NewFeature item xs={12} lg={12}>
-              Australia Daily Increases Cases (By state)
+              Daily Increases view in states and territories over time
             </NewFeature>
             <CountryBarLabelRotation location={location} />
           </>
@@ -176,7 +176,7 @@ export default function Index() {
           }}>
           <>
             <NewFeature item xs={12} lg={12}>
-              Australia Total Confirmed Cases (By states)
+              Cumulative view of diagnoses in states and territories over time
             </NewFeature>
             <CountryPieWithLineCharts location={location} />
           </>
