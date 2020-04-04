@@ -5,6 +5,7 @@ const exposedConfigs = {
       '/': {page: '/'},
       '/australia': {page: '/australia'},
       '/usa': {page: '/usa'},
+      '/about-us': {page: '/about-us'},
     };
     return paths;
   },
