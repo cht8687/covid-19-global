@@ -20,12 +20,18 @@ const ReactEchartsContainer = styled(ReactEcharts)`
   width: 100%;
 `;
 
-export default function CountryBarLabelRotation() {
+export default function CountryBarLabelRotation({location}) {
   const [data, setData] = useState();
 
   useEffect(() => {
-    getHistoryAll().then(data => {
-      setData(data);
+    getHistoryAll(location === 'world' ? 'all' : location).then(data => {
+      let source;
+      if (location !== 'world') {
+        source = data.timeline;
+      } else {
+        source = data;
+      }
+      setData(source);
     });
   }, []);
 

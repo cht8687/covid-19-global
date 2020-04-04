@@ -13,12 +13,23 @@ import 'whatwg-fetch';
 import Layout from '../components/MyLayout';
 import InfoBanner from '../components/InfoBanner';
 import NotificationBanner from '../components/notificationBanner';
+import colours from '../styles/colours';
 import Router from 'next/router';
 import * as R from 'ramda';
 import DisqusComp from '../components/disqus/disqus';
+import GlobalLineTrendChart from '../components/charts/global/lineTrendChart/lineTrendChart';
+import CountryDailyTotalIncreaseBar from '../components/charts/country/dailyTotalIncreaseBar/dailyTotalIncreaseBar';
 
 const SiteContent = styled(Grid)`
   padding-top: 66px;
+`;
+
+const NewFeature = styled(Grid)`
+  padding-top: 15px;
+  color: ${colours.dimWhite};
+  text-align: center;
+  font-size: 16px;
+  font-weight: bold;
 `;
 
 export default function Index() {
@@ -86,7 +97,7 @@ export default function Index() {
           container
           item
           xs={12}
-          lg={12}
+          lg={6}
           style={{
             padding: 20,
           }}>
@@ -97,6 +108,20 @@ export default function Index() {
               timestamp={toDisplayTimestamp}
             />
           </Grid>
+        </Grid>
+        <Grid
+          item
+          xs={12}
+          lg={6}
+          style={{
+            padding: 20,
+          }}>
+          <>
+            <NewFeature item xs={12} lg={12}>
+              Total Cases (USA)
+            </NewFeature>
+            <GlobalLineTrendChart location={location} />
+          </>
         </Grid>
         <Grid item xs={12} lg={12}>
           <InfoBoard country={location} data={toDisplayDataUSA} />

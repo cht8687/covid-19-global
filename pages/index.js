@@ -126,7 +126,7 @@ export default function Index() {
             <NewFeature item xs={12} lg={12}>
               Total Cases (worldwide)
             </NewFeature>
-            <GlobalLineTrendChart />
+            <GlobalLineTrendChart location={location} />
           </>
         </Grid>
         <Grid
