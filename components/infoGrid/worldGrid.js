@@ -21,7 +21,9 @@ import {
   values,
   head,
   compose,
+  drop,
 } from 'ramda';
+
 import {
   useStyles,
   TotalCase,
@@ -48,7 +50,7 @@ export default function WorldGrid({data}) {
   const toIndividualKeys = pipe(toPairs, map(pipe(of, fromPairs)));
 
   const totalArray = toIndividualKeys(total);
-  const countryArray = map(toIndividualKeys)(list);
+  const countryArray = drop(1, map(toIndividualKeys)(list));
   const displayList = [totalArray, ...countryArray];
 
   const styles = useStyles();
