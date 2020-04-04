@@ -41,6 +41,7 @@ const CountrySelection = styled.div`
   min-width: 120px;
   display: flex;
   justify-content: center;
+  height: 63px;
 `;
 
 const Location = styled(Grid)`
@@ -66,12 +67,6 @@ const RecoveredRate = styled(Grid)`
   ${Numbers}
   ${RecoveredColor}
 `;
-
-const styles = theme => ({
-  icon: {
-    display: none,
-  },
-});
 
 export default function InfoBanner({
   location,

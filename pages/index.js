@@ -105,7 +105,7 @@ export default function Index() {
           xs={12}
           lg={12}
           style={{
-            padding: 20,
+            padding: 15,
           }}>
           <Grid item xs={12} lg={12}>
             <World
@@ -120,7 +120,7 @@ export default function Index() {
           xs={12}
           lg={6}
           style={{
-            padding: 20,
+            padding: 15,
           }}>
           <>
             <NewFeature item xs={12} lg={12}>
@@ -134,7 +134,7 @@ export default function Index() {
           xs={12}
           lg={6}
           style={{
-            padding: 20,
+            padding: 15,
           }}>
           <>
             <NewFeature item xs={12} lg={12}>
