@@ -24,6 +24,9 @@ export const options = (name, data, total, timestamp) => ({
   tooltip: {
     trigger: 'item',
     formatter: function(params) {
+      if (!params.value) {
+        return;
+      }
       var value = (params.value + '').split('.');
       value = value[0].replace(/(\d{1,3})(?=(?:\d{3})+(?!\d))/g, '$1,');
       return params.name + '<br/>' + ' Total Confirmed: ' + value;
