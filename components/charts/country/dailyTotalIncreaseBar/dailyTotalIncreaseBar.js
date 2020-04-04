@@ -83,11 +83,10 @@ export default function CountryDailyTotalIncreaseBar({location}) {
 
         return result;
       });
-
-      const datesInfo = R.drop(1, R.head(source));
+      const datesInfo = R.drop(1, R.dropLast(1, R.head(source)));
       const valuesData = R.drop(1, source);
       let resultData = [];
-      for (let index = 0; index < datesInfo.length; index++) {
+      for (let index = 0; index < valuesData[0].length; index++) {
         let currentColumn = 0;
         for (let index2 = 0; index2 < valuesData.length; index2++) {
           currentColumn += valuesData[index2][index];
