@@ -3,24 +3,6 @@ import colours from '../../../../styles/colours';
 
 export const options = data => ({
   color: [colours.red, colours.wheat],
-  dataZoom: [
-    {
-      show: true,
-      xAxisIndex: [0],
-      maxSpan: 50,
-      minSpan: 10,
-      start: 50,
-      end: 100,
-    },
-    {
-      type: 'inside',
-      xAxisIndex: [0],
-      maxSpan: 50,
-      minSpan: 10,
-      start: 50,
-      end: 100,
-    },
-  ],
   xAxis: {
     inverse: false,
     type: 'category',
