@@ -61,8 +61,9 @@ export default function World({data, location, timestamp, mode}) {
     dataToRender = compose(
       map(renameKeys({country_code: 'code'})),
       map(renameKeys({country: 'name'})),
-      getCases(),
-      map(pick(['country', mode, 'country_code'])),
+      map(renameKeys({total_cases: 'value'})),
+      map(renameKeys({active_cases: 'AValue'})),
+      map(pick(['country', 'active_cases', 'total_cases', 'country_code'])),
     )(list);
   }
 
@@ -70,17 +71,10 @@ export default function World({data, location, timestamp, mode}) {
     <MapContainer>
       {!total ? (
         <CircularProgress color="secondary" />
-      ) : mode === 'active_cases' ? (
-        <ReactEchartsContainer
-          option={
-            activeWorldOption('world', dataToRender, total, timestamp) || {}
-          }
-          style={{height: '50vh', width: '100%'}}
-        />
       ) : (
         <ReactEchartsContainer
           option={
-            confirmedWorldOption('world', dataToRender, total, timestamp) || {}
+            activeWorldOption('world', dataToRender, total, timestamp) || {}
           }
           style={{height: '50vh', width: '100%'}}
         />

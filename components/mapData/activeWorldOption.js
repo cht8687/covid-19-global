@@ -266,20 +266,35 @@ export const activeWorldOption = (name, data, total, timestamp) => ({
   tooltip: {
     trigger: 'item',
     formatter: function(params) {
-      let num = params.value[2];
-      return 'Active cases' + '<br/>' + params.name + ': ' + num;
+      if (Array.isArray(params.value)) {
+        let num = params.value[2];
+        return 'Active cases' + '<br/>' + params.name + ': ' + num;
+      } else {
+        let num = params.value;
+        return 'Total cases' + '<br/>' + params.name + ': ' + num;
+      }
     },
   },
   visualMap: {
     show: true,
     min: 0,
     max: data[2].value,
-    inRange: {
-      symbolSize: [3, 40],
-      color: ['#eeb39d', '#c66a4c', '#af4527', colours.orange],
-    },
     textStyle: {
       color: '#fff',
+    },
+    seriesIndex: 1,
+    // Define visual channels only for target series.
+    target: {
+      inRange: {
+        color: ['#eeb39d', '#c66a4c', '#af4527', colours.orange],
+        symbolSize: [8, 60],
+      },
+    },
+    // Define visual channels only for visualMap-piecewise component.
+    controller: {
+      inRange: {
+        color: ['#eeb39d', '#c66a4c', '#af4527', colours.orange],
+      },
     },
   },
   toolbox: {
@@ -334,7 +349,7 @@ export const activeWorldOption = (name, data, total, timestamp) => ({
             value: [
               latlong[itemOpt.code].longitude,
               latlong[itemOpt.code].latitude,
-              itemOpt.value,
+              itemOpt.AValue,
             ],
             label: {
               show: false,
@@ -379,7 +394,7 @@ export const activeWorldOption = (name, data, total, timestamp) => ({
             value: [
               latlong[itemOpt.code].longitude,
               latlong[itemOpt.code].latitude,
-              itemOpt.value,
+              itemOpt.AValue,
             ],
             label: {
               emphasis: {
@@ -390,7 +405,7 @@ export const activeWorldOption = (name, data, total, timestamp) => ({
           };
         })
         .sort(function(a, b) {
-          return b.value - a.value;
+          return b.AValue - a.AValue;
         })
         .slice(0, 5),
       showEffectOn: 'render',
@@ -409,6 +424,28 @@ export const activeWorldOption = (name, data, total, timestamp) => ({
         shadowColor: '#333',
       },
       zlevel: 1,
+    },
+    {
+      mapType: name,
+      roam: 'scale',
+      zoom: mapOptionZoomlevelMapping()[name],
+      data: data.map(function(itemOpt) {
+        return {
+          name: itemOpt.name,
+          value: itemOpt.value,
+        };
+      }),
+      label: {
+        emphasis: {
+          show: true,
+        },
+      },
+      itemStyle: {
+        emphasis: {label: {show: true}},
+      },
+      name: '',
+      type: 'map',
+      nameMap: nameMappingWord(),
     },
   ],
 });
