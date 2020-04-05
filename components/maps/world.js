@@ -5,9 +5,24 @@ import React, {useEffect} from 'react';
 import styled from 'styled-components';
 import ReactEcharts from 'echarts-for-react';
 require('echarts-countries-js/echarts-countries-js/world.js');
-import {options} from '../mapData/option';
+import {activeWorldOption} from '../mapData/activeWorldOption';
+import {confirmedWorldOption} from '../mapData/confirmedWorldOption';
 import CircularProgress from '@material-ui/core/CircularProgress';
-import {curry, reduce, assoc, keys, compose, map, pick} from 'ramda';
+import {
+  curry,
+  reduce,
+  assoc,
+  keys,
+  compose,
+  map,
+  pick,
+  applySpec,
+  prop,
+  converge,
+  concat,
+  toLower,
+} from 'ramda';
+import countryCodeToGeo from '../mapData/countryCodeToGeo';
 
 const renameKeys = curry((keysMap, obj) =>
   reduce(
@@ -31,15 +46,23 @@ const ReactEchartsContainer = styled(ReactEcharts)`
   width: 100%;
 `;
 
-export default function World({data, location, timestamp}) {
-  let total, list, dataToRender;
+export default function World({data, location, timestamp, mode}) {
+  let total, list, dataRaw;
+  let dataToRender = [];
   if (data) {
     total = data.total;
     list = data.list;
+
+    const activeCases = map(renameKeys({active_cases: 'value'}));
+    const totalCases = map(renameKeys({total_cases: 'value'}));
+
+    const getCases = () => (mode === 'active_cases' ? activeCases : totalCases);
+
     dataToRender = compose(
+      map(renameKeys({country_code: 'code'})),
       map(renameKeys({country: 'name'})),
-      map(renameKeys({total_cases: 'value'})),
-      map(pick(['country', 'total_cases'])),
+      getCases(),
+      map(pick(['country', mode, 'country_code'])),
     )(list);
   }
 
@@ -47,9 +70,18 @@ export default function World({data, location, timestamp}) {
     <MapContainer>
       {!total ? (
         <CircularProgress color="secondary" />
+      ) : mode === 'active_cases' ? (
+        <ReactEchartsContainer
+          option={
+            activeWorldOption('world', dataToRender, total, timestamp) || {}
+          }
+          style={{height: '50vh', width: '100%'}}
+        />
       ) : (
         <ReactEchartsContainer
-          option={options('world', dataToRender, total, timestamp) || {}}
+          option={
+            confirmedWorldOption('world', dataToRender, total, timestamp) || {}
+          }
           style={{height: '50vh', width: '100%'}}
         />
       )}

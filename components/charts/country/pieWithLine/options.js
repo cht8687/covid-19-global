@@ -39,6 +39,14 @@ export const options = ({source}) => ({
       },
     },
   },
+  visualMap: {
+    show: false,
+    min: 0,
+    max: max,
+    inRange: {
+      symbolSize: [6, 60],
+    },
+  },
   yAxis: {
     gridIndex: 0,
     axisLabel: {
@@ -48,6 +56,20 @@ export const options = ({source}) => ({
     },
   },
   grid: {top: '55%', y: 50, y2: 90},
+  dataZoom: [
+    {
+      show: true,
+      xAxisIndex: [0],
+      start: 60,
+      end: 100,
+    },
+    {
+      type: 'inside',
+      xAxisIndex: [0],
+      start: 60,
+      end: 100,
+    },
+  ],
   series: [
     {
       type: 'line',

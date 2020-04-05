@@ -107,11 +107,20 @@ export default function Index() {
           style={{
             padding: 15,
           }}>
-          <Grid item xs={12} lg={12}>
+          <Grid item xs={12} lg={6}>
             <World
               data={toDisplayData}
               location={location}
               timestamp={toDisplayTimestamp}
+              mode="total_cases"
+            />
+          </Grid>
+          <Grid item xs={12} lg={6}>
+            <World
+              data={toDisplayData}
+              location={location}
+              timestamp={toDisplayTimestamp}
+              mode="active_cases"
             />
           </Grid>
         </Grid>

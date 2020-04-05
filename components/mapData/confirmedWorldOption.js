@@ -3,7 +3,7 @@ import {upperCase} from 'upper-case';
 import {nameMappingWord} from './mapNameMapping';
 import {mapOptionZoomlevelMapping} from './mapNameMapping';
 
-export const options = (name, data, total, timestamp) => ({
+export const confirmedWorldOption = (name, data, total, timestamp) => ({
   title: [
     {
       textStyle: {
@@ -11,7 +11,7 @@ export const options = (name, data, total, timestamp) => ({
         fontSize: 18,
       },
       subtext: 'Updated ' + timestamp,
-      text: upperCase(name) + ' COVID-19 MAP ',
+      text: upperCase(name) + ' Total COVID-19 Cases MAP ',
       top: 'auto',
       subtextStyle: {
         color: colours.dimWhite,
