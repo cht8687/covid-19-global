@@ -41,7 +41,6 @@ const CountrySelection = styled.div`
   min-width: 120px;
   display: flex;
   justify-content: center;
-  height: 63px;
 `;
 
 const Location = styled(Grid)`

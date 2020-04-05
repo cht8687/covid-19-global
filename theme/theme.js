@@ -32,6 +32,12 @@ const theme = createMuiTheme({
       icon: {
         color: colours.dimWhite,
       },
+      selectMenu: {
+        height: '49px',
+        display: 'flex',
+        justifyContent: 'center',
+        flexDirection: 'column',
+      },
     },
   },
 });
