@@ -139,7 +139,7 @@ export default function Index() {
           xs={12}
           lg={6}
           style={{
-            margin: '0 10px',
+            padding: '0 20px',
           }}>
           <Grid item xs={12} lg={12}>
             <Country
@@ -149,7 +149,7 @@ export default function Index() {
             />
           </Grid>
         </Grid>
-        <Grid item xs={12} lg={6} style={{margin: '0 20px'}}>
+        <Grid item xs={12} lg={6} style={{padding: '0 20px'}}>
           <>
             <NewFeature item xs={12} lg={12}>
               Daily confirmed cases in Australia
@@ -157,7 +157,7 @@ export default function Index() {
             <CountryDailyTotalIncreaseBar location={location} />
           </>
         </Grid>
-        <Grid item xs={12} lg={6} style={{margin: '0 20px'}}>
+        <Grid item xs={12} lg={6} style={{padding: '0 20px'}}>
           <>
             <NewFeature item xs={12} lg={12}>
               Daily Increases view in states and territories over time
@@ -170,7 +170,7 @@ export default function Index() {
           xs={12}
           lg={6}
           style={{
-            margin: '0 10px',
+            padding: '0 10px',
           }}>
           <>
             <NewFeature item xs={12} lg={12}>
@@ -183,7 +183,7 @@ export default function Index() {
         <IFrameHolder
           item
           xs={12}
-          lg={6}
+          lg={12}
           style={{
             margin: '0 10px',
             background: 'white',
@@ -199,7 +199,7 @@ export default function Index() {
         <IFrameHolder
           item
           xs={12}
-          lg={6}
+          lg={12}
           style={{
             margin: '0 10px',
           }}>
@@ -214,7 +214,7 @@ export default function Index() {
         <IFrameHolder
           item
           xs={12}
-          lg={6}
+          lg={12}
           style={{
             margin: '0 10px',
           }}>
@@ -226,7 +226,7 @@ export default function Index() {
               allowfullscreen=""></IFrameContainer>{' '}
           </IFrameMiddle>
         </IFrameHolder>
-        <Grid item xs={12} lg={6}>
+        <Grid item xs={12} lg={12}>
           <InfoBoard country={location} data={toDisplayDataAustralia} />
         </Grid>
       </SiteContent>
