@@ -49,8 +49,6 @@ const IFrameHolder = styled(Grid)`
   // Calculated from the aspect ration of the content (in case of 16:9 it is 9/16= 0.5625)
   padding-top: 56.25%;
   position: relative;
-  padding-left: 20px;
-  padding-right: 20px;
 `;
 
 const IFrameContainer = styled.iframe`
@@ -63,12 +61,12 @@ const IFrameContainer = styled.iframe`
 `;
 
 const IFrameMiddle = styled.div`
-  height: 545px;
+  height: 850px;
   ${down('tablet')} {
-    height: 450px;
+    height: 500px;
   }
   ${only('tablet')} {
-    height: 450px;
+    height: 500px;
   }
 `;
 
@@ -141,7 +139,7 @@ export default function Index() {
           xs={12}
           lg={6}
           style={{
-            padding: 20,
+            margin: '0 10px',
           }}>
           <Grid item xs={12} lg={12}>
             <Country
@@ -151,7 +149,7 @@ export default function Index() {
             />
           </Grid>
         </Grid>
-        <Grid item xs={12} lg={6} style={{padding: 20}}>
+        <Grid item xs={12} lg={6} style={{margin: '0 20px'}}>
           <>
             <NewFeature item xs={12} lg={12}>
               Daily confirmed cases in Australia
@@ -159,7 +157,7 @@ export default function Index() {
             <CountryDailyTotalIncreaseBar location={location} />
           </>
         </Grid>
-        <Grid item xs={12} lg={6} style={{padding: 20}}>
+        <Grid item xs={12} lg={6} style={{margin: '0 20px'}}>
           <>
             <NewFeature item xs={12} lg={12}>
               Daily Increases view in states and territories over time
@@ -172,7 +170,7 @@ export default function Index() {
           xs={12}
           lg={6}
           style={{
-            padding: 20,
+            margin: '0 10px',
           }}>
           <>
             <NewFeature item xs={12} lg={12}>
@@ -181,16 +179,18 @@ export default function Index() {
             <CountryPieWithLineCharts location={location} />
           </>
         </Grid>
+
         <IFrameHolder
           item
           xs={12}
           lg={6}
           style={{
-            padding: 20,
+            margin: '0 10px',
+            background: 'white',
           }}>
           <IFrameMiddle>
             <IFrameContainer
-              src="https://e.infogr.am/nsw-covid-19-spread-map-1h7k23g3v0pe4xr?src=embed#async_embed"
+              src="https://interactive.guim.co.uk/embed/iframeable/2020/04/australian-states-corona-maps/html/index.html?state=NSW"
               scrolling="no"
               frameborder="0"
               allowfullscreen=""></IFrameContainer>{' '}
@@ -201,17 +201,32 @@ export default function Index() {
           xs={12}
           lg={6}
           style={{
-            padding: 20,
+            margin: '0 10px',
           }}>
           <IFrameMiddle>
             <IFrameContainer
-              src="https://e.infogr.am/1p067pqwzp39d9iegq6gg9ygewanelm1ep9?src=embed#async_embed"
+              src="https://interactive.guim.co.uk/embed/iframeable/2020/04/australian-states-corona-maps/html/index.html?state=VIC"
               scrolling="no"
               frameborder="0"
               allowfullscreen=""></IFrameContainer>{' '}
           </IFrameMiddle>
         </IFrameHolder>
-        <Grid item xs={12} lg={12}>
+        <IFrameHolder
+          item
+          xs={12}
+          lg={6}
+          style={{
+            margin: '0 10px',
+          }}>
+          <IFrameMiddle>
+            <IFrameContainer
+              src="https://interactive.guim.co.uk/embed/iframeable/2020/04/australian-states-corona-maps/html/index.html?state=QLD"
+              scrolling="no"
+              frameborder="0"
+              allowfullscreen=""></IFrameContainer>{' '}
+          </IFrameMiddle>
+        </IFrameHolder>
+        <Grid item xs={12} lg={6}>
           <InfoBoard country={location} data={toDisplayDataAustralia} />
         </Grid>
       </SiteContent>

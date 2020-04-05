@@ -47,9 +47,8 @@ export default function InfoBoard({country, data}) {
           <Grid item xs={12} lg={3}>
             <>
               <NewFeature item xs={12} lg={12}>
-                This section is intented to be blank. If you have any ideas what
-                you need, I can build for you, leave your comments below or send
-                me an email to:{' '}
+                If you have any ideas what you need, we can build for you, leave
+                your comments below or send email to:{' '}
                 <a href="mailto:covid19boards@gmail.com" target="_top">
                   covid19boards@gmail.com
                 </a>{' '}
