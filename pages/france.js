@@ -1,5 +1,5 @@
 import CountryHomePage from '../components/countryHomePage';
 
 export default () => {
-  return <CountryHomePage country="usa" />;
+  return <CountryHomePage country="france" />;
 };

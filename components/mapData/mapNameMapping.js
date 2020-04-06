@@ -1,6 +1,12 @@
+import france from './countryNameMaping/france';
+
 export const mapOptionNameMapping = () => ({
+  us: '美国',
   usa: '美国',
   australia: '澳大利亚',
+  canada: '加拿大',
+  france: '法国',
+  china: '中国',
 });
 
 export const mapOptionZoomlevelMapping = () => ({
@@ -28,3 +34,16 @@ export const nameMappingWord = () => ({
   'Dem. Rep. Congo': 'DRC',
   'Central African Rep.': 'CAR',
 });
+
+export const nameMappingCountry = country => {
+  switch (country) {
+    case 'france':
+      return france();
+      break;
+    case 'canada':
+      break;
+    case 'china':
+      return china();
+    default:
+  }
+};

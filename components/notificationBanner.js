@@ -2,12 +2,14 @@
  * Created by Robert Chang 15 March 2020
  */
 import React, {useState, useEffect} from 'react';
+import {upperCase} from 'upper-case';
 import styled, {css} from 'styled-components';
 import Grid from '@material-ui/core/Grid';
 import Button from '@material-ui/core/Button';
 import {only, down} from 'styled-breakpoints';
 import getPercentage from '../utilities/getPercentage';
 import colours from '../styles/colours';
+import {Facebook, Twitter} from 'react-social-sharing';
 
 const Container = styled.div`
   display: flex;
@@ -37,7 +39,7 @@ export default function NotificationBanner({location, data, total}) {
       setRecoverRate(recoverRate);
     }
   }, [total]);
-
+  const url = `https://www.covid19boards.com/`;
   return (
     <Container>
       <Grid container spacing={2}>
@@ -48,11 +50,6 @@ export default function NotificationBanner({location, data, total}) {
                 <li>Update: Added Total Cases and Daily Increases charts</li>
                 <li>Have a nice day! Stay home and stay safe!</li>
               </ul>
-              Any suggestions/feedbacks, can send to our Telegram group:{' '}
-              <a href="https://t.me/covid19boards" target="_blank">
-                {' '}
-                COVID19Board{' '}
-              </a>
             </>
           )}
           {location === 'australia' && (
@@ -61,27 +58,31 @@ export default function NotificationBanner({location, data, total}) {
                 <li>Gday! Update: Added Australia NSW suburbs map </li>
                 <li>Have a nice day! Stay home and stay safe!</li>
               </ul>
-              Any suggestions/feedbacks, can send to our Telegram group:{' '}
-              <a href="https://t.me/covid19boards" target="_blank">
-                {' '}
-                COVID19Board{' '}
-              </a>
             </>
           )}
-
-          {location === 'usa' && (
+          {location !== 'world' && location !== 'australia' && (
             <>
               <ul>
-                <li>Update: USA charts are coming soon!</li>
+                <li>
+                  Update: More {upperCase(location)} charts are coming soon!
+                </li>
                 <li>Have a nice day! Stay home and stay safe!</li>
               </ul>
-              Any suggestions/feedbacks, can send to our Telegram group:{' '}
-              <a href="https://t.me/covid19boards" target="_blank">
-                {' '}
-                COVID19Board{' '}
-              </a>
             </>
           )}
+          <>
+            <ul>
+              <li>
+                Share with your friends, family or coworkers. Keep them up to
+                date{' '}
+                <a href="https://t.me/covid19boards" target="_blank">
+                  Covid19Boards
+                </a>
+              </li>
+              <Facebook link={url} />
+              <Twitter link={url} />
+            </ul>
+          </>
         </Grid>
       </Grid>
     </Container>
