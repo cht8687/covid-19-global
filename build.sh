@@ -2,7 +2,7 @@ echo 'Generating build 📦📦📦📦📦📦📦'
 yarn build;
 
 echo 'Uploading to s3 ☁️☁️☁️☁️☁️☁️☁️☁️☁️☁️☁️☁️☁️'
-aws s3 sync ./out/ s3://covid19boards.com --delete;
+aws s3 sync ./out/ s3://www.covid19boards.com --delete;
 
 echo 'Invalidating Cloudfront'
 aws cloudfront create-invalidation \

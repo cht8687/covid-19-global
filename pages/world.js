@@ -6,6 +6,7 @@ import styled from 'styled-components';
 import World from '../components/maps/world';
 import Country from '../components/maps/country';
 import InfoBoard from '../components/infoBoard';
+import Paper from '@material-ui/core/Paper';
 import Summary from '../components/summary';
 import Grid from '@material-ui/core/Grid';
 import {getGlobalToday, getGlobalYesterday} from '../services/api';
@@ -24,6 +25,10 @@ import DisqusComp from '../components/disqus/disqus';
 
 const SiteContent = styled(Grid)`
   padding-top: 66px;
+`;
+
+const BoardPaper = styled(Paper)`
+  display: flex;
 `;
 
 const NewFeature = styled(Grid)`
@@ -85,20 +90,35 @@ export default function Index() {
   return (
     <Layout>
       <SiteContent container spacing={1}>
-        <Grid item xs={12} lg={12}>
+        <BoardPaper elevation={0}>
           <Summary country={location} total={toDisplayTotal} />
+        </BoardPaper>
+
+        <Grid
+          container
+          item
+          xs={12}
+          lg={6}
+          style={{
+            padding: 15,
+          }}>
+          <Grid item xs={12} lg={12}>
+            <World
+              data={toDisplayData}
+              location={location}
+              timestamp={toDisplayTimestamp}
+              mode="total_cases"
+            />
+          </Grid>
         </Grid>
-        <Grid item xs={12} lg={6}>
-          <NotificationBanner location={location} />
-        </Grid>
-        <Grid item xs={12} lg={6}>
+        <BoardPaper elevation={0}>
           <InfoBanner
             location={location}
             data={toDisplayData}
             total={toDisplayTotal}
             handleCountryChange={handleCountryChange}
           />
-        </Grid>
+        </BoardPaper>
         <Grid
           container
           item
@@ -154,6 +174,9 @@ export default function Index() {
         </Grid>
         <Grid item xs={12} lg={12}>
           <InfoBoard country={location} data={toDisplayDataWorld} />
+        </Grid>
+        <Grid item xs={12} lg={6}>
+          <NotificationBanner location={location} />
         </Grid>
       </SiteContent>
       <DisqusComp commentId="world" />

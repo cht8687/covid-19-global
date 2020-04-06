@@ -16,14 +16,15 @@ import {
   RecoveredColor,
   SeriousColor,
 } from '../styles/sharedStyle';
+import Paper from '@material-ui/core/Paper';
 
 const Numbers = css`
-  font-size: 35px;
+  font-size: 15px;
   ${down('tablet')} {
-    font-size: 18px;
+    font-size: 12px;
   }
   ${only('tablet')} {
-    font-size: 24px;
+    font-size: 12px;
   }
 `;
 
@@ -58,6 +59,19 @@ const Serious = styled(FlipNumbers)`=
   ${Numbers}
 `;
 
+const NumContainer = styled(Grid)`
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+`;
+
+const NumRow = styled(Grid)`
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+}
+`;
+
 const NumBlock = styled(Grid)`
   display: flex;
   flex-direction: column;
@@ -68,6 +82,14 @@ const NumBlock = styled(Grid)`
   ${only('tablet')} {
     font-size: 18px;
   }
+  background: ${colours.grey};
+  border-radius: 4px;
+  border: 1px solid ${colours.dark};
+  font-weight: 700;
+  text-align: center;
+  padding: 7px;
+  line-height: 1;
+  box-shadow: 0 5px 7px -2px rgba(0, 0, 0, 0.64);
 `;
 
 export default function Summary({total}) {
@@ -92,82 +114,76 @@ export default function Summary({total}) {
       {!total ? (
         <CircularProgress color="secondary" />
       ) : (
-        <Grid
-          container
-          spacing={2}
-          style={{
-            paddingLeft: 20,
-            paddingRight: 20,
-          }}>
-          <Grid item xs={12} lg={12}>
-            <Grid container spacing={2}>
-              <NumBlock item xs={3} lg={3}>
-                <Confirmed
-                  height={fH}
-                  width={fW}
-                  play
-                  color={colours.red}
-                  nonNumberStyle={{
-                    color: colours.red,
-                    fontSize: `${fH}px`,
-                  }}
-                  perspective={130}
-                  duration={5}
-                  numbers={totalCases}
-                />
-                Confirmed
-              </NumBlock>
-              <NumBlock item xs={3} lg={3}>
-                <Deceased
-                  height={fH}
-                  width={fW}
-                  play
-                  color={colours.wheat}
-                  nonNumberStyle={{
-                    color: colours.wheat,
-                    fontSize: `${fH}px`,
-                  }}
-                  perspective={140}
-                  duration={3}
-                  numbers={deceased}
-                />
-                Deceased
-              </NumBlock>
-              <NumBlock item xs={3} lg={3}>
-                <Serious
-                  height={fH}
-                  width={fW}
-                  play
-                  color={colours.pinkDark}
-                  nonNumberStyle={{
-                    color: colours.pinkDark,
-                    fontSize: `${fH}px`,
-                  }}
-                  perspective={140}
-                  duration={3}
-                  numbers={serious}
-                />
-                Critical
-              </NumBlock>
-              <NumBlock item xs={3} lg={3}>
-                <Recovered
-                  height={fH}
-                  width={fW}
-                  play
-                  color={colours.green}
-                  nonNumberStyle={{
-                    color: colours.green,
-                    fontSize: `${fH}px`,
-                  }}
-                  perspective={140}
-                  duration={3}
-                  numbers={recovered}
-                />
-                Recovered
-              </NumBlock>
-            </Grid>
-          </Grid>
-        </Grid>
+        <NumContainer container spacing={5}>
+          <NumRow item xs={6} lg={12}>
+            <NumBlock>
+              <Confirmed
+                height={fH}
+                width={fW}
+                play
+                color={colours.red}
+                nonNumberStyle={{
+                  color: colours.red,
+                  fontSize: `${fH}px`,
+                }}
+                perspective={330}
+                duration={5}
+                numbers={totalCases}
+              />
+              Confirmed
+            </NumBlock>
+            <NumBlock>
+              <Deceased
+                height={fH}
+                width={fW}
+                play
+                color={colours.wheat}
+                nonNumberStyle={{
+                  color: colours.wheat,
+                  fontSize: `${fH}px`,
+                }}
+                perspective={330}
+                duration={3}
+                numbers={deceased}
+              />
+              Deceased
+            </NumBlock>
+          </NumRow>
+          <NumRow item xs={6} lg={12}>
+            <NumBlock item xs={3} lg={3}>
+              <Serious
+                height={fH}
+                width={fW}
+                play
+                color={colours.pinkDark}
+                nonNumberStyle={{
+                  color: colours.pinkDark,
+                  fontSize: `${fH}px`,
+                }}
+                perspective={330}
+                duration={3}
+                numbers={serious}
+              />
+              Critical
+            </NumBlock>
+            <NumBlock item xs={3} lg={3}>
+              <Recovered
+                height={fH}
+                width={fW}
+                play
+                color={colours.green}
+                nonNumberStyle={{
+                  color: colours.green,
+                  fontSize: `${fH}px`,
+                }}
+                perspective={330}
+                duration={3}
+                numbers={recovered}
+              />
+              Recovered
+            </NumBlock>
+          </NumRow>
+        </NumContainer>
       )}
     </Container>
   );

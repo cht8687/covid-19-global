@@ -9,8 +9,8 @@ export default () => {
     height = 21;
     width = 18;
   } else {
-    height = 26;
-    width = 26;
+    height = 18;
+    width = 13;
   }
   return {
     height,
