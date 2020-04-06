@@ -5,4 +5,5 @@ export const COUNTRY_SELECTIONS = [
   //'china',
   'france',
   'usa',
+  'uk',
 ];

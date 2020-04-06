@@ -6,6 +6,7 @@ require('echarts-countries-js/echarts-countries-js/Australia.js');
 require('echarts-countries-js/echarts-countries-js/Canada.js');
 require('echarts-countries-js/echarts-countries-js/France.js');
 require('echarts-countries-js/echarts-countries-js/China.js');
+require('echarts-countries-js/echarts-countries-js/United_Kingdom.js');
 import {options} from '../mapData/country';
 import CircularProgress from '@material-ui/core/CircularProgress';
 import {curry, reduce, assoc, keys, compose, map, pick} from 'ramda';

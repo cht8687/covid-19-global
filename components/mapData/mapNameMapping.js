@@ -7,6 +7,7 @@ export const mapOptionNameMapping = () => ({
   canada: '加拿大',
   france: '法国',
   china: '中国',
+  uk: '英国',
 });
 
 export const mapOptionZoomlevelMapping = () => ({
@@ -44,6 +45,8 @@ export const nameMappingCountry = country => {
       break;
     case 'china':
       return china();
+    case '':
+      return uk();
     default:
   }
 };
