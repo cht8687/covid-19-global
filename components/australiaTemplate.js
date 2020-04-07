@@ -78,6 +78,8 @@ export default function Index() {
   } = useAsync({
     promiseFn: getAustraliaToday,
   });
+  const guimUrl =
+    'https://interactive.guim.co.uk/embed/iframeable/2020/04/australian-states-corona-maps-v2/html/index.html?state=';
 
   const [toDisplayData, setToDisplayData] = useState('');
   const [toDisplayDataAustralia, setToDisplayDataAustralia] = useState('');
@@ -190,7 +192,7 @@ export default function Index() {
           }}>
           <IFrameMiddle>
             <IFrameContainer
-              src="https://interactive.guim.co.uk/embed/iframeable/2020/04/australian-states-corona-maps/html/index.html?state=NSW"
+              src={`${guimUrl}NSW`}
               scrolling="no"
               frameborder="0"
               allowfullscreen=""></IFrameContainer>{' '}
@@ -205,7 +207,7 @@ export default function Index() {
           }}>
           <IFrameMiddle>
             <IFrameContainer
-              src="https://interactive.guim.co.uk/embed/iframeable/2020/04/australian-states-corona-maps/html/index.html?state=VIC"
+              src={`${guimUrl}NSW`}
               scrolling="no"
               frameborder="0"
               allowfullscreen=""></IFrameContainer>{' '}
@@ -220,7 +222,7 @@ export default function Index() {
           }}>
           <IFrameMiddle>
             <IFrameContainer
-              src="https://interactive.guim.co.uk/embed/iframeable/2020/04/australian-states-corona-maps/html/index.html?state=QLD"
+              src={`${guimUrl}VIC`}
               scrolling="no"
               frameborder="0"
               allowfullscreen=""></IFrameContainer>{' '}
