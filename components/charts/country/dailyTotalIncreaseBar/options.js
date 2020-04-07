@@ -35,14 +35,14 @@ export const options = data => ({
   },
 
   legend: {
-    data: ['New Daily Increases Austria'],
+    data: ['New Daily Increases Australia'],
     textStyle: {
       color: colours.dimWhite,
     },
   },
   series: [
     {
-      name: 'New Daily Increases Austria',
+      name: 'New Daily Increases Australia',
       data: data.source,
       type: 'bar',
     },
