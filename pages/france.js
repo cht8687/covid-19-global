@@ -1,5 +1,20 @@
-import CountryHomePage from '../components/countryHomePage';
+import dynamic from 'next/dynamic';
+import Loading from '../components/loading';
 
-export default () => {
-  return <CountryHomePage country="france" />;
-};
+const DynamicComponentWithCustomLoading = dynamic(
+  () => import('../components/countryHomePage'),
+  {
+    loading: () => <Loading />,
+    ssr: false,
+  },
+);
+
+function France() {
+  return (
+    <div>
+      <DynamicComponentWithCustomLoading country="france" />
+    </div>
+  );
+}
+
+export default France;

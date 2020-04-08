@@ -207,7 +207,7 @@ export default function Index() {
           }}>
           <IFrameMiddle>
             <IFrameContainer
-              src={`${guimUrl}NSW`}
+              src={`${guimUrl}VIC`}
               scrolling="no"
               frameborder="0"
               allowfullscreen=""></IFrameContainer>{' '}
@@ -222,7 +222,7 @@ export default function Index() {
           }}>
           <IFrameMiddle>
             <IFrameContainer
-              src={`${guimUrl}VIC`}
+              src={`${guimUrl}QLD`}
               scrolling="no"
               frameborder="0"
               allowfullscreen=""></IFrameContainer>{' '}

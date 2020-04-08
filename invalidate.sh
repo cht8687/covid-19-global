@@ -1,3 +1,3 @@
 aws cloudfront create-invalidation \
     --distribution-id ECYNBUOOV3EEI \
-    --paths "/index.html" "/./australia/index.html" "/./usa/index.html"
+    --paths "/index.html" "/australia/index.html" "/usa/index.html" "/uk/index.html"  "/canada/index.html" 
