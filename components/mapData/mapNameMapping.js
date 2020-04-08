@@ -13,7 +13,7 @@ export const mapOptionNameMapping = () => ({
 export const mapOptionZoomlevelMapping = () => ({
   world: 1.5,
   usa: 1.1,
-  australia: 2,
+  australia: 1.4,
 });
 
 export const nameMappingWord = () => ({

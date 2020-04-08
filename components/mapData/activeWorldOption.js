@@ -275,7 +275,7 @@ export const activeWorldOption = (name, data, total, timestamp) => ({
     min: 0,
     max: data[1].value,
     inRange: {
-      symbolSize: [5, 40],
+      symbolSize: [7, 40],
       color: ['#eeb39d', '#c66a4c', '#af4527', colours.orange],
     },
     textStyle: {

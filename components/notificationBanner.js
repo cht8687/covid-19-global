@@ -55,11 +55,10 @@ export default function NotificationBanner({location, data, total}) {
           {location === 'australia' && (
             <>
               <ul>
-                <li>Gday! Update: Added Australia NSW suburbs map </li>
                 <li>
-                  Coronavirus Aus Gov Msg: Stay home this Easter & help save
-                  lives. Only leave for what you really need + exercise, work,
-                  medical & care.{' '}
+                  Coronavirus Aus Gov Msg:
+                  <br /> Stay home this Easter & help save lives. Only leave for
+                  what you really need + exercise, work, medical & care.{' '}
                 </li>
               </ul>
             </>

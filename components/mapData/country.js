@@ -70,6 +70,7 @@ export const options = (name, data, total, timestamp) => ({
     {
       mapType: mapOptionNameMapping()[name],
       zoom: mapOptionZoomlevelMapping()[name],
+      left: 'center',
       type: 'map',
       label: {
         emphasis: {
