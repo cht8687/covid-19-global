@@ -100,6 +100,9 @@ export default function Index({country}) {
             handleCountryChange={handleCountryChange}
           />
         </Grid>
+        <Grid item xs={12} lg={12}>
+          <InfoBoard country={location} data={toDisplayDataCountry} />
+        </Grid>
         <Grid
           container
           item
@@ -129,9 +132,6 @@ export default function Index({country}) {
             </NewFeature>
             <GlobalLineTrendChart location={location} />
           </>
-        </Grid>
-        <Grid item xs={12} lg={12}>
-          <InfoBoard country={location} data={toDisplayDataCountry} />
         </Grid>
       </SiteContent>
       <DisqusComp commentId={country} />

@@ -99,6 +99,9 @@ export default function Index() {
             handleCountryChange={handleCountryChange}
           />
         </Grid>
+        <Grid item xs={12} lg={12}>
+          <InfoBoard country={location} data={toDisplayDataWorld} />
+        </Grid>
         <Grid
           container
           item
@@ -151,9 +154,6 @@ export default function Index() {
             </NewFeature>
             <GlobalTopNewCasesBarChart data={dataWorldYesterdayRaw} />
           </>
-        </Grid>
-        <Grid item xs={12} lg={12}>
-          <InfoBoard country={location} data={toDisplayDataWorld} />
         </Grid>
       </SiteContent>
       <DisqusComp commentId="world" />

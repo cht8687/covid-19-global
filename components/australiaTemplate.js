@@ -135,6 +135,9 @@ export default function Index() {
             handleCountryChange={handleCountryChange}
           />
         </Grid>
+        <Grid item xs={12} lg={12}>
+          <InfoBoard country={location} data={toDisplayDataAustralia} />
+        </Grid>
         <Grid
           container
           item
@@ -228,9 +231,6 @@ export default function Index() {
               allowfullscreen=""></IFrameContainer>{' '}
           </IFrameMiddle>
         </IFrameHolder>
-        <Grid item xs={12} lg={12}>
-          <InfoBoard country={location} data={toDisplayDataAustralia} />
-        </Grid>
       </SiteContent>
     </Layout>
   );
