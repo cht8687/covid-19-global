@@ -2,7 +2,7 @@ import * as R from 'ramda';
 import colours from '../../../../styles/colours';
 
 export const options = data => ({
-  color: [colours.red, colours.wheat],
+  color: [colours.red, colours.orange, colours.green, colours.lightWheat],
   yAxis: {
     inverse: true,
     type: 'category',
@@ -31,15 +31,25 @@ export const options = data => ({
       },
     },
     type: 'value',
-    data: data.top10Values,
+    data: data.top10TotalCases,
   },
   legend: {
-    data: ['New Cases Today', 'New Death Today'],
+    data: ['Total Cases', 'Active Cases', 'New Cases Today', 'New Death Today'],
     textStyle: {
       color: colours.dimWhite,
     },
   },
   series: [
+    {
+      name: 'Total Confirmed Cases',
+      data: data.top10TotalCases,
+      type: 'bar',
+    },
+    {
+      name: 'Total Active Cases',
+      data: data.top10ActiveCases,
+      type: 'bar',
+    },
     {
       name: 'New Cases Today',
       data: data.top10Increase,

@@ -150,9 +150,29 @@ export default function Index() {
           }}>
           <>
             <NewFeature item xs={12} lg={12}>
-              Daily Increases (worldwide)
+              Data worldwide
             </NewFeature>
-            <GlobalTopNewCasesBarChart data={dataWorldYesterdayRaw} />
+            <GlobalTopNewCasesBarChart
+              data={dataWorldYesterdayRaw}
+              type="world"
+            />
+          </>
+        </Grid>
+        <Grid
+          item
+          xs={12}
+          lg={6}
+          style={{
+            padding: 15,
+          }}>
+          <>
+            <NewFeature item xs={12} lg={12}>
+              Data by Continents
+            </NewFeature>
+            <GlobalTopNewCasesBarChart
+              data={dataWorldYesterdayRaw}
+              type="continents"
+            />
           </>
         </Grid>
       </SiteContent>
