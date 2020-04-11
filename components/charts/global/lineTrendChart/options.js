@@ -40,19 +40,19 @@ export const options = data => ({
   series: [
     {
       name: 'Total cases',
-      data: R.values(R.prop('cases')(data)),
+      data: R.dropLast(1, R.values(R.prop('confirmed')(data))),
       type: 'line',
     },
 
     {
       name: 'Total deaths',
-      data: R.values(R.prop('deaths')(data)),
+      data: R.dropLast(1, R.values(R.prop('deaths')(data))),
       type: 'line',
     },
 
     {
       name: 'Total recovered',
-      data: R.values(R.prop('recovered')(data)),
+      data: R.dropLast(1, R.values(R.prop('recovered')(data))),
       type: 'line',
     },
   ],

@@ -1,5 +1,6 @@
 export const API_BASE_V1 = 'https://covid-19.slj.me/api';
 export const API_BASE_V2 = 'https://covid-19.slj.me/api/v2';
+export const API_BASE_V3 = 'https://covid-19.slj.me/api/v3';
 
 export const getGlobalToday = async () =>
   await fetch(`${API_BASE_V1}/global/today`, {
@@ -43,6 +44,16 @@ export const getAustraliaToday = async () =>
 
 export const getCountryStateDaily = async (country, state) =>
   await fetch(`${API_BASE_V2}/daily/${country}/${state}`, {
+    method: 'GET',
+    headers: {},
+  })
+    .then(res => (res.ok ? res : Promise.reject(res)))
+    .then(res => res.json());
+
+// V3 APIs
+
+export const getDailyByCountry = async location =>
+  await fetch(`${API_BASE_V3}/daily/${location}`, {
     method: 'GET',
     headers: {},
   })

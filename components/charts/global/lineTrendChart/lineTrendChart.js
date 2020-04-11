@@ -1,9 +1,10 @@
-import React, {useState, useEffect, useRef} from 'react';
+import React, {useState, useEffect} from 'react';
 import styled from 'styled-components';
 import ReactEcharts from 'echarts-for-react';
 import {options} from './options';
 import CircularProgress from '@material-ui/core/CircularProgress';
-import {getHistoryAll} from '../../../../services/api_thirdparty';
+import {getDailyByCountry} from '../../../../services/api';
+import apiCountryNameMapping from '../../../../const/apiCountryNameMapping';
 import * as R from 'ramda';
 
 const ChartsContainer = styled.div`
@@ -24,14 +25,12 @@ export default function CountryBarLabelRotation({location}) {
   const [data, setData] = useState();
 
   useEffect(() => {
-    getHistoryAll(location === 'world' ? 'all' : location).then(data => {
-      let source;
-      if (location !== 'world') {
-        source = data.timeline;
-      } else {
-        source = data;
-      }
-      setData(source);
+    getDailyByCountry(
+      apiCountryNameMapping[location]
+        ? apiCountryNameMapping[location]
+        : location,
+    ).then(({data}) => {
+      setData(data);
     });
   }, []);
 
