@@ -34,19 +34,24 @@ export const options = data => ({
     data: data.top10TotalCases,
   },
   legend: {
-    data: ['Total Cases', 'Active Cases', 'New Cases Today', 'New Death Today'],
+    data: [
+      'Confirmed Cases',
+      'Active Cases',
+      'New Cases Today',
+      'New Death Today',
+    ],
     textStyle: {
       color: colours.dimWhite,
     },
   },
   series: [
     {
-      name: 'Total Confirmed Cases',
+      name: 'Confirmed Cases',
       data: data.top10TotalCases,
       type: 'bar',
     },
     {
-      name: 'Total Active Cases',
+      name: 'Active Cases',
       data: data.top10ActiveCases,
       type: 'bar',
     },

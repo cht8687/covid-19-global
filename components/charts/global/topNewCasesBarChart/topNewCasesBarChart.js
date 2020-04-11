@@ -32,57 +32,38 @@ export default function GlobalTopNewCasesBarChart({data, type}) {
         R.map(R.pipe(R.of, R.fromPairs)),
       );
 
+      let sortedList;
+      let countryArray;
+
       if (type === 'world') {
-        const sortedList = R.sort(R.descend(R.prop('new_cases')), list);
-        const countryArray = R.take(10, R.map(toIndividualKeys)(sortedList));
-        const top10Names = R.compose(R.map(getValueFromArray('country')))(
-          countryArray,
-        );
-        const top10TotalCases = R.compose(
-          R.map(getValueFromArray('total_cases')),
-        )(countryArray);
-        const top10Increase = R.compose(R.map(getValueFromArray('new_cases')))(
-          countryArray,
-        );
-        const top10ActiveCases = R.compose(
-          R.map(getValueFromArray('active_cases')),
-        )(countryArray);
-        const top10Death = R.compose(R.map(getValueFromArray('new_deaths')))(
-          countryArray,
-        );
-        setDataToDisplay({
-          top10TotalCases,
-          top10ActiveCases,
-          top10Names,
-          top10Increase,
-          top10Death,
-        });
+        sortedList = R.sort(R.descend(R.prop('new_cases')), list);
+        countryArray = R.take(10, R.map(toIndividualKeys)(sortedList));
       } else if (type === 'continents') {
-        const sortedList = R.sort(R.descend(R.prop('new_cases')), continents);
-        const countryArray = R.map(toIndividualKeys)(sortedList);
-        const top10Names = R.compose(R.map(getValueFromArray('country')))(
-          countryArray,
-        );
-        const top10TotalCases = R.compose(
-          R.map(getValueFromArray('total_cases')),
-        )(countryArray);
-        const top10ActiveCases = R.compose(
-          R.map(getValueFromArray('active_cases')),
-        )(countryArray);
-        const top10Increase = R.compose(R.map(getValueFromArray('new_cases')))(
-          countryArray,
-        );
-        const top10Death = R.compose(R.map(getValueFromArray('new_deaths')))(
-          countryArray,
-        );
-        setDataToDisplay({
-          top10TotalCases,
-          top10ActiveCases,
-          top10Names,
-          top10Increase,
-          top10Death,
-        });
+        sortedList = R.sort(R.descend(R.prop('new_cases')), continents);
+        countryArray = R.map(toIndividualKeys)(sortedList);
       }
+      const top10Names = R.compose(R.map(getValueFromArray('country')))(
+        countryArray,
+      );
+      const top10TotalCases = R.compose(
+        R.map(getValueFromArray('total_cases')),
+      )(countryArray);
+      const top10Increase = R.compose(R.map(getValueFromArray('new_cases')))(
+        countryArray,
+      );
+      const top10ActiveCases = R.compose(
+        R.map(getValueFromArray('active_cases')),
+      )(countryArray);
+      const top10Death = R.compose(R.map(getValueFromArray('new_deaths')))(
+        countryArray,
+      );
+      setDataToDisplay({
+        top10TotalCases,
+        top10ActiveCases,
+        top10Names,
+        top10Increase,
+        top10Death,
+      });
     }
   }, [data]);
 

@@ -150,7 +150,7 @@ export default function Index() {
           }}>
           <>
             <NewFeature item xs={12} lg={12}>
-              Data worldwide
+              Worldwide Top 10 countries
             </NewFeature>
             <GlobalTopNewCasesBarChart
               data={dataWorldYesterdayRaw}
@@ -167,7 +167,7 @@ export default function Index() {
           }}>
           <>
             <NewFeature item xs={12} lg={12}>
-              Data by Continents
+              By Continents
             </NewFeature>
             <GlobalTopNewCasesBarChart
               data={dataWorldYesterdayRaw}

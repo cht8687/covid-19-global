@@ -273,7 +273,7 @@ export const activeWorldOption = (name, data, total, timestamp) => ({
   visualMap: {
     show: true,
     min: 0,
-    max: data[1].value,
+    max: data[0].value,
     inRange: {
       symbolSize: [7, 40],
       color: ['#eeb39d', '#c66a4c', '#af4527', colours.orange],
