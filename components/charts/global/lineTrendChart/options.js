@@ -5,7 +5,7 @@ export const options = data => ({
   color: [colours.red, colours.wheat, colours.green],
   xAxis: {
     type: 'category',
-    data: R.keys(R.prop('cases')(data)),
+    data: R.keys(R.prop('confirmed')(data)),
     axisLabel: {
       textStyle: {
         color: colours.dimWhite,
