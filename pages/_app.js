@@ -10,8 +10,9 @@ import theme from '../theme/theme';
 import DrawerProvider from '../context/DrawerProvider';
 import {DefaultSeo} from 'next-seo';
 import SEO from '../next-seo.config';
-
-function tooltip_click_event(e) {}
+// Import css files
+import 'slick-carousel/slick/slick.css';
+import 'slick-carousel/slick/slick-theme.css';
 
 const GlobalStyle = createGlobalStyle`
   ${resets}; 

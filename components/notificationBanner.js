@@ -47,7 +47,11 @@ export default function NotificationBanner({location, data, total}) {
           {location === 'world' && (
             <>
               <ul>
-                <li>Update: Added Total Cases and Daily Increases charts</li>
+                <li>
+                  Update: Added Daily Predictions from Associate Professor
+                  Shuqing Yang, University of Wollongong (academy support for
+                  www.covid19boards.com)
+                </li>
                 <li>Have a nice day! Stay home and stay safe!</li>
               </ul>
             </>

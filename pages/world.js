@@ -4,7 +4,6 @@
 import React, {useState, useEffect} from 'react';
 import styled from 'styled-components';
 import World from '../components/maps/world';
-import Country from '../components/maps/country';
 import InfoBoard from '../components/infoBoard';
 import Summary from '../components/summary';
 import Grid from '@material-ui/core/Grid';
@@ -19,7 +18,7 @@ import Router from 'next/router';
 import {compose, sort, descend, prop} from 'ramda';
 import GlobalLineTrendChart from '../components/charts/global/lineTrendChart/lineTrendChart';
 import GlobalTopNewCasesBarChart from '../components/charts/global/topNewCasesBarChart/topNewCasesBarChart';
-import {only, down} from 'styled-breakpoints';
+import Prediction from '../components/prediction/prediction';
 import DisqusComp from '../components/disqus/disqus';
 
 const SiteContent = styled(Grid)`
@@ -32,6 +31,19 @@ const NewFeature = styled(Grid)`
   text-align: center;
   font-size: 16px;
   font-weight: bold;
+`;
+
+const NewCarousel = styled(Grid)`
+  padding-top: 15px;
+  padding-bottom: 15px;
+  color: ${colours.dimWhite};
+  text-align: center;
+  font-size: 16px;
+  font-weight: bold;
+`;
+
+const Carousel = styled(Grid)`
+  margin: 0 auto !important;
 `;
 
 export default function Index() {
@@ -99,6 +111,22 @@ export default function Index() {
             handleCountryChange={handleCountryChange}
           />
         </Grid>
+        <Grid
+          item
+          xs={12}
+          lg={12}
+          style={{
+            padding: 15,
+          }}>
+          <NewCarousel item xs={12} lg={12}>
+            Yang's prediction - By University of Wollongong Associate Prof
+            Shu-Qing Yang
+            <br />- Updated 11th April
+          </NewCarousel>
+          <Carousel item xs={12} lg={6}>
+            <Prediction />
+          </Carousel>
+        </Grid>
         <Grid item xs={12} lg={12}>
           <InfoBoard country={location} data={toDisplayDataWorld} />
         </Grid>
@@ -155,23 +183,6 @@ export default function Index() {
             <GlobalTopNewCasesBarChart
               data={dataWorldYesterdayRaw}
               type="world"
-            />
-          </>
-        </Grid>
-        <Grid
-          item
-          xs={12}
-          lg={6}
-          style={{
-            padding: 15,
-          }}>
-          <>
-            <NewFeature item xs={12} lg={12}>
-              By Continents
-            </NewFeature>
-            <GlobalTopNewCasesBarChart
-              data={dataWorldYesterdayRaw}
-              type="continents"
             />
           </>
         </Grid>
