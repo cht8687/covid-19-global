@@ -132,6 +132,7 @@ button {
   border: none;
 }
 
+
 select {
   /* for Firefox */
   -moz-appearance: none;

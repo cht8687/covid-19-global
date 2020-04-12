@@ -44,6 +44,8 @@ const NewCarousel = styled(Grid)`
 
 const Carousel = styled(Grid)`
   margin: 0 auto !important;
+  padding-left: 15px;
+  padding-right: 15px;
 `;
 
 export default function Index() {
