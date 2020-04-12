@@ -141,7 +141,8 @@ export default function Index() {
             <Prediction />
           </Carousel>
           <MobileOnly item xs={12} lg={12}>
-            - Rotate your phone to see larger images
+            - Rotate your phone to see larger images <br />- Prediction Charts
+            are under development
           </MobileOnly>
         </Grid>
         <Grid item xs={12} lg={12}>

@@ -65,7 +65,7 @@ export default function SpacingGrid() {
               <br />
               <br />
               <li>
-                Predictionsi && Modelling:{' '}
+                Predictions && Modelling <br />
                 <a
                   target="'black"
                   href="https://www.linkedin.com/in/shuqing-yang-40173571/">
@@ -73,7 +73,7 @@ export default function SpacingGrid() {
                 </a>
               </li>
               <li>
-                Website Developer:{' '}
+                Website Developer <br />
                 <a
                   target="'black"
                   href="https://www.linkedin.com/in/haotianchang/">
@@ -81,23 +81,15 @@ export default function SpacingGrid() {
                 </a>
               </li>
               <li>
-                Data/API Developer:{' '}
+                Data/API Developer <br />
                 <a target="'black" href="https://www.linkedin.com/in/davidslj/">
                   David Shen
-                </a>
-              </li>
-              <li>
-                UI/Dashboard Designer:{' '}
-                <a
-                  target="'black"
-                  href="https://www.linkedin.com/in/sophia-chen-li/">
-                  Sophia Li
                 </a>
               </li>
             </DataSource>
           </Grid>
         </Title>
-        <Title style={{marginTop: '30px'}}>
+        <Title>
           Share this site to your family 👨‍👩‍👧‍👧 and friends to keep updated <br />{' '}
           with lastest statistics of covid-19 🦠 virus report
         </Title>
