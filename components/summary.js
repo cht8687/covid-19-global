@@ -6,13 +6,15 @@ import styled, {css} from 'styled-components';
 import Grid from '@material-ui/core/Grid';
 import {only, down} from 'styled-breakpoints';
 import {useRouter} from 'next/router';
-import {makeStyles} from '@material-ui/core/styles';
 import colours from '../styles/colours';
 import CircularProgress from '@material-ui/core/CircularProgress';
 import formatNumber from '../utilities/formatNumber';
 import {upperCase} from 'upper-case';
+import {makeStyles, withStyles} from '@material-ui/core/styles';
+import InputBase from '@material-ui/core/InputBase';
 import FlipNumbers from 'react-flip-numbers';
 import getFlipnumberSize from '../utilities/getFlipnumberSize';
+import PaperBase from '@material-ui/core/Paper';
 import Select from '@material-ui/core/Select';
 import Button from '@material-ui/core/Button';
 import MenuItem from '@material-ui/core/MenuItem';
@@ -24,12 +26,37 @@ import {
 } from '../styles/sharedStyle';
 import {COUNTRY_SELECTIONS} from '../const/countrySelections';
 
-const useStyles = makeStyles(theme => ({
-  notchedOutline: {
-    borderWidth: '1px',
-    borderColor: 'yellow !important',
+const BootstrapInput = withStyles(theme => ({
+  root: {
+    'label + &': {
+      marginTop: theme.spacing(3),
+    },
   },
-}));
+  input: {
+    borderRadius: 4,
+    position: 'relative',
+    border: `1px solid ${colours.lightBlue}`,
+    fontSize: 16,
+    padding: '10px 26px 10px 12px',
+    transition: theme.transitions.create(['border-color', 'box-shadow']),
+    '&:focus': {
+      borderRadius: 4,
+      borderColor: '#80bdff',
+      boxShadow: '0 0 0 0.2rem rgba(0,123,255,.25)',
+    },
+  },
+}))(InputBase);
+
+const Paper = withStyles(theme => ({
+  root: {
+    backgroundColor: `${colours.dark}`,
+    height: '140px',
+    display: 'flex',
+    alignItems: 'center',
+  },
+}))(PaperBase);
+
+const SummaryBoard = withStyles(theme => ({}))(Grid);
 
 const Numbers = css`
   font-size: 35px;
@@ -53,25 +80,41 @@ const Container = styled.div`
   font-weight: bold;
   justify-content: center;
   position: sticky;
-  padding: 25px 60px;
+  padding: 25px 0;
 `;
 
-const Confirmed = styled(FlipNumbers)`
+const Confirmed = styled.div`
+  ${ConfirmedColor}
+`;
+
+const Deceased = styled.div`
+  ${DeceasedColor}
+`;
+
+const Recovered = styled.div`
+  ${RecoveredColor}
+`;
+
+const Serious = styled.div`
+  ${SeriousColor}
+`;
+
+const ConfirmedNum = styled(FlipNumbers)`
   ${ConfirmedColor}
   ${Numbers}
 `;
 
-const Deceased = styled(FlipNumbers)`
+const DeceasedNum = styled(FlipNumbers)`
   ${DeceasedColor}
   ${Numbers}
 `;
 
-const Recovered = styled(FlipNumbers)`
+const RecoveredNum = styled(FlipNumbers)`
   ${RecoveredColor}
   ${Numbers}
 `;
 
-const Serious = styled(FlipNumbers)`=
+const SeriousNum = styled(FlipNumbers)`
   ${SeriousColor}
   ${Numbers}
 `;
@@ -125,7 +168,6 @@ export default function Summary({total, location, handleCountryChange}) {
     );
   }
   const router = useRouter();
-  const classes = useStyles();
   const totalCases = formatNumber(total.total_cases);
   const deceased = formatNumber(total.total_deaths);
   const serious = !total.serious_critical
@@ -143,13 +185,7 @@ export default function Summary({total, location, handleCountryChange}) {
       {!total ? (
         <CircularProgress color="secondary" />
       ) : (
-        <Grid
-          container
-          spacing={2}
-          style={{
-            paddingLeft: 20,
-            paddingRight: 20,
-          }}>
+        <Grid container spacing={2} style={{}}>
           <Location item xs={12} lg={3}>
             <ButtonControl>
               <Button
@@ -160,13 +196,9 @@ export default function Summary({total, location, handleCountryChange}) {
               </Button>
             </ButtonControl>
             <CountrySelect
-              InputProps={{
-                classes: {
-                  notchedOutline: classes.notchedOutline,
-                },
-              }}
               variant="outlined"
               value={location}
+              input={<BootstrapInput />}
               onChange={handleCountryChange}>
               {COUNTRY_SELECTIONS.map((country, index) => (
                 <MenuItem key={index} value={country}>
@@ -175,74 +207,76 @@ export default function Summary({total, location, handleCountryChange}) {
               ))}
             </CountrySelect>
           </Location>
-          <Grid item xs={12} lg={9}>
-            <Grid container spacing={2}>
-              <NumBlock item xs={3} lg={3}>
-                <Confirmed
-                  height={fH}
-                  width={fW}
-                  play
-                  color={colours.red}
-                  nonNumberStyle={{
-                    color: colours.red,
-                    fontSize: `${fH}px`,
-                  }}
-                  perspective={130}
-                  duration={5}
-                  numbers={totalCases}
-                />
-                Confirmed
-              </NumBlock>
-              <NumBlock item xs={3} lg={3}>
-                <Deceased
-                  height={fH}
-                  width={fW}
-                  play
-                  color={colours.wheat}
-                  nonNumberStyle={{
-                    color: colours.wheat,
-                    fontSize: `${fH}px`,
-                  }}
-                  perspective={140}
-                  duration={3}
-                  numbers={deceased}
-                />
-                Deceased
-              </NumBlock>
-              <NumBlock item xs={3} lg={3}>
-                <Serious
-                  height={fH}
-                  width={fW}
-                  play
-                  color={colours.pinkDark}
-                  nonNumberStyle={{
-                    color: colours.pinkDark,
-                    fontSize: `${fH}px`,
-                  }}
-                  perspective={140}
-                  duration={3}
-                  numbers={serious}
-                />
-                Critical
-              </NumBlock>
-              <NumBlock item xs={3} lg={3}>
-                <Recovered
-                  height={fH}
-                  width={fW}
-                  play
-                  color={colours.green}
-                  nonNumberStyle={{
-                    color: colours.green,
-                    fontSize: `${fH}px`,
-                  }}
-                  perspective={140}
-                  duration={3}
-                  numbers={recovered}
-                />
-                Recovered
-              </NumBlock>
-            </Grid>
-          </Grid>
+          <SummaryBoard item xs={12} lg={9}>
+            <Paper elevation={12}>
+              <Grid container spacing={2}>
+                <NumBlock item xs={3} lg={3}>
+                  <Confirmed>Confirmed</Confirmed>
+                  <ConfirmedNum
+                    height={fH}
+                    width={fW}
+                    play
+                    color={colours.brown}
+                    nonNumberStyle={{
+                      color: colours.brown,
+                      fontSize: `${fH}px`,
+                    }}
+                    perspective={130}
+                    duration={5}
+                    numbers={totalCases}
+                  />
+                </NumBlock>
+                <NumBlock item xs={3} lg={3}>
+                  <Recovered>Recovered</Recovered>
+                  <RecoveredNum
+                    height={fH}
+                    width={fW}
+                    play
+                    color={colours.lightBlue}
+                    nonNumberStyle={{
+                      color: colours.lightBlue,
+                      fontSize: `${fH}px`,
+                    }}
+                    perspective={140}
+                    duration={3}
+                    numbers={recovered}
+                  />
+                </NumBlock>
+                <NumBlock item xs={3} lg={3}>
+                  <Deceased>Deceased</Deceased>
+                  <DeceasedNum
+                    height={fH}
+                    width={fW}
+                    play
+                    color={colours.red}
+                    nonNumberStyle={{
+                      color: colours.red,
+                      fontSize: `${fH}px`,
+                    }}
+                    perspective={140}
+                    duration={3}
+                    numbers={deceased}
+                  />
+                </NumBlock>
+                <NumBlock item xs={3} lg={3}>
+                  <Serious>Critical</Serious>
+                  <SeriousNum
+                    height={fH}
+                    width={fW}
+                    play
+                    color={colours.white}
+                    nonNumberStyle={{
+                      color: colours.white,
+                      fontSize: `${fH}px`,
+                    }}
+                    perspective={140}
+                    duration={3}
+                    numbers={serious}
+                  />
+                </NumBlock>
+              </Grid>
+            </Paper>
+          </SummaryBoard>
         </Grid>
       )}
     </Container>

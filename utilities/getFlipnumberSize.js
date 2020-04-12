@@ -6,11 +6,11 @@ export default () => {
     height = 15;
     width = 10;
   } else if (isTablet) {
-    height = 21;
-    width = 18;
+    height = 18;
+    width = 16;
   } else {
-    height = 26;
-    width = 26;
+    height = 20;
+    width = 20;
   }
   return {
     height,

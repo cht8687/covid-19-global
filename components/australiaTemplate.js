@@ -33,7 +33,7 @@ import CountryBarLabelRotation from '../components/charts/country/barLabelRotati
 import CountryDailyTotalIncreaseBar from '../components/charts/country/dailyTotalIncreaseBar/dailyTotalIncreaseBar';
 
 const SiteContent = styled(Grid)`
-  padding-top: 66px;
+  padding: 66px 50px;
 `;
 
 const NewFeature = styled(Grid)`
@@ -122,7 +122,11 @@ export default function Index() {
     <Layout>
       <SiteContent container spacing={1}>
         <Grid item xs={12} lg={12}>
-          <Summary country={location} total={toDisplayTotal} />
+          <Summary
+            location={location}
+            total={toDisplayTotal}
+            handleCountryChange={handleCountryChange}
+          />
         </Grid>
         <Grid item xs={12} lg={6}>
           <NotificationBanner location={location} />
@@ -132,7 +136,6 @@ export default function Index() {
             location={location}
             data={toDisplayData}
             total={toDisplayTotal}
-            handleCountryChange={handleCountryChange}
           />
         </Grid>
         <Grid item xs={12} lg={12}>

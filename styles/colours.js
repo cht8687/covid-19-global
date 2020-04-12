@@ -1,10 +1,11 @@
 export default {
   lightBlue: '#aecacd',
+  brown: '#867b62',
   white: '#ffffff',
   dark: '#323232',
   grey: '#333333',
   orange: '#ed710b',
-  red: '#F65164',
+  red: '#ee481d',
   blue: '#57a4f3',
   green: '#41b883',
   yellow: '#f4d05a',

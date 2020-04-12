@@ -2,7 +2,7 @@ import {css} from 'styled-components';
 import colours from '../styles/colours';
 
 export const ConfirmedColor = css`
-  color: ${colours.red};
+  color: ${colours.brown};
 `;
 
 export const NewCasesColor = css`
@@ -10,7 +10,7 @@ export const NewCasesColor = css`
 `;
 
 export const DeceasedColor = css`
-  color: ${colours.wheat};
+  color: ${colours.red};
 `;
 
 export const NewDeceasedColor = css`
@@ -22,11 +22,11 @@ export const ActiveColor = css`
 `;
 
 export const RecoveredColor = css`
-  color: ${colours.green};
+  color: ${colours.lightBlue};
 `;
 
 export const SeriousColor = css`
-  color: ${colours.pinkDark};
+  color: ${colours.white};
 `;
 
 export const Per1mPopulation = css`

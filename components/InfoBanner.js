@@ -7,7 +7,9 @@ import Grid from '@material-ui/core/Grid';
 import {only, down} from 'styled-breakpoints';
 import getPercentage from '../utilities/getPercentage';
 import colours from '../styles/colours';
+import {makeStyles, withStyles} from '@material-ui/core/styles';
 import {DeceasedColor, RecoveredColor} from '../styles/sharedStyle';
+import PaperBase from '@material-ui/core/Paper';
 import FormHelperText from '@material-ui/core/FormHelperText';
 import InputLabel from '@material-ui/core/InputLabel';
 import FormControl from '@material-ui/core/FormControl';
@@ -26,11 +28,6 @@ const Numbers = css`
 
 const Container = styled.div`
   display: flex;
-  padding-top: 20px;
-  flex-wrap: wrap;
-  padding: 10px 10px;
-  background-color: ${colours.deepBlue};
-  margin: 5px;
 `;
 
 const Statistics = styled(Grid)`
@@ -40,6 +37,15 @@ const Statistics = styled(Grid)`
   align-items: center;
   flex-direction: column;
 `;
+
+const Paper = withStyles(theme => ({
+  root: {
+    backgroundColor: `${colours.dark}`,
+    height: '80px',
+    display: 'flex',
+    alignItems: 'center',
+  },
+}))(PaperBase);
 
 const DeathRate = styled(Grid)`
   ${Numbers}
@@ -68,7 +74,7 @@ export default function InfoBanner({data, total}) {
   }, [total]);
 
   return (
-    <Container>
+    <Paper elevation={12}>
       <Grid container spacing={2}>
         <Grid item xs={12} lg={8}>
           <Grid container spacing={1}>
@@ -86,6 +92,6 @@ export default function InfoBanner({data, total}) {
           </Grid>
         </Grid>
       </Grid>
-    </Container>
+    </Paper>
   );
 }

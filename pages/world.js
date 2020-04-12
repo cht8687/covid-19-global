@@ -23,7 +23,13 @@ import {only, down} from 'styled-breakpoints';
 import DisqusComp from '../components/disqus/disqus';
 
 const SiteContent = styled(Grid)`
-  padding-top: 66px;
+  padding: 66px 50px;
+  ${down('tablet')} {
+    padding: 66px 12px;
+  }
+  ${only('tablet')} {
+    padding: 66px 12px;
+  }
 `;
 
 const NewFeature = styled(Grid)`
@@ -92,9 +98,7 @@ export default function Index() {
             handleCountryChange={handleCountryChange}
           />
         </Grid>
-        <Grid item xs={12} lg={6}>
-          <NotificationBanner location={location} />
-        </Grid>
+
         <Grid item xs={12} lg={6}>
           <InfoBanner
             location={location}
@@ -177,6 +181,9 @@ export default function Index() {
               type="continents"
             />
           </>
+        </Grid>
+        <Grid item xs={12} lg={6}>
+          <NotificationBanner location={location} />
         </Grid>
       </SiteContent>
       <DisqusComp commentId="world" />
