@@ -16,6 +16,7 @@ import NotificationBanner from '../components/notificationBanner';
 import colours from '../styles/colours';
 import Router from 'next/router';
 import {compose, sort, descend, prop} from 'ramda';
+import {only, down} from 'styled-breakpoints';
 import GlobalLineTrendChart from '../components/charts/global/lineTrendChart/lineTrendChart';
 import GlobalTopNewCasesBarChart from '../components/charts/global/topNewCasesBarChart/topNewCasesBarChart';
 import Prediction from '../components/prediction/prediction';
@@ -44,6 +45,19 @@ const NewCarousel = styled(Grid)`
 
 const Carousel = styled(Grid)`
   margin: 0 auto !important;
+  padding-left: 15px;
+  padding-right: 15px;
+  padding-bottom: 30px;
+`;
+
+const MobileOnly = styled(Grid)`
+  display: none;
+  ${down('tablet')} {
+    display: block;
+  }
+  color: ${colours.dimWhite};
+  text-align: center;
+  font-size: 12px;
 `;
 
 export default function Index() {
@@ -126,6 +140,9 @@ export default function Index() {
           <Carousel item xs={12} lg={6}>
             <Prediction />
           </Carousel>
+          <MobileOnly item xs={12} lg={12}>
+            - Rotate your phone to see larger images
+          </MobileOnly>
         </Grid>
         <Grid item xs={12} lg={12}>
           <InfoBoard country={location} data={toDisplayDataWorld} />
