@@ -98,7 +98,7 @@ export default () => {
                 className={clsx(classes.menuButton, open && classes.hide)}>
                 <MenuIcon />
               </IconButton>
-              <Title variant="h6">COVID19 Live Tracke and Predict</Title>
+              <Title variant="h6">COVID19 Live Track and Prediction</Title>
             </Toolbar>
             <KoFi color="#e02828" id="X8X31J5HH" label="Buy Me a Coffee" />
           </AppBarContainer>
