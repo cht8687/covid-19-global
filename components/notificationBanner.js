@@ -49,7 +49,7 @@ export default function NotificationBanner({location, data, total}) {
               <ul>
                 <li>
                   Update: Added Daily Predictions from Associate Professor
-                  Shuqing Yang, University of Wollongong (academy support for
+                  Shuqing Yang, University of Wollongong (academic support for
                   www.covid19boards.com)
                 </li>
                 <li>Have a nice day! Stay home and stay safe!</li>
