@@ -5,7 +5,7 @@ import colours from '../styles/colours';
 const theme = createMuiTheme({
   palette: {
     primary: {
-      main: '#556cd6',
+      main: '#aecacd',
     },
     secondary: {
       main: '#19857b',
@@ -30,14 +30,9 @@ const theme = createMuiTheme({
     },
     MuiSelect: {
       icon: {
-        color: colours.dimWhite,
+        color: colours.lightBlue,
       },
-      selectMenu: {
-        height: '49px',
-        display: 'flex',
-        justifyContent: 'center',
-        flexDirection: 'column',
-      },
+      selectMenu: {},
     },
   },
 });

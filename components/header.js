@@ -61,18 +61,31 @@ const AppContainer = styled.div`
 `;
 
 const Title = styled(Typography)`
-  flexgrow: 1;
+  flex-grow: 1;
+  font-weight: bold !important;
+  font-size: 20px !important;
   ${down('tablet')} {
-    font-size: 13px !important;
+    font-size: 16px !important;
   }
 `;
 
+const SubTitle = styled(Typography)`
+  flexgrow: 1;
+  margin-left: 12px !important;
+  font-size: 17px !important;
+  ${down('tablet')} {
+    font-size: 13px !important;
+  }
+  text-decoration: underline !important;
+`;
+
 const AppBarContainer = styled(AppBar)`
-  background-color: ${colours.darkBlue} !important;
+  background-color: ${colours.lightBlue} !important;
   display: flex;
   flex-direction: row !important;
   justify-content: space-between !important;
   align-items: center !important;
+  color: ${colours.dark} !important;
 `;
 
 export default () => {
@@ -98,7 +111,8 @@ export default () => {
                 className={clsx(classes.menuButton, open && classes.hide)}>
                 <MenuIcon />
               </IconButton>
-              <Title variant="h6">COVID19 Live Tracker</Title>
+              <Title>COVID-19</Title>
+              <SubTitle>Live Tracker</SubTitle>
             </Toolbar>
             <KoFi color="#e02828" id="X8X31J5HH" label="Buy Me a Coffee" />
           </AppBarContainer>

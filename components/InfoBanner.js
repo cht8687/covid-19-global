@@ -7,14 +7,10 @@ import Grid from '@material-ui/core/Grid';
 import {only, down} from 'styled-breakpoints';
 import getPercentage from '../utilities/getPercentage';
 import colours from '../styles/colours';
-import {upperCase} from 'upper-case';
 import {DeceasedColor, RecoveredColor} from '../styles/sharedStyle';
-import Select from '@material-ui/core/Select';
-import MenuItem from '@material-ui/core/MenuItem';
 import FormHelperText from '@material-ui/core/FormHelperText';
 import InputLabel from '@material-ui/core/InputLabel';
 import FormControl from '@material-ui/core/FormControl';
-import {COUNTRY_SELECTIONS} from '../const/countrySelections';
 import MyTheme from '../theme/theme';
 
 const Numbers = css`
@@ -37,18 +33,6 @@ const Container = styled.div`
   margin: 5px;
 `;
 
-const CountrySelection = styled.div`
-  min-width: 120px;
-  display: flex;
-  justify-content: center;
-`;
-
-const Location = styled(Grid)`
-  color: ${colours.dimWhite};
-  font-weight: bold;
-  font-size: 24px;
-`;
-
 const Statistics = styled(Grid)`
   color: ${colours.dimWhite};
   font-weight: bold;
@@ -67,12 +51,7 @@ const RecoveredRate = styled(Grid)`
   ${RecoveredColor}
 `;
 
-export default function InfoBanner({
-  location,
-  data,
-  total,
-  handleCountryChange,
-}) {
+export default function InfoBanner({data, total}) {
   const [deathRate, setDeathRate] = useState('');
   const [recoverRate, setRecoverRate] = useState('');
 
@@ -91,17 +70,6 @@ export default function InfoBanner({
   return (
     <Container>
       <Grid container spacing={2}>
-        <Location item xs={12} lg={4}>
-          <CountrySelection>
-            <Select value={location} onChange={handleCountryChange}>
-              {COUNTRY_SELECTIONS.map((country, index) => (
-                <MenuItem key={index} value={country}>
-                  {upperCase(country)}
-                </MenuItem>
-              ))}
-            </Select>
-          </CountrySelection>
-        </Location>
         <Grid item xs={12} lg={8}>
           <Grid container spacing={1}>
             <Statistics item xs={6} lg={6}>
