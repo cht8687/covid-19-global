@@ -59,6 +59,45 @@ export default function SpacingGrid() {
     <Layout>
       <Control>
         <Title style={{marginTop: '30px'}}>
+          <Grid container justify="center" spacing={spacing}>
+            <DataSource>
+              Team members:
+              <br />
+              <br />
+              <li>
+                Predictionsi && Modelling:{' '}
+                <a
+                  target="'black"
+                  href="https://www.linkedin.com/in/shuqing-yang-40173571/">
+                  Assoc. Prof Shuqing Yang (PhD)
+                </a>
+              </li>
+              <li>
+                Website Developer:{' '}
+                <a
+                  target="'black"
+                  href="https://www.linkedin.com/in/haotianchang/">
+                  Robert Chang{' '}
+                </a>
+              </li>
+              <li>
+                Data/API Developer:{' '}
+                <a target="'black" href="https://www.linkedin.com/in/davidslj/">
+                  David Shen
+                </a>
+              </li>
+              <li>
+                UI/Dashboard Designer:{' '}
+                <a
+                  target="'black"
+                  href="https://www.linkedin.com/in/sophia-chen-li/">
+                  Sophia Li
+                </a>
+              </li>
+            </DataSource>
+          </Grid>
+        </Title>
+        <Title style={{marginTop: '30px'}}>
           Share this site to your family 👨‍👩‍👧‍👧 and friends to keep updated <br />{' '}
           with lastest statistics of covid-19 🦠 virus report
         </Title>
@@ -70,10 +109,10 @@ export default function SpacingGrid() {
           family always healthy! 🤗
         </Title>
         <Title>If you 💖 this project you can buy me a coffee ☕</Title>
-
         <Grid container justify="center" spacing={spacing}>
           <DataSource>
             Data source:
+            <br />
             <br />
             <li>
               <a target="_black" href="https://www.who.int/">
@@ -89,7 +128,6 @@ export default function SpacingGrid() {
             </li>
           </DataSource>
         </Grid>
-
         <Grid container justify="center" spacing={spacing}>
           <DataSource>
             If you have feedbacks or suggestions, please send us an email:
@@ -99,13 +137,11 @@ export default function SpacingGrid() {
             </a>
           </DataSource>
         </Grid>
-
         <ButtonControl>
           <Button variant="contained" color="primary" onClick={handleOnClick}>
             Back to Dashboard
           </Button>
         </ButtonControl>
-
         <MapDisclaimer container justify="center" spacing={spacing}>
           <Title> Map disclaimer </Title>
           <Disclaimer>
@@ -121,7 +157,6 @@ export default function SpacingGrid() {
             express or implied.{' '}
           </Disclaimer>{' '}
         </MapDisclaimer>
-
         <Grid container justify="center" spacing={spacing}>
           <Disclaimer>
             ** All information in this site is provided "as is", with no
