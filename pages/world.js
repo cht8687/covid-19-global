@@ -138,7 +138,7 @@ export default function Index() {
             <br />- Updated 12th April
           </NewCarousel>
           <Carousel item xs={12} lg={6}>
-            <Prediction />
+            <Prediction location={location} />
           </Carousel>
           <MobileOnly item xs={12} lg={12}>
             - Rotate your phone to see larger images <br />{' '}

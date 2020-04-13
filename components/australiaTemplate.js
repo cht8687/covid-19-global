@@ -32,6 +32,8 @@ import CountryPieWithLineCharts from '../components/charts/country/pieWithLine/p
 import CountryBarLabelRotation from '../components/charts/country/barLabelRotation/barLabelRotation';
 import CountryDailyTotalIncreaseBar from '../components/charts/country/dailyTotalIncreaseBar/dailyTotalIncreaseBar';
 
+import Prediction from '../components/prediction/prediction';
+
 const SiteContent = styled(Grid)`
   padding-top: 66px;
 `;
@@ -68,6 +70,22 @@ const IFrameMiddle = styled.div`
   ${only('tablet')} {
     height: 500px;
   }
+`;
+
+const NewCarousel = styled(Grid)`
+  padding-top: 15px;
+  padding-bottom: 15px;
+  color: ${colours.dimWhite};
+  text-align: center;
+  font-size: 16px;
+  font-weight: bold;
+`;
+
+const Carousel = styled(Grid)`
+  margin: 0 auto !important;
+  padding-left: 15px;
+  padding-right: 15px;
+  padding-bottom: 30px;
 `;
 
 export default function Index() {
@@ -134,6 +152,22 @@ export default function Index() {
             total={toDisplayTotal}
             handleCountryChange={handleCountryChange}
           />
+        </Grid>
+        <Grid
+          item
+          xs={12}
+          lg={12}
+          style={{
+            padding: 15,
+          }}>
+          <NewCarousel item xs={12} lg={12}>
+            Yang's prediction - By University of Wollongong Associate Prof
+            Shu-Qing Yang
+            <br />- Updated 12th April
+          </NewCarousel>
+          <Carousel item xs={12} lg={6}>
+            <Prediction location={location} />
+          </Carousel>
         </Grid>
         <Grid item xs={12} lg={12}>
           <InfoBoard country={location} data={toDisplayDataAustralia} />
