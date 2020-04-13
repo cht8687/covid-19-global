@@ -154,4 +154,12 @@ nav,
 section {
   display: block;
 }
+
+.slick-dots li button:before {
+  color: white;
+}
+
+.slick-dots .slick-active button:before {
+  color: orange !important;
+}
 `;

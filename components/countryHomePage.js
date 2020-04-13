@@ -126,7 +126,7 @@ export default function Index({country}) {
             padding: 15,
           }}>
           <NewCarousel item xs={12} lg={12}>
-            Yang's prediction - By University of Wollongong Associate Prof
+            Yang's Prediction - By University of Wollongong Associate Prof.
             Shu-Qing Yang
             <br />- Updated 12th April
           </NewCarousel>
