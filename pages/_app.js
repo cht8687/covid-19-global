@@ -36,18 +36,18 @@ class MyApp extends App {
         <React.Fragment>
           <Head>
             <title>
-              COVID-19 Dashboard | Coronavirus Dashboard, COVID19 Charts,
-              COVID19 Numbers
+              COVID-19 Prediction, Dashboard, Coronavirus Dashboard, COVID19
+              Charts, COVID19 Numbers
             </title>
             <meta name="viewport" content="initial-scale=1, maximum-scale=1" />
             <meta name="robots" content="index, follow" />
             <meta
               name="description"
-              content="covid-19 dashboard, tracking daily increases, historical charts"
+              content="covid-19 predict, covid19 prediction, covid19 dashboard, tracking daily increases, historical charts"
             />
             <meta
               name="keywords"
-              content="covid-19 dashboard, tracker, world, covid-19 USA, covid-19 UK, covid-19 Italy, covid-19 Europe, covid-19 charts, covid-19 trends, statistics, data"
+              content="covid-19 predict, prediction, tracker, world, covid-19 USA, covid-19 UK, covid-19 Italy, covid-19 Europe, covid-19 charts, covid-19 trends, statistics, data"
             />
             <DefaultSeo {...SEO} />
           </Head>
