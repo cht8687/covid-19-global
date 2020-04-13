@@ -135,7 +135,7 @@ export default function Index() {
           <NewCarousel item xs={12} lg={12}>
             Yang's prediction - By University of Wollongong Associate Prof
             Shu-Qing Yang
-            <br />- Updated 11th April
+            <br />- Updated 12th April
           </NewCarousel>
           <Carousel item xs={12} lg={6}>
             <Prediction />

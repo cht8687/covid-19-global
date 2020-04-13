@@ -15,15 +15,16 @@ class Prediction extends React.Component {
     };
     return (
       <Slider {...settings}>
-        <Img src="./images/0.jpeg"></Img>
-        <Img src="./images/1.jpeg"></Img>
-        <Img src="./images/2.jpeg"></Img>
-        <Img src="./images/3.jpeg"></Img>
-        <Img src="./images/4.jpeg"></Img>
-        <Img src="./images/5.jpeg"></Img>
-        <Img src="./images/6.jpeg"></Img>
-        <Img src="./images/7.jpeg"></Img>
-        <Img src="./images/8.jpeg"></Img>
+        <Img src="./images/0412/COVID-19 By April 12-01.jpg"></Img>
+        <Img src="./images/0412/COVID-19 By April 12-02.jpg"></Img>
+        <Img src="./images/0412/COVID-19 By April 12-03.jpg"></Img>
+        <Img src="./images/0412/COVID-19 By April 12-04.jpg"></Img>
+        <Img src="./images/0412/COVID-19 By April 12-05.jpg"></Img>
+        <Img src="./images/0412/COVID-19 By April 12-06.jpg"></Img>
+        <Img src="./images/0412/COVID-19 By April 12-07.jpg"></Img>
+        <Img src="./images/0412/COVID-19 By April 12-08.jpg"></Img>
+        <Img src="./images/0412/COVID-19 By April 12-09.jpg"></Img>
+        <Img src="./images/0412/COVID-19 By April 12-10.jpg"></Img>
       </Slider>
     );
   }
