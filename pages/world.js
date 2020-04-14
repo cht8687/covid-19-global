@@ -34,22 +34,6 @@ const NewFeature = styled(Grid)`
   font-weight: bold;
 `;
 
-const NewCarousel = styled(Grid)`
-  padding-top: 15px;
-  padding-bottom: 15px;
-  color: ${colours.dimWhite};
-  text-align: center;
-  font-size: 16px;
-  font-weight: bold;
-`;
-
-const Carousel = styled(Grid)`
-  margin: 0 auto !important;
-  padding-left: 15px;
-  padding-right: 15px;
-  padding-bottom: 30px;
-`;
-
 const MobileOnly = styled(Grid)`
   display: none;
   ${down('tablet')} {
@@ -132,14 +116,7 @@ export default function Index() {
           style={{
             padding: 15,
           }}>
-          <NewCarousel item xs={12} lg={12}>
-            Yang's Prediction - By University of Wollongong Associate Prof.
-            Shu-Qing Yang
-            <br />- Updated 13th April
-          </NewCarousel>
-          <Carousel item xs={12} lg={6}>
-            <Prediction location={location} />
-          </Carousel>
+          <Prediction location={location} />
           <MobileOnly item xs={12} lg={12}>
             - Rotate your phone to see larger images <br />{' '}
           </MobileOnly>

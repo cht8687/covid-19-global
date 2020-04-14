@@ -160,14 +160,7 @@ export default function Index() {
           style={{
             padding: 15,
           }}>
-          <NewCarousel item xs={12} lg={12}>
-            Yang's prediction - By University of Wollongong Associate Prof
-            Shu-Qing Yang
-            <br />- Updated 13th April
-          </NewCarousel>
-          <Carousel item xs={12} lg={6}>
-            <Prediction location={location} />
-          </Carousel>
+          <Prediction location={location} />
         </Grid>
         <Grid item xs={12} lg={12}>
           <InfoBoard country={location} data={toDisplayDataAustralia} />

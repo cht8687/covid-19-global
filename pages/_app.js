@@ -43,11 +43,11 @@ class MyApp extends App {
             <meta name="robots" content="index, follow" />
             <meta
               name="description"
-              content="covid-19 predict, covid19 prediction, covid19 dashboard, tracking daily increases, historical charts"
+              content="covid-19 predict, covid-19 prediction, projection, trend, covid19 dashboard, tracking daily increases, historical charts"
             />
             <meta
               name="keywords"
-              content="covid-19 predict, prediction, tracker, world, covid-19 USA, covid-19 UK, covid-19 Italy, covid-19 Europe, covid-19 charts, covid-19 trends, statistics, data"
+              content="covid-19 predict, prediction,  projection, trend, tracker, world, covid-19 USA, covid-19 UK, covid-19 Italy, covid-19 Europe, covid-19 charts, covid-19 trends, statistics, data"
             />
             <DefaultSeo {...SEO} />
           </Head>
