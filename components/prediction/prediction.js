@@ -18,17 +18,17 @@ const getWorldPredict = location => {
       // code block
       return (
         <Slider {...settings}>
-          <Img src="./images/0412/COVID-19 By April 12-00.jpg"></Img>
-          <Img src="./images/0412/COVID-19 By April 12-01.jpg"></Img>
-          <Img src="./images/0412/COVID-19 By April 12-02.jpg"></Img>
-          <Img src="./images/0412/COVID-19 By April 12-03.jpg"></Img>
-          <Img src="./images/0412/COVID-19 By April 12-04.jpg"></Img>
-          <Img src="./images/0412/COVID-19 By April 12-05.jpg"></Img>
-          <Img src="./images/0412/COVID-19 By April 12-06.jpg"></Img>
-          <Img src="./images/0412/COVID-19 By April 12-07.jpg"></Img>
-          <Img src="./images/0412/COVID-19 By April 12-08.jpg"></Img>
-          <Img src="./images/0412/COVID-19 By April 12-09.jpg"></Img>
-          <Img src="./images/0412/COVID-19 By April 12-10.jpg"></Img>
+          <Img src="./images/0413/COVID-19 By April 13-00.jpg"></Img>
+          <Img src="./images/0413/COVID-19 By April 13-01.jpg"></Img>
+          <Img src="./images/0413/COVID-19 By April 13-02.jpg"></Img>
+          <Img src="./images/0413/COVID-19 By April 13-03.jpg"></Img>
+          <Img src="./images/0413/COVID-19 By April 13-04.jpg"></Img>
+          <Img src="./images/0413/COVID-19 By April 13-05.jpg"></Img>
+          <Img src="./images/0413/COVID-19 By April 13-06.jpg"></Img>
+          <Img src="./images/0413/COVID-19 By April 13-07.jpg"></Img>
+          <Img src="./images/0413/COVID-19 By April 13-08.jpg"></Img>
+          <Img src="./images/0413/COVID-19 By April 13-09.jpg"></Img>
+          <Img src="./images/0413/COVID-19 By April 13-10.jpg"></Img>
         </Slider>
       );
       break;
@@ -36,9 +36,9 @@ const getWorldPredict = location => {
     case 'australia':
       return (
         <Slider {...settings}>
-          <Img src="../images/0412/Aus.png"></Img>
-          <Img src="../images/0412/COVID-19 By April 12-00.jpg"></Img>
-          <Img src="../images/0412/COVID-19 By April 12-01.jpg"></Img>
+          <Img src="../images/0413/Australia.png"></Img>
+          <Img src="../images/0413/COVID-19 By April 13-00.jpg"></Img>
+          <Img src="../images/0413/COVID-19 By April 13-01.jpg"></Img>
         </Slider>
       );
       break;
@@ -46,9 +46,9 @@ const getWorldPredict = location => {
     case 'france':
       return (
         <Slider {...settings}>
-          <Img src="../images/0412/France.png"></Img>
-          <Img src="../images/0412/COVID-19 By April 12-00.jpg"></Img>
-          <Img src="../images/0412/COVID-19 By April 12-01.jpg"></Img>
+          <Img src="../images/0413/France.png"></Img>
+          <Img src="../images/0413/COVID-19 By April 13-00.jpg"></Img>
+          <Img src="../images/0413/COVID-19 By April 13-01.jpg"></Img>
         </Slider>
       );
       break;
@@ -56,9 +56,9 @@ const getWorldPredict = location => {
     case 'usa':
       return (
         <Slider {...settings}>
-          <Img src="../images/0412/US.png"></Img>
-          <Img src="../images/0412/COVID-19 By April 12-00.jpg"></Img>
-          <Img src="../images/0412/COVID-19 By April 12-01.jpg"></Img>
+          <Img src="../images/0413/USA.png"></Img>
+          <Img src="../images/0413/COVID-19 By April 13-00.jpg"></Img>
+          <Img src="../images/0413/COVID-19 By April 13-01.jpg"></Img>
         </Slider>
       );
       break;
@@ -66,9 +66,9 @@ const getWorldPredict = location => {
     case 'uk':
       return (
         <Slider {...settings}>
-          <Img src="../images/0412/UK.png"></Img>
-          <Img src="../images/0412/COVID-19 By April 12-00.jpg"></Img>
-          <Img src="../images/0412/COVID-19 By April 12-01.jpg"></Img>
+          <Img src="../images/0413/UK.png"></Img>
+          <Img src="../images/0413/COVID-19 By April 13-00.jpg"></Img>
+          <Img src="../images/0413/COVID-19 By April 13-01.jpg"></Img>
         </Slider>
       );
       break;
@@ -76,9 +76,9 @@ const getWorldPredict = location => {
     case 'canada':
       return (
         <Slider {...settings}>
-          <Img src="../images/0412/Canada.png"></Img>
-          <Img src="../images/0412/COVID-19 By April 12-00.jpg"></Img>
-          <Img src="../images/0412/COVID-19 By April 12-01.jpg"></Img>
+          <Img src="../images/0413/Canada.png"></Img>
+          <Img src="../images/0413/COVID-19 By April 13-00.jpg"></Img>
+          <Img src="../images/0413/COVID-19 By April 13-01.jpg"></Img>
         </Slider>
       );
       break;
