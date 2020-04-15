@@ -6,7 +6,7 @@ export const options = data => ({
   xAxis: {
     inverse: false,
     type: 'category',
-    data: data.datesInfo,
+    data: R.keys(R.prop('new_cases')(data)),
     axisLabel: {
       textStyle: {
         color: colours.dimWhite,
@@ -21,7 +21,6 @@ export const options = data => ({
       },
     },
     type: 'value',
-    data: data.datesInfo,
   },
   tooltip: {
     trigger: 'axis',
@@ -33,17 +32,21 @@ export const options = data => ({
     bottom: '13%',
     containLabel: true,
   },
-
   legend: {
-    data: ['New Daily Increases Australia'],
+    data: ['Daily New Increases', 'Daily New Death'],
     textStyle: {
       color: colours.dimWhite,
     },
   },
   series: [
     {
-      name: 'New Daily Increases Australia',
-      data: data.source,
+      name: 'Daily New Increases',
+      data: R.dropLast(1, R.values(R.prop('new_cases')(data))),
+      type: 'bar',
+    },
+    {
+      name: 'Daily New Death',
+      data: R.dropLast(1, R.values(R.prop('new_deaths')(data))),
       type: 'bar',
     },
   ],

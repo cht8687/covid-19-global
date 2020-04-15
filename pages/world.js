@@ -21,6 +21,7 @@ import GlobalLineTrendChart from '../components/charts/global/lineTrendChart/lin
 import GlobalTopNewCasesBarChart from '../components/charts/global/topNewCasesBarChart/topNewCasesBarChart';
 import Prediction from '../components/prediction/prediction';
 import DisqusComp from '../components/disqus/disqus';
+import CountryDailyTotalIncreaseBar from '../components/charts/country/dailyTotalIncreaseBar/dailyTotalIncreaseBar';
 
 const SiteContent = styled(Grid)`
   padding-top: 66px;
@@ -125,6 +126,45 @@ export default function Index() {
           <InfoBoard country={location} data={toDisplayDataWorld} />
         </Grid>
         <Grid
+          item
+          xs={12}
+          lg={6}
+          style={{
+            padding: 15,
+          }}>
+          <>
+            <NewFeature item xs={12} lg={12}>
+              Total Cases (worldwide)
+            </NewFeature>
+            <GlobalLineTrendChart location={location} />
+          </>
+        </Grid>
+        <Grid item xs={12} lg={6} style={{padding: '0 20px'}}>
+          <>
+            <NewFeature item xs={12} lg={12}>
+              Daily New Cases and Death Worldwide
+            </NewFeature>
+            <CountryDailyTotalIncreaseBar location={location} />
+          </>
+        </Grid>
+        <Grid
+          item
+          xs={12}
+          lg={6}
+          style={{
+            padding: 15,
+          }}>
+          <>
+            <NewFeature item xs={12} lg={12}>
+              Worldwide Top 10 countries
+            </NewFeature>
+            <GlobalTopNewCasesBarChart
+              data={dataWorldYesterdayRaw}
+              type="world"
+            />
+          </>
+        </Grid>
+        <Grid
           container
           item
           xs={12}
@@ -148,37 +188,6 @@ export default function Index() {
               mode="active_cases"
             />
           </Grid>
-        </Grid>
-        <Grid
-          item
-          xs={12}
-          lg={6}
-          style={{
-            padding: 15,
-          }}>
-          <>
-            <NewFeature item xs={12} lg={12}>
-              Total Cases (worldwide)
-            </NewFeature>
-            <GlobalLineTrendChart location={location} />
-          </>
-        </Grid>
-        <Grid
-          item
-          xs={12}
-          lg={6}
-          style={{
-            padding: 15,
-          }}>
-          <>
-            <NewFeature item xs={12} lg={12}>
-              Worldwide Top 10 countries
-            </NewFeature>
-            <GlobalTopNewCasesBarChart
-              data={dataWorldYesterdayRaw}
-              type="world"
-            />
-          </>
         </Grid>
       </SiteContent>
       <DisqusComp commentId="world" />

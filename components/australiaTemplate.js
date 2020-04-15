@@ -184,7 +184,7 @@ export default function Index() {
         <Grid item xs={12} lg={6} style={{padding: '0 20px'}}>
           <>
             <NewFeature item xs={12} lg={12}>
-              Daily confirmed cases in Australia
+              Daily New Cases and Death in Australia
             </NewFeature>
             <CountryDailyTotalIncreaseBar location={location} />
           </>
