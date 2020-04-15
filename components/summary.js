@@ -83,10 +83,12 @@ export default function Summary({total}) {
   const serious = !total.serious_critical
     ? 'N/A'
     : formatNumber(total.serious_critical);
-  const recovered = !total.total_recovered
-    ? 'N/A'
-    : formatNumber(total.total_recovered);
+
+  const total_recovered = total.total_recovered || total.recovered;
+
+  const recovered = !total_recovered ? 'N/A' : formatNumber(total_recovered);
   const {height: fH, width: fW} = getFlipnumberSize();
+
   return (
     <Container>
       {!total ? (
