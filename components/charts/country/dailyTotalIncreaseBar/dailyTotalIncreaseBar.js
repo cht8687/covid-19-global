@@ -26,7 +26,6 @@ const ReactEchartsContainer = styled(ReactEcharts)`
 
 export default function CountryDailyTotalIncreaseBar({location}) {
   const [data, setData] = useState();
-  const chartRef = useRef(null);
   useEffect(() => {
     getDailyByCountry(
       apiCountryNameMapping[location]
