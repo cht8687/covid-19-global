@@ -47,7 +47,7 @@ class MyApp extends App {
             />
             <meta
               name="keywords"
-              content="covid-19 predict, prediction,  projection, trend, tracker, world, covid-19 USA, covid-19 UK, covid-19 Italy, covid-19 Europe, covid-19 charts, covid-19 trends, statistics, data"
+              content="ncov2019, ncov2019 live, covid-19 predict, prediction,  projection, trend, tracker, world, covid-19 USA, covid-19 UK, covid-19 Italy, covid-19 Europe, covid-19 charts, covid-19 trends, statistics, data"
             />
             <DefaultSeo {...SEO} />
           </Head>
