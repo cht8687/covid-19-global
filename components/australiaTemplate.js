@@ -65,10 +65,10 @@ const IFrameContainer = styled.iframe`
 const IFrameMiddle = styled.div`
   height: 1050px;
   ${down('tablet')} {
-    height: 500px;
+    height: 530px;
   }
   ${only('tablet')} {
-    height: 500px;
+    height: 530px;
   }
 `;
 
