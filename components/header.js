@@ -100,7 +100,7 @@ export default () => {
               </IconButton>
               <Title variant="h6">COVID19 Live Track and Prediction</Title>
             </Toolbar>
-            <KoFi color="#e02828" id="X8X31J5HH" label="Buy Me a Coffee" />
+            <KoFi color="#556cd6" id="X8X31J5HH" label="Buy Me a Coffee" />
           </AppBarContainer>
 
           <Drawer
