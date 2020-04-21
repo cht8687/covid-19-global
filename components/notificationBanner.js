@@ -59,10 +59,37 @@ export default function NotificationBanner({location, data, total}) {
           {location === 'australia' && (
             <>
               <ul>
+                Coronavirus AUS GOV official reports:
                 <li>
-                  Coronavirus Aus Gov Msg:
-                  <br /> Stay home this Easter & help save lives. Only leave for
-                  what you really need + exercise, work, medical & care.{' '}
+                  <a
+                    href="https://www.health.gov.au/sites/default/files/documents/2020/04/coronavirus-covid-19-at-a-glance-coronavirus-covid-19-at-a-glance-infographic_18.pdf"
+                    target="_blank">
+                    NSW reports
+                  </a>
+                  {`  |   `}
+                  <a
+                    href="https://www.health.qld.gov.au/news-events/doh-media-releases/releases/queensland-novel-coronavirus-covid-19-update30"
+                    target="_blank">
+                    QLD reports
+                  </a>
+                  {`  |   `}
+                  <a
+                    href="http://www2.sahealth.ha.sa.gov.au/wps/wcm/connect/public+content/sa+health+internet/health+topics/health+topics+a+-+z/covid+2019/latest+updates/confirmed+and+suspected+cases+of+covid-19+in+south+australia"
+                    target="_blank">
+                    SA reports
+                  </a>
+                  {`  |   `}
+                  <a
+                    href="https://www.wa.gov.au/organisation/department-of-the-premier-and-cabinet/covid-19-coronavirus-latest-updates"
+                    target="_blank">
+                    WA reports
+                  </a>
+                  {`  |   `}
+                  <a
+                    href="https://www.coronavirus.tas.gov.au/facts/cases-and-testing-updates"
+                    target="_blank">
+                    TAS reports
+                  </a>
                 </li>
               </ul>
             </>
