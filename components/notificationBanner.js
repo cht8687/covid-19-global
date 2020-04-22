@@ -62,7 +62,13 @@ export default function NotificationBanner({location, data, total}) {
                 Coronavirus AUS GOV official reports:
                 <li>
                   <a
-                    href="https://www.health.gov.au/sites/default/files/documents/2020/04/coronavirus-covid-19-at-a-glance-coronavirus-covid-19-at-a-glance-infographic_18.pdf"
+                    href="https://www.health.gov.au/sites/default/files/documents/2020/04/coronavirus-covid-19-at-a-glance-21-april-2020.pdf"
+                    target="_blank">
+                    Australia
+                  </a>
+                  {`  |   `}
+                  <a
+                    href="https://www.health.nsw.gov.au/Infectious/diseases/Pages/covid-19-latest-updates.aspx"
                     target="_blank">
                     NSW reports
                   </a>
