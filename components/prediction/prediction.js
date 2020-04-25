@@ -36,20 +36,20 @@ const getWorldPredict = location => {
       // code block
       return (
         <Slider {...settings}>
-          <Img src="./images/0421/COVID-19 By April 21-00.jpg"></Img>
-          <Img src="./images/0421/COVID-19 By April 21-01.jpg"></Img>
-          <Img src="./images/0421/COVID-19 By April 21-02.jpg"></Img>
-          <Img src="./images/0421/COVID-19 By April 21-03.jpg"></Img>
-          <Img src="./images/0421/COVID-19 By April 21-04.jpg"></Img>
-          <Img src="./images/0421/COVID-19 By April 21-05.jpg"></Img>
-          <Img src="./images/0421/COVID-19 By April 21-06.jpg"></Img>
-          <Img src="./images/0421/COVID-19 By April 21-07.jpg"></Img>
-          <Img src="./images/0421/COVID-19 By April 21-08.jpg"></Img>
-          <Img src="./images/0421/COVID-19 By April 21-09.jpg"></Img>
-          <Img src="./images/0421/COVID-19 By April 21-10.jpg"></Img>
-          <Img src="./images/0421/COVID-19 By April 21-11.jpg"></Img>
-          <Img src="./images/0421/COVID-19 By April 21-12.jpg"></Img>
-          <Img src="./images/0421/COVID-19 By April 21-13.jpg"></Img>
+          <Img src="./images/0424/COVID-19 By April 24-00.jpg"></Img>
+          <Img src="./images/0424/COVID-19 By April 24-01.jpg"></Img>
+          <Img src="./images/0424/COVID-19 By April 24-02.jpg"></Img>
+          <Img src="./images/0424/COVID-19 By April 24-03.jpg"></Img>
+          <Img src="./images/0424/COVID-19 By April 24-04.jpg"></Img>
+          <Img src="./images/0424/COVID-19 By April 24-05.jpg"></Img>
+          <Img src="./images/0424/COVID-19 By April 24-06.jpg"></Img>
+          <Img src="./images/0424/COVID-19 By April 24-07.jpg"></Img>
+          <Img src="./images/0424/COVID-19 By April 24-08.jpg"></Img>
+          <Img src="./images/0424/COVID-19 By April 24-09.jpg"></Img>
+          <Img src="./images/0424/COVID-19 By April 24-10.jpg"></Img>
+          <Img src="./images/0424/COVID-19 By April 24-11.jpg"></Img>
+          <Img src="./images/0424/COVID-19 By April 24-12.jpg"></Img>
+          <Img src="./images/0424/COVID-19 By April 24-13.jpg"></Img>
         </Slider>
       );
       break;
@@ -57,9 +57,9 @@ const getWorldPredict = location => {
     case 'australia':
       return (
         <Slider {...settings}>
-          <Img src="../images/0421/Australia.png"></Img>
-          <Img src="../images/0421/COVID-19 By April 21-00.jpg"></Img>
-          <Img src="../images/0421/COVID-19 By April 21-01.jpg"></Img>
+          <Img src="../images/0424/Australia.png"></Img>
+          <Img src="../images/0424/COVID-19 By April 24-00.jpg"></Img>
+          <Img src="../images/0424/COVID-19 By April 24-01.jpg"></Img>
         </Slider>
       );
       break;
@@ -67,9 +67,9 @@ const getWorldPredict = location => {
     case 'france':
       return (
         <Slider {...settings}>
-          <Img src="../images/0421/France.png"></Img>
-          <Img src="../images/0421/COVID-19 By April 21-00.jpg"></Img>
-          <Img src="../images/0421/COVID-19 By April 21-01.jpg"></Img>
+          <Img src="../images/0424/France.png"></Img>
+          <Img src="../images/0424/COVID-19 By April 24-00.jpg"></Img>
+          <Img src="../images/0424/COVID-19 By April 24-01.jpg"></Img>
         </Slider>
       );
       break;
@@ -77,9 +77,9 @@ const getWorldPredict = location => {
     case 'usa':
       return (
         <Slider {...settings}>
-          <Img src="../images/0421/USA.png"></Img>
-          <Img src="../images/0421/COVID-19 By April 21-00.jpg"></Img>
-          <Img src="../images/0421/COVID-19 By April 21-01.jpg"></Img>
+          <Img src="../images/0424/USA.png"></Img>
+          <Img src="../images/0424/COVID-19 By April 24-00.jpg"></Img>
+          <Img src="../images/0424/COVID-19 By April 24-01.jpg"></Img>
         </Slider>
       );
       break;
@@ -87,8 +87,9 @@ const getWorldPredict = location => {
     case 'uk':
       return (
         <Slider {...settings}>
-          <Img src="../images/0421/COVID-19 By April 21-00.jpg"></Img>
-          <Img src="../images/0421/COVID-19 By April 21-01.jpg"></Img>
+          <Img src="../images/0424/UK.png"></Img>
+          <Img src="../images/0424/COVID-19 By April 24-00.jpg"></Img>
+          <Img src="../images/0424/COVID-19 By April 24-01.jpg"></Img>
         </Slider>
       );
       break;
@@ -96,9 +97,9 @@ const getWorldPredict = location => {
     case 'canada':
       return (
         <Slider {...settings}>
-          <Img src="../images/0421/Canada.png"></Img>
-          <Img src="../images/0421/COVID-19 By April 21-00.jpg"></Img>
-          <Img src="../images/0421/COVID-19 By April 21-01.jpg"></Img>
+          <Img src="../images/0424/Canada.png"></Img>
+          <Img src="../images/0424/COVID-19 By April 24-00.jpg"></Img>
+          <Img src="../images/0424/COVID-19 By April 24-01.jpg"></Img>
         </Slider>
       );
       break;
@@ -114,7 +115,7 @@ class Prediction extends React.Component {
         <NewCarousel item xs={12} lg={12}>
           Yang's Prediction - By University of Wollongong Associate Prof.
           Shu-Qing Yang
-          <br />- Updated 21th April
+          <br />- Updated 24th April
         </NewCarousel>
         <Carousel item xs={12} lg={6}>
           {getWorldPredict(location)}
