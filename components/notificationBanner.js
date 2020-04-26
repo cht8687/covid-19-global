@@ -61,8 +61,14 @@ export default function NotificationBanner({location, data, total}) {
               <ul>
                 Coronavirus AUS GOV official reports:
                 <li>
+                  <a href="https://www.covidsafe.gov.au/" target="_blank">
+                    COVID19Safe app
+                  </a>{' '}
+                  is released
+                </li>
+                <li>
                   <a
-                    href="https://www.health.gov.au/sites/default/files/documents/2020/04/coronavirus-covid-19-at-a-glance-21-april-2020.pdf"
+                    href="https://www.health.gov.au/sites/default/files/documents/2020/04/coronavirus-covid-19-at-a-glance-26-april-2020.pdf"
                     target="_blank">
                     Australia
                   </a>
@@ -74,14 +80,12 @@ export default function NotificationBanner({location, data, total}) {
                   </a>
                   {`  |   `}
                   <a
-                    href="https://www.health.qld.gov.au/news-events/doh-media-releases/releases/queensland-novel-coronavirus-covid-19-update30"
+                    href="https://www.health.qld.gov.au/news-events/doh-media-releases"
                     target="_blank">
                     QLD reports
                   </a>
                   {`  |   `}
-                  <a
-                    href="http://www2.sahealth.ha.sa.gov.au/wps/wcm/connect/public+content/sa+health+internet/health+topics/health+topics+a+-+z/covid+2019/latest+updates/confirmed+and+suspected+cases+of+covid-19+in+south+australia"
-                    target="_blank">
+                  <a href="https://www.covid-19.sa.gov.au/" target="_blank">
                     SA reports
                   </a>
                   {`  |   `}
