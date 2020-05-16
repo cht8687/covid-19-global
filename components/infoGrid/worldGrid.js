@@ -51,7 +51,10 @@ export default function WorldGrid({data}) {
 
   const totalArray = toIndividualKeys(total);
   const countryArray = map(toIndividualKeys)(list);
-  const displayList = [totalArray, ...countryArray];
+  const displayList = [
+    drop(1, totalArray),
+    ...countryArray.map(e => drop(1, e)),
+  ];
 
   const styles = useStyles();
   const [state, setState] = useState({
