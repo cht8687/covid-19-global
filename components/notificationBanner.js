@@ -68,7 +68,7 @@ export default function NotificationBanner({location, data, total}) {
                 </li>
                 <li>
                   <a
-                    href="https://www.health.gov.au/sites/default/files/documents/2020/04/coronavirus-covid-19-at-a-glance-26-april-2020.pdf"
+                    href="https://www.health.gov.au/news/health-alerts/novel-coronavirus-2019-ncov-health-alert"
                     target="_blank">
                     Australia
                   </a>
