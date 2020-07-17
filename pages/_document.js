@@ -25,15 +25,7 @@ export default class extends Document {
           `,
             }}
           />
-          <script
-            data-ad-client="ca-pub-8555230138177286"
-            async
-            src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
-          <script
-            data-ad-client="pub-8555230138177286"
-            async
-            src="https://pagead2.googlesyndication.com/
-pagead/js/adsbygoogle.js"></script>
+          <script data-ad-client="ca-pub-2261530650289322" async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>        
         </Head>
         <body>
           <Main />
