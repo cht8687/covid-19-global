@@ -154,6 +154,22 @@ export default function Index() {
         <Grid item xs={12} lg={12}>
           <InfoBoard country={location} data={toDisplayDataAustralia} />
         </Grid>
+        <Grid item xs={12} lg={6} style={{ padding: "0 20px" }}>
+          <>
+            <NewFeature item xs={12} lg={12}>
+              Daily Increases view in states and territories over time
+            </NewFeature>
+            <CountryBarLabelRotation location={location} />
+          </>
+        </Grid>
+        <Grid item xs={12} lg={6} style={{ padding: "0 20px" }}>
+          <>
+            <NewFeature item xs={12} lg={12}>
+              Daily New Cases and Death in Australia
+            </NewFeature>
+            <CountryDailyTotalIncreaseBar location={location} />
+          </>
+        </Grid>
         <Grid
           container
           item
@@ -170,22 +186,6 @@ export default function Index() {
               timestamp={toDisplayTimestamp}
             />
           </Grid>
-        </Grid>
-        <Grid item xs={12} lg={6} style={{ padding: "0 20px" }}>
-          <>
-            <NewFeature item xs={12} lg={12}>
-              Daily New Cases and Death in Australia
-            </NewFeature>
-            <CountryDailyTotalIncreaseBar location={location} />
-          </>
-        </Grid>
-        <Grid item xs={12} lg={6} style={{ padding: "0 20px" }}>
-          <>
-            <NewFeature item xs={12} lg={12}>
-              Daily Increases view in states and territories over time
-            </NewFeature>
-            <CountryBarLabelRotation location={location} />
-          </>
         </Grid>
         <Grid
           item

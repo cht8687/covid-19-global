@@ -1,11 +1,10 @@
-import React, {useState, useCallback, useEffect} from 'react';
-import {Grid, ScrollSync, AutoSizer} from 'react-virtualized';
-import clsx from 'clsx';
-import {SNAKE_TO_NORMAL} from '../../const/GridHeader';
-import formatNumber from '../../utilities/formatNumber';
-import formatCell from '../../utilities/formatCellValue';
-import getValueFromArray from '../../utilities/getValueFromArray';
-import colours from '../../styles/colours';
+import React, { useState, useCallback, useEffect } from "react";
+import { Grid, ScrollSync, AutoSizer } from "react-virtualized";
+import clsx from "clsx";
+import { SNAKE_TO_NORMAL } from "../../const/GridHeader";
+import formatCell from "../../utilities/formatCellValue";
+import getValueFromArray from "../../utilities/getValueFromArray";
+import colours from "../../styles/colours";
 import {
   pipe,
   toPairs,
@@ -17,7 +16,7 @@ import {
   values,
   head,
   compose,
-} from 'ramda';
+} from "ramda";
 import {
   useStyles,
   TotalCase,
@@ -29,11 +28,11 @@ import {
   TotalRecovered,
   TotalCasesPer1mPopul,
   TotalDeathPer1mPopul,
-} from './sharedStyles';
+} from "./sharedStyles";
 
-export default function CountryGrid({data}) {
+export default function CountryGrid({ data }) {
   if (!data) return null;
-  let {total, list} = data;
+  let { total, list } = data;
   const toIndividualKeys = pipe(toPairs, map(pipe(of, fromPairs)));
 
   const totalArray = toIndividualKeys(total);
@@ -65,23 +64,26 @@ export default function CountryGrid({data}) {
     rowCount,
   } = state;
 
-  const _renderBodyCell = useCallback(({columnIndex, key, rowIndex, style}) => {
+  const _renderBodyCell = useCallback(
+    ({ columnIndex, key, rowIndex, style }) => {
+      if (columnIndex < 1) {
+        return;
+      }
+
+      return _renderLeftSideCell({ columnIndex, key, rowIndex, style });
+    },
+    []
+  );
+
+  const _renderHeaderCell = ({ columnIndex, key, rowIndex, style }) => {
     if (columnIndex < 1) {
       return;
     }
 
-    return _renderLeftSideCell({columnIndex, key, rowIndex, style});
-  }, []);
-
-  const _renderHeaderCell = ({columnIndex, key, rowIndex, style}) => {
-    if (columnIndex < 1) {
-      return;
-    }
-
-    return _renderLeftHeaderCell({columnIndex, key, rowIndex, style});
+    return _renderLeftHeaderCell({ columnIndex, key, rowIndex, style });
   };
 
-  const _renderLeftHeaderCell = ({columnIndex, key, style}) => {
+  const _renderLeftHeaderCell = ({ columnIndex, key, style }) => {
     return (
       <div className={styles.headerCell} key={key} style={style}>
         {SNAKE_TO_NORMAL[GRID_HEADER[columnIndex]]
@@ -95,37 +97,37 @@ export default function CountryGrid({data}) {
     const type = keys(cellValue)[0];
     const value = values(cellValue)[0];
     switch (type) {
-      case 'total_cases':
+      case "total_cases":
         return <TotalCase>{formatCell(value)}</TotalCase>;
         break;
-      case 'new_cases':
+      case "new_cases":
         return <NewCase>{formatCell(value)}</NewCase>;
         break;
-      case 'total_deaths':
+      case "total_deaths":
         return <TotalDeceased>{formatCell(value)}</TotalDeceased>;
         break;
-      case 'new_deaths':
+      case "new_deaths":
         return <NewDeceased>{formatCell(value, true)}</NewDeceased>;
         break;
-      case 'recovered':
+      case "recovered":
         return <TotalRecovered>{formatCell(value)}</TotalRecovered>;
         break;
-      case 'new_recovered':
+      case "new_recovered":
         return <TotalRecovered>{formatCell(value, true)}</TotalRecovered>;
         break;
-      case 'active_cases':
+      case "active_cases":
         return <ActiveCases>{formatCell(value)}</ActiveCases>;
         break;
-      case 'new_active_cases':
+      case "new_active_cases":
         return <ActiveCases>{formatCell(value, true)}</ActiveCases>;
         break;
-      case 'serious_critical':
+      case "serious_critical":
         return <SeriousCases>{formatCell(value)}</SeriousCases>;
         break;
-      case 'tot_cases_per_1m_pop':
+      case "tot_cases_per_1m_pop":
         return <TotalCasesPer1mPopul>{formatCell(value)}</TotalCasesPer1mPopul>;
         break;
-      case 'tot_deaths_per_1m_pop':
+      case "tot_deaths_per_1m_pop":
         return <TotalDeathPer1mPopul>{formatCell(value)}</TotalDeathPer1mPopul>;
         break;
       default:
@@ -133,7 +135,7 @@ export default function CountryGrid({data}) {
     }
   };
 
-  const _renderLeftSideCell = ({columnIndex, key, rowIndex, style}) => {
+  const _renderLeftSideCell = ({ columnIndex, key, rowIndex, style }) => {
     const rowClass =
       rowIndex % 2 === 0
         ? columnIndex % 2 === 0
@@ -145,8 +147,8 @@ export default function CountryGrid({data}) {
     const classNames = clsx(rowClass, styles.leftCell);
 
     const state =
-      getValueFromArray('province_state')(displayList[rowIndex]) ||
-      getValueFromArray('country_region')(displayList[rowIndex]);
+      getValueFromArray("province_state")(displayList[rowIndex]) ||
+      getValueFromArray("country_region")(displayList[rowIndex]);
 
     if (columnIndex < 1) {
       return (
@@ -165,7 +167,7 @@ export default function CountryGrid({data}) {
 
   return (
     <ScrollSync>
-      {({onScroll, scrollLeft, scrollTop}) => {
+      {({ onScroll, scrollLeft, scrollTop }) => {
         const leftBackgroundColor = colours.darkBlue;
         const leftColor = colours.white;
         const topBackgroundColor = colours.darkBlue;
@@ -178,12 +180,13 @@ export default function CountryGrid({data}) {
             <div
               className={styles.LeftSideGridContainer}
               style={{
-                position: 'absolute',
+                position: "absolute",
                 left: 0,
                 top: 0,
                 color: leftColor,
                 backgroundColor: `rgb(${topBackgroundColor.r},${topBackgroundColor.g},${topBackgroundColor.b})`,
-              }}>
+              }}
+            >
               <Grid
                 cellRenderer={_renderLeftHeaderCell}
                 className={styles.HeaderGrid}
@@ -198,12 +201,13 @@ export default function CountryGrid({data}) {
             <div
               className={styles.LeftSideGridContainer}
               style={{
-                position: 'absolute',
+                position: "absolute",
                 left: 0,
                 top: rowHeight,
                 color: leftColor,
                 backgroundColor: `rgb(${leftBackgroundColor.r},${leftBackgroundColor.g},${leftBackgroundColor.b})`,
-              }}>
+              }}
+            >
               <Grid
                 overscanColumnCount={overscanColumnCount}
                 overscanRowCount={overscanRowCount}
@@ -220,7 +224,7 @@ export default function CountryGrid({data}) {
             </div>
             <div className={styles.GridColumn}>
               <AutoSizer disableHeight>
-                {({width}) => (
+                {({ width }) => (
                   <div>
                     <div
                       style={{
@@ -228,7 +232,8 @@ export default function CountryGrid({data}) {
                         color: topColor,
                         height: rowHeight,
                         width: width,
-                      }}>
+                      }}
+                    >
                       <Grid
                         className={styles.HeaderGrid}
                         columnWidth={columnWidth}
@@ -248,7 +253,8 @@ export default function CountryGrid({data}) {
                         color: middleColor,
                         height,
                         width,
-                      }}>
+                      }}
+                    >
                       <Grid
                         className={styles.BodyGrid}
                         columnWidth={columnWidth}

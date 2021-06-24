@@ -1,13 +1,11 @@
-import React, {useState, useEffect, useRef} from 'react';
-import styled from 'styled-components';
-import ReactEcharts from 'echarts-for-react';
-import {options} from './options';
-import {useAsync} from 'react-async';
-import CircularProgress from '@material-ui/core/CircularProgress';
-import renameKeys from '../../../../utilities/renameKeys';
-import {getCountryStateDaily} from '../../../../services/api';
-import {statesInfo} from '../common/stateTables';
-import * as R from 'ramda';
+import React, { useState, useEffect, useRef } from "react";
+import styled from "styled-components";
+import ReactEcharts from "echarts-for-react";
+import { options } from "./options";
+import CircularProgress from "@material-ui/core/CircularProgress";
+import { getCountryStateDaily } from "../../../../services/api";
+import { statesInfo } from "../common/stateTables";
+import * as R from "ramda";
 
 const ChartsContainer = styled.div`
   display: flex;
@@ -23,8 +21,8 @@ const ReactEchartsContainer = styled(ReactEcharts)`
   width: 100%;
 `;
 
-export default function CountryBarLabelRotation({location}) {
-  location = 'australia';
+export default function CountryBarLabelRotation({ location }) {
+  location = "australia";
   const [optionData, setOptionData] = useState();
   const [source, setSource] = useState();
   const chartRef = useRef(null);
@@ -34,13 +32,13 @@ export default function CountryBarLabelRotation({location}) {
     let firstDateRow = [];
     let promises = [];
     let statesInfo;
-    states.map(state => {
+    states.map((state) => {
       promises.push(getCountryStateDaily(location, state));
     });
     Promise.all(promises).then(function(values) {
       const datesArray = R.compose(
-        R.map(R.map(R.path(['data_date']))),
-        R.map(R.prop('suburbs')),
+        R.map(R.map(R.path(["data_date"]))),
+        R.map(R.prop("suburbs"))
       )(values);
 
       let longestChildren = 0;
@@ -53,14 +51,14 @@ export default function CountryBarLabelRotation({location}) {
       });
 
       firstDateRow = R.prepend(
-        'state',
-        R.reverse(datesArray[longestChildrenIndex]),
+        "state",
+        R.reverse(datesArray[longestChildrenIndex])
       );
 
       source = R.compose(
         R.prepend(firstDateRow),
-        R.map(R.compose(R.map(R.path(['confirmed'])))),
-        R.map(R.path(['suburbs'])),
+        R.map(R.compose(R.map(R.path(["confirmed"])))),
+        R.map(R.path(["suburbs"]))
       )(values);
 
       source = source.map((array, index) => {
@@ -85,17 +83,17 @@ export default function CountryBarLabelRotation({location}) {
       });
 
       statesInfo = R.compose(
-        R.prepend('state'),
+        R.prepend("state"),
         R.flatten,
         R.map(R.take(1)),
-        R.map(R.map(R.path(['geo_location', 'province_state']))),
-        R.map(R.prop('suburbs')),
+        R.map(R.map(R.path(["geo_location", "province_state"]))),
+        R.map(R.prop("suburbs"))
       )(values);
       source = statesInfo.map((state, index) =>
-        R.prepend(state)(source[index]),
+        R.prepend(state)(source[index])
       );
       setSource(source);
-      setOptionData(options({source, states: R.drop(1, source[0])}));
+      setOptionData(options({ source, states: R.drop(1, source[0]) }));
     });
   }, []);
 
@@ -103,40 +101,40 @@ export default function CountryBarLabelRotation({location}) {
     const labelOption = {
       normal: {
         rotate: 90,
-        align: 'left',
-        verticalAlign: 'middle',
-        position: 'insideBottom',
+        align: "left",
+        verticalAlign: "middle",
+        position: "insideBottom",
         distance: 5,
       },
     };
     chartRef.current.getEchartsInstance().setOption({
       series: [
         {
-          type: 'bar',
+          type: "bar",
           label: labelOption,
         },
         {
-          type: 'bar',
+          type: "bar",
           label: labelOption,
         },
         {
-          type: 'bar',
+          type: "bar",
           label: labelOption,
         },
         {
-          type: 'bar',
+          type: "bar",
           label: labelOption,
         },
         {
-          type: 'bar',
+          type: "bar",
           label: labelOption,
         },
         {
-          type: 'bar',
+          type: "bar",
           label: labelOption,
         },
         {
-          type: 'bar',
+          type: "bar",
           label: labelOption,
         },
       ],
@@ -156,7 +154,7 @@ export default function CountryBarLabelRotation({location}) {
           ref={chartRef}
           option={optionData}
           notMerge={true}
-          style={{height: '65vh', width: '100%'}}
+          style={{ height: "65vh", width: "100%" }}
           onEvents={onEvents}
         />
       )}

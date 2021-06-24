@@ -1,6 +1,6 @@
-import echarts from 'echarts';
-import * as R from 'ramda';
-import colours from '../../../../styles/colours';
+import echarts from "echarts";
+import * as R from "ramda";
+import colours from "../../../../styles/colours";
 
 let app = {
   configParameters: null,
@@ -8,19 +8,19 @@ let app = {
 };
 
 var posList = [
-  'left',
-  'right',
-  'top',
-  'bottom',
-  'inside',
-  'insideTop',
-  'insideLeft',
-  'insideRight',
-  'insideBottom',
-  'insideTopLeft',
-  'insideTopRight',
-  'insideBottomLeft',
-  'insideBottomRight',
+  "left",
+  "right",
+  "top",
+  "bottom",
+  "inside",
+  "insideTop",
+  "insideLeft",
+  "insideRight",
+  "insideBottom",
+  "insideTopLeft",
+  "insideTopRight",
+  "insideBottomLeft",
+  "insideBottomRight",
 ];
 
 app.configParameters = {
@@ -30,16 +30,16 @@ app.configParameters = {
   },
   align: {
     options: {
-      left: 'left',
-      center: 'center',
-      right: 'right',
+      left: "left",
+      center: "center",
+      right: "right",
     },
   },
   verticalAlign: {
     options: {
-      top: 'top',
-      middle: 'middle',
-      bottom: 'bottom',
+      top: "top",
+      middle: "middle",
+      bottom: "bottom",
     },
   },
   position: {
@@ -49,7 +49,7 @@ app.configParameters = {
         map[pos] = pos;
         return map;
       },
-      {},
+      {}
     ),
   },
   distance: {
@@ -60,9 +60,9 @@ app.configParameters = {
 
 app.config = {
   rotate: 0,
-  align: 'left',
-  verticalAlign: 'middle',
-  position: 'insideBottom',
+  align: "left",
+  verticalAlign: "middle",
+  position: "insideBottom",
   distance: 15,
   onChange: function() {
     var labelOption = {
@@ -100,10 +100,10 @@ var labelOption = {
   align: app.config.align,
   verticalAlign: app.config.verticalAlign,
   rotate: app.config.rotate,
-  formatter: '{c}  {name|{a}}',
+  formatter: "{c}  {name|{a}}",
   fontSize: 16,
-  fontWeight: 'normal',
-  fontStyle: 'normal',
+  fontWeight: "normal",
+  fontStyle: "normal",
   rich: {
     name: {
       color: colours.dimWhite,
@@ -112,29 +112,30 @@ var labelOption = {
   },
 };
 
-export const options = ({source, states}) => ({
+export const options = ({ source, states }) => ({
   tooltip: {
-    trigger: 'axis',
+    trigger: "axis",
     axisPointer: {
-      type: 'shadow',
+      type: "shadow",
     },
   },
   dataZoom: [
     {
       show: true,
       yAxisIndex: [0],
-      start: 98,
+      start: 99,
       end: 100,
-      maxSpan: 2,
-      minSpan: 2,
+      minSpan: 1,
+      maxValueSpan: 1,
     },
     {
-      type: 'inside',
+      type: "inside",
       yAxisIndex: [0],
-      start: 98,
+      start: 99,
       end: 100,
-      maxSpan: 2,
-      minSpan: 2,
+      maxSpan: 1,
+      minSpan: 1,
+      maxValueSpan: 1,
     },
   ],
   legend: {
@@ -145,31 +146,31 @@ export const options = ({source, states}) => ({
   },
   toolbox: {
     show: true,
-    orient: 'vertical',
-    left: 'left',
-    top: 'center',
+    orient: "vertical",
+    left: "left",
+    top: "center",
     feature: {
-      mark: {show: false},
-      dataView: {show: false, readOnly: false},
+      mark: { show: false },
+      dataView: { show: false, readOnly: false },
       magicType: {
         show: true,
-        title: 'switch view',
-        type: ['line', 'bar'],
+        title: "switch view",
+        type: ["line", "bar"],
       },
       restore: {
         show: true,
-        title: 'restore',
+        title: "restore",
       },
       saveAsImage: {
         show: true,
-        title: 'save',
+        title: "save",
       },
     },
   },
   yAxis: [
     {
-      type: 'category',
-      axisTick: {show: false},
+      type: "category",
+      axisTick: { show: false },
       data: R.drop(2, source[0]),
       axisLabel: {
         textStyle: {
@@ -180,7 +181,7 @@ export const options = ({source, states}) => ({
   ],
   xAxis: [
     {
-      type: 'value',
+      type: "value",
       axisLabel: {
         textStyle: {
           color: colours.dimWhite,
@@ -192,10 +193,10 @@ export const options = ({source, states}) => ({
     R.map(
       R.applySpec({
         name: R.head,
-        type: () => 'bar',
+        type: () => "bar",
         label: () => labelOption,
         data: R.compose(R.identity, R.drop(1)),
-      }),
-    ),
+      })
+    )
   )(R.drop(1, source)),
 });
