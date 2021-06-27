@@ -1,15 +1,15 @@
 /*
  * Created by Robert Chang 15 March 2020
  */
-import React, {useState, useEffect} from 'react';
-import {upperCase} from 'upper-case';
-import styled, {css} from 'styled-components';
-import Grid from '@material-ui/core/Grid';
-import Button from '@material-ui/core/Button';
-import {only, down} from 'styled-breakpoints';
-import getPercentage from '../utilities/getPercentage';
-import colours from '../styles/colours';
-import {Facebook, Twitter} from 'react-social-sharing';
+import React, { useState, useEffect } from "react";
+import { upperCase } from "upper-case";
+import styled, { css } from "styled-components";
+import Grid from "@material-ui/core/Grid";
+import Button from "@material-ui/core/Button";
+import { only, down } from "styled-breakpoints";
+import getPercentage from "../utilities/getPercentage";
+import colours from "../styles/colours";
+import { Facebook, Twitter } from "react-social-sharing";
 
 const Container = styled.div`
   display: flex;
@@ -27,13 +27,13 @@ const ButtonTxt = styled(Button)`
   }
 `;
 
-export default function NotificationBanner({location, data, total}) {
+export default function NotificationBanner({ location, data, total }) {
   useEffect(() => {
     if (total) {
       const deathRate = getPercentage(total.total_deaths, total.total_cases);
       const recoverRate = getPercentage(
         total.total_recovered,
-        total.total_cases,
+        total.total_cases
       );
       setDeathRate(deathRate);
       setRecoverRate(recoverRate);
@@ -44,44 +44,53 @@ export default function NotificationBanner({location, data, total}) {
     <Container>
       <Grid container spacing={2}>
         <Grid item xs={12} lg={12}>
-          {location === 'world' && (
+          {location === "world" && (
             <>
               <ul>
-                <li>
-                  Update: Added Daily Predictions from Associate Professor
-                  Shuqing Yang, University of Wollongong (academic support for
-                  www.covid19boards.com)
-                </li>
                 <li>Have a nice day! Stay home and stay safe!</li>
               </ul>
             </>
           )}
-          {location === 'australia' && (
+          {location === "australia" && (
             <>
               <ul>
                 Coronavirus AUS GOV official reports:
                 <li>
+                  [NSW]: From 6pm on Saturday 26 June 2021, if you have been in
+                  Greater Sydney, including the Blue Mountains, Central Coast,
+                  Wollongong and Shellharbour for any reason since Monday 21
+                  June 2021, you must follow the stay at home rules and must
+                  continue to follow them for 14 days after you were last in
+                  Greater Sydney.{" "}
+                  <a href="https://www.nsw.gov.au/covid-19/rules/greater-sydney#stay-at-home-from-26-june-2021">
+                    Details
+                  </a>
+                </li>
+                <li>
                   <a href="https://www.covidsafe.gov.au/" target="_blank">
                     COVID19Safe app
-                  </a>{' '}
+                  </a>{" "}
                   is released
                 </li>
                 <li>
                   <a
                     href="https://www.health.gov.au/news/health-alerts/novel-coronavirus-2019-ncov-health-alert"
-                    target="_blank">
+                    target="_blank"
+                  >
                     Australia
                   </a>
                   {`  |   `}
                   <a
                     href="https://www.health.nsw.gov.au/Infectious/diseases/Pages/covid-19-latest-updates.aspx"
-                    target="_blank">
+                    target="_blank"
+                  >
                     NSW reports
                   </a>
                   {`  |   `}
                   <a
                     href="https://www.health.qld.gov.au/news-events/doh-media-releases"
-                    target="_blank">
+                    target="_blank"
+                  >
                     QLD reports
                   </a>
                   {`  |   `}
@@ -91,20 +100,22 @@ export default function NotificationBanner({location, data, total}) {
                   {`  |   `}
                   <a
                     href="https://www.wa.gov.au/organisation/department-of-the-premier-and-cabinet/covid-19-coronavirus-latest-updates"
-                    target="_blank">
+                    target="_blank"
+                  >
                     WA reports
                   </a>
                   {`  |   `}
                   <a
                     href="https://www.coronavirus.tas.gov.au/facts/cases-and-testing-updates"
-                    target="_blank">
+                    target="_blank"
+                  >
                     TAS reports
                   </a>
                 </li>
               </ul>
             </>
           )}
-          {location !== 'world' && location !== 'australia' && (
+          {location !== "world" && location !== "australia" && (
             <>
               <ul>
                 <li>
@@ -118,7 +129,7 @@ export default function NotificationBanner({location, data, total}) {
             <ul>
               <li>
                 Share with your friends, family or coworkers. Keep them up to
-                date{' '}
+                date{" "}
                 <a href="https://t.me/covid19boards" target="_blank">
                   Covid19Boards
                 </a>
