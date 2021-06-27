@@ -202,6 +202,46 @@ export default function Index() {
             <CountryPieWithLineCharts location={location} />
           </>
         </Grid>
+        <Grid
+          item
+          xs={12}
+          lg={6}
+          style={{
+            padding: "0 10px",
+          }}
+        >
+          <>
+            <NewFeature item xs={12} lg={12}>
+              Restriction changes from Saturday 26 June 2021 From 6pm on
+              Saturday 26 June, the stay at home direction applies to people who
+              live in, usually work in, or usually attend a university or other
+              tertiary education facility in Greater Sydney including the Blue
+              Mountains, Central Coast, Wollongong and Shellharbour local
+              government areas.
+              <br />
+              <br />
+              <br />
+            </NewFeature>
+          </>
+        </Grid>
+        <IFrameHolder
+          item
+          xs={12}
+          lg={6}
+          style={{
+            margin: "0 10px",
+            background: "white",
+          }}
+        >
+          <IFrameMiddle>
+            <IFrameContainer
+              src={`https://lpinsw.maps.arcgis.com/apps/webappviewer/index.html?id=2a8d27c8959c407396be0a3433eb4a58`}
+              scrolling="no"
+              frameborder="0"
+              allowfullscreen=""
+            ></IFrameContainer>{" "}
+          </IFrameMiddle>
+        </IFrameHolder>
 
         <IFrameHolder
           item
