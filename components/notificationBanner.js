@@ -56,14 +56,8 @@ export default function NotificationBanner({ location, data, total }) {
               <ul>
                 Coronavirus AUS GOV official reports:
                 <li>
-                  [NSW]: Restrictions up to 11.59pm Friday 16 July From 6pm on
-                  Saturday 26 June to 11.59pm Friday 16 July, the stay at home
-                  direction applies to people who live in, usually work in, or
-                  usually attend a university or other tertiary education
-                  facility in Greater Sydney including the Blue Mountains,
-                  Central Coast, Wollongong and Shellharbour local government
-                  areas.
-                  <a href="https://www.nsw.gov.au/covid-19/rules/greater-sydney#stay-at-home-from-26-june-2021">
+                  [NSW]:Stay at home orders apply to Greater Sydney including the Blue Mountains, Central Coast, Wollongong and Shellharbour local government areas.
+                  <a href="https://www.nsw.gov.au/covid-19/rules/greater-sydney#summary-of-restrictions">
                     Details
                   </a>
                 </li>

@@ -248,12 +248,8 @@ export default function Index() {
         >
           <>
             <NewFeature item xs={12} lg={12}>
-              Restrictions up to 11.59pm Friday 16 July From 6pm on Saturday 26
-              June to 11.59pm Friday 16 July, the stay at home direction applies
-              to people who live in, usually work in, or usually attend a
-              university or other tertiary education facility in Greater Sydney
-              including the Blue Mountains, Central Coast, Wollongong and
-              Shellharbour local government areas. <br />
+              If you are in the local government areas of Bayside, Blacktown, Burwood, Campbelltown, Canterbury-Bankstown, Cumberland, Fairfield, Georges River, Liverpool, Parramatta Strathfield or some suburbs of Penrith, go to the local government areas of concern (Sydney) to show a distance of 5km.
+
               <br />
               <br />
             </NewFeature>
@@ -270,7 +266,7 @@ export default function Index() {
         >
           <IFrameMiddle>
             <IFrameContainer
-              src={`https://lpinsw.maps.arcgis.com/apps/webappviewer/index.html?id=abc874256b5449feb9debabb52892047`}
+              src={`https://lpinsw.maps.arcgis.com/apps/webappviewer/index.html?id=bd404f661cca43faa21af05a16121cd5`}
               scrolling="no"
               frameborder="0"
               allowfullscreen=""
